@@ -1,0 +1,1130 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 18px;margin: 0;">
+                                            Loại hình tài liệu
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <div class="" style="margin-bottom: 7px;margin-top: 3px;">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalthem">
+                                                <span class="glyphicon glyphicon-file"></span>Thêm
+                                            </button>
+
+                                            <!-- Modal them -->
+                                            <div class="modal fade" id="myModalthem" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin loại tài liệu</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 200px;">
+                                                                <div class="collapse in">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Mã loại</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Mã loại">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Tên loại(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Tên loại">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Thứ tự(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Thứ tự">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Kích hoạt
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="checkbox" class="form-control" style="opacity: 1; position: relative; left: 0px;">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal them -->
+
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalsua">
+                                                <i class="fa fa-pencil-square-o"></i>Sửa
+                                            </button>
+
+                                            <!-- Modal sua -->
+                                            <div class="modal fade" id="myModalsua" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin loại tài liệu</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 200px;">
+                                                                <div class="collapse in">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Mã loại</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Mã loại">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Tên loại(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Tên loại">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Thứ tự(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Thứ tự">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Kích hoạt
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="checkbox" class="form-control" style="opacity: 1; position: relative; left: 0px;">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal sua -->
+
+                                            <button class="btn btn-danger">
+                                                <i class="glyphicon glyphicon-remove"></i> Xóa
+                                            </button>
+                                        </div>
+
+                                        <div class="" style="height: 450px; overflow: auto; margin-top: 2px;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Mã</th>
+                                                        <th>Tên loại</th>
+                                                        <th>Kích hoạt</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>HC</td>
+                                                        <td>Tài liệu hành chính</td>
+                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>HC</td>
+                                                        <td>Tài liệu hành chính</td>
+                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>HC</td>
+                                                        <td>Tài liệu hành chính</td>
+                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 col-xs-12">
+
+
+
+                                        <div class="col-md-12" style="padding:0;">
+                                            <div class="tabbable" style="margin-top: 10px; height: 436px;">
+                                                <ul class="nav nav-tabs" id="myTab">
+                                                    <li class="active">
+                                                        <a data-toggle="tab" href="#hoso">
+                                                            Hồ sơ
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="tab-red">
+                                                        <a data-toggle="tab" href="#vanban">
+                                                            Văn bản
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="tab-content" style="height: 445px;">
+                                                    <div id="hoso" class="tab-pane in active">
+                                                        <div class="col-md-12" style="padding: 0;">
+                                                            <div class="" style="padding-bottom: 5px;">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#themtaikhoan">
+                                                                    <i class="glyphicon glyphicon-file"></i>Thêm tài khoản
+                                                                </button>
+
+                                                                <!-- Modal them -->
+                                                                <div class="modal fade" id="themtaikhoan" role="dialog">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                        <!-- Modal content-->
+                                                                        <div class="modal-content">
+                                                                            <form action="">
+                                                                                <div class="modal-header">
+                                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                                    <h4 class="modal-title">Thông tin trường dữ liệu</h4>
+                                                                                </div>
+                                                                                <div class="modal-body" style="min-height: 370px;">
+                                                                                    <div class="collapse in">
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Loại dữ liệu</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Tên trường(*)</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="Tên loại">
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Mã trường
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">BUTTICH</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Hiển thị
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <div class="checkbox" style="margin: 0;">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox">
+                                                                                                        <span class="text"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Thứ tự nhập</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Kiểu dữ liệu
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">Kiểu ký tự</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Độ dài(*)</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Trường bắt buộc
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <div class="checkbox" style="margin: 0;">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox">
+                                                                                                        <span class="text"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Từ điển
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">BUTTICH</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Thứ tự hiện xem
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="Thứ tự">
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Thứ tự hiện tìm
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-12" style="padding: 0;">
+                                                                                            <div class="form-group col-md-12">
+                                                                                                <label class="col-sm-2 control-label no-padding-right">Giá trị mặc định</label>
+                                                                                                <div class="col-sm-10">
+                                                                                                    <input type="text" class="form-control" placeholder="Giá trị mặc định">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                                        <i class="fa fa-save"></i>Ghi nhận
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                                        <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                                        <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                                    </button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- end Modal them -->
+
+                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#suataikhoan">
+                                                                    <i class="fa fa-pencil-square-o"></i>Sửa
+                                                                </button>
+
+                                                                <!-- Modal sua -->
+                                                                <div class="modal fade" id="suataikhoan" role="dialog">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                        <!-- Modal content-->
+                                                                        <div class="modal-content">
+                                                                            <form action="">
+                                                                                <div class="modal-header">
+                                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                                    <h4 class="modal-title">Thông tin trường dữ liệu</h4>
+                                                                                </div>
+                                                                                <div class="modal-body" style="min-height: 370px;">
+                                                                                    <div class="collapse in">
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Loại dữ liệu</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Tên trường(*)</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="Tên loại">
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Mã trường
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">BUTTICH</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Hiển thị
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <div class="checkbox" style="margin: 0;">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox">
+                                                                                                        <span class="text"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Thứ tự nhập</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Kiểu dữ liệu
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">Kiểu ký tự</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Độ dài(*)</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Trường bắt buộc
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <div class="checkbox" style="margin: 0;">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox">
+                                                                                                        <span class="text"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Từ điển
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">BUTTICH</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Thứ tự hiện xem
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="Thứ tự">
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Thứ tự hiện tìm
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-12" style="padding: 0;">
+                                                                                            <div class="form-group col-md-12">
+                                                                                                <label class="col-sm-2 control-label no-padding-right">Giá trị mặc định</label>
+                                                                                                <div class="col-sm-10">
+                                                                                                    <input type="text" class="form-control" placeholder="Giá trị mặc định">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                                        <i class="fa fa-save"></i>Ghi nhận
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                                        <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                                        <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                                    </button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- end Modal sua -->
+
+                                                                <button class="btn btn-danger">
+                                                                    <i class="glyphicon glyphicon-remove"></i> Loại bỏ
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="" style="height:379px;overflow: auto;width: 100%;">
+                                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                <thead class="flip-content bordered-palegreen">
+                                                                    <tr>
+                                                                        <th>STT</th>
+                                                                        <th>Tên trường</th>
+                                                                        <th>Hiển thị xem</th>
+                                                                        <th>Kiểu dữ liệu</th>
+                                                                        <th>Độ dài</th>
+                                                                        <th>Bắt buộc</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="vanban" class="tab-pane">
+                                                        <div class="col-md-12" style="padding: 0;">
+                                                            <div class="" style="padding-bottom: 5px;">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#themvanban">
+                                                                    <i class="glyphicon glyphicon-file"></i>Thêm tài khoản
+                                                                </button>
+
+                                                                <!-- Modal them -->
+                                                                <div class="modal fade" id="themvanban" role="dialog">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                        <!-- Modal content-->
+                                                                        <div class="modal-content">
+                                                                            <form action="">
+                                                                                <div class="modal-header">
+                                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                                    <h4 class="modal-title">Thông tin trường dữ liệu</h4>
+                                                                                </div>
+                                                                                <div class="modal-body" style="min-height: 370px;">
+                                                                                    <div class="collapse in">
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Loại dữ liệu</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Tên trường(*)</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="Tên loại">
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Mã trường
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">BUTTICH</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Hiển thị
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <div class="checkbox" style="margin: 0;">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox">
+                                                                                                        <span class="text"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Thứ tự nhập</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Kiểu dữ liệu
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">Kiểu ký tự</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Độ dài(*)</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Trường bắt buộc
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <div class="checkbox" style="margin: 0;">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox">
+                                                                                                        <span class="text"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Từ điển
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">BUTTICH</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Thứ tự hiện xem
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="Thứ tự">
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Thứ tự hiện tìm
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-12" style="padding: 0;">
+                                                                                            <div class="form-group col-md-12">
+                                                                                                <label class="col-sm-2 control-label no-padding-right">Giá trị mặc định</label>
+                                                                                                <div class="col-sm-10">
+                                                                                                    <input type="text" class="form-control" placeholder="Giá trị mặc định">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                                        <i class="fa fa-save"></i>Ghi nhận
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                                        <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                                        <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                                    </button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- end Modal them -->
+
+                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#suavanban">
+                                                                    <i class="fa fa-pencil-square-o"></i>Sửa
+                                                                </button>
+
+                                                                <!-- Modal sua -->
+                                                                <div class="modal fade" id="suavanban" role="dialog">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                        <!-- Modal content-->
+                                                                        <div class="modal-content">
+                                                                            <form action="">
+                                                                                <div class="modal-header">
+                                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                                    <h4 class="modal-title">Thông tin trường dữ liệu</h4>
+                                                                                </div>
+                                                                                <div class="modal-body" style="min-height: 370px;">
+                                                                                    <div class="collapse in">
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Loại dữ liệu</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Tên trường(*)</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="Tên loại">
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Mã trường
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">BUTTICH</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Hiển thị
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <div class="checkbox" style="margin: 0;">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox">
+                                                                                                        <span class="text"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Thứ tự nhập</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label no-padding-right">
+                                                                                                Kiểu dữ liệu
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">Kiểu ký tự</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label no-padding-right">Độ dài(*)</label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Trường bắt buộc
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <div class="checkbox" style="margin: 0;">
+                                                                                                    <label>
+                                                                                                        <input type="checkbox">
+                                                                                                        <span class="text"></span>
+                                                                                                    </label>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Từ điển
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <select name="" class="col-md-12 col-xs-12">
+                                                                                                    <option value="">--Chọn--</option>
+                                                                                                    <option value="">BUTTICH</option>
+                                                                                                    <option value="">Kiểu ngày</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Thứ tự hiện xem
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="Thứ tự">
+                                                                                            </div>
+
+                                                                                            <label class="col-sm-2 control-label">
+                                                                                                Thứ tự hiện tìm
+                                                                                            </label>
+                                                                                            <div class="col-sm-4">
+                                                                                                <input type="text" class="form-control" placeholder="">
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-12" style="padding: 0;">
+                                                                                            <div class="form-group col-md-12">
+                                                                                                <label class="col-sm-2 control-label no-padding-right">Giá trị mặc định</label>
+                                                                                                <div class="col-sm-10">
+                                                                                                    <input type="text" class="form-control" placeholder="Giá trị mặc định">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                                        <i class="fa fa-save"></i>Ghi nhận
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                                        <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                                    </button>
+                                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                                        <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                                    </button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- end Modal sua -->
+
+                                                                <button class="btn btn-danger">
+                                                                    <i class="glyphicon glyphicon-remove"></i> Loại bỏ
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="" style="height:379px;overflow: auto;width: 100%;">
+                                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                <thead class="flip-content bordered-palegreen">
+                                                                    <tr>
+                                                                        <th>STT</th>
+                                                                        <th>Tên trường</th>
+                                                                        <th>Hiển thị xem</th>
+                                                                        <th>Kiểu dữ liệu</th>
+                                                                        <th>Độ dài</th>
+                                                                        <th>Bắt buộc</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>Chú giải</td>
+                                                                        <td><i class="glyphicon glyphicon-remove"></i></td>
+                                                                        <td>Text</td>
+                                                                        <td>500</td>
+                                                                        <td>
+                                                                            <i class="glyphicon glyphicon-minus"></i>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

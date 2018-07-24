@@ -1,0 +1,122 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content" ng-controller="">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 18px;">Danh sách các yêu cầu cần duyệt</label>
+                                    </div>
+                                    <div class="col-md-2 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <label>Tình trạng</label>
+
+                                        <div class="" style="margin-top: 10px;">
+                                            <ul style="list-style: none; font-size: 15px; padding:0;">
+                                                <li>
+                                                    <a href="" style="text-decoration: none;color: #333;">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Tất cả
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="" style="text-decoration: none;color: #333;">
+                                                        <i class="fa fa-square-o"></i>
+                                                        Chờ duyệt
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="" style="text-decoration: none;color: #333;">
+                                                        <i class="fa fa-square-o"></i>
+                                                        Đã duyệt
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 col-xs-12">
+                                        <div class="" style="margin-bottom: 10px;">
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa  fa-check-square-o"></i>Duyệt
+                                            </button>
+                                        </div>
+                                        <div class="" style="height: 400px; overflow:auto;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Số yêu cầu</th>
+                                                        <th>Ngày</th>
+                                                        <th>Người yêu cầu</th>
+                                                        <th>Đơn vị</th>
+                                                        <th>Hình thức</th>
+                                                        <th>Xử lý</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="cursor: pointer;">
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li>
+                                                    <a href="#" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li>
+                                                    <a href="#" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

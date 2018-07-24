@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <_PublishTargetUrl>ftp://www.chinhlytailieu.somee.com/www.chinhlytailieu.somee.com</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="assets/css/4095-rtl.css">
+      <publishTime>04/10/2018 08:58:07</publishTime>
+    </File>
+    <File Include="assets/css/4095-rtl.css.map">
+      <publishTime>04/10/2018 08:58:07</publishTime>
+    </File>
+    <File Include="assets/css/4095-rtl.min.css">
+      <publishTime>04/10/2018 08:58:07</publishTime>
+    </File>
+    <File Include="assets/css/4095.css">
+      <publishTime>04/10/2018 08:58:12</publishTime>
+    </File>
+    <File Include="assets/css/4095.css.map">
+      <publishTime>04/10/2018 08:58:12</publishTime>
+    </File>
+    <File Include="assets/css/4095.less">
+      <publishTime>04/10/2018 08:58:07</publishTime>
+    </File>
+    <File Include="assets/css/4095.min.css">
+      <publishTime>04/10/2018 08:58:07</publishTime>
+    </File>
+    <File Include="assets/css/animate.css">
+      <publishTime>04/10/2018 08:58:07</publishTime>
+    </File>
+    <File Include="assets/css/animate.min.css">
+      <publishTime>04/10/2018 08:58:07</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/400-500.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/400-500.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/accordions.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/accordions.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/alerts.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/alerts.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/animations.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/animations.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/animations.min.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/body.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/body.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/breadcrumbs.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/breadcrumbs.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/buttons.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/buttons.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/charts.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/charts.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/chat.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/chat.css.map">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/chat.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/chat.min.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/checkbox-radiobox.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/checkbox-radiobox.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/colorpicker.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/colorpicker.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/colors.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/colors.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/comment.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/comment.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/dashboard.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/dashboard.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/databoxes.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/databoxes.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/datepicker.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/datepicker.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/daterangepicker.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/daterangepicker.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/dropdowns.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/dropdowns.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/editors.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/editors.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/fonts.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/fonts.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/fonts.min.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/forms-inputs.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/forms-inputs.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/fullcalendar.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/fullcalendar.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/helpers.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/helpers.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/invoice.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/invoice.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/labels-badges.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/labels-badges.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/loading.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/loading.css.map">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/loading.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/loading.min.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/lockscreen.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/lockscreen.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/login.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/login.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/mail.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/mail.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/main-container.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/main-container.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/modals.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/modals.less">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-less/navbar.css">
+      <publishTime>04/10/2018 08:58:10</publishTime>
+    </File>
+    <File Include="assets/css/beyond-rtl.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/beyond-rtl.css.map">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/beyond-rtl.min.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/beyond.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/beyond.css.map">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/beyond.less">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/beyond.min.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/bootstrap-rtl.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/bootstrap-rtl.css.map">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/bootstrap-rtl.min.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/bootstrap.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/bootstrap.css.map">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/bootstrap.min.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/dataTables.bootstrap.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/demo.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/demo.css.map">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/demo.less">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/demo.min.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/font-awesome.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/font-awesome.min.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/superweb-custom.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/typicons.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/typicons.min.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/weather-icons.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="assets/css/weather-icons.min.css">
+      <publishTime>04/10/2018 08:58:08</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>04/10/2018 08:30:47</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/10/2018 08:30:47</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>04/10/2018 08:31:28</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/20/2018 17:09:18</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

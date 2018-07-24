@@ -1,0 +1,138 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content" ng-controller="phanquyenController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{nhomchucnang}}</a>
+            </li>
+            <li>
+                <a href="#">{{chucnang}}</a>
+            </li>
+          
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 18px;margin: 0;">
+                                            Phân quyền truy cập tài liệu
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px; padding-left: 0;">
+                                            <label>Nhóm người dùng</label>
+                                        </div>
+                                        <div>
+                                            <div style="height: 450px; overflow: auto; display: inline-block; width: 100%">
+                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                    <thead class="flip-content bordered-palegreen">
+                                                        <tr>
+                                                            <th>Mã</th>
+                                                            <th>Tên nhóm</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="clicknhom" style="cursor: pointer;" dir-paginate="n in nhomnguoidung |itemsPerPage:12" ng-click="click_nhom(n)">
+                                                            <td>{{n.MANHOM}}</td>
+                                                            <td>{{n.TENNHOM}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-xs-12">
+                                        <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px; padding-left: 0;">
+                                            <label>Mục lục tài liệu</label>
+                                        </div>
+
+                                        <div class="row">
+                                            <label class="col-sm-1">Cơ quan:</label>
+                                            <select name="select_coquan" class="col-md-4 col-xs-12" ng-disabled="disableCoQuan">
+                                                <option value="" ng-click="click_phong(d)">--- Chọn cơ quan ---</option>
+                                                @Html.Raw(@Html.Action("ht_qlphongban_LoadCoQuan2", "hethong"))
+                                            </select>
+
+                                            <label class="col-sm-1" style="margin-right: 5px;padding: 8px;">Phông:</label>
+                                            <select name="select_phong" class="col-md-3 col-xs-12" style="width:216px;">
+                                                <option value="">--- Chọn phông ---</option>
+                                                <option value="{{d.ID}}" ng-repeat="d in danhsachPhong" ng-click="click_phong(d)">{{d.TENPHONG}}</option>
+                                            </select>
+
+                                            <button class="btn btn-primary col-md-2" style="margin-left: 5px;" ng-click="ghinhan()">
+                                                <i class="glyphicon glyphicon-copy"></i> Ghi nhận
+                                            </button>
+                                        </div>
+
+                                        <div style="height: 413px; overflow: auto; width: 100%;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th style="width: 70px; text-align:center">Xem</th>
+                                                        <th style="width: 70px; text-align:center">Thêm</th>
+                                                        <th style="width: 70px; text-align:center">Sửa</th>
+                                                        <th style="text-align:center">Mục lục</th>
+                                                        <th style="text-align:center">Tên mục lục</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="ds in DSTruyCapTaiLieu">
+                                                        <td style="width: 70px; text-align:center">
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox" ng-checked="{{ds.XEM}}" class="truycapxem">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width: 70px; text-align:center">
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox" class="truycapthem" ng-checked="{{ds.THEM}}">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width: 70px; text-align:center">
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox" class="truycapsua" ng-checked="{{ds.SUA}}">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td style="text-align:center">{{ds.MAMUCLUC}}</td>
+                                                        <td style="text-align:center">{{ds.TENMUCLUC}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

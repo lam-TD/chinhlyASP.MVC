@@ -1,0 +1,294 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding: 0">
+                                            <label style="font-size: 18px;">Tài liệu cần tìm</label>
+                                        </div>
+                                        <div>
+                                            <form action="">
+                                                <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                    <label class="col-sm-1 control-label no-padding-right">
+                                                        Cơ quan
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <select name="" class="col-md-12">
+                                                            <option value="">Trung tâm lưu trữ quốc gia II</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                    <label class="col-sm-1 control-label no-padding-right">
+                                                        Phông
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <select name="" class="col-md-12">
+                                                            <option value="">Bộ công chánh</option>
+                                                            <option value="">Trung tâm lưu trữ quốc gia II</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                    <label class="col-sm-1 control-label no-padding-right">
+                                                        Hồ sơ số
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <select name="" class="col-md-12">
+                                                            <option value="">1</option>
+                                                            <option value="">2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                    <label class="col-sm-1 control-label"></label>
+                                                    <div class="col-sm-6">
+                                                        <button type="button" class="btn btn-primary">
+                                                            <i class="fa fa-search"></i>Tìm hồ sơ
+                                                        </button>
+                                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#vitri">
+                                                            <i class="fa  fa-building-o"></i>Xem vị trí bảo quản phông
+                                                        </button>
+                                                        <!-- Modal them -->
+                                                        <div class="modal fade" id="vitri" role="dialog">
+                                                            <div class="modal-dialog modal-lg">
+
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">Thông tin vị trí bảo quản</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" style="min-height: 170px;">
+                                                                        <div class="collapse in">
+                                                                            <div class="form-group col-md-12">
+                                                                                <label class="col-sm-2 control-label no-padding-right">
+                                                                                    Cơ quan
+                                                                                </label>
+                                                                                <div class="col-sm-10">
+                                                                                    <select name="" class="col-md-12">
+                                                                                        <option value="">Phòng số 1</option>
+                                                                                        <option value="">2</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <label class="col-sm-2 control-label no-padding-right">
+                                                                                    Vị trí kệ bảo quản
+                                                                                </label>
+                                                                                <div class="col-sm-10">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-2">
+                                                                                            <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5; border: 2px solid red;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                        </div>
+                                                                                        <div class="col-md-2" style="">
+                                                                                            <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 02</h5></div>
+                                                                                        </div>
+                                                                                        <div class="col-md-2" style="">
+                                                                                            <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                        </div>
+                                                                                        <div class="col-md-2" style="">
+                                                                                            <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                        </div>
+                                                                                        <div class="col-md-2" style="">
+                                                                                            <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                        </div>
+                                                                                        <div class="col-md-2" style="">
+                                                                                            <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end Modal them -->
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
+                                        <div class="" style="margin-top: 20px; margin-bottom: 2px;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>Vị trí bảo quản</th>
+                                                        <th>Hồ sơ số</th>
+                                                        <th>Trích yếu</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#vitribaoquan">
+                                                                <i class="fa fa-crosshairs"></i>Vị trí
+                                                            </button>
+                                                            <!-- Modal them -->
+                                                            <div class="modal fade" id="vitribaoquan" role="dialog">
+                                                                <div class="modal-dialog modal-lg">
+
+                                                                    <!-- Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                            <h4 class="modal-title">Thông tin vị trí bảo quản của tài liệu</h4>
+                                                                        </div>
+                                                                        <div class="modal-body" style="min-height: 170px;">
+                                                                            <div class="collapse in">
+                                                                                <table class="table flip-content">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="width:20%">Phông:</td>
+                                                                                            <td>Bộ công chánh</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width:20%">Hộp số:</td>
+                                                                                            <td>1</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width:20%">Hồ sơ số:</td>
+                                                                                            <td>1</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width:20%">Mã kho:</td>
+                                                                                            <td>1</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width:20%">Kệ:</td>
+                                                                                            <td>Kệ 2 - Phòng - </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width: 20%"></td>
+                                                                                            <td>Mặt 1 - Tầng 1 - Khoang 1</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width: 20%">Vị trí minh họa</td>
+                                                                                            <td>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-md-2">
+                                                                                                        <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5; border: 2px solid red;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-2" style="">
+                                                                                                        <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 02</h5></div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-2" style="">
+                                                                                                        <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-2" style="">
+                                                                                                        <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-2" style="">
+                                                                                                        <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-2" style="">
+                                                                                                        <div style="width: 80px; height: 100px; border: 1px solid #ddd; background-color: #046eb5;"><h5 class="text-center">Kệ 01</h5></div>
+                                                                                                    </div>
+
+
+                                                                                                </div>
+
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                                <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- end Modal them -->
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Tài liệu của Bộ Công chánh về các phiên họp Việt - Mỹ thảo luận vấn đề viện trợ kinh tế Mỹ cho Việt Nam năm 1966</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                <i class="fa fa-crosshairs"></i>Vị trí
+                                                            </button>
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Tài liệu của Bộ Công chánh về các phiên họp Việt - Mỹ thảo luận vấn đề viện trợ kinh tế Mỹ cho Việt Nam năm 1966</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                <i class="fa fa-crosshairs"></i>Vị trí
+                                                            </button>
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Tài liệu của Bộ Công chánh về các phiên họp Việt - Mỹ thảo luận vấn đề viện trợ kinh tế Mỹ cho Việt Nam năm 1966</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                <i class="fa fa-crosshairs"></i>Vị trí
+                                                            </button>
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Tài liệu của Bộ Công chánh về các phiên họp Việt - Mỹ thảo luận vấn đề viện trợ kinh tế Mỹ cho Việt Nam năm 1966</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                <i class="fa fa-crosshairs"></i>Vị trí
+                                                            </button>
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Tài liệu của Bộ Công chánh về các phiên họp Việt - Mỹ thảo luận vấn đề viện trợ kinh tế Mỹ cho Việt Nam năm 1966</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

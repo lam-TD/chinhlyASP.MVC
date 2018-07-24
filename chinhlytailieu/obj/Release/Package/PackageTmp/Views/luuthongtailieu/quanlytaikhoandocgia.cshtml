@@ -1,0 +1,456 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content" >
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 18px;">Danh sách tài khoản độc giả</label>
+                                    </div>
+                                    <div class="col-md-2 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <label>Tình trạng</label>
+
+                                        <div class="" style="margin-top: 10px;">
+                                            <ul style="list-style: none; font-size: 15px; padding:0;">
+                                                <li>
+                                                    <a href="" style="text-decoration: none;color: #333;">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Tất cả
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="" style="text-decoration: none;color: #333;">
+                                                        <i class="fa fa-square-o"></i>
+                                                        Hoạt động
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="" style="text-decoration: none;color: #333;">
+                                                        <i class="fa fa-square-o"></i>
+                                                        Bị khóa
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="" style="text-decoration: none;color: #333;">
+                                                        <i class="fa fa-square-o"></i>
+                                                        Hết hạn
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 col-xs-12">
+                                        <div class="" style="margin-bottom: 10px;">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                <span class="fa fa-pencil-square-o"></span>Xem
+                                            </button>
+
+                                            <!-- Modal xem -->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog modal-lg">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Thông tin yêu cầu - Số: 2018_0322_03032772</h4>
+                                                        </div>
+                                                        <div class="modal-body" style="min-height: 535px;">
+                                                            <div class="collapse in">
+                                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                    <tbody>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Ngày yêu cầu:</td>
+                                                                            <td>22/03/2018</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Họ và tên độc giả:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Ngày sinh:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Quốc tịch:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Số CMND/hộ chiếu:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Cơ quan công tác:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Địa chỉ:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Số điện thoại:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Email:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Mục đích khai thác:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Chủ đề nghiên cứu:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Thời gian nghiên cứu:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+                                                                        <tr style="cursor: pointer;">
+                                                                            <td>Duyệt:</td>
+                                                                            <td>Vo huong</td>
+                                                                        </tr>
+
+                                                                    </tbody>
+                                                                </table>
+                                                                <div style="margin-top: 10px;">
+                                                                    <label>Xét duyệt</label>
+                                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                        <thead class="flip-content bordered-palegreen">
+                                                                            <tr>
+                                                                                <th>STT</th>
+                                                                                <th style="width: 50%;">Người duyệt</th>
+                                                                                <th>Ngày duyêt</th>
+                                                                                <th>Duyệt</th>
+                                                                                <th>Ý kiến</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>1</td>
+                                                                                <td>Truong phong doc</td>
+                                                                                <td>1</td>
+                                                                                <td>1</td>
+                                                                                <td>1</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>1</td>
+                                                                                <td>Truong phong doc</td>
+                                                                                <td>1</td>
+                                                                                <td>1</td>
+                                                                                <td>1</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal xem -->
+
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModaltimkiem"><span class="fa fa-search"></span>Tìm kiếm</button>
+
+                                            <!-- Modal tim kiem -->
+                                            <div class="modal fade" id="myModaltimkiem" role="dialog">
+                                                <div class="modal-dialog modal-md">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin phòng/đơn vị</h4>
+                                                            </div>
+
+                                                            <div class="modal-body" style="min-height: 125px;">
+                                                                <div class="collapse in">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-3">Tên độc giả</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-3">Ngày yêu cầu</label>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="input-group">
+                                                                                <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-calendar"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <label class="1"></label>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="input-group">
+                                                                                <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-calendar"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary">
+                                                                    <i class="fa fa-search"></i>Tìm kiếm
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal tim kiem -->
+
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-refresh"></i>Tải lại
+                                            </button>
+
+                                            <button type="button" class="btn btn-danger">
+                                                <i class="fa fa-lock"></i>Khóa tài khoản
+                                            </button>
+
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-print"></i>In thẻ
+                                            </button>
+
+                                            <button type="button" class="btn btn-warning">
+                                                <i class="fa fa-unlock"></i>Kích hoạt
+                                            </button>
+
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-pencil-square-o"></i>Gian hạn
+                                            </button>
+                                        </div>
+                                        <div class="" style="height: 400px; overflow:auto;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Số yêu cầu</th>
+                                                        <th>Ngày tạo</th>
+                                                        <th>Họ tên</th>
+                                                        <th>Tên đăng nhập</th>
+                                                        <th>Thời hạn</th>
+                                                        <th>Trạng thái</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>2018_0322_03032772</td>
+                                                        <td>22/03/2018</td>
+                                                        <td>2434</td>
+                                                        <td>42423</td>
+                                                        <td>31/12/2018</td>
+                                                        <td>Hoạt động</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li>
+                                                    <a href="#" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li>
+                                                    <a href="#" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

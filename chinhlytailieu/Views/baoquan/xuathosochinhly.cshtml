@@ -1,0 +1,174 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body" style="min-height:760px;">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <form action="">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding: 0">
+                                        <label style="font-size: 18px;">Thông tin biên bản giao nhận tài liệu</label>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Cho kế hoạch chỉnh lý</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" placeholder="Mục lục số">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Số bản</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="Số bản">
+                                        </div>
+
+                                        <label class="col-sm-2 control-label no-padding-right">Ngày lập</label>
+                                        <div class="col-sm-4">
+                                            <div class="input-group">
+                                                <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Căn cứ</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="col-md-12"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding: 0;">
+                                        <label style="font-size: 16px;">Bên giao</label>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Bên giao(*)</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" placeholder="Mục lục số">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Ông/Bà(*)</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="">
+                                        </div>
+
+                                        <label class="col-sm-2 control-label no-padding-right">Chức vụ</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="Hồ sơ số">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right"></label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="">
+                                        </div>
+
+                                        <label class="col-sm-2 control-label no-padding-right">Chức vụ</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="Hồ sơ số">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding: 0;">
+                                        <label style="font-size: 16px;">Bên nhận</label>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Bên nhận(*)</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" placeholder="Mục lục số">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Ông/Bà(*)</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="">
+                                        </div>
+
+                                        <label class="col-sm-2 control-label no-padding-right">Chức vụ</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="Hồ sơ số">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Ông/Bà</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="">
+                                        </div>
+
+                                        <label class="col-sm-2 control-label no-padding-right">Chức vụ</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" placeholder="Hồ sơ số">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 16px;">Nội dung</label>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Tên phông</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" placeholder="Mục lục số">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-2 control-label no-padding-right">Số lượng</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" placeholder="Mục lục số">
+                                        </div>
+                                    </div>
+
+                                    <div class="pull-right" style="margin-right: 30px;">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                            <i class="fa fa-save"></i>Lưu
+                                        </button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                            <i class="fa fa-print"></i>In biên nhận
+                                        </button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                            <i class="fa  fa-backward"></i>Quay về
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

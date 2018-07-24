@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "cosodulieu";
+    Layout = "~/Views/Shared/_Layouttop.cshtml";
+}
+
+<script src="~/Scripts/cosodulieu/appcosodulieu.js"></script>
+<script src="~/Scripts/cosodulieu/phanheTLbienmuc/phanheTLbienmuc.js"></script>
+
+<div class="main-container container-fluid" ng-app="appcosodulieu">
+    <!-- Page Container -->
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        <div class="page-sidebar" id="sidebar">
+            <!-- Page Sidebar Header-->
+            <div class="sidebar-header-wrapper">
+                <input type="text" class="searchinput" />
+                <i class="searchicon fa fa-search"></i>
+                <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
+            </div>
+            <!-- /Page Sidebar Header -->
+            <!-- Sidebar Menu -->
+
+
+
+            <ul class="nav sidebar-menu">
+
+                <li>
+                    <a href="#/!">
+                        <i class="menu-icon fa fa-dashboard"></i>
+                        <span class="menu-text">Phân hệ QLTL biên mục</span>
+                    </a>
+                </li>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <a href="" class="menu-dropdown">
+                            <i class="menu-icon fa fa-list"></i>
+                            <span class="menu-text">@item.Tennhom</span>
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        @Html.Action("chucnang", "cosodulieu", new { id = item.Id })
+                    </li>
+                }
+                
+
+                @*<li>
+                    <a href="" class="menu-dropdown">
+                        <i class="menu-icon fa fa-book"></i>
+                        <span class="menu-text">Quản lý hồ sơ</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="#!danhsachhoso">
+                                <span class="menu-text">Danh sách hồ sơ</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#!themhosomoi">
+                                <span class="menu-text">Thêm hồ sơ mới</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#!danhsachhop">
+                                <span class="menu-text">Danh sách hộp</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#!xephosovaohop">
+                                <span class="menu-text">Xếp hồ sơ vào hộp</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#!congbohosorawebsite">
+                                <span class="menu-text">Công bố hồ sơ ra website</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="" class="menu-dropdown">
+                        <i class="menu-icon fa fa-copy"></i>
+                        <span class="menu-text">Quản lý văn bản</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="#!danhsachvanban">
+                                <span class="menu-text">Danh sách văn bản</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="" class="menu-dropdown">
+                        <i class="menu-icon fa fa-download"></i>
+                        <span class="menu-text">Import dữ liệu</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="#!importhoso">
+                                <span class="menu-text">Import hồ sơ</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#!importvanban">
+                                <span class="menu-text">Import văn bản</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>*@
+
+            </ul>
+            <!-- /Sidebar Menu -->
+        </div>
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div ng-view></div>
+        <!-- /Page Content -->
+
+    </div>
+    <!-- /Page Container -->
+    <!-- Main Container -->
+
+</div>
+
+
+
+<!--Basic Scripts-->
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/assets/js/bootstrap.min.js"></script>
+<script src="~/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!--Beyond Scripts-->
+<script src="~/assets/js/beyond.min.js"></script>
+
+<!--Page Related Scripts-->
+<script src="~/assets/js/datatable/jquery.dataTables.min.js"></script>
+<script src="~/assets/js/datatable/ZeroClipboard.js"></script>
+<script src="~/assets/js/datatable/dataTables.tableTools.min.js"></script>
+<script src="~/assets/js/datatable/dataTables.bootstrap.min.js"></script>
+<script src="~/assets/js/datatable/datatables-init.js"></script>
+<script>
+        InitiateSimpleDataTable.init();
+        InitiateEditableDataTable.init();
+        InitiateExpandableDataTable.init();
+        InitiateSearchableDataTable.init();
+</script>
+
+
+<script>
+        var activeMenu = {
+            init: function () {
+                var path = location.href.split('?')[0];
+                $('#sidebar ul.sidebar-menu>li>ul>li>a').each(function (key, elem) {
+                    var href = $(elem).attr('href').split('?')[0];
+                    if (path.indexOf(href)>=0) {
+                        $(elem).parents('li:first').addClass('active')
+                                .parents('li:first').addClass('open active');
+                        // $(elem).parents('li:eq(1)',).addClass('open active');
+                    }
+                });
+            }
+        };
+        activeMenu.init();
+</script>
+
+<script src="~/assets/js/datetime/bootstrap-datepicker.js"></script>
+
+<script>
+	$('.date-picker').datepicker();
+</script>
+</body>
+<!--  /Body -->
+</html>
+
+
+
+
+

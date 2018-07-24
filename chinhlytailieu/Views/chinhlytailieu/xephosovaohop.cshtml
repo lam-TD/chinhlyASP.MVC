@@ -1,0 +1,241 @@
+﻿
+@{
+    Layout = null;
+}
+
+<style>
+    .rowHoso:hover{
+        background-color: #ddd !important;
+        cursor: pointer;
+    }
+    .rowHop:hover{
+        background-color: #ddd !important;
+        cursor: pointer;
+    }
+    input{
+        border-radius: 0px !important;
+    }
+</style>
+
+ <!-- Page Content -->
+<div class="page-content" ng-controller="xephosovaohopController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">Chỉnh lý tài liệu</a>
+            </li>
+            <li>
+                <a href="#">Quản lý hộp</a>
+            </li>
+            <li class="active">Xếp hồ sơ vào hộp</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 16px;">Xếp hồ sơ vào hộp</label>
+                                        <a href="" class="pull-right"><i class="fa fa-question-circle"></i>Hướng dẫn</a>
+                                    </div>
+                                    <div class="col-md-7 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <div class="com-md-12" style="margin-bottom: 10px;">
+                                            <div class="form-group col-md-12" style="padding: 0;">
+                                                <label class="col-sm-1" style="font-size: 14px;padding-left:0">
+                                                    Phông
+                                                </label>
+                                                <div class="col-sm-11">
+                                                    <select name="selectphong" class="col-md-12 col-xs-12" ng-model="v.phongid" ng-change="loadhosochuavaohop()">
+                                                        <option value="">--Chọn phông--</option>
+                                                        <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12" style="padding: 0;margin-bottom: 10px">
+                                                <span class="col-md-3" style="padding-left: 0;">Hồ sơ chưa vào hộp</span>
+                                                <div class="col-md-8" style="padding: 0;">
+                                                    <div class="col-md-7">
+                                                        <input class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="timhoso"/>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button class="btn btn-primary" ng-disabled="disablebtnChuyenvaohop" ng-click="chuyenhoso()">
+                                                            <i class="fa fa-save"></i> Chuyển vào hộp
+                                                        </button>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="" style="height: 383px; overflow: auto;width: 100%;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Hồ sơ số</th>
+                                                        <th style="width: 50%;">Tiêu đề hồ sơ</th>
+                                                        <th>Thời gian BĐ-KT</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="rowHoso" ng-repeat="n in danhsachhosochuavaohop.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:timhoso" id="hs{{n.ID}} | limitTo: itemsPerPage: (currentPage - 1) * itemsPerPage" ng-click="clickHoSo(n)">
+                                                        <th>
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input class="checkHoSo" type="checkbox" id="ck{{n.ID}}" value="{{n.ID}}" onchange="checkChonHoSo(this)">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </th>
+                                                        <td class="text-center">{{n.MAHOSO}}</td>
+                                                        <td>{{n.TENHOSO}}</td>
+                                                        <td>{{n.THOIGIANS}} - {{n.THOIGIANE}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <ul uib-pagination total-items="danhsachhosochuavaohop.length" ng-model="currentPage" items-per-page="itemsPerPage" max-size="5" boundary-links="true" num-pages="numPages"></ul>
+                                    </div>
+
+                                    <div class="col-md-5 col-xs-12">
+                                        <div class="com-md-12" style="margin-bottom: 10px;">
+                                            <div class="form-group col-md-12">
+                                                <label class="col-sm-3" style="font-size: 14px;">Mục lục</label>
+                                                <div class="col-sm-9">
+                                                    <select name="selectmucluc" id="" class="col-xs-12" ng-model="h.muclucid" ng-change="loadhop()">
+                                                        <option value="">--Chọn mục lục--</option>
+                                                        <option ng-repeat="n in danhsachmucluc" value="{{n.ID}}">{{n.TENMUCLUC}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h5>Danh sách hộp</h5>
+
+                                        <div class="" style="height: 400px;overflow: auto;">
+                                            <form >
+                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                    <thead class="flip-content bordered-palegreen">
+                                                        <tr>
+                                                            @*<th class="text-center">
+                                                                <div class="checkbox" style="margin: 0;">
+                                                                    <label>
+                                                                        <input type="checkbox">
+                                                                        <span class="text"></span>
+                                                                    </label>
+                                                                </div>
+                                                                Chọn
+                                                            </th>*@
+                                                            <th>Mã hộp</th>
+                                                            <th class="text-center">SL hồ sơ</th>
+                                                            <th class="text-center">SL Tối đa</th>
+                                                            <th class="text-center">Xem hồ sơ</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="rowHop" ng-repeat="n in danhsachhop.slice(((currentPageHop-1)*itemsPerPageHop), ((currentPageHop)*itemsPerPageHop))" id="hop{{n.ID}}" ng-click="clickHop(n)">
+                                                            @*<td class="text-center ">
+                                                                <div class="checkbox" style="margin: 0;">
+                                                                    <label>
+                                                                        <input type="radio" class="radio-hoso" value="{{n.ID}}" id="ch{{n.ID}}">
+                                                                        <span class="text"></span>
+                                                                    </label>
+                                                                </div>
+                                                            </td>*@
+                                                            <td>{{n.MAHOP}}</td>
+                                                            <td class="text-center">{{n.SLHOSO}}</td>
+                                                            <td class="text-center">{{n.SLMAX}}</td>
+                                                            <td class="text-center">
+                                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#xemhoso" ng-click="xemhoso(n)">
+                                                                    <i class="fa fa-list-ul"></i>Xem hồ sơ
+                                                                </button>
+
+                                                                
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                                <!-- Modal xem ho so -->
+                                                <div class="modal fade" id="xemhoso" role="dialog">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Danh sách hồ sơ trong hộp: <b>{{MAHOPxemhoso}}</b></h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 330px;">
+                                                                <div class="collapse in">
+                                                                    <div class="modal-body" style="min-height: 330px;">
+                                                                        <div class="collapse in">
+                                                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                                <thead class="flip-content bordered-palegreen">
+                                                                                    <tr>
+                                                                                        <th class="text-center" style="width: 10%">Hồ sơ số</th>
+                                                                                        <th style="width: 60%;">Tiêu đề hồ sơ</th>
+                                                                                        <th>Thời gian BĐ-KT</th>
+                                                                                        <th class="text-center" style="width: 10%">#</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr ng-repeat="hs in danhsachhosotronghop">
+                                                                                        <td>{{hs.MAHOSO}}</td>
+                                                                                        <td class="text-align-left">{{hs.TENHOSO}}</td>
+                                                                                        <td class="text-align-left">{{hs.THOIGIANS}} - {{hs.THOIGIANE}}</td>
+                                                                                        <td>
+                                                                                            <button class="btn btn-danger btn-xs" ng-click="xoa_hoso(hs)">
+                                                                                                <i class="fa fa-times"></i>
+                                                                                                Loại bỏ
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- end Modal xem ho so -->
+                                            </form>
+                                            
+                                        </div>
+                                        <ul uib-pagination total-items="danhsachhop.length" ng-model="currentPageHop" items-per-page="itemsPerPageHop" max-size="5" boundary-links="true" num-pages="numPages"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+
+

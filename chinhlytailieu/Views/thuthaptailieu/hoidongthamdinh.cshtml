@@ -1,0 +1,414 @@
+﻿
+@{
+    ViewBag.Title = "hoidongthamdinh";
+    Layout = null;
+}
+
+ <!-- Page Content -->
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">Lam</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="flip-scroll">
+                                    <div id="simpledatatable_wrapper">
+                                        <div class="row">
+                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                <label style="font-size: 16px;">Hội đồng thẩm định</label>
+                                            </div>
+
+                                            <div class="col-md-5 col-xs-12" style="border-right: 1px solid #eee;">
+                                                <div class="" style="margin-bottom: 5px;">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalthem">
+                                                        <span class="glyphicon glyphicon-file"></span>Thêm
+                                                    </button>
+
+                                                    <!-- Modal them -->
+                                                    <div class="modal fade" id="myModalthem" role="dialog">
+                                                        <div class="modal-dialog">
+
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <h4 class="modal-title">Thông tin hội đồng</h4>
+                                                                </div>
+                                                                <div class="modal-body" style="min-height: 155px;">
+                                                                    <div class="collapse in">
+                                                                        <form role="form">
+                                                                            <div class="form-group col-md-12">
+                                                                                <label class="col-sm-2">Mã HĐ</label>
+                                                                                <div class="col-sm-10">
+                                                                                    <input type="text" class="form-control" id="definput" placeholder="Mã nhóm">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12">
+                                                                                <label class="col-sm-2">Tên HĐ</label>
+                                                                                <div class="col-sm-10">
+                                                                                    <input type="text" class="form-control" id="definput" placeholder="Mã nhóm">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12">
+                                                                                <label class="col-sm-2"></label>
+                                                                                <div class="checkbox col-md-10">
+                                                                                    <label>
+                                                                                        <input type="checkbox">
+                                                                                        <span class="text">Hoạt động</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                        <i class="fa fa-save"></i>Ghi nhận
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                        <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                        <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end Modal them -->
+
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalsua">
+                                                        <i class="fa fa-pencil-square-o"></i>Sửa
+                                                    </button>
+
+                                                    <!-- Modal sua -->
+                                                    <div class="modal fade" id="myModalsua" role="dialog">
+                                                        <div class="modal-dialog">
+
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <form action="">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">Thông tin hội đồng</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" style="min-height: 155px;">
+                                                                        <div class="collapse in">
+                                                                            <div class="form-group col-md-12">
+                                                                                <label class="col-sm-2">Mã HĐ</label>
+                                                                                <div class="col-sm-10">
+                                                                                    <input type="text" class="form-control" id="definput" placeholder="Mã nhóm">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12">
+                                                                                <label class="col-sm-2">Tên HĐ</label>
+                                                                                <div class="col-sm-10">
+                                                                                    <input type="text" class="form-control" id="definput" placeholder="Mã nhóm">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12">
+                                                                                <label class="col-sm-2"></label>
+                                                                                <div class="checkbox col-md-10">
+                                                                                    <label>
+                                                                                        <input type="checkbox">
+                                                                                        <span class="text">Hoạt động</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-save"></i>Ghi nhận</button>
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-save"></i>Ghi nhận và thêm mới</button>
+                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="glyphicon glyphicon-log-in"></i>Thoát</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end Modal sua -->
+
+                                                    <button class="btn btn-danger">
+                                                        <i class="glyphicon glyphicon-remove"></i> Xóa
+                                                    </button>
+                                                </div>
+                                                <div class="">
+                                                    <div class="" style="height: 450px; overflow: auto;">
+                                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                            <thead class="flip-content bordered-palegreen">
+                                                                <tr>
+                                                                    <th>STT</th>
+                                                                    <th>Mã HĐ</th>
+                                                                    <th>Tên hội đồng</th>
+                                                                    <th>Trạng thái</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr style="cursor: pointer;">
+                                                                    <td>1</td>
+                                                                    <td>HUY1</td>
+                                                                    <td>Hội đồng hủy tài liệu</td>
+                                                                    <td>Hoạt động</td>
+                                                                </tr>
+                                                                <tr style="cursor: pointer;">
+                                                                    <td>1</td>
+                                                                    <td>HUY1</td>
+                                                                    <td>Hội đồng hủy tài liệu</td>
+                                                                    <td>Hoạt động</td>
+                                                                </tr>
+                                                                <tr style="cursor: pointer;">
+                                                                    <td>1</td>
+                                                                    <td>HUY1</td>
+                                                                    <td>Hội đồng hủy tài liệu</td>
+                                                                    <td>Hoạt động</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <nav aria-label="Page navigation">
+                                                        <ul class="pagination">
+                                                            <li>
+                                                                <a href="#" aria-label="Previous">
+                                                                    <span aria-hidden="true">&laquo;</span>
+                                                                </a>
+                                                            </li>
+                                                            <li><a href="#">1</a></li>
+                                                            <li><a href="#">2</a></li>
+                                                            <li>
+                                                                <a href="#" aria-label="Next">
+                                                                    <span aria-hidden="true">&raquo;</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7 col-xs-12">
+                                                <div class="col-md-12" style="padding:0">
+                                                    <label class="col-md-6" style="padding-left: 0;font-size: 14px;">
+                                                        Danh sách thành viên hội đồng
+                                                    </label>
+
+                                                    <div class="col-md-6" style="padding-bottom: 5px;padding-right: 0">
+                                                        <button class="btn btn-danger pull-right">
+                                                            <i class="glyphicon glyphicon-remove"></i> Loại bỏ
+                                                        </button>
+
+                                                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal" style="margin-right: 5px;">
+                                                            <i class="glyphicon glyphicon-file"></i>Thêm tài khoản
+                                                        </button>
+
+                                                        <!-- Modal them -->
+                                                        <div class="modal fade" id="myModal" role="dialog">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">Thêm tài khoản vào nhóm</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="collapse in">
+                                                                            <div class="row">
+                                                                                <div class="col-md-4" style="border-right: 1px solid #eee;">
+                                                                                    <h5 style="margin:0; margin-bottom:5px;">Cơ quan/phòng ban</h5>
+                                                                                    <select name="" id="" class="col-md-12">
+                                                                                        <option value="">Trung tâm lưu trữ</option>
+                                                                                        <option value="">Trung tâm lưu trữ</option>
+                                                                                    </select>
+                                                                                    <div class="col-md-12" style="margin-top: 10px; overflow: auto; height: 196px; display: inline-block;">
+                                                                                        <ul style="list-style: none; font-size: 14px; padding:10px;">
+                                                                                            <li style="margin-bottom: 10px;">
+                                                                                                <a href="" style="text-decoration: none;color: #333;font-size: 13px;">
+                                                                                                    <i class="fa fa-check-square-o"></i>
+                                                                                                    Bộ công chánh
+                                                                                                </a>
+                                                                                            </li>
+
+                                                                                            <li style="margin-bottom: 10px;">
+                                                                                                <a href="" style="text-decoration: none;color: #333;font-size: 13px">
+                                                                                                    <i class="fa fa-square-o"></i>
+                                                                                                    Bộ công chánh và giao thông
+                                                                                                </a>
+                                                                                            </li>
+
+                                                                                            <li style="margin-bottom: 10px;">
+                                                                                                <a href="" style="text-decoration: none;color: #333;font-size: 13px">
+                                                                                                    <i class="fa fa-square-o"></i>
+                                                                                                    Bộ công chánh và giao thông
+                                                                                                </a>
+                                                                                            </li>
+
+                                                                                            <li style="margin-bottom: 10px;">
+                                                                                                <a href="" style="text-decoration: none;color: #333;font-size: 13px">
+                                                                                                    <i class="fa fa-square-o"></i>
+                                                                                                    Bộ công chánh và giao thông
+                                                                                                </a>
+                                                                                            </li>
+
+                                                                                            <li style="margin-bottom: 10px;">
+                                                                                                <a href="" style="text-decoration: none;color: #333;font-size: 13px">
+                                                                                                    <i class="fa fa-square-o"></i>
+                                                                                                    Bộ công chánh và giao thông
+                                                                                                </a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <form role="form">
+                                                                                        <div class="" style="overflow: auto; min-height: 220px;">
+                                                                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                                                <thead class="flip-content bordered-palegreen">
+                                                                                                    <tr>
+                                                                                                        <th>STT</th>
+                                                                                                        <th>Họ tên</th>
+                                                                                                        <th>Tên đăng nhập</th>
+                                                                                                        <th>Chức danh</th>
+                                                                                                        <th>Kích hoạt</th>
+                                                                                                    </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                    <tr>
+                                                                                                        <td>1</td>
+                                                                                                        <td>Trưởng phòng Đọc</td>
+                                                                                                        <td>tpdoc</td>
+                                                                                                        <td>tpdoc</td>
+                                                                                                        <td>
+                                                                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>1</td>
+                                                                                                        <td>Trưởng phòng Đọc</td>
+                                                                                                        <td>tpdoc</td>
+                                                                                                        <td>tpdoc</td>
+                                                                                                        <td>
+                                                                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <td>1</td>
+                                                                                                        <td>Trưởng phòng Đọc</td>
+                                                                                                        <td>tpdoc</td>
+                                                                                                        <td>tpdoc</td>
+                                                                                                        <td>
+                                                                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                        <div class="form-group col-md-12">
+                                                                                            <label class="col-sm-3">
+                                                                                                Vai trò
+                                                                                            </label>
+                                                                                            <label class="col-sm-3">
+                                                                                                <input type="checkbox">
+                                                                                                <span class="text">Chủ tịch</span>
+                                                                                            </label>
+                                                                                            <label class="col-sm-3">
+                                                                                                <input type="checkbox">
+                                                                                                <span class="text">Thư ký</span>
+                                                                                            </label>
+                                                                                            <label class="col-sm-3">
+                                                                                                <input type="checkbox">
+                                                                                                <span class="text">Thành viên</span>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                            <i class="fa fa-plus"></i>Thêm vào nhóm
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- end Modal them -->
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="" style="height: 444px; overflow: auto;width: 100%">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                <th>Họ tên</th>
+                                                                <th>Tên đăng nhập</th>
+                                                                <th>Chức danh</th>
+                                                                <th>Kích hoạt</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>BGD</td>
+                                                                <td>Giám đốc</td>
+                                                                <td>Giám đốc</td>
+                                                                <td>Giám đốc</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <nav aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <li>
+                                                            <a href="#" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="active"><a href="#">1</a></li>
+                                                        <li><a href="#">2</a></li>
+                                                        <li><a href="#">3</a></li>
+                                                        <li><a href="#">4</a></li>
+                                                        <li><a href="#">5</a></li>
+                                                        <li>
+                                                            <a href="#" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+
+
+

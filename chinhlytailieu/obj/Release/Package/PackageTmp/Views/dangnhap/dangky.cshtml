@@ -1,0 +1,194 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.4
+Version: 1.4
+Purchase: http://wrapbootstrap.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--Head-->
+<head>
+    <meta charset="utf-8" />
+    <title>YÊU CẦU TẠO TÀI KHOẢN ĐỘC GIẢ</title>
+
+    <meta name="description" content="login page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+
+    <!--Beyond styles-->
+    <link rel="stylesheet" href="~/assets/css/beyond.css" type="text/css">
+    <!-- <link id="beyond-link" href="assets/css/beyond.min.css" rel="stylesheet" /> -->
+    <link href="~/assets/css/demo.min.css" rel="stylesheet" />
+    <link href="~/assets/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    @*<script src="assets/js/skins.min.js"></script>*@
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/dangnhap/dangky.js"></script>
+</head>
+<!--Head Ends-->
+<!--Body-->
+<body ng-app="appdangky" ng-controller="dangky">
+    <div class="container" style="margin-top:50px;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="widget">
+                    <div class="widget-header bordered-bottom bordered-lightred text-center">
+                        <span class="widget-caption text-center">YÊU CẦU TẠO TÀI KHOẢN ĐỘC GIẢ</span>
+                    </div>
+                    <div class="widget-body">
+                        <div id="horizontal-form">
+                            <form class="form-horizontal" role="form" name="frmdangky">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" style="padding-left:0;padding-right:0;">Họ và tên độc giả(*)</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="txtholot" id="txtho" placeholder="Họ tên lót" ng-required="true" ng-model="dg.holot">
+                                        <p class="help-block" style="color:red;margin-bottom:-10px;" ng-show="frmdangky.txtholot.$error.required">Họ tên lót không được để trống</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" name="txtten" id="txtten" placeholder="Tên" ng-required="true" ng-model="dg.ten">
+                                        <p class="help-block" style="color:red;" ng-show="frmdangky.txtten.$error.required">Tên không được để trống</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label no-padding-right">Ngày sinh(*)</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" ng-model="dg.ngaysinh" ng-required="true">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                        <p class="help-block" style="color:red;" ng-show="frmdangky.txtten.$error.required">Ngày sinh không được được để trống</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label no-padding-right">Quốc tịch(*)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="" name="txtquoctich" placeholder="Quốc tịch" ng-model="dg.quoctich" ng-required="true">
+                                        <p class="help-block" style="color:red;margin-bottom:-10px;" ng-show="frmdangky.txtquoctich.$error.required">Quốc tịch không được để trống</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label no-padding-right">Số CMND/hộ chiếu(*)</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="" name="txtsocnmd" placeholder="Số CMND/hộ chiếu" ng-model="dg.socmnd" ng-required="true">
+                                        <p class="help-block" style="color:red;margin-bottom:-10px;" ng-show="frmdangky.txtsocnmd.$error.required">CMND không được để trống</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label no-padding-right">Địa chỉ(*)</label>
+                                    <div class="col-sm-9">
+                                        <textarea type="text" class="form-control" id="" name="txtdiachi" placeholder="Địa chỉ" ng-model="dg.diachi" ng-required="true"></textarea>
+                                        <p class="help-block" style="color:red;margin-bottom:-10px;" ng-show="frmdangky.txtsocnmd.$error.required">Địa chỉ không được để trống</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label no-padding-right">Cơ quan công tác</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="" name="txtcoquan" placeholder="Cơ quan công tác" ng-model="dg.coquan">
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label no-padding-right">Số điện thoại</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputPassword3" placeholder="Số điện thoại" ng-model="dg.sodienthoai">
+                                        @*<p class="help-block" style="color:red;margin-bottom:-10px;" ng-show="frmdangky.txtcoquan.$error.required">Địa chỉ không được để trống</p>*@
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label no-padding-right">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="" name="txtemail" placeholder="Email" ng-model="dg.email">
+                                        <p class="help-block" style="color:red;" ng-show="frmdangky.txtemail.$error.email">Tên không được để trống</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label no-padding-right">Mục đích khai thác(*)</label>
+                                    <div class="col-sm-9">
+                                        <textarea type="text" class="form-control" id="" name="txtmucdich" placeholder="Mục đích khai thác" ng-model="dg.mucdichkhaithac" ng-required="true"></textarea>
+                                        <p class="help-block" style="color:red;margin-bottom:-10px;" ng-show="frmdangky.txtmucdich.$error.required">Mục đích khai thác không được để trống</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label no-padding-right">Chủ đề nghiên cứu</label>
+                                    <div class="col-sm-9">
+                                        <textarea type="text" class="form-control" id="" placeholder="Chủ đề nghiên cứu" ng-model="dg.chude"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label no-padding-right">Thời gian nghiên cứu</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="inputPassword3" placeholder="Thời gian nghiên cứu" ng-model="dg.thoigian">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" ng-model="dongy">
+                                                <span class="text">Tôi đã xin thực hiện nghiêm túc nội quy, 
+                                                quy chế của cơ quan lưu trữ và những quy định của pháp luật hiện hành và bảo vệ, 
+                                                khai thác, sử dụng tài liệu lưu trữ ./.
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-primary pull-right" ng-disabled="!dacheck()" ng-click="guiyeucau()">
+                                            <i class="glyphicon glyphicon-send"></i>
+                                            Gửi yêu cầu
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            
+        </div>
+        
+    </div>
+    
+
+    <!--Basic Scripts-->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!--Beyond Scripts-->
+    @*<script src="assets/js/beyond.js"></script>*@
+    <!--Bootstrap Date Picker-->
+    <script src="~/assets/js/datetime/bootstrap-datepicker.js"></script>
+    <script>
+        //--Bootstrap Date Picker--
+        $('.date-picker').datepicker();
+    </script>
+
+</body>
+<!--Body Ends-->
+</html>
+

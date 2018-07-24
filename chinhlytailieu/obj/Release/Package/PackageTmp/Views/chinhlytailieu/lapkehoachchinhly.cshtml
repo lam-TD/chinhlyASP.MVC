@@ -1,0 +1,282 @@
+﻿
+@{
+    ViewBag.Title = "lapkehoachchinhly";
+    Layout = Layout = null;
+}
+
+
+@*<script src="~/Scripts/chinhlytailieu/lapkehoachchinhly/lapkehoachchinhly.js"></script>*@
+ <!-- Page Content -->
+<div class="page-content" ng-controller="lapkehoachchinhlyController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="flip-scroll">
+                                    <div id="simpledatatable_wrapper">
+                                        <div class="row">
+                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                <label style="font-size: 16px;">Kế hoạch chỉnh lý</label>
+                                            </div>
+
+                                            <div class="col-md-12 col-xs-12">
+                                                <div class="" style="margin-bottom: 10px;">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                        <i class="glyphicon glyphicon-file"></i>Thêm mới
+                                                    </button>
+                                                    <!-- Modal them -->
+                                                    <div class="modal fade" id="myModal" role="dialog">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <form action="">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">Thông tin kế hoạch chỉnh lý</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" style="min-height: 230px;">
+                                                                        <div class="collapse in">
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Tên cơ quan</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <select name="" id="select_coquan" class="col-sm-12 col-xs-12">
+                                                                                        <option value="">--Chọn cơ quan--</option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Năm(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <input type="number" class="form-control" placeholder="Năm">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Phông</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <select name="" id="" class="col-sm-12 col-xs-12">
+                                                                                        <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Giai đoạn(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <input type="text" class="form-control" placeholder="Giai đoạn">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Mục đích(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <textarea class="col-md-12 col-xs-12" placeholder="Mục đích"></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Ghi chú</label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <textarea class="col-md-12 col-xs-12" placeholder="Ghi chú"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                            <i class="fa fa-save"></i>Ghi nhận
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                            <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end Modal them -->
+
+                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalsua">
+                                                        <i class="fa fa-pencil-square-o"></i>Sửa
+                                                    </button>
+                                                    <!-- Modal sua -->
+                                                    <div class="modal fade" id="myModalsua" role="dialog">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <form action="">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">Thông tin kế hoạch chỉnh lý</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" style="min-height: 230px;">
+                                                                        <div class="collapse in">
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Tên cơ quan</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <select name="" id="" class="col-sm-12">
+                                                                                        <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Năm(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <input type="number" class="form-control" placeholder="Năm">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Phông</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <select name="" id="" class="col-sm-12">
+                                                                                        <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Giai đoạn(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <input type="text" class="form-control" placeholder="Giai đoạn">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Mục đích(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <textarea class="col-md-12" placeholder="Mục đích"></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Ghi chú</label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <textarea class="col-md-12" placeholder="Ghi chú"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                            <i class="fa fa-save"></i>Ghi nhận
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                            <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end Modal sua -->
+
+                                                    <button class="btn btn-danger">
+                                                        <i class="fa fa-times"></i>
+                                                        Xóa
+                                                    </button>
+
+                                                    <button class="btn btn-info">
+                                                        <i class="fa fa-check"></i>
+                                                        Duyệt
+                                                    </button>
+
+                                                    <button class="btn btn-info">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Chuyển kiểm tra
+                                                    </button>
+
+                                                </div>
+                                                <div class="" style="height: 400px; overflow: auto;">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                <th>Năm</th>
+                                                                <th style="width: 40%;">Mục đích</th>
+                                                                <th style="width: 25%;">Tên phông</th>
+                                                                <th>Giai đoạn</th>
+                                                                <th>Trạng thái</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr dir-paginate="n in DSkehoach |itemsPerPage:12">
+                                                                <td>{{n.NAM}}</td>
+                                                                <td>{{n.MUCDICH}}</td>
+                                                                <td>{{n.TENPHONG}}</td>
+                                                                <td>{{n.GIAIDOAN}}</td>
+                                                                <td>{{n.TRANGTHAI}}</td>
+                                                            </tr>
+                                
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+

@@ -1,0 +1,211 @@
+﻿
+@{
+    Layout = null;
+}
+
+ <!-- Page Content -->
+<div class="page-content" ng-controller="nhaphosothemController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">Chỉnh lý tài liệu</a>
+            </li>
+            <li>
+                <a href="#">Nhập hồ sơ chỉnh lý</a>
+            </li>
+            <li class="active">Thêm mới hồ sơ</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body" style="min-height: 760px;">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="col-md-12">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 20px; padding: 0;">
+                                        <label style="font-size: 15px;">Nhập hồ sơ</label>
+                                        <a href="" class="pull-right"><i class="fa fa-question-circle"></i> Hướng dẫn </a>
+                                    </div>
+
+                                    @*<input type="hidden" value="@Session["capnhathoso"].ToString()" id="idhoso"/>*@
+                                </div>
+                                <div class="col-md-12" style="padding: 0;">
+                                    <form role="form" name="formhoso" id="formhoso">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label">Phông</label>
+                                            <div class="col-sm-4">
+                                                <select name="selectphong" class="col-md-12 col-xs-12" ng-model="h.phongid" ng-change="loadmucluc()" ng-disabled="disableMahoso">
+                                                    <option value="">--Chọn phông--</option>
+                                                    <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
+                                                </select>
+                                                <input ng-model="h.id" type="hidden"/>
+                                            </div>
+
+                                            <label class="col-sm-2 control-label">Mục lục số(*)</label>
+                                            <div class="col-sm-4">
+                                                <select name="selectmucluc" class="col-md-12 col-xs-12" ng-model="h.mucluc" ng-change="loadhop()">
+                                                    <option value="">--Chọn mục lục--</option>
+                                                    <option class="rowmucluc" ng-repeat="u in danhsachmucluc" data-mucluc="{{u.ID}}" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label no-padding-right">Hộp số</label>
+                                            <div class="col-sm-4">
+                                                @*<input type="text" id="idmahoso" class="form-control" name="txtmahop" placeholder="Hộp số" ng-model="h.mahop" ng-required="true">*@
+                                                <select name="selecthop" id="chonhop" class="col-md-12 col-xs-12" ng-model="h.mahop">
+                                                    <option value="">--Chọn hộp--</option>
+                                                    <option class="rowhop" ng-repeat="u in danhsachhop" data-mahop="{{u.ID}}" id="h{{u.MAHOP}}" value="{{u.MAHOP}}">{{u.MAHOP}}</option>
+                                                </select>
+                                                @*<span style="color:red;" ng-show="formhoso.txtmahop.$touched && formhoso.txtmahop.$invalid">Mã hộp không được để trống</span>*@
+                                            </div>
+
+                                            <label class="col-sm-2 control-label no-padding-right">Hồ sơ số(*)</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="IDmahoso" name="txtmahoso" placeholder="Hồ sơ số" ng-model="h.mahoso" ng-required="true" ng-disabled="disableMahoso">
+                                                <span style="color:red;" ng-show="formhoso.txtmahoso.$touched && formhoso.txtmahoso.$invalid">Mã hồ sơ không được để trống</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label no-padding-right">Tiêu đề hồ sơ(*)</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="col-md-12 col-xs-12" name="txttenhoso" ng-model="h.tenhoso" ng-required="true"></textarea>
+                                                <span style="color:red;" ng-show="formhoso.txttenhoso.$touched && formhoso.txttenhoso.$invalid">Tiêu đề hồ sơ không được để trống</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label no-padding-right">Thời gian BĐ</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="txtthoigians" placeholder="Thời gian bắt đầu" ng-model="h.thoigians" ng-required="true">
+                                                <span style="color:red;" ng-show="formhoso.txtthoigians.$touched && formhoso.txtthoigians.$invalid">Thời gian bắt đầu không được để trống</span>
+                                            </div>
+
+                                            <label class="col-sm-2 control-label no-padding-right">Thời gian KT</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="txtthoigiane" placeholder="Thời gian kết thúc" ng-model="h.thoigiane" ng-required="true">
+                                                <span style="color:red;" ng-show="formhoso.txtthoigiane.$touched && formhoso.txtthoigiane.$invalid">Thời gian kết thúc không được để trống</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label">Hạn bảo quản(*)</label>
+                                            <div class="col-sm-4">
+                                                <select name="" class="col-md-12 col-xs-12" ng-model="h.thql">
+                                                    <option value="Lâu dài">Lâu dài</option>
+                                                    <option value="10 năm">10 năm</option>
+                                                </select>
+                                            </div>
+
+                                            <label class="col-sm-2 control-label">Số lượng tờ</label>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" name="txtslto" ng-model="h.slto" ng-required="true">
+                                                <span style="color:red;" ng-show="formhoso.txtslto.$touched && formhoso.txtslto.$invalid">Số lượng tờ không được để trống</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label" style="margin-top: 10px;">Biên mục</label>
+                                            <div class="col-sm-4">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="h.bienmuc">
+                                                        <span class="text"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <label class="col-sm-2 control-label" style="margin-top: 10px;">Hạn chế sử dụng</label>
+                                            <div class="col-sm-4">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" ng-model="h.hcsd">
+                                                        <span class="text"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label">Loại tài liệu</label>
+                                            <div class="col-sm-4">
+                                                <select name="" class="col-md-12 col-xs-12" ng-model="h.loaitl">
+                                                    <option value="Lâu dài">Lâu dài</option>
+                                                    <option value="10 năm">10 năm</option>
+                                                </select>
+                                            </div>
+
+                                            <label class="col-sm-2 control-label">Năm lập</label>
+                                            <div class="col-sm-4">
+                                                <input type="number" class="form-control" name="txtnamlap" ng-model="h.namlap" ng-required="true">
+                                                <span style="color:red;" ng-show="formhoso.txtnamlap.$touched && formhoso.txtnamlap.$invalid">Năm lập không được để trống</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 20px;">
+                                            <label style="font-size: 15px;">Thông tin bổ sung</label>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label no-padding-right">Chú giải</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="txtchugiai" placeholder="Chú giải" ng-model="h.chugiai">
+                                                @*<span style="color:red;" ng-show="formhoso.txtchugiai.$touched && formhoso.txtchugiai.$invalid">Chú giải không được để trống</span>*@
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label no-padding-right">Tình trạng vật lý</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" name="txttinhtrang" placeholder="Tình trạng" ng-model="h.tinhtrang">
+                                                @*<span style="color:red;" ng-show="formhoso.txttinhtrang.$touched && formhoso.txttinhtrang.$invalid">Tình trạng không được để trống</span>*@
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label no-padding-right">Ghi chú</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" name="txtghichu" placeholder="Ghi chú" ng-model="h.ghichu" >
+                                                @*<span style="color:red;" ng-show="formhoso.txtghichu.$touched && formhoso.txtghichu.$invalid">Ghi chú không được để trống</span>*@
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label class="col-sm-2 control-label no-padding-right">Ngôn ngữ</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" name="txtngonngu" class="form-control" placeholder="Ngôn ngữ" ng-model="h.ngonngu" >
+                                                @*<span style="color:red;" ng-show="formhoso.txtngonngu.$touched && formhoso.txtngonngu.$invalid">Ngôn ngữ không được để trống</span>*@
+                                            </div>
+                                        </div>
+
+                                        <div class="footer pull-right">
+                                            <button type="button" class="btn btn-primary" ng-disabled="formhoso.$invalid" style="width:200px;" ng-click="save()">
+                                                <i class="fa fa-save"></i>Lưu
+                                            </button>
+                                            <a title="Quay về" class="btn btn-warning" href="#!nhaphoso" ><i class="fa fa-backward"></i>Quay về</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var someSession = '<%= Session["capnhathoso"].ToString() %>';
+        alert(someSession)
+    </script>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->

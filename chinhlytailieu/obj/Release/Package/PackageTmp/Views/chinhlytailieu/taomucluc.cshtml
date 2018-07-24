@@ -1,0 +1,205 @@
+﻿
+@{
+    ViewBag.Title = "taomucluc";
+    Layout = null;
+}
+<style>
+    .activePhong {
+        background-color: #ddd !important;
+    }
+</style>
+
+ <!-- Page Content -->
+<div class="page-content" ng-controller="taomuclucController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Biên mục</a>
+            </li>
+            <li class="active">Nhập mục lục chỉnh lý</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="flip-scroll">
+                                    <div id="simpledatatable_wrapper">
+                                        <div class="row">
+                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                <label style="font-size: 16px;">Danh sách mục lục</label>
+                                            </div>
+
+                                            <div class="col-md-4" style="border-right: 1px solid #ddd;">
+                                                <label>Phông tài liệu</label>
+                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                    @*<thead class="flip-content bordered-palegreen">
+                                                        <tr>                                                            
+                                                            <th style="width: 30%;text-align:center">Mã phông</th>
+                                                            <th>Tên phông</th>
+                                                        </tr>
+                                                    </thead>*@
+                                                    <tbody>
+                                                        <tr class="row" id="{{n.ID}}" dir-paginate="n in danhsachphong |itemsPerPage:12" style="cursor:pointer" ng-click="click_phong(n.ID)">
+                                                            @*<td>{{asadd}}</td>*@
+                                                            @*<td style="text-align:center">{{n.MAPHONG}}</td>*@
+                                                            <td class="item_phong">{{n.TENPHONG}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                            </div>
+
+                                            <div class="col-md-8 col-xs-12">
+                                                <div class="" style="margin-bottom: 10px;">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="modal('add')">
+                                                        <i class="glyphicon glyphicon-file"></i>Thêm mới
+                                                    </button>
+                                                    <!-- Modal them -->
+                                                    <div class="modal fade" id="myModal" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <form action="" name="formMucLuc">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">{{titleModal}}</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" style="min-height: 290px;">
+                                                                        <div class="collapse in">
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-3 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Phông</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <select name="selectphong" id="selectBox" class="col-sm-12 col-xs-12" ng-model="ml.phongid">
+                                                                                        <option class="tuychon" id="chon" value="">--Chọn phông--</option>
+                                                                                        <option ng-repeat="n in danhsachphong" value="{{n.ID}}" ng-selected="{{idphong == n.ID}}" id="phong{{n.ID}}">{{n.TENPHONG}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-3 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Mã mục lục(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <input type="number" name="txtmamucluc" class="form-control" placeholder="Mã mục lục" ng-model="ml.mamucluc" ng-required="true" ng-disabled="disable_inputMamucluc">
+                                                                                    <input type="hidden" value="{{ml.mamucluc}}" id="txtidmuclucCu"/>
+                                                                                    <span style="color:red;" ng-show="formMucLuc.txtmamucluc.$touched && formMucLuc.txtmamucluc.$invalid">Mã mục lục không được để trống</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-3 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Tên mục lục(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <input type="text" class="form-control" placeholder="Tên mục lục" name="txttenmucluc" ng-required="true" ng-model="ml.tenmucluc">
+                                                                                    <span style="color:red;" ng-show="formMucLuc.txttenmucluc.$touched && formMucLuc.txttenmucluc.$invalid">Tên mục lục không được để trống</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-3 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Mô tả</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <textarea class="col-md-12 col-xs-12" placeholder="Mô tả" ng-model="ml.mota"></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-3 col-xs-12">
+                                                                                    <label for="" class="control-label pull-right">Ghi chú</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <textarea class="col-md-12 col-xs-12" placeholder="Ghi chú" ng-model="ml.ghichu"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" ng-disabled="formMucLuc.$invalid" ng-click="save(state)">
+                                                                            <i class="fa fa-save"></i>Ghi nhận
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end Modal them -->
+
+                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-disabled="disable_btnsua" ng-click="modal('eidt')">
+                                                        <i class="fa fa-pencil-square-o"></i>Sửa
+                                                    </button>
+                                                    
+
+                                                    <button class="btn btn-danger" ng-disabled="disable_btnsua" ng-click="delete()">
+                                                        <i class="fa fa-times"></i>
+                                                        Xóa
+                                                    </button>
+
+                                                    @*<button class="btn btn-info">
+                                                        <i class="fa fa-search-plus"></i>
+                                                        Tìm kiếm
+                                                    </button>*@
+
+                                                </div>
+                                                <div class="" style="height: 400px; overflow: auto;">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                @*<th>
+                                                                    <div class="checkbox">
+                                                                        <label>
+                                                                            <input type="checkbox">
+                                                                            <span class="text"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                </th>*@
+                                                                <th style="width: 30%;">Tên mục lục</th>
+                                                                <th style="width: 30%;">Mô tả</th>
+                                                                <th>Ghi chú</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="row_mucluc" id="{{n.ID}}" class="item_mucluc" dir-paginate="n in mucluc |itemsPerPage:12" style="cursor:pointer" ng-click="click_mucluc(n)">
+                                                                @*<td>{{asadd}}</td>*@
+                                                                <td>{{n.TENMUCLUC}}</td>
+                                                                <td>{{n.MOTA}}</td>
+                                                                <td>{{n.GHICHU}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->

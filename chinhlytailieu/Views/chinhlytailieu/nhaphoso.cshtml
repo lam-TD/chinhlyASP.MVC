@@ -1,0 +1,213 @@
+﻿
+@{
+    ViewBag.Title = "nhaphoso";
+    Layout = null;
+}
+
+<style>
+    .activePhong {
+        background-color: #ddd !important;
+        font-weight: bold;
+    }
+    .rowhoso:hover{
+        background-color: #ddd !important;
+    }
+</style>
+ <!-- Page Content -->
+<div class="page-content" ng-controller="nhaphosoController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="flip-scroll">
+                                    <div id="simpledatatable_wrapper">
+                                        <div class="row">
+                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                <label style="font-size: 16px;">Danh sách hồ sơ</label>
+                                                <a href="" class="pull-right">
+                                                    <i class="fa fa-question-circle"></i> Hướng dẫn
+                                                </a>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <div class="col-sm-2 float-left">
+                                                        <label for="" class="control-label pull-right" style="margin-top: 8px;">Phông tài liệu</label>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <select name="selectphong" id="" class="col-xs-12" ng-change="loadMucluc()" ng-model="selectphong">
+                                                            <option value="">--Chọn phông--</option>
+                                                            <option ng-repeat="n in danhsachphong" value="{{n.ID}}">{{n.TENPHONG}}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    @*<div class="col-sm-2" style="">
+                                                        <label for="" class="control-label pull-right" style="margin-top: 8px;">Tình trạng</label>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <select name="selecttrangthai" id="" class="col-xs-12">
+                                                            <option value=""></option>
+                                                            <option value="">Phòng chỉnh lý</option>
+                                                        </select>
+                                                    </div>*@
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="" style="margin-bottom: 10px;">
+                                                    <a href="#!nhaphoso/them" class="btn btn-primary">
+                                                        <i class="fa fa-file"></i>Thêm mới
+                                                    </a>
+
+                                                    <a href="#!nhaphoso/them" class="btn btn-primary" id="btnsuahoso">
+                                                        <i class="fa fa-pencil-square-o"></i>Sửa
+                                                    </a>
+                                                    @*<asp:Button ID="btnSet" Text="SetSession" runat="server" />*@
+
+                                                    <button class="btn btn-danger" ng-disabled="disablebtn" ng-click="deleteHoso()">
+                                                        <i class="fa fa-times"></i>
+                                                        Xóa
+                                                    </button>
+
+                                                    <button class="btn btn-info" ng-disabled="disablebtn">
+                                                        <i class="fa fa-inbox"></i>
+                                                        Xếp vào hộp
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#timkiem">
+                                                        <i class="fa fa-search-plus"></i>Tìm kiếm
+                                                    </button>
+                                                    <!-- Modal sua -->
+                                                    <div class="modal fade" id="timkiem" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <form action="">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">Tìm kiếm nhanh</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" style="min-height: 120px;">
+                                                                        <div class="collapse in">
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Hồ sơ số</label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <input type="text" class="form-control" placeholder="Hồ sơ số">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Tiêu đề</label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <textarea class="col-md-12 col-xs-12" placeholder="Tiêu đề"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                            <i class="fa fa-search"></i>Tìm kiếm
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-danger">
+                                                                            <i class="fa fa-times"></i>Hủy tìm kiếm
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end Modal sua -->
+
+                                                    <button class="btn btn-info">
+                                                        <i class="fa fa-list"></i>
+                                                        Thêm văn bản
+                                                    </button>
+
+                                                    <button class="btn btn-info pull-right">
+                                                        <i class="fa fa-send"></i>
+                                                        Gửi kiểm tra
+                                                    </button>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 col-xs-12">
+
+                                                <div style="height: 400px; overflow: auto;">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                <th style="width:100px;text-align:center">Hộp số</th>
+                                                                <th style="width: 100px;text-align:center">Hồ sơ số</th>
+                                                                <th style="width: 45%;">Tiêu đề hồ sơ</th>
+                                                                <th>Thời gian BĐ-KT</th>
+                                                                <th style="text-align:center">SL tờ</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr style="cursor:pointer" class="rowhoso" dir-paginate="u in danhsachhoso |itemsPerPage:12" ng-click="clickchonhoso(u)" id="{{u.ID}}">
+                                                                <td style="text-align:center">{{u.MAHOP}}</td>
+                                                                <td style="text-align:center">{{u.MAHOSO}}</td>
+                                                                <td>{{u.TENHOSO}}</td>
+                                                                <td>{{u.THOIGIANS}} - {{u.THOIGIANE}}</td>
+                                                                <td style="text-align:center">{{u.SLTO}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                    
+                                                </div>
+                                                <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        function SetUserName()
+        {
+            var userName = "Shekhar Shete";
+            '<%Session["lam"] = "' + userName + '"; %>';
+             alert('<%=Session["lam"] %>');
+        }
+        SetUserName();
+    </script>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+

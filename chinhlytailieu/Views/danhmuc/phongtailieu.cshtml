@@ -1,0 +1,421 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px;">
+                                        <div class="col-md-9 col-xs-12" style="padding: 0;">
+                                            <label style="font-size: 18px;margin: 0;">
+                                                Danh sách Phông
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-3" style="margin-bottom: 5px; display: inline-block;">
+                                            <button class="btn btn btn-danger pull-right">
+                                                <i class="fa fa-times"></i>Xóa
+                                            </button>
+
+                                            <button type="button" class="btn btn-info pull-right" data-toggle="modal" data-target="#myModalsua" style="margin-right:5px;">
+                                                <i class="fa fa-pencil-square-o"></i>Sửa
+                                            </button>
+                                            <!-- Modal sua -->
+                                            <div class="modal fade" id="myModalsua" role="dialog">
+                                                <div class="modal-dialog modal-lg">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin phông</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 505px;">
+                                                                <div class="collapse in">
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Tên cơ quan
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <select name="" id="" class="col-md-12">
+                                                                                <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Mã phông
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Mã phông">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Tên phông</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Tên phông">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Lịch sử</label>
+                                                                        <div class="col-sm-10">
+                                                                            <textarea class="form-control" placeholder="Lịch sử"></textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Thời gian
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Thời gian">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Lưu trữ
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <select name="" class="col-md-12">
+                                                                                <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Tổng số tài liệu
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Tổng số tài liệu">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Tổng số mét
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Tổng số mét">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Số tài liệu chỉnh lý
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Số tài liệu CL">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Số tài liệu chưa chỉnh lý
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Số tài liệu chưa CL">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Các nhóm tài liệu</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Các nhóm tài liệu">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Các loại hình tài liệu</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Các loại hình tài liệu">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Ngôn ngữ</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Ngôn ngữ">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Lập bản sao
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="checkbox" class="form-control" style="opacity: 1; position: relative; left: 20px;">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Công cụ tra cứu
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Công cụ">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Ghi chú</label>
+                                                                        <div class="col-sm-10">
+                                                                            <textarea class="form-control" placeholder="Ghi chú"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal sua -->
+
+                                            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal" style="margin-right:5px;">
+                                                <i class="fa fa-file"></i>Thêm
+                                            </button>
+                                            <!-- Modal them -->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog modal-lg">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin phông</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 505px;">
+                                                                <div class="collapse in">
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Tên cơ quan
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <select name="" id="" class="col-md-12">
+                                                                                <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Mã phông
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Mã phông">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Tên phông</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Tên phông">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Lịch sử</label>
+                                                                        <div class="col-sm-10">
+                                                                            <textarea class="form-control" placeholder="Lịch sử"></textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Thời gian
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Thời gian">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Lưu trữ
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <select name="" class="col-md-12">
+                                                                                <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Tổng số tài liệu
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Tổng số tài liệu">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Tổng số mét
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Tổng số mét">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Số tài liệu chỉnh lý
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Số tài liệu CL">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Số tài liệu chưa chỉnh lý
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Số tài liệu chưa CL">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Các nhóm tài liệu</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Các nhóm tài liệu">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Các loại hình tài liệu</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Các loại hình tài liệu">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Ngôn ngữ</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Ngôn ngữ">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Lập bản sao
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="checkbox" class="form-control" style="opacity: 1; position: relative; left: 20px;">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label no-padding-right">
+                                                                            Công cụ tra cứu
+                                                                        </label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Công cụ">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Ghi chú</label>
+                                                                        <div class="col-sm-10">
+                                                                            <textarea class="form-control" placeholder="Ghi chú"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal them -->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="" style="overflow: auto; height: 412px;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>Mã</th>
+                                                        <th>Tên phông</th>
+                                                        <th>Thời gian</th>
+                                                        <th>SL hồ sơ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>121</td>
+                                                        <td>Ủy ban nhân dân Tỉnh Cái Bè</td>
+                                                        <td>1953-1960</td>
+                                                        <td>200</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>121</td>
+                                                        <td>Ủy ban nhân dân Tỉnh Cái Bè</td>
+                                                        <td>1953-1960</td>
+                                                        <td>200</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>121</td>
+                                                        <td>Ủy ban nhân dân Tỉnh Cái Bè</td>
+                                                        <td>1953-1960</td>
+                                                        <td>200</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12">
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li>
+                                                    <a href="#" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li>
+                                                    <a href="#" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

@@ -1,0 +1,300 @@
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\csc.exe
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\System.Collections.Immutable.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\vbc.exe
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\VBCSCompiler.exe
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\roslyn\VBCSCompiler.exe.config
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.dll.config
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.pdb
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Antlr3.Runtime.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\EntityFramework.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\EntityFramework.SqlServer.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Cookies.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Facebook.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Google.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.OAuth.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Twitter.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Web.Infrastructure.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Newtonsoft.Json.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Owin.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Net.Http.Formatting.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Helpers.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.WebHost.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Mvc.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Optimization.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Razor.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Deployment.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Razor.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\WebGrease.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Helpers.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Mvc.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Optimization.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Razor.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Deployment.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Razor.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Antlr3.Runtime.pdb
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Newtonsoft.Json.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Net.Http.Formatting.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.WebHost.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\EntityFramework.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\EntityFramework.SqlServer.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Facebook.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Cookies.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.OAuth.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Google.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Twitter.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.csprojResolveAssemblyReference.cache
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.dll
+c:\users\lamtranduc\documents\visual studio 2015\Projects\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.pdb
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\csc.exe
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\System.Collections.Immutable.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\System.Reflection.Metadata.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\vbc.exe
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\VBCSCompiler.exe
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\roslyn\VBCSCompiler.exe.config
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.dll.config
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.pdb
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Antlr3.Runtime.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\EntityFramework.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\EntityFramework.SqlServer.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Core.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Cookies.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Facebook.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Google.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.OAuth.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Twitter.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Web.Infrastructure.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Newtonsoft.Json.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Owin.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Net.Http.Formatting.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Helpers.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.WebHost.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Mvc.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Optimization.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Razor.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Deployment.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Razor.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\WebGrease.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Helpers.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Mvc.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Optimization.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Razor.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Deployment.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Razor.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Antlr3.Runtime.pdb
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Newtonsoft.Json.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Net.Http.Formatting.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.WebHost.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\EntityFramework.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\EntityFramework.SqlServer.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Core.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Facebook.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Cookies.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.OAuth.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Google.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Twitter.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.csprojResolveAssemblyReference.cache
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.dll
+E:\1.thuc tap\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.pdb
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\csc.exe
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\System.Collections.Immutable.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\System.Reflection.Metadata.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\vbc.exe
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\VBCSCompiler.exe
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\roslyn\VBCSCompiler.exe.config
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.dll.config
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\chinhlytailieu.pdb
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Antlr3.Runtime.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\EntityFramework.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\EntityFramework.SqlServer.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Core.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Cookies.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Facebook.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Google.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.OAuth.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Twitter.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Web.Infrastructure.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Newtonsoft.Json.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Owin.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Net.Http.Formatting.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Helpers.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.WebHost.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Mvc.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Optimization.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Razor.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Deployment.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Razor.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\WebGrease.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Helpers.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Mvc.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Optimization.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Razor.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Deployment.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.WebPages.Razor.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Antlr3.Runtime.pdb
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Newtonsoft.Json.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Net.Http.Formatting.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\System.Web.Http.WebHost.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\EntityFramework.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\EntityFramework.SqlServer.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Core.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Facebook.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Cookies.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.OAuth.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Google.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.Twitter.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\3.work\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.csprojResolveAssemblyReference.cache
+E:\3.work\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.dll
+E:\3.work\chinhlytailieu\chinhlytailieu\obj\Debug\chinhlytailieu.pdb
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\csc.exe
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\System.Collections.Immutable.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\System.Reflection.Metadata.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\vbc.exe
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\VBCSCompiler.exe
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\roslyn\VBCSCompiler.exe.config
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\chinhlytailieu.dll.config
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\chinhlytailieu.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\chinhlytailieu.pdb
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Antlr3.Runtime.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\EntityFramework.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\EntityFramework.SqlServer.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.AspNet.Identity.Core.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.Cookies.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.Facebook.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.Google.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.OAuth.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.Twitter.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Web.Infrastructure.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Newtonsoft.Json.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Owin.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Net.Http.Formatting.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Helpers.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Http.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Http.WebHost.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Mvc.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Optimization.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Razor.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.WebPages.Deployment.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.WebPages.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.WebPages.Razor.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\WebGrease.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Helpers.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Mvc.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Optimization.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Razor.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.WebPages.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.WebPages.Deployment.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.WebPages.Razor.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Antlr3.Runtime.pdb
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Newtonsoft.Json.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Net.Http.Formatting.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Http.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\System.Web.Http.WebHost.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\EntityFramework.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\EntityFramework.SqlServer.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.AspNet.Identity.Core.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.Facebook.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.Cookies.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.OAuth.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.Google.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.Twitter.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\obj\Debug\chinhlytailieu.csprojResolveAssemblyReference.cache
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\obj\Debug\chinhlytailieu.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\obj\Debug\chinhlytailieu.pdb

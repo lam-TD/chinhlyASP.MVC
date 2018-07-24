@@ -1,0 +1,322 @@
+﻿
+@{
+    ViewBag.Title = "nhapvanban";
+    Layout = null;
+}
+
+<style>
+    .activePhong {
+        background-color: #ddd !important;
+        font-weight: bold;
+    }
+    .rowho:hover{
+        background-color: #ddd;
+    }
+</style>
+
+ <!-- Page Content -->
+<div class="page-content" ng-controller="nhapvanbanController as vm">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">Chỉnh lý tài liệu</a>
+            </li>
+            <li>
+                <a href="#">Biên mục</a>
+            </li>
+            <li class="active">Nhập văn bản chỉnh lý</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="flip-scroll">
+                                    <div id="simpledatatable_wrapper">
+                                        <div class="row">
+                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                <label>Quản lý biên mục văn bản</label>
+                                            </div>
+                                            <div class="col-md-5 col-xs-12" style="border-right: 1px solid #eee;">
+                                                <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                    <label>Thông tin hồ sơ</label>
+                                                </div>
+                                                <form action="">
+                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                        <div class="col-sm-3">
+                                                            <label class="pull-right">Phông</label>
+                                                        </div>
+                                                        <div class="col-sm-9" style="padding: 0;">
+                                                            <select name="selectphong" class="col-md-12 col-xs-12" ng-model="v.phongid" ng-change="loadmucluc()">
+                                                                <option value="">--Chọn phông--</option>
+                                                                <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                        <div class="col-sm-3">
+                                                            <label class="pull-right">Mục lục</label>
+                                                        </div>
+                                                        <div class="col-sm-9" style="padding: 0;">
+                                                            <select name="selectmucluc" class="col-md-12 col-xs-12" ng-model="v.mucluc" ng-change="loadhoso()">
+                                                                <option value="">--Chọn mục lục--</option>
+                                                                <option class="rowmucluc" ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                        <div class="col-sm-3">
+                                                            <label class="pull-right">Hồ sơ số</label>
+                                                        </div>
+                                                        <div class="col-sm-9" style="padding: 0;">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="">
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-primary" type="button">
+                                                                        <i class="fa fa-search"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div><!-- /input-group -->
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+
+                                                <div class="col-md-12" style="margin-top: 10px; height: 310px; overflow:auto; display: inline-block;">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                <th style="width: 20%;">Hồ sơ số</th>
+                                                                <th>Tiêu đề hồ sơ</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="rowho" id="hs{{h.ID}}" ng-repeat="h in danhsachhoso" style="cursor:pointer" ng-click="clickhoso(h.ID)">
+                                                                <td>{{h.MAHOSO}}</td>
+                                                                <td>{{h.TENHOSO}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-7 col-xs-12">
+                                                <div class="" style="margin-bottom: 10px;">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="modal('add')" ng-disabled="disablebtnADD">
+                                                        <i class="glyphicon glyphicon-file"></i>Thêm mới
+                                                    </button>
+                                                    <!-- Modal them -->
+                                                    <div class="modal fade" id="myModal" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <h4 class="modal-title">{{titlemodal}}</h4>
+                                                                </div>
+                                                                <div class="modal-body" style="min-height: 385px;">
+                                                                    <div class="collapse in">
+                                                                        <form role="form">
+                                                                            @*<div class="form-group col-md-12">
+                                                                                <label for="" class="col-sm-3 control-label no-padding-right">Tên cơ quan</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <select name="" id="" class="col-sm-12">
+                                                                                        <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>*@
+
+                                                                            @*<div class="form-group col-md-12">
+                                                                                <label for="" class="col-sm-3 control-label no-padding-right">Phông</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <select name="selectphong2" class="col-md-12 col-xs-12" ng-model="h.phongid" ng-change="loadmucluc2()">
+                                                                                        <option value="">--Chọn phông--</option>
+                                                                                        <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <label for="" class="col-sm-3 control-label no-padding-right">Mục lục(*)</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <select name="selectmucluc2" class="col-md-12 col-xs-12" ng-model="h.muclucid" ng-change="loadhoso2()">
+                                                                                        <option value="">--Chọn mục lục--</option>
+                                                                                        <option class="rowmucluc" ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <label for="" class="col-sm-3 control-label no-padding-right">Hồ sơ(*)</label>
+                                                                                <div class="col-sm-9">
+                                                                                    <select name="selecthop" class="col-md-12 col-xs-12" ng-model="h.hosoid">
+                                                                                        <option value="">--Chọn hộp--</option>
+                                                                                        <option class="rowhop" ng-repeat="u in danhsachhoso" id="h{{u.ID}}" value="{{u.ID}}">{{u.TENHOSO}}</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>*@
+
+                                                                            
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Số, ký hiệu</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <input type="hidden" class="form-control" ng-model="v.hosoid" ng-required="true">
+                                                                                    <input type="text" class="form-control" ng-model="v.sokyhieu" ng-required="true">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Thời gian</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <div class="input-group col-xs-12">
+                                                                                        <input class="form-control date-picker" id="id-date-picker-1" type="date" data-date-format="dd-mm-yyyy" ng-model="v.thoigian">
+                                                                                        <span class="input-group-addon">
+                                                                                            <i class="fa fa-calendar"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    @*<div class="col-md-12">
+                                                                                        <input uib-datepicker ng-model="vm.day" class="date-of-birth" datepicker-options="vm.options" ng-click="vm.today()" />
+                                                                                    </div>*@
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Tác giả</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <input type="text" class="form-control" ng-model="v.tacgia">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Trích yếu</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <textarea class="col-xs-12" ng-model="v.trichyeu"></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Tờ số</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <input type="text" class="form-control" ng-model="v.toso">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Ngôn ngữ</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <input type="text" class="form-control" ng-model="v.ngonngu">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Loại văn bản</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <input type="text" class="form-control" ng-model="v.tenloai">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Ghi chú</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <input type="text" class="form-control" ng-model="v.ghichu">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                                <div class="col-sm-3">
+                                                                                    <label class="pull-right">Người ký</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9" style="padding: 0;">
+                                                                                    <input type="text" class="form-control" ng-model="v.buttich">
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="save(state)" >
+                                                                        <i class="fa fa-save"></i>Ghi nhận
+                                                                    </button>
+
+                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                        <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end Modal them -->
+
+                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="modal('edit')" ng-disabled="disablebtnEDIT">
+                                                        <i class="fa fa-pencil-square-o"></i>Sửa
+                                                    </button>
+                                                    
+                                                    <button class="btn btn-danger" ng-disabled="disablebtnEDIT">
+                                                        <i class="fa fa-times"></i>
+                                                        Xóa
+                                                    </button>
+                                                </div>
+                                                <div class="" style="height: 435px;overflow: auto;">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                <th>Số, ký hiệu</th>
+                                                                <th>Ngày tháng</th>
+                                                                <th>Tác giả</th>
+                                                                <th>Trích yếu</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr dir-paginate="n in danhsachvanban |itemsPerPage:12">
+                                                                <td>{{n.SOKYHIEU}}</td>
+                                                                <td>{{n.THOIGIAN}}<td>
+                                                                <td>{{n.TACGIA}}</td>
+                                                                <td>{{n.TRICHYEU}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+

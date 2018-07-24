@@ -1,0 +1,124 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom:1px solid #ddd;margin-bottom: 10px;">
+                                        <h4><b>Tài liệu được xem trực tuyến</b></h4>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <h4>Dánh sách tài liệu yêu cầu</h4>
+                                        <div class="tabbable">
+                                            <ul class="nav nav-tabs" id="myTab">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="#home">
+                                                        Hồ sơ (0)
+                                                    </a>
+                                                </li>
+
+                                                <li class="tab-red">
+                                                    <a data-toggle="tab" href="#profile">
+                                                        Văn bản (0)
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content col-md-12">
+                                                <div id="home" class="tab-pane in active">
+                                                    <div class="col-md-12">
+                                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                            <thead class="flip-content bordered-palegreen">
+                                                                <tr>
+                                                                    <th style="width: 10%">Hồ sơ</th>
+                                                                    <th style="width: 80%">Tiêu đề hồ sơ</th>
+                                                                    <th style="">
+
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr style="cursor: pointer;">
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="pull-right col-md-12"></div>
+                                                </div>
+
+                                                <div id="profile" class="tab-pane">
+                                                    <div class="col-md-12">
+                                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                            <thead class="flip-content bordered-palegreen">
+                                                                <tr>
+                                                                    <th style="width: 10%">Số ký hiệu</th>
+                                                                    <th style="width: 80%">Trích yếu</th>
+                                                                    <th style="">#</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr style="cursor: pointer;">
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="pull-right" style="margin-top: 10px; padding-right: 15px;">
+                                                        <button class="btn btn-primary">
+                                                            <i class="fa fa-save"></i>Lưu tạm
+                                                        </button>
+
+                                                        <button class="btn btn-primary">
+                                                            <i class="fa fa-location-arrow"></i>Gửi yêu cầu
+                                                        </button>
+
+                                                        <button class="btn btn-info">
+                                                            <i class="fa fa-card"></i>Thêm tài liệu
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

@@ -1,0 +1,108 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content" ng-controller="phanquyenchucnangController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{nhomchucnang}}</a>
+            </li>
+            <li>
+                <a href="#">{{chucnang}}</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-3 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px;padding-left:0;">
+                                            <label>Nhóm người dùng</label>
+                                        </div>
+                                        <div class="">
+                                            <div style="height: 450px; overflow: auto;display: inline-block;width: 100%;">
+                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                    <thead class="flip-content bordered-palegreen">
+                                                        <tr>
+                                                            <th>Mã</th>
+                                                            <th>Tên nhóm</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr style="cursor: pointer;" class="clicknhom" ng-repeat="n in nhomnguoidung" ng-click="click_nhom(n)">
+                                                            <td>{{n.MANHOM}}</td>
+                                                            <td>{{n.TENNHOM}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 col-xs-12">
+                                        <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px; padding-left:0;">
+                                            <label>Mục lục tài liệu</label>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12" style="padding: 5px 10px;">
+                                                <label class="col-md-1" style="padding: 0; margin-top: 7px; padding-left:5px;">
+                                                    Phân hệ:
+                                                </label>
+                                                <select name="select_phanhe" class="col-md-9 col-xs-12" ng-model="selectPhanhe" ng-disabled="disablePhanHe">
+                                                    <option value="" ng-selected="true"> --- Chọn phân hệ --- </option>
+                                                    <option class="opPhanhe" ng-repeat="p in phanhe" value="{{p.ID}}" ng-click="click_phanhe(p)">{{p.ModuleName}}</option>
+                                                </select>
+                                                <button class="btn btn-primary" style="margin-left: 24px;" ng-click="ghinhan()">
+                                                    <i class="glyphicon glyphicon-copy"></i> Ghi nhận
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="" style="height: 409px; overflow: auto;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>Tên chức năng</th>
+                                                        <th style="width: 150px; text-align: center;">Cho phép</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr dir-paginate="cn in danhsachChucNang |itemsPerPage:12">
+                                                        <td>{{cn.Tenchucnang}}</td>
+                                                        <td style="text-align: center;">
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox" class="checkChoPhep" value="{{cn.Id}}">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

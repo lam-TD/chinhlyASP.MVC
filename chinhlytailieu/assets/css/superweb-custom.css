@@ -1,0 +1,36 @@
+.btn-group > .btn-circle {
+    border-radius: 15px !important;
+}
+
+table .dropdown-menu {
+    left: -100px;
+}
+
+table ul.dropdown-menu {
+    min-width: 130px;
+}
+
+.dropdown-menu li a {
+    cursor: pointer !important;
+}
+
+.accordion.accordion-custom.panel-group .panel-heading .accordion-toggle{
+    background-color: #eeeeee;
+}
+.accordion.accordion-custom.panel-group .panel-body {
+    background-color: #ffffff;
+    border-left: 0 solid #eeeeee;
+    color: #262626 !important;
+}
+.accordion.accordion-custom.panel-group .panel-heading .accordion-toggle.collapsed{
+    background-color: #eeeeee;
+}
+.login-container .loginbox .loginbox-textbox .form-group,.register-container .registerbox .registerbox-textbox .form-group {
+    margin-bottom: 0;
+}
+.register-container {
+    margin: 2% auto;
+}
+.register-container .registerbox{
+    height: auto !important
+}

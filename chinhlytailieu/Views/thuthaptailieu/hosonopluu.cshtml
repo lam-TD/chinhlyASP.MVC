@@ -1,0 +1,209 @@
+﻿
+@{
+    ViewBag.Title = "hosonopluu";
+    Layout = null;
+}
+
+ <!-- Page Content -->
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">Lam</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="flip-scroll">
+                                    <div id="simpledatatable_wrapper">
+                                        <div class="row">
+                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                <label style="font-size: 16px;">Quản lý hồ sơ nộp lưu</label>
+                                            </div>
+
+                                            <div class="col-md-12 col-xs-12">
+                                                <div class="" style="margin-bottom: 10px;">
+                                                    <a href="#!hosonopluu/them" class="btn btn-primary">
+                                                        <i class="glyphicon glyphicon-file"></i>Thêm mới
+                                                    </a>
+
+                                                    <a href="thuthaptailieu/tnhosonopluu/add.html" class="btn btn-info">
+                                                        <i class="fa fa-pencil-square-o"></i>Sửa
+                                                    </a>
+                                                    <!-- Modal sua -->
+                                                    <div class="modal fade" id="myModalsua" role="dialog">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <form action="">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">Thông tin kế hoạch chỉnh lý</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" style="min-height: 230px;">
+                                                                        <div class="collapse in">
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Tên cơ quan</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <select name="" id="" class="col-sm-12">
+                                                                                        <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Năm(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <input type="number" class="form-control" placeholder="Năm">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Phông</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <select name="" id="" class="col-sm-12">
+                                                                                        <option value="">Trung tâm lưu trữ quốc gia</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                        <option value="">Phòng chỉnh lý</option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Giai đoạn(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <input type="text" class="form-control" placeholder="Giai đoạn">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Mục đích(*)</label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <textarea class="col-md-12" placeholder="Mục đích"></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2">
+                                                                                    <label for="" class="control-label pull-right">Ghi chú</label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <textarea class="col-md-12" placeholder="Ghi chú"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                            <i class="fa fa-save"></i>Ghi nhận
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                            <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                        </button>
+
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- end Modal sua -->
+
+                                                    <button class="btn btn-info">
+                                                        <i class="fa fa-forward"></i>Chuyển thẩm định
+                                                    </button>
+
+                                                    <button class="btn btn-danger">
+                                                        <i class="fa fa-times"></i>Xóa
+                                                    </button>
+                                                </div>
+                                                <div class="" style="height: 400px; overflow: auto;">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                <th>STT</th>
+                                                                <th style="width: 15%;">Ngày</th>
+                                                                <th style="width: 45%;">Tên hồ sơ thẩm đinh</th>
+                                                                <th style="width: 25%;">Đơn vị nộp lưu</th>
+                                                                <th>Trạng thái</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Trung tâm tin học</td>
+                                                                <td>Hoạt động</td>
+                                                                <td>Trung tâm tin học</td>
+                                                                <td>Trung tâm tin học</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <nav aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <li>
+                                                            <a href="#" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="active"><a href="#">1</a></li>
+                                                        <li><a href="#">2</a></li>
+                                                        <li><a href="#">3</a></li>
+                                                        <li><a href="#">4</a></li>
+                                                        <li><a href="#">5</a></li>
+                                                        <li>
+                                                            <a href="#" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+
+<script src="<?= $conf['template_admin']; ?>/assets/js/datetime/bootstrap-datepicker.js"></script>
+
+<script>
+	$('.date-picker').datepicker();
+</script>
+

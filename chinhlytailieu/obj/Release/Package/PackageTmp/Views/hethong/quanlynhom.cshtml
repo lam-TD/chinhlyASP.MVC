@@ -1,0 +1,256 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<div class="page-content" ng-controller="qlnhomnguoidungController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{nhomchucnang}}</a>
+            </li>
+            <li>
+                <a href="#">{{chucnang}}</a>
+            </li>
+            
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 18px;margin: 0;">
+                                            Quản lý nhóm người dùng
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <label>Nhóm người dùng</label>
+                                        <div class="" style="margin-bottom: 5px;">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalthem" ng-click="modal('add')">
+                                                <i class="fa fa-file-text-o"></i>Thêm
+                                            </button>
+
+                                            <!-- Modal them -->
+                                            <div class="modal fade" id="myModalthem" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="" name="formNhom">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin nhóm người dùng</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 120px;">
+                                                                <div class="collapse in">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-3">Mã nhóm</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="txtmanhom" placeholder="Mã nhóm" ng-model="nhom.manhom" ng-required="true" ng-disabled="disabletxtSua">
+                                                                            <span style="color:red;" ng-show="formNhom.txtmanhom.$touched && formNhom.txtmanhom.$invalid">Mã nhóm không được để trống</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-3">Tên nhóm</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" class="form-control" name="txttennhom" placeholder="Tên nhóm" ng-model="nhom.tennhom" ng-required="true">
+                                                                            <span style="color:red;" ng-show="formNhom.txttennhom.$touched && formNhom.txttennhom.$invalid">Tên nhóm không được để trống</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalthem" ng-click="save(state)">
+                                                                    <i class="fa fa-save"></i>Ghi nhận
+                                                                </button>
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalthem">
+                                                                    <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                </button>
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal them -->
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalthem" ng-disabled="btnSua" ng-click="modal('edit')">
+                                                <i class="fa fa-pencil-square-o"></i>Sửa
+                                            </button>
+
+                                            <button class="btn btn-danger">
+                                                <i class="fa fa-times   "></i> Xóa
+                                            </button>
+                                        </div>
+                                        <div class="">
+                                            <div class="" style="height: 410px; overflow: auto;">
+                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                    <thead class="flip-content bordered-palegreen">
+                                                        <tr>
+                                                            <th style="width: 40%;">Mã</th>
+                                                            <th>Tên nhóm</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="click_nhom" style="cursor: pointer;" dir-paginate="n in nhomnguoidungLoad |itemsPerPage:12" ng-click="clickNhom(n)">
+                                                            <td>{{n.MANHOM}}</td>
+                                                            <td>{{n.TENNHOM}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true">
+                                            </dir-pagination-controls>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8 col-xs-12">
+                                        <div class="">
+                                            <label>Danh sách tài khoản trong nhóm</label>
+                                        </div>
+                                        <div class="">
+                                            <div class="" style="padding-bottom: 5px;">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-disabled="disablebtnthemtaikhoan">
+                                                    <i class="fa fa-file-text-o"></i>Thêm tài khoản
+                                                </button>
+
+                                                <!-- Modal them -->
+                                                <div class="modal fade" id="myModal" role="dialog">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <form action="">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <h4 class="modal-title">Thêm tài khoản vào nhóm</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="collapse in">
+                                                                        <div class="row">
+                                                                            <div class="col-md-3" style="border-right: 1px solid #eee;">
+                                                                                <h5 style="margin-top: 0;">Cơ quan/phòng ban</h5>
+                                                                                <select class="col-md-12" ng-model="selectCoQuan" ng-options="item.TENCOQUAN for item in coquanList" ng-change="hasChanged()"></select>
+                                                                                <div style="overflow: auto; height: 150px;width:100%; display: inline-block;">
+                                                                                    <div class="" style="margin-top: 5px; display:inline-block;width:100%;">
+                                                                                        <table class="table table-hover table-bordered table-condensed">
+                                                                                            <tbody>
+                                                                                                <tr class="click_bophan" ng-repeat="c in coquanLam" style="cursor:pointer" ng-click="checkPhong(c)">
+                                                                                                    <td class="checkPhongP">{{c.TENPHONG}}</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-9">
+                                                                                <div class="" style="overflow: auto; height: 320px;">
+                                                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                                        <thead class="flip-content bordered-palegreen">
+                                                                                            <tr>
+                                                                                                <th>
+                                                                                                    <div class="checkbox" style="margin: 0;">
+                                                                                                        <label>
+                                                                                                            <input type="checkbox">
+                                                                                                            <span class="text"></span>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </th>
+                                                                                                <th>Họ tên</th>
+                                                                                                <th>Tên đăng nhập</th>
+                                                                                                <th>Chức danh</th>
+                                                                                                <th style="text-align: center">Kích hoạt</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr dir-paginate="u in userList |itemsPerPage:12" ng-click="clickDanhSach(u)" style="cursor: pointer;">
+                                                                                                <td>
+                                                                                                    <div class="checkbox" style="margin: 0;">
+                                                                                                        <label>
+                                                                                                            <input class="check_vaonhom" type="checkbox" value="{{u.USERNAME}}">
+                                                                                                            <span class="text"></span>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td>{{u.hoten}}</td>
+                                                                                                <td>{{u.USERNAME}}</td>
+                                                                                                <td>{{u.TENCHUCVU}}</td>
+                                                                                                <td ng-if="u.KHOA == false" style="text-align: center"><i class="fa fa-check"></i></td>
+                                                                                                <td ng-if="u.KHOA == true" style="text-align: center"><i class="glyphicon glyphicon-minus"></i></td>
+                                                                                            </tr>
+                                                                                            
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                                <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls> @*phan trang*@
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="themnguoidungvaonhom()">
+                                                                        <i class="fa fa-plus"></i>Thêm vào nhóm
+                                                                    </button>
+
+                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                        <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- end Modal them -->
+
+                                                <button class="btn btn-danger" ng-disabled="disablebtnloaibotaikhoan" ng-click="loaibo()">
+                                                    <i class="fa fa-times"></i> Loại bỏ
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="" style="height: 410px; overflow: auto;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>Họ tên</th>
+                                                        <th>Tên đăng nhập</th>
+                                                        <th>Chức danh</th>
+                                                        <th style="text-align:center">Kích hoạt</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="itemTK" dir-paginate="t in taikhoan |itemsPerPage:12" ng-click="clickDSTKtrongnhom(t)" style="cursor:pointer;">
+                                                        <td>{{t.HOTEN}}</td>
+                                                        <td>{{t.USERNAME}}</td>
+                                                        <td>{{t.TENCHUCVU}}</td>
+                                                        <td ng-if="t.KHOA == false" style="text-align:center"><i class="fa fa-check"></i></td>
+                                                        <td ng-if="t.KHOA == true" style="text-align:center"><i class="glyphicon glyphicon-minus"></i></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+

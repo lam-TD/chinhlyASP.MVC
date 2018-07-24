@@ -1,0 +1,158 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body" style="min-height:740px;">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="col-md-12">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 20px;padding: 0;">
+                                        <label style="font-size: 15px;">Thông tin phiếu hủy hồ sơ (Không duyệt)</label>
+                                        <a href="" class="pull-right"><i class="fa fa-question-circle"></i>Hướng dẫn</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <div class="tabbable">
+                                        <ul class="nav nav-tabs" id="myTab">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#home">
+                                                    Thông tin phiêu hủy
+                                                </a>
+                                            </li>
+
+                                            <li class="tab-red">
+                                                <a data-toggle="tab" href="#profile">
+                                                    Danh sách hồ sơ hủy
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="tab-content" style="min-height: 575px;">
+                                            <div id="home" class="tab-pane in active">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading"><b>Thông tin chung</b></div>
+                                                    <div class="panel-body">
+                                                        <form role="form">
+                                                            <div class="form-group col-md-12">
+                                                                <label class="col-sm-2 control-label">Đợt hủy(*)</label>
+                                                                <div class="col-sm-4">
+                                                                    <input type="text" class="form-control" placeholder="Đợt hủy">
+                                                                </div>
+                                                                <label class="col-sm-2 control-label">Ngày hủy</label>
+                                                                <div class="col-sm-4">
+                                                                    <div class="input-group">
+                                                                        <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
+                                                                        <span class="input-group-addon">
+                                                                            <i class="fa fa-calendar"></i>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-md-12">
+                                                                <label class="col-sm-2 control-label no-padding-right">Mô tả(*)</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" placeholder="Mô tả">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group col-md-12">
+                                                                <label class="col-sm-2 control-label no-padding-right">Hội đồng thẩm định</label>
+                                                                <div class="col-sm-10">
+                                                                    <select name="" id="" class="col-md-6">
+                                                                        <option value="">Hội đồng hủy tài liệu</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="footer pull-right">
+                                                                <button class="btn btn-primary">
+                                                                    <i class="fa fa-check-circle-o"></i>
+                                                                    Chấp nhận
+                                                                </button>
+
+                                                                <button class="btn btn-danger">
+                                                                    <i class="fa fa-ban"></i>
+                                                                    Từ chối
+                                                                </button>
+
+                                                                <a title="Quay về" class="btn btn-warning" href="content/qlhtlpheduyettieuhuy/view.html"><i class="fa fa-backward"></i>Quay về</a>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading"><b>Ý hiến hội đồng</b></div>
+                                                    <div class="panel-body" style="min-height: 225px;">
+                                                        <div class="col-md-6"></div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group col-md-12">
+                                                                <label class="col-md-12">Ý kiến trao đổi</label>
+                                                                <textarea class="col-md-12" style="min-height: 150px;"></textarea>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <button class="btn btn-primary pull-right">
+                                                                    <i class="fa fa-location-arrow"></i>Gửi
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div id="profile" class="tab-pane" style="">
+                                                <div class="col-md-12" style="overflow: auto; min-height: 280px; display: inline-block; margin-top: 5px;">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                <th>STT</th>
+                                                                <th>Mã phông</th>
+                                                                <th>Hồ sơ số</th>
+                                                                <th>Tiêu đề hồ sơ</th>
+                                                                <th>Thời gian BĐ-KT</th>
+                                                                <th>SL tờ</th>
+                                                                <th>Ghi chú</th>
+                                                                <th>Hạn bảo quản</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

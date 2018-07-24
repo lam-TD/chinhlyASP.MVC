@@ -1,0 +1,327 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:15px">
+                                        <label class="col-md-8" style="font-size: 18px;">Quản lý hồ sơ nộp lưu</label>
+                                        <div class="col-md-4" style="margin-bottom: 5px;">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                <i class="glyphicon glyphicon-file"></i>Lập biên bản
+                                            </button>
+                                            <!-- Modal lap bien ban -->
+                                            <div class="modal fade col-md-12" id="myModal" role="dialog">
+                                                <div class="modal-dialog modal-lg">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close btn btn-warning" data-dismiss="modal" style="padding: 2px 10px;">&times;</button>
+                                                                <button type="button" class="btn btn-primary" style="padding: 5px 10px; margin-right: 5px; float: right;">
+                                                                    <i class="fa fa-save"></i>
+                                                                </button>
+                                                                <h4 class="modal-title">Thông tin biên bản</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 500px; overflow: auto;">
+                                                                <div class="collapse in">
+                                                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                                        <label style="font-size: 16px;">Thông tin chung</label>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Số biên bản(*)</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Số biên bản">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Ngày lập</label>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="input-group">
+                                                                                <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-calendar"></i>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Căn cứ</label>
+                                                                        <div class="col-sm-10">
+                                                                            <textarea class="col-md-12"></textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                                        <label style="font-size: 16px;">Thông tin giao nhận</label>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Bên giao(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control" placeholder="Bên giao">
+                                                                                <span class="input-group-btn">
+                                                                                    <a class="btn btn-primary shiny" type="button"><i class="fa fa-plus"></i></a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Bên nhận(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <div class="input-group">
+                                                                                <input type="text" class="form-control" placeholder="Bên nhận">
+                                                                                <span class="input-group-btn">
+                                                                                    <a class="btn btn-primary shiny" type="button"><i class="fa fa-plus"></i></a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                                        <label style="font-size: 16px;">Nội dung chi tiết</label>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Phông(*)</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Phông">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Tình trạng</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Mục lục</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Phông">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Thời gian</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Hồ sơ</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Phông">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Số lượng mục lục</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Tổng số hộp</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Phông">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Tổng số ĐVBQ</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Số mét</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Phông">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Đánh số</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Số đúp</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Phông">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Số nhảy</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Công cụ tra cứu</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Phông">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Hồ sơ xử lý</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label">Công cụ tra cứu</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control" placeholder="Phông">
+                                                                        </div>
+                                                                        <label class="col-sm-2 control-label">Hồ sơ xử lý</label>
+                                                                        <div class="col-sm-4">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-save"></i>Ghi nhận
+                                                                </button>
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal lap bien ban -->
+
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalsua">
+                                                <i class="fa fa-check"></i>Xác nhận
+                                            </button>
+                                            <!-- Modal sua -->
+                                            <div class="modal fade" id="myModalsua" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Thông tin phông</h4>
+                                                        </div>
+                                                        <div class="modal-body" style="min-height: 215px;">
+                                                            <div class="collapse in">
+                                                                <form role="form">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Mã kho(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Mã kho">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Tên kho(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Tên kho">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Địa chỉ(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Địa chỉ">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <label class="col-sm-2 control-label no-padding-right">Diện tích</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" placeholder="Địa chỉ">
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                <i class="fa fa-save"></i>Ghi nhận
+                                                            </button>
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                            </button>
+                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal sua -->
+
+                                            <button class="btn btn btn-danger">
+                                                <span class="fa fa-times"></span>Xóa
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="" style="overflow: auto; height: 440px;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>STT</th>
+                                                        <th>Ngày</th>
+                                                        <th>Tên hồ sơ thẩm định</th>
+                                                        <th>Đơn vị nộp lưu</th>
+                                                        <th>Trạng thái</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>1</td>
+                                                        <td>12/12/2017</td>
+                                                        <td>Hồ sơ thẩm định 1</td>
+                                                        <td>Trung tâm tin học</td>
+                                                        <td>Chưa bàn giao</td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>2</td>
+                                                        <td>12/12/2017</td>
+                                                        <td>Hồ sơ thẩm định 1</td>
+                                                        <td>Trung tâm tin học</td>
+                                                        <td>Chưa bàn giao</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12">
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li>
+                                                    <a href="#" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li>
+                                                    <a href="#" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

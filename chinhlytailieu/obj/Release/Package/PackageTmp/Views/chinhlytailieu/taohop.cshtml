@@ -1,0 +1,278 @@
+﻿
+@{
+    Layout = null;
+}
+<style>
+    .activePhong {
+        background-color: #ddd !important;
+        font-weight: bold;
+    }
+</style>
+ <!-- Page Content -->
+<div class="page-content" ng-controller="taohopController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{title}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <label style="">Quản lý hộp hồ sơ</label>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee; min-height: 300px;">
+                                        <label class="">Phông tài liệu</label>
+                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                            <tbody>
+                                                <tr class="row" id="{{n.ID}}" dir-paginate="n in danhsachphong |itemsPerPage:12" style="cursor:pointer" ng-click="click_phong(n.ID)">
+                                                    <td class="item_phong">{{n.TENPHONG}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                    </div>
+                                    <div class="col-md-8 col-xs-12">
+                                        <div class="" style="margin-bottom: 10px;">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="loadIdHopCuoi()">
+                                                <i class="fa fa-inbox"></i>Tạo hộp
+                                            </button>
+                                            <!-- Modal them -->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="" name="formHop">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin hộp hồ sơ</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 160px;">
+                                                                <div class="collapse in">
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="" class="col-sm-3 control-label no-padding-right">Phông(*)</label>
+                                                                        <div class="col-sm-9">
+                                                                            <select name="selectphong" id="phongid" class="col-xs-12" ng-model="h.phongid" ng-change="loadmucluc()">
+                                                                                <option value="">--Chọn phông--</option>
+                                                                                <option class="rowPhong" id="phong{{n.ID}}" ng-repeat="n in danhsachphong" value="{{n.ID}}">{{n.TENPHONG}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="" class="col-sm-3 control-label no-padding-right">Mục lục(*)</label>
+                                                                        <div class="col-sm-9">
+                                                                            <select name="selectmucluc" id="" class="col-xs-12" ng-model="h.muclucid">
+                                                                                <option value="">--Chọn mục lục--</option>
+                                                                                <option ng-repeat="n in danhsachmucluc" value="{{n.ID}}">{{n.TENMUCLUC}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="" class="col-sm-3 control-label no-padding-right">Mã hộp(*)</label>
+                                                                        <div class="col-sm-9">
+                                                                            <input type="text" name="txtmahop" class="form-control" placeholder="Mã hộp" ng-model="h.mahop" ng-required="true">
+                                                                            <span style="color:red;" ng-show="formHop.txtmahop.$touched && formHop.txtmahop.$invalid">Vui lòng nhập mã hộp</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="themhop('1')" ng-disabled="formHop.$invalid">
+                                                                    <i class="fa fa-save"></i>Ghi nhận
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal them -->
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalsua" ng-click="loadIdHopCuoi()">
+                                                <i class="fa fa-inbox"></i>Tạo nhiều hộp
+                                            </button>
+                                            <!-- Modal sua -->
+                                            <div class="modal fade" id="myModalsua" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="" name="formHopnhieu">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin hộp hồ sơ</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 210px;">
+                                                                <div class="collapse in">
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="" class="col-sm-2 control-label no-padding-right">Phông(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <select name="selectphong2" id="phongid2" class="col-xs-12" ng-model="h2.phongid" ng-change="loadmucluc2()">
+                                                                                <option value="">--Chọn phông--</option>
+                                                                                <option class="rowPhong" id="phong{{n.ID}}" ng-repeat="n in danhsachphong" value="{{n.ID}}">{{n.TENPHONG}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="" class="col-sm-2 control-label no-padding-right">Mục lục(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <select name="selectmucluc2" id="" class="col-xs-12" ng-model="h2.muclucid">
+                                                                                <option value="">--Chọn mục lục--</option>
+                                                                                <option ng-repeat="n in danhsachmucluc" value="{{n.ID}}">{{n.TENMUCLUC}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="" class="col-sm-2 control-label no-padding-right">Mã hộp(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" name="txtmahop2" placeholder="Mã hộp" ng-model="h2.mahop" ng-required="true">
+                                                                            <span style="color:red;" ng-show="formHopnhieu.txtmahop2.$touched && formHopnhieu.txtmahop2.$invalid">Vui lòng nhập mã hộp</span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="" class="col-sm-2 control-label no-padding-right">Số lượng(*)</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="number" class="form-control" name="txtslhop" placeholder="Số lượng" ng-required="true" ng-model="slhop" min="1" value="1">
+                                                                            <span style="color:red;" ng-show="formHopnhieu.txtslhop.$touched && formHopnhieu.txtslhop.$invalid">Vui lòng nhập số lượng hộp muốn tạo</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" ng-click="themnhieuhop()" ng-disabled="formHopnhieu.$invalid">
+                                                                    <i class="fa fa-save"></i>Thêm nhiều hộp
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal sua -->
+
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#timkiem">
+                                                <i class="fa fa-search"></i>Tìm kiếm
+                                            </button>
+                                            <!-- Modal sua -->
+                                            <div class="modal fade" id="timkiem" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Tìm kiếm nhanh</h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 60px;">
+                                                                <div class="collapse in">
+                                                                    <div class="form-group col-md-12">
+                                                                        <label for="" class="col-sm-2 control-label no-padding-right">Hộp số</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="number" class="form-control" placeholder="Hộp số">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                    <i class="fa fa-search"></i>Tìm kiếm
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal sua -->
+
+                                            <button class="btn btn-danger">
+                                                <i class="fa fa-times"></i>
+                                                Xóa
+                                            </button>
+                                        </div>
+
+                                        <div class="" style="height: 420px; overflow: auto;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th style="text-align:center">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Mục lục</th>
+                                                        <th style="width: 40%; text-align:center">Mã hộp</th>
+                                                        <th style="text-align:center">SL hồ sơ</th>
+                                                        @*<th>Vị trí kệ</th>*@
+                                                        @*<th>Xem hồ sơ</th>*@
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                     <tr dir-paginate="n in danhsachhop |itemsPerPage:12">
+                                                        <td style="text-align:center">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td>{{n.TENMUCLUC}}</td>
+                                                         <td style="text-align:center">{{n.MAHOP}}</td>
+                                                         <td style="text-align:center">{{n.SLHOSO}}</td>
+                                                        @*<td>{{n.NGANID}}</td>*@
+                                                        
+                                                        @*<td>
+                                                            <a href="cosodulieu/qlhsdanhsachhoso/view.html" class="btn btn-info btn-xs">
+                                                                <i class="fa fa-list-ul"></i>Xem hồ sơ
+                                                            </a>
+                                                        </td>*@
+                                                    </tr> 
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
