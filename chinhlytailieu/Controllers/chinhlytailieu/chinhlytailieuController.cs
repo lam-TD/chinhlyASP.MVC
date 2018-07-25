@@ -15,15 +15,34 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         public static int idhoso = 0;
         public ActionResult index(int? id)
         {
-            List<nhomchucnang> list = dataAsset.loadallchucnang.nhomchucnang(Session["username"].ToString(), id);
-            return View(list);
+            //List<nhomchucnang> list = dataAsset.loadallchucnang.nhomchucnang(Session["username"].ToString(), id);
+            //return View(list);
+            if (Session["username"] != null)
+            {
+                List<nhomchucnang> list = dataAsset.loadallchucnang.nhomchucnang(Session["username"].ToString(), id);
+                return View(list);
+            }
+            else
+            {
+                Response.Redirect("/dangnhap/login");
+                return View("chucnang");
+            }
         }
 
         public PartialViewResult chucnang(int id)
         {
-            List<chucnang> cm = dataAsset.loadallchucnang.Loadchucnang(Session["username"].ToString(), id);
-            ViewBag.Count = cm.Count();
-            return PartialView("chucnang", cm);
+            if (Session["username"] != null)
+            {
+                List<chucnang> cm = dataAsset.loadallchucnang.Loadchucnang(Session["username"].ToString(), id);
+                ViewBag.Count = cm.Count();
+                return PartialView("chucnang", cm);
+            }
+            else
+            {
+                Response.Redirect("/dangnhap/login");
+                return PartialView("chucnang");
+            }
+            
         }
 
         public ActionResult phanheQLthuthapTL(int? id)
@@ -425,27 +444,33 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         public JsonResult hop_them(hop h)
         {
             int result = -1;
-            string[] namepara = { "@MAHOP", "@MUCLUCID", "@NGANID", "@SLMAX", "@SLHOSO" };
-            object[] valuepara = { h.Mahop, h.Muclucid, "94", 10, 0 };
-            if (dataAsset.data.inputdata("hop_them", namepara, valuepara))
+            if (h != null && h.Mahop.Length > 0 && h.Muclucid > 0)
             {
-                result = 1;
+                string[] namepara = { "@MAHOP", "@MUCLUCID", "@NGANID", "@SLMAX", "@SLHOSO" };
+                object[] valuepara = { h.Mahop, h.Muclucid, "94", 10, 0 };
+                if (dataAsset.data.inputdata("hop_them", namepara, valuepara))
+                {
+                    result = 1;
+                }
+                else { result = -1; }
             }
             else { result = -1; }
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult hop_themnhieu(hop h, int slhop)
         {
             int result = 0;
-            string mahopcuoi = hop_idcuoi();
-            string[] mahop = mahopcuoi.Split('-');
-            int socuoi = int.Parse(mahop[1]) + 1;
+            //string mahopcuoi = hop_idcuoi();
+            //string[] mahop = mahopcuoi.Split('-');
+            int socuoi = int.Parse(h.Mahop);
             for (int i = socuoi; i < (socuoi + slhop); i++)
             {
-                h.Mahop = mahop[0] + i;
+                h.Mahop = "HOP-" + i;
+                hop_them(h);
             }
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return Json(1, JsonRequestBehavior.AllowGet);
         }
 
         public int hop_checkmahop(string mahop)
@@ -470,7 +495,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             {
                 result = dt.Rows[0]["MAHOP"].ToString();
             }
-            else { result = "null"; }
+            else { result = "HOP-1"; }
             return result;
         }
 

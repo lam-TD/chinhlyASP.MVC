@@ -27,7 +27,7 @@
                 <a href="#">Chỉnh lý tài liệu</a>
             </li>
             <li>
-                <a href="#">Quản lý hộp</a>
+                Quản lý hộp
             </li>
             <li class="active">Xếp hồ sơ vào hộp</li>
         </ul>
@@ -110,7 +110,8 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <ul uib-pagination total-items="danhsachhosochuavaohop.length" ng-model="currentPage" items-per-page="itemsPerPage" max-size="5" boundary-links="true" num-pages="numPages"></ul>
+                                        @*<ul uib-pagination total-items="danhsachhosochuavaohop.length" ng-model="currentPage" items-per-page="itemsPerPage" max-size="5" boundary-links="true" num-pages="numPages"></ul>*@
+                                        <ul uib-pagination total-items="danhsachhosochuavaohop.length" ng-model="currentPage" max-size="5" items-per-page="itemsPerPage" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
                                     </div>
 
                                     <div class="col-md-5 col-xs-12">
@@ -188,7 +189,7 @@
                                                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                                                 <thead class="flip-content bordered-palegreen">
                                                                                     <tr>
-                                                                                        <th class="text-center" style="width: 10%">Hồ sơ số</th>
+                                                                                        <th style="width: 10%">Hồ sơ số</th>
                                                                                         <th style="width: 60%;">Tiêu đề hồ sơ</th>
                                                                                         <th>Thời gian BĐ-KT</th>
                                                                                         <th class="text-center" style="width: 10%">#</th>
@@ -213,7 +214,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal" ng-click="thoatmodalxemhoso()">
                                                                     <i class="glyphicon glyphicon-log-in"></i>Thoát
                                                                 </button>
                                                             </div>
@@ -223,7 +224,8 @@
                                             </form>
                                             
                                         </div>
-                                        <ul uib-pagination total-items="danhsachhop.length" ng-model="currentPageHop" items-per-page="itemsPerPageHop" max-size="5" boundary-links="true" num-pages="numPages"></ul>
+                                        @*<ul uib-pagination total-items="danhsachhop.length" ng-model="currentPageHop" items-per-page="itemsPerPageHop" max-size="5" boundary-links="true" num-pages="numPages"></ul>*@
+                                        <ul uib-pagination total-items="danhsachhop.length" ng-model="currentPageHop" max-size="5" items-per-page="itemsPerPageHop" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
                                     </div>
                                 </div>
                             </div>

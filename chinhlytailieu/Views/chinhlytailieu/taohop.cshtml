@@ -11,6 +11,9 @@
         background-color: #ddd !important;
         cursor: pointer;
     }
+    input{
+        border-radius: 0px !important;
+    }
 </style>
  <!-- Page Content -->
 <div class="page-content" ng-controller="taohopController">
@@ -19,12 +22,12 @@
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">{{title}}</a>
+                <a href="#">Chỉnh lý tài liệu</a>
             </li>
             <li>
-                <a href="#">Tables</a>
+                Quản lý hộp
             </li>
-            <li class="active">Data Tables</li>
+            <li class="active">Tạo hộp</li>
         </ul>
     </div>
     <!-- /Page Breadcrumb -->
@@ -38,21 +41,27 @@
                             <div id="simpledatatable_wrapper">
                                 <div class="row">
                                     <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
-                                        <label style="">Quản lý hộp hồ sơ</label>
+                                        <label style=""><b>Quản lý hộp hồ sơ</b></label>
                                     </div>
-                                    <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee; min-height: 300px;">
+                                    <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee;">
                                         <label class="">Phông tài liệu</label>
-                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
-                                            <tbody>
-                                                <tr class="row" id="{{n.ID}}" ng-repeat="n in danhsachphong" style="cursor:pointer" ng-click="click_phong(n.ID)">
-                                                    <td class="item_phong">{{n.TENPHONG}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        
+                                        <div class="col-md-12" style="min-height:442px;overflow-y:auto;overflow-x:hidden">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <tbody>
+                                                    <tr class="row" id="{{n.ID}}" ng-repeat="n in danhsachphong.slice(((currentPagePhong-1)*itemsPerPagePhong), ((currentPagePhong)*itemsPerPagePhong))" style="cursor:pointer" ng-click="click_phong(n.ID)">
+                                                        <td class="item_phong">{{n.TENPHONG}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><br />
+                                        @*<ul uib-pagination total-items="danhsachphong.length" ng-model="currentPagePhong" max-size="5" items-per-page="itemsPerPagePhong" next-text="›" previous-text="‹" boundary-links="true" force-ellipses="true"></ul>*@
+                                        <ul uib-pagination total-items="danhsachphong.length" ng-model="currentPagePhong" max-size="5" items-per-page="itemsPerPagePhong" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
                                         <div class="" style="margin-bottom: 10px;">
+                                            <div class="col-md-4" style="padding-left:0;">
+                                                <input class="form-control" placeholder="Tìm kiếm hộp" ng-model="txttimkiemHOP"/>
+                                            </div>
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="loadIdHopCuoi()">
                                                 <i class="fa fa-inbox"></i>Tạo hộp
                                             </button>
@@ -112,11 +121,11 @@
                                                 </div>
                                             </div><!-- end Modal them -->
 
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalsua" ng-click="loadIdHopCuoi()">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModaltaonhieuhop" ng-click="loadIdHopCuoi()">
                                                 <i class="fa fa-inbox"></i>Tạo nhiều hộp
                                             </button>
                                             <!-- Modal sua -->
-                                            <div class="modal fade" id="myModalsua" role="dialog">
+                                            <div class="modal fade" id="myModaltaonhieuhop" role="dialog">
                                                 <div class="modal-dialog">
                                                     <!-- Modal content-->
                                                     <div class="modal-content">
@@ -179,9 +188,9 @@
                                                 </div>
                                             </div><!-- end Modal sua -->
 
-                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#timkiem">
+                                            @*<button type="button" class="btn btn-info" data-toggle="modal" data-target="#timkiem">
                                                 <i class="fa fa-search"></i>Tìm kiếm
-                                            </button>
+                                            </button>*@
                                             <!-- Modal sua -->
                                             <div class="modal fade" id="timkiem" role="dialog">
                                                 <div class="modal-dialog">
@@ -226,14 +235,14 @@
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                 <thead class="flip-content bordered-palegreen">
                                                     <tr>
-                                                        <th style="text-align:center">
+                                                        @*<th style="text-align:center">
                                                             <div class="checkbox">
                                                                 <label>
                                                                     <input type="checkbox">
                                                                     <span class="text"></span>
                                                                 </label>
                                                             </div>
-                                                        </th>
+                                                        </th>*@
                                                         <th>Mục lục</th>
                                                         <th style="width: 40%; text-align:center">Mã hộp</th>
                                                         <th style="text-align:center">SL hồ sơ</th>
@@ -242,15 +251,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                     <tr dir-paginate="n in danhsachhop |itemsPerPage:10" class="trhop" id="hop{{n.HOPID}}" ng-click="clickhop(n)">
-                                                        <td style="text-align:center">
+                                                     <tr dir-paginate="n in danhsachhop | filter:txttimkiemHOP |itemsPerPage:13" class="trhop" id="hop{{n.HOPID}}" ng-click="clickhop(n)">
+                                                        @*<td style="text-align:center">
                                                             <div class="checkbox">
                                                                 <label>
                                                                     <input type="checkbox">
                                                                     <span class="text"></span>
                                                                 </label>
                                                             </div>
-                                                        </td>
+                                                        </td>*@
                                                         <td>{{n.TENMUCLUC}}</td>
                                                          <td style="text-align:center">{{n.MAHOP}}</td>
                                                          <td style="text-align:center">{{n.SLHOSO}}</td>
@@ -266,7 +275,13 @@
                                             </table>
                                             
                                         </div>
-                                        <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                        <div class="col-md-8">
+                                            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="pull-right">Tổng số hộp: {{danhsachhop.length}}</label>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,8 @@
 ﻿app.controller("taohopController", function ($scope, $http, $rootScope) {
     $scope.title = "Tạo hộp";
     $scope.disablebtn = true;
+    $scope.currentPagePhong = 1;
+    $scope.itemsPerPagePhong = 12;
 
     $http({
         method: 'GET',
@@ -85,7 +87,7 @@
             
  
             $scope.h = { mahop: codinh + $scope.Mahopmoi, phongid: "", muclucid: "" };
-            $scope.h2 = { mahop: codinh + $scope.Mahopmoi, phongid: "", muclucid: "" };
+            $scope.h2 = { mahop: $scope.Mahopmoi, phongid: "", muclucid: "" };
             $scope.slhop = 1;
         }, function (response) {
             //alert('Không tải được danh sách phông');
@@ -164,13 +166,15 @@
                 url: '/chinhlytailieu/hop_themnhieu',
                 data: { h: $scope.h2, slhop: $scope.slhop }
             }).then(function (response) {
-                var mahop = response.data;
-                var codinh = mahop.slice(0, mahop.indexOf("-") + 1);
-                $scope.Mahopmoi = parseInt(mahop.slice(mahop.indexOf("-") + 1, mahop.length)) + 1;
-
-                $scope.h = { mahop: codinh + $scope.Mahopmoi, phongid: "", muclucid: "" };
+                if (response.data == 1) {
+                    alert('Thêm thành công ' + $scope.slhop + 'Hộp');
+                    $scope.loadhoptheoPhong($scope.phongid);
+                }
+                else {
+                    alert('Lỗi không thêm được hộp');
+                }
             }, function (response) {
-                //alert('Không tải được danh sách phông');
+                alert('Lỗi khoonh thực hiện được chức năng này');
             })
         }
     }
@@ -184,7 +188,7 @@
         }).then(function (response) {
             if (response.data == 1) {
                 alert('Đã xóa hộp vừa chọn');
-                $scope.click_phong($scope.idphong);
+                $scope.loadhoptheoPhong($scope.phongid);
             }
             else if (response.data == 0) {
                 alert('Hộp vừa chọn có chưa hồ sơ vui lòng xóa hồ sơ trong hộp!');

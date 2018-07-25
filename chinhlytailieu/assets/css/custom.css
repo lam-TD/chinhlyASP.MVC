@@ -2,3 +2,7 @@
     background-color: #ddd !important;
     font-weight: bold;
 }
+
+button, a.btn{
+    border-radius: 0px !important;
+}

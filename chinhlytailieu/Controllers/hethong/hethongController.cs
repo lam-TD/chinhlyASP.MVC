@@ -17,15 +17,34 @@ namespace chinhlytailieu.Controllers.hethong
         // GET: hethong
         public ActionResult Index(int? id)
         {
-            List<nhomchucnang> list = dataAsset.loadallchucnang.nhomchucnang(Session["username"].ToString(), id);
-            return View(list);
+            //List<nhomchucnang> list = dataAsset.loadallchucnang.nhomchucnang(Session["username"].ToString(), id);
+            //return View(list);
+            if (Session["username"].ToString() != null)
+            {
+                List<nhomchucnang> list = dataAsset.loadallchucnang.nhomchucnang(Session["username"].ToString(), id);
+                return View(list);
+            }
+            else
+            {
+                Response.Redirect("../dangnhap/login");
+                return View("chucnang");
+            }
         }
 
         public PartialViewResult chucnang(int id)
         {
-            List<chucnang> cm = dataAsset.loadallchucnang.Loadchucnang(Session["username"].ToString(), id);
-            ViewBag.Count = cm.Count();
-            return PartialView("chucnang", cm);
+            if (Session["username"].ToString() != null)
+            {
+                List<chucnang> cm = dataAsset.loadallchucnang.Loadchucnang(Session["username"].ToString(), id);
+                ViewBag.Count = cm.Count();
+                return PartialView("chucnang", cm);
+            }
+            else
+            {
+                Response.Redirect("../dangnhap/login");
+                return PartialView("chucnang");
+            }
+            
         }
 
         //quanlynguoidung

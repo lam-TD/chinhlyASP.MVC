@@ -72,7 +72,7 @@
     $scope.xemhoso = function (n) {
         mahop = n.MAHOP;
         $scope.MAHOPxemhoso = n.MAHOP;
-        mucluc = $('select[name=selectmucluc]').val();
+        mucluc = n.MUCLUCID;
         phongid = $('select[name=selectphong]').val();
         $http({
             method: 'POST',
@@ -100,7 +100,7 @@
         $scope.MaHopThemHoSo = u.MAHOP;
         $scope.slmax = u.SLMAX;
         $scope.slhosotronghop = u.SLHOSO;
-        console.log("slhoso: " + $scope.slhosotronghop);
+        //console.log("slhoso: " + $scope.slhosotronghop);
         $scope.hopid = u.ID;
     }
 
@@ -195,7 +195,8 @@
             }).then(function (response) {
                 if (response.data == 1) {
                     alert('Đã xóa hồ sơ vừa chọn');
-                    $scope.xemhoso(hs.MAHOP);
+                    hh = { MAHOP: hs.MAHOP, MUCLUCID: hs.MUCLUC } 
+                    $scope.xemhoso(hh);
                 }
                 else if (response.data == 0) {
                     alert('Hồ sơ này có chứa văn bản, vui lòng xóa văn bản trong hồ sơ này');
@@ -207,5 +208,9 @@
                 alert('Lỗi không thực hiện được chức năng này');
             })
         }
+    }
+
+    $scope.thoatmodalxemhoso = function () {
+        $scope.loadhop();
     }
 })
