@@ -623,12 +623,14 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         public JsonResult vanban_them(vanban v, int hosoid)
         {
             int result = -1;
+            DateTime date = DateTime.Parse(v.Thoigian);
+            string tg = date.ToString("dd-MM-yyy");
             string ghichu = "", ngonngu = "", tacgia = "";
             if (v.Ghichu != null) { ghichu = v.Ghichu; }
             if (v.Ngonngu != null) { ngonngu = v.Ngonngu; }
             if (v.Tacgia != null) { tacgia = v.Tacgia; }
             string[] namepara = { "@HOSOID", "@TOSO", "@SLTO", "@SUDUNG", "@SOKYHIEU", "@THOIGIAN", "@TACGIA", "@TENLOAI", "@TRICHYEU", "@KYHIEU", "@NGOCNGU", "@BUTTICH", "@GHICHU" };
-            object[] valuepara = { hosoid, v.Toso, v.Slto, v.Sudung, v.Sokyhieu, v.Thoigian, tacgia, v.Tenloai, v.Trichyeu, "", ngonngu, v.Buttich, ghichu };
+            object[] valuepara = { hosoid, v.Toso, v.Slto, v.Sudung, v.Sokyhieu, tg, tacgia, v.Tenloai, v.Trichyeu, "", ngonngu, v.Buttich, ghichu };
             if (dataAsset.data.inputdata("vanban_them", namepara, valuepara))
             {
                 result = 1;

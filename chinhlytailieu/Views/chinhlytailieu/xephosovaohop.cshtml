@@ -80,13 +80,14 @@
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                 <thead class="flip-content bordered-palegreen">
                                                     <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
+                                                        <th class="text-center">
+                                                            @*<div class="checkbox" style="margin: 0;">
                                                                 <label>
                                                                     <input type="checkbox">
                                                                     <span class="text"></span>
                                                                 </label>
-                                                            </div>
+                                                            </div>*@
+                                                            #
                                                         </th>
                                                         <th>Hồ sơ số</th>
                                                         <th style="width: 50%;">Tiêu đề hồ sơ</th>
@@ -94,15 +95,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="rowHoso" ng-repeat="n in danhsachhosochuavaohop.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:timhoso" id="hs{{n.ID}} | limitTo: itemsPerPage: (currentPage - 1) * itemsPerPage" ng-click="clickHoSo(n)">
-                                                        <th>
+                                                    <tr class="rowHoso" ng-repeat="n in danhsachhosochuavaohop.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter:timhoso" id="hs{{n.ID}}" ng-click="clickHoSo(n)">
+                                                        <td class="text-center">
                                                             <div class="checkbox" style="margin: 0;">
                                                                 <label>
                                                                     <input class="checkHoSo" type="checkbox" id="ck{{n.ID}}" value="{{n.ID}}" onchange="checkChonHoSo(this)">
                                                                     <span class="text"></span>
                                                                 </label>
                                                             </div>
-                                                        </th>
+                                                        </td>
                                                         <td class="text-center">{{n.MAHOSO}}</td>
                                                         <td>{{n.TENHOSO}}</td>
                                                         <td>{{n.THOIGIANS}} - {{n.THOIGIANE}}</td>

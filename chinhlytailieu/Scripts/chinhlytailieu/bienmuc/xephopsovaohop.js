@@ -172,6 +172,7 @@
 
 
     checkChonHoSo = function (u) {
+        console.log(u);
         if (!u.checked) {
             $('#hs' + u.value).removeClass("activePhong");
         }
