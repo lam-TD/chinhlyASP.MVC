@@ -12,6 +12,9 @@
     .rowhoso:hover{
         background-color: #ddd !important;
     }
+    input{
+        border-radius: 0px !important;
+    }
 </style>
  <!-- Page Content -->
 <div class="page-content" ng-controller="nhaphosoController">
@@ -20,12 +23,12 @@
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">{{tieude}}</a>
+                <a href="#">Chỉnh lý tài liệu</a>
             </li>
             <li>
-                <a href="#">Tables</a>
+                <a href="#">Biên mục</a>
             </li>
-            <li class="active">Data Tables</li>
+            <li class="active">Nhập hồ sơ chỉnh lý</li>
         </ul>
     </div>
     <!-- /Page Breadcrumb -->
@@ -87,14 +90,18 @@
                                                         Xóa
                                                     </button>
 
-                                                    <button class="btn btn-info" ng-disabled="disablebtn">
+                                                    <a href="#!/xephosovaohop" class="btn btn-info" ng-disabled="disablebtn">
                                                         <i class="fa fa-inbox"></i>
                                                         Xếp vào hộp
-                                                    </button>
+                                                    </a>
 
                                                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#timkiem">
                                                         <i class="fa fa-search-plus"></i>Tìm kiếm
                                                     </button>
+                                                    <div class="col-md-3" style="padding-left:0;">
+                                                        <input class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="textTimHoSo"/>
+                                                    </div>
+                                                    
                                                     <!-- Modal sua -->
                                                     <div class="modal fade" id="timkiem" role="dialog">
                                                         <div class="modal-dialog">
@@ -150,10 +157,10 @@
                                                         Thêm văn bản
                                                     </button>
 
-                                                    <button class="btn btn-info pull-right">
+                                                    @*<button class="btn btn-info pull-right">
                                                         <i class="fa fa-send"></i>
                                                         Gửi kiểm tra
-                                                    </button>
+                                                    </button>*@
 
                                                 </div>
                                             </div>
@@ -173,7 +180,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="cursor:pointer" class="rowhoso" dir-paginate="u in danhsachhoso |itemsPerPage:12" ng-click="clickchonhoso(u)" id="{{u.ID}}">
+                                                            <tr style="cursor:pointer" class="rowhoso" dir-paginate="u in danhsachhoso  |filter:textTimHoSo |itemsPerPage:12" ng-click="clickchonhoso(u)" id="{{u.ID}}">
                                                                 <td style="text-align:center">{{u.MAHOP}}</td>
                                                                 <td style="text-align:center">{{u.MAHOSO}}</td>
                                                                 <td>{{u.TENHOSO}}</td>

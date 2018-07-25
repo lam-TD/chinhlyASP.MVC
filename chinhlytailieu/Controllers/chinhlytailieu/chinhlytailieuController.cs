@@ -308,24 +308,77 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult hoso_sua(hoso h, string phongid, string muclucid, string mahop)
+        
+        public JsonResult hoso_sua(hoso h, string[] mangmahop, string[] hopcapnhat)
         {
-            int result = -1;
-            string ghichu = "", chugiai = "", tinhtrang = "", ngonngu = "";
-            if (h.Ghichu != null) { ghichu = h.Ghichu; }
-            if (h.Chugiai != null) { chugiai = h.Chugiai; }
-            if (h.Tinhtrang != null) { tinhtrang = h.Tinhtrang; }
-            if (h.Ngonngu != null) { ngonngu = h.Ngonngu; }
-            string[] namepara = { "@ID", "@PHONGID", "@MUCLUC", "@MAHOP", "@LOAITL", "@MAHOSO", "@TENHOSO", "@NAMLAP", "@CHUGIAI", "@THOIGIANS", "@THOIGIANE", "@NGONNGU", "@SLTO", "@HCSD", "@TINHTRANG", "@GHICHU", "@BIENMUC" };
-            object[] valuepara = { h.Id, phongid, muclucid, mahop, h.Loaitl, h.Mahoso, h.Tenhoso, h.Namlap, chugiai, h.Thoigians, h.Thoigiane, ngonngu, h.Slto, h.Hcsd, tinhtrang, ghichu, h.Bienmuc };
+            // mangmahop - $scope.hopmaCha, $scope.hopidCha, $scope.muclucidCha, mahop, hopid
+            // hopcapnhat - mang chua phongid, muclucid
 
-            if (dataAsset.data.inputdata("hoso_sua", namepara, valuepara))
+            int result = -1;
+            int phongid = int.Parse(hopcapnhat[0]);
+            int muclucid = int.Parse(hopcapnhat[1]);
+            
+            // hop moi
+            string mahop = mangmahop[3].ToString();
+            int hopid = 0;
+            if (mangmahop[4] != ""){hopid = int.Parse(mangmahop[4]);}
+
+            // hop cu
+            string mahopcu = mangmahop[0].ToString();
+            int muclucidcu = int.Parse(mangmahop[2]);
+
+
+            if ((mahopcu != mahop && mahopcu != "") || (mahopcu == "" && mahop != "" && mahopcu != mahop))
             {
-                result = 1;
+                if (hop_checksoluong(hopid, 1) >= 1)
+                {
+                    string ghichu = "", chugiai = "", tinhtrang = "", ngonngu = "";
+                    if (h.Ghichu != null) { ghichu = h.Ghichu; }
+                    if (h.Chugiai != null) { chugiai = h.Chugiai; }
+                    if (h.Tinhtrang != null) { tinhtrang = h.Tinhtrang; }
+                    if (h.Ngonngu != null) { ngonngu = h.Ngonngu; }
+                    string[] namepara = { "@ID", "@PHONGID", "@MUCLUC", "@MAHOP", "@LOAITL", "@MAHOSO", "@TENHOSO", "@NAMLAP", "@CHUGIAI", "@THOIGIANS", "@THOIGIANE", "@NGONNGU", "@SLTO", "@HCSD", "@TINHTRANG", "@GHICHU", "@BIENMUC" };
+                    object[] valuepara = { h.Id, phongid, muclucid, mahop, h.Loaitl, h.Mahoso, h.Tenhoso, h.Namlap, chugiai, h.Thoigians, h.Thoigiane, ngonngu, h.Slto, h.Hcsd, tinhtrang, ghichu, h.Bienmuc };
+
+                    if (dataAsset.data.inputdata("hoso_sua", namepara, valuepara))
+                    {
+                        if (mahopcu != "" && mahopcu != mahop)
+                        {
+                            hoso_capnhatsoluonghoso(1, mahopcu, muclucidcu, phongid); // cap nhat so luong hoso hop cu
+                        }
+                        hoso_capnhatsoluonghoso(1, mahop, muclucid, phongid); // cap nhat so luong hoso hop moi
+                        result = 1;
+                    }
+                    else { result = -1; }
+                }
+                else { result = 0; }
             }
-            else { result = -1; }
+            else
+            {
+                string ghichu = "", chugiai = "", tinhtrang = "", ngonngu = "";
+                if (h.Ghichu != null) { ghichu = h.Ghichu; }
+                if (h.Chugiai != null) { chugiai = h.Chugiai; }
+                if (h.Tinhtrang != null) { tinhtrang = h.Tinhtrang; }
+                if (h.Ngonngu != null) { ngonngu = h.Ngonngu; }
+                string[] namepara = { "@ID", "@PHONGID", "@MUCLUC", "@MAHOP", "@LOAITL", "@MAHOSO", "@TENHOSO", "@NAMLAP", "@CHUGIAI", "@THOIGIANS", "@THOIGIANE", "@NGONNGU", "@SLTO", "@HCSD", "@TINHTRANG", "@GHICHU", "@BIENMUC" };
+                object[] valuepara = { h.Id, phongid, muclucid, mahop, h.Loaitl, h.Mahoso, h.Tenhoso, h.Namlap, chugiai, h.Thoigians, h.Thoigiane, ngonngu, h.Slto, h.Hcsd, tinhtrang, ghichu, h.Bienmuc };
+
+                if (dataAsset.data.inputdata("hoso_sua", namepara, valuepara))
+                {
+                    //if (mahopcu != mahop)
+                    //{
+                    //    hoso_capnhatsoluonghoso(1, mahopcu, muclucidcu, phongid); // cap nhat so luong hoso hop cu
+                    //    hoso_capnhatsoluonghoso(1, mahop, muclucid, phongid); // cap nhat so luong hoso hop moi
+                    //}
+                    result = 1;
+                }
+                else { result = -1; }
+            }
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+
 
         public int hoso_check_idhoso(int mahoso, int phongid)
         {
@@ -624,7 +677,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         public JsonResult hoso_capnhatsoluonghoso(int hopid, string mahop, int muclucid, int phongid)
         {
             int result;
-            if (hopid > 0)
+            if (hopid > 0 && mahop != "")
             {
                 
                 string[] namepara = { "@MAHOP", "@MUCLUCID", "@PHONGID" };
@@ -632,9 +685,9 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                 DataTable dt = dataAsset.data.outputdataTable("hoso_loadtheohop", namepara, valuepara);
 
                 int sl_cu = dt.Rows.Count;
-                string[] namepara2 = { "@ID", "@SL" };
-                object[] valuepara2 = { hopid, sl_cu };
-                if (dataAsset.data.inputdata("hop_capnhatsoluong", namepara2, valuepara2))
+                string[] namepara2 = { "@MAHOP", "@MUCLUCID", "@SLHOSO" };
+                object[] valuepara2 = { mahop, muclucid, sl_cu };
+                if (dataAsset.data.inputdata("hoso_capnhatsoluong2", namepara2, valuepara2))
                 {
                     result = 1;
                 }
@@ -642,21 +695,6 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             }
             else { result = -1; }
             return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
-        public int capnhatsoluonghoso(int hopid)
-        {
-            string[] namepara = { "@ID" };
-            object[] valuepara = { hopid };
-            DataTable dt = dataAsset.data.outputdataTable("hop_loadtheoIDhop", namepara, valuepara);
-            int slmoi = int.Parse(dt.Rows[0]["SLHOSO"].ToString()) + 1;
-
-            string[] namepara2 = { "@ID", "@SL" };
-            object[] valuepara2 = { hopid, slmoi };
-            dataAsset.data.inputdata("hop_capnhatsoluong", namepara2, valuepara2);
-            
-            
-            return 1;
         }
 
     }

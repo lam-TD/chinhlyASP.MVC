@@ -96,42 +96,49 @@
         else {
             
             if ($rootScope.idhosoCha > 0) {
-                phogid = $('select[name=selectphong]').val();
+                phongid = $('select[name=selectphong]').val();
                 muclucid = $('select[name=selectmucluc]').val();
                 mahop = $('select[name=selecthop]').val();
+                console.log('phongid: ' + phongid);
+                var mangmahop = [];
                 
-                console.log($scope.hopidCha);
-                console.log(mahop);
-                if (($scope.hopidCha == "" && mahop == "") || ($scope.hopidCha != "" && $scope.hopidCha == mahop))
+                if (($scope.hopmaCha == "" && mahop == "") || ($scope.hopmaCha != "" && $scope.hopmaCha == mahop) || ($scope.hopmaCha == "" && mahop != ""))
                 {
                     // cập nhật thông tin
+                    //var mangmahop = [];
                     alert("Cập nhật thông tin");
+                    hopid = $('#h' + mahop).attr("data-mahop")
+                    mangmahop = [$scope.hopmaCha, "", $scope.muclucidCha, mahop, hopid];
                 }
-                //else if($scope.hopidCha != "" && $scope.hopidCha == mahop) 
-                //{
-                //    // cập nhật thông tin
-                //    alert("Cập nhật thông tin 2");
-                //}
-                else if($scope.hopidCha != "" && $scope.hopidCha != mahop){
+                else if($scope.hopmaCha != "" && $scope.hopmaCha != mahop){
                     // cập nhật thông tin
                     // cập nhật số lượng hộp mới và cũ
+                    hopid = $('#h' + $scope.h.mahop).attr("data-mahop");
+                    mangmahop = [$scope.hopmaCha, $scope.hopidCha, $scope.muclucidCha, mahop, hopid ];
+                    
                     alert("Cập nhật thông tin và cập nhật slhop");
                 }
-                //$http({
-                //    method: 'POST',
-                //    url: '/chinhlytailieu/hoso_sua',
-                //    data: { h: $scope.h, phongid: phogid, muclucid: muclucid, mahop: mahop }
-                //}).then(function (response) {
-                //    //console.log(response.data);
-                //    if (response.data == 1) {
-                //        alert("Cập nhật hồ sơ thành công");
-                //    }
-                //    else {
-                //        alert('Lỗi không cập nhật được hồ sơ');
-                //    }
-                //}, function (response) {
-                //    alert('Lỗi không thực hiện được chức năng này');
-                //})
+                
+                var hopcapnhat = [phongid, muclucid];
+                $http({
+                    method: 'POST',
+                    url: '/chinhlytailieu/hoso_sua',
+                    data: { h: $scope.h, mangmahop: mangmahop, hopcapnhat: hopcapnhat }
+                }).then(function (response) {
+                    //console.log(response.data);
+                    if (response.data == 1) {
+                        alert("Cập nhật hồ sơ thành công");
+                    }
+                    else if (response.data == 0) {
+                        alert("Hộp đã đầy");
+                    }
+                    else {
+                        alert('Lỗi không cập nhật được hồ sơ');
+                    }
+                }, function (response) {
+                    alert('Lỗi không thực hiện được chức năng này');
+                })
+                
             }
             else {
                 $http({
@@ -150,17 +157,6 @@
                         }).then(function (response) {
                             if (response.data == 1) {
                                 alert('Thêm hồ sơ thành công');
-                                //if ($scope.h.mahop != null) {
-                                //    $http({
-                                //        method: 'POST',
-                                //        url: '/chinhlytailieu/hop_capnhatsoluong',
-                                //        data: { hopid: $('#h' + $scope.h.mahop).attr("data-mahop") }
-                                //    }).then(function (response) {
-
-                                //    }, function (response) {
-                                //        alert('Lỗi không cập nhật được số lượng hồ sơ trong hộp');
-                                //    })
-                                //}
                                 $('#formhoso').trigger("reset");
                             }
                             else if (response.data == 0) {
@@ -204,7 +200,9 @@
                         setTimeout(function () {
                             $('.rowhop').removeAttr('selected');
                             $('#h' + $scope.hopCha).attr("selected", "selected");
-                            $scope.hopidCha = $('select[name=selecthop]').val();
+                            $scope.muclucidCha = $('select[name=selectmucluc]').val();
+                            $scope.hopmaCha = $('select[name=selecthop]').val();
+                            $scope.hopidCha = $('#h' + $scope.h.mahop).attr("data-mahop");
                         }, 500);
                     }
                         
