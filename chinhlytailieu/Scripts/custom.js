@@ -1,4 +1,16 @@
-﻿function getInforUser() {
+﻿$(document).ready(function () {
+    getModule();
+    getuserInfo();
+    //loadmodule();
+    $('#idthongtincanhan').click(getInforUser());
+    $('#btncapnhatthongtin').click(capnhatthongtin);
+    checkemail();
+    capnhatmatkhau();
+    document.getElementById("btncapnhatmatkhau").addEventListener("click", change_pass);
+})
+
+
+function getInforUser() {
     $.ajax({
         url: '/home/nguoidung_loadthongtin',
         type: 'GET',
@@ -152,20 +164,40 @@ function isEmail(email) {
 
 
 function capnhatmatkhau(){
-    
+    $('#txtmkcu').keyup(function () {
+        var mkcu = $('input[name=txtmkcu]').val();
+        //console.log(mkcu);
+        if (mkcu.length > 0) {
+            $('#err_mkcuNull').addClass("hidden-span");
+            $('#btncapnhatmatkhau').removeAttr("disabled");
+        } else {
+            $('#err_mkcuNull').removeClass("hidden-span");
+            $('#btncapnhatmatkhau').attr("disabled", "disabled");
+        }
+    })
 }
 
-function check_pass(pass) {
+
+function change_pass()
+{
+    pass = $('input[name=txtmkcu]').val();
     $.ajax({
-        url: '/home/check_pass',
+        url: '/home/nguoidung_doimatkhau',
         type: 'POST',
         dataType: 'json',
         data: { pass: pass },
         success: function (data) {
             if (data == 1) {
-                alert("Cập nhật thông tin thành công");
-                $('#thongtincanhan').modal("hide");
-            } else {
+                alert("Cập nhật mật khẩu thành công thành công");
+                $('#err_mkcuK').addClass("hidden-span");
+                $('#doimatkhau').modal("hide");
+            }
+            else if(data == 0){
+                //alert("Mật khẩu cũ không trùng khớp");
+                $('#err_mkcuK').removeClass("hidden-span");
+                //$('#btncapnhatmatkhau').attr("disabled", "disabled");
+            }
+            else {
                 alert("Lỗi không cập nhật được thông tin");
             }
         }, error: function (err) {

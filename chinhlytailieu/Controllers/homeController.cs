@@ -232,18 +232,41 @@ namespace chinhlytailieu.Controllers
             }
         }
 
-        [HttpPost]
         public int check_pass(string pass)
         {
             string mk = dataAsset.data.encryption(pass);
             string[] namepara = { "@username", "@password" };
             object[] valuepara = { Session["username"].ToString(), mk };
-            DataTable dt = dataAsset.data.outputdataTable("check_email", namepara, valuepara);
+            DataTable dt = dataAsset.data.outputdataTable("check_matkhau", namepara, valuepara);
             if (dt.Rows.Count > 0)
             {
                 return 1;
             }
             else { return -1; }
+        }
+
+        [HttpPost]
+        public int nguoidung_doimatkhau(string pass, string passnew, string passconfim)
+        {
+            if (Session["username"] != null)
+            {
+                if (check_pass(pass) == 1)
+                {
+                    string pass_new = passnew.Trim();
+                    string pass_confim = passconfim.Trim();
+                    if ((pass_new.Length > 6 && pass_new.Length < 20) && String.Compare(pass_new, pass_confim) == 1)
+                    {
+                        string mk = dataAsset.data.encryption(pass_new);
+                        string[] namepara = { "@username", "@password" };
+                        object[] valuepara = { Session["username"].ToString(), mk };
+                        if (dataAsset.data.inputdata("ht_quanlynguoidung_DoiMK", namepara, valuepara)) { return 1; }
+                        else { return -1; }
+                    }
+                    else { return -2; }
+                    
+                }
+                else { return 0; }
+            }else { return -1; }
         }
 
     }
