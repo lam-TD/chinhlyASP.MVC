@@ -763,7 +763,7 @@
     <Content Include="Scripts\chinhlytailieu\bienmuc\nhaphoso.js" />
     <Content Include="Scripts\chinhlytailieu\bienmuc\nhapvanban.js" />
     <Content Include="Scripts\chinhlytailieu\bienmuc\taomuclucController.js" />
-    <Content Include="Scripts\chinhlytop.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\cosodulieu\appcosodulieu.js" />
     <Content Include="Scripts\cosodulieu\phanheTLbienmuc\phanheTLbienmuc.js" />
     <Content Include="Scripts\dangnhap\dangky.js" />

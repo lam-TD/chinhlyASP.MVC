@@ -38,14 +38,14 @@ Purchase: http://wrapbootstrap.com
     <link href="~/assets/css/custom.css" rel="stylesheet" />
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="~/assets/js/skins.min.js"></script>
-
+    <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/angular-route.js"></script>
     <script src="~/Scripts/angular-resource.js"></script>
     <script src="~/Scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script src="~/Scripts/dirPagination.js"></script>
     <script src="~/Scripts/appchinhly.js"></script>
-    @*<script src="~/Scripts/chinhlytop.js"></script>*@
+    
    
 
 </head>
@@ -97,7 +97,7 @@ Purchase: http://wrapbootstrap.com
                                 <!--Login Area Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                     <li>
-                                        <a href="" data-toggle="modal" data-target="#thongtincanhan">
+                                        <a href="" data-toggle="modal" data-target="#thongtincanhan" id="idthongtincanhan">
                                             <i class="icon fa fa- fa-user"></i>
                                             <span class="menutext" style="margin-right: 5px;">Thông tin cá nhân</span>
                                         </a>
@@ -105,7 +105,7 @@ Purchase: http://wrapbootstrap.com
                                     </li>
 
                                     <li>
-                                        <a href="">
+                                        <a href="" data-toggle="modal" data-target="#doimatkhau">
                                             <i class="icon fa fa-credit-card"></i>
                                             <span class="menutext" style="margin-right: 5px;">Đổi mật khẩu</span>
                                         </a>
@@ -145,68 +145,124 @@ Purchase: http://wrapbootstrap.com
         </div>
     </div>
 
-    <!-- Modal sua -->
+    <!-- Modal thong tin ca nhan -->
     <div class="modal fade" id="thongtincanhan" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
-                <form action="">
+                <form action="" name="formNguoidung">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Thông tin cá nhân</h4>
+                        <h4 class="modal-title">Thông tin người dùng</h4>
                     </div>
-                    <div class="modal-body" style="min-height: 120px;">
+
+                    <div class="modal-body" style="min-height: 200px;">
                         <div class="collapse in">
-                            <div class="form-group col-md-12">
-                                <div class="col-sm-3">
-                                    <label for="" class="control-label pull-right">Họ và tên</label>
-                                </div>
+                            @*<div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Phòng/đơn vị(*)</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Hồ sơ số">
+                                    <select class="col-xs-12" ng-model="nd.bophan">
+                                        <option ng-repeat="c in coquanLam" value="{{c.MAPHONG}}">{{c.TENPHONG}}</option>
+                                    </select>
+                                </div>
+                            </div>*@
+
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Tên đăng nhập: </label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="txttaikhoan" class="form-control" placeholder="Tài khoản" readonly>
+                                    <span class="hidden-span" style="color:red;">Tên đăng nhập không được để trống</span>
                                 </div>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <div class="col-sm-3">
-                                    <label for="" class="control-label pull-right">Tên đăng nhập</label>
+                                <label for="" class="col-sm-3 control-label no-padding-right">Họ tên: </label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="txtholot" class="form-control" placeholder="Họ tên lót">
+                                    <span class="hidden-span" style="color:red;" >Họ tên không được để trống</span>
                                 </div>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Hồ sơ số">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <div class="col-sm-3">
-                                    <label for="" class="control-label pull-right">Email</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" placeholder="Hồ sơ số">
+                                <div class="col-sm-4">
+                                    <input type="text" name="txtten" class="form-control" placeholder="Tên">
+                                    <span class="hidden-span" style="color:red;" >Tên không được để trống</span>
                                 </div>
                             </div>
+
                             <div class="form-group col-md-12">
-                                <div class="col-sm-3">
-                                    <label for="" class="control-label pull-right">Chức vụ</label>
+                                <label for="" class="col-sm-3 control-label no-padding-right">Email: </label>
+                                <div class="col-sm-9" id="div-email">
+                                    <input type="email" name="txtemail2" class="form-control" placeholder="Email" required id="email">
+                                    <span class="hidden-span" style="color:red;" id="errEmail">Email không hợp lệ</span>
+                                    <span class="hidden-span" style="color:red;" id="errEmailTontai">Email đã tồn tại</span>
+                                    @*<span style="color:red;" ng-show="formNguoidung.txtemail.$touched && formNguoidung.txtemail.$error.email">Email không hợp lệ</span>*@
                                 </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Chức vụ: </label>
                                 <div class="col-sm-9">
-                                    <label>Giám đốc</label>
+                                    <label id="labelchucvu">Giam doc</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            <i class="fa fa-search"></i>Cập nhật
-                        </button>
-
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">
-                            <i class="glyphicon glyphicon-log-in"></i>Thoát
-                        </button>
+                        <button style="width:150px;" type="button" id="btncapnhatthongtin" class="btn btn-primary" data-toggle="modal"><i class="fa fa-save"></i>Lưu</button>
+                        
+                        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="glyphicon glyphicon-log-in"></i>Thoát</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- end Modal sua -->
+    <!-- end Modal thong tin ca nhanh -->
+
+    <!-- Modal doi mat khau -->
+    <div class="modal fade" id="doimatkhau" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form action="" name="">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Đổi mật khẩu</h4>
+                    </div>
+
+                    <div class="modal-body" style="min-height: 163px;">
+                        <div class="collapse in">
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Mật khẩu cũ:</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="txttcu" class="form-control" placeholder="Mật khẩu cũ">
+                                    <span class="hidden-span" style="color:red;">Mật khẩu cũ không được để trống</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Mật khẩu mới: </label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="txtmoi" class="form-control" placeholder="Mật khẩu mới">
+                                    <span class="hidden-span" style="color:red;">Mật khẩu mới không được để trống</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Xác nhận mật khẩu:</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="txtxacnhan" class="form-control" placeholder="Xác nhận mật khẩu">
+                                    <span class="hidden-span" style="color:red;">Xác nhận mật khẩu không trùng khớp</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="width:150px;" type="button" id="btncapnhatmatkhau" class="btn btn-primary" data-toggle="modal"><i class="fa fa-save"></i>Lưu</button>
+
+                        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="glyphicon glyphicon-log-in"></i>Thoát</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end Modal doi mat khau -->
 
     <script src="~/assets/js/jquery.min.js"></script>
     <script>
@@ -214,64 +270,12 @@ Purchase: http://wrapbootstrap.com
             getModule();
             getuserInfo();
             //loadmodule();
+            $('#idthongtincanhan').click(getInforUser());
+            $('#btncapnhatthongtin').click(capnhatthongtin);
+            checkemail();
         })
 
-        function getModule() {
-            $.ajax({
-                url: '/home/user_module_list',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    var row = '';
-                    $.each(data, function (i, item) {
-                        row += '<li>';
-                        row += '<a class="module_chinhly" href="' + item.Links + '/' + item.Id + '">';
-                        //row += '<a style="cursor: pointer;" class="module_chinhly" onclick="loadmodule()" data-link="' + item.Links + '"' + 'data-idModule="' + item.Id + '">';
-                        row += '<div class="clearfix">';
-                        row += '<span class="pull-left"><i class="fa fa-archive"></i></span>';
-                        row += '<span class="" style="font-size: 14px; margin-left: 10px;">' + item.Modulename + '</span>';
-                        row += '</div>';
-                        row += '</a>';
-                        row += '</li>';
-                    })
-                    $('#menu-topchinhly').html(row);
-                }, error: function (err) {
-                    alert("loi cmnr");
-                }
-            })
-        }
-
-        function getuserInfo() {
-            $.ajax({
-                url: '/home/getUserInfo',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    //console.log(data);
-                    var link = '/assets/img/avatars/' + data[0].Fileanh;
-                    $('#avartaChinhly').attr('src', link);
-                    $('#usernamechinhly').html(data[0].Username)
-                }, error: function (err) {
-
-                }
-            })
-        }
-
-        function logout() {
-            
-            $.ajax({
-                url: '/dangnhap/dangxuat',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                    location.href = "/dangnhap/login";
-                }, error: function (err) {
-                    location.href = "/dangnhap/login";
-                }
-            })
-        }
-
+        
     </script>
 
     @RenderBody()

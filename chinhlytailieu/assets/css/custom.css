@@ -6,3 +6,7 @@
 button, a.btn{
     border-radius: 0px !important;
 }
+
+.hidden-span{
+    display: none;
+}

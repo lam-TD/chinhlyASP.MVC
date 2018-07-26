@@ -178,5 +178,73 @@ namespace chinhlytailieu.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public string nguoidung_loadthongtin()
+        {
+            string[] namepara = { "@username" };
+            object[] valuepara = { Session["username"].ToString() };
+            return dataAsset.data.outputdata("dn_userInfo", namepara, valuepara);
+        }
+
+        [HttpPost]
+        public JsonResult nguoidung_capnhatthongtin(nguoidung n)
+        {
+            int result = -1;
+            if (Session["username"] != null)
+            {
+                if (n.Email.Length > 0 && n.Holot.Length > 0 && n.Email.Length > 0)
+                {
+                    string[] namepara = { "@USERNAME", "@EMAIL", "@HOLOT", "@TEN" };
+                    object[] valuepara = { Session["username"].ToString(), n.Email.Trim(), n.Holot.Trim(), n.Ten.Trim() };
+                    if (dataAsset.data.inputdata("nguoidung_capnhatthongtin", namepara, valuepara))
+                    {
+                        result = 1;
+                    }
+                    else { result = -1; }
+                }
+                else { result = -1; }
+                
+            }
+            else
+            {
+                Response.Redirect("/dangnhap/login");
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public int check_email(string email = null)
+        {
+            //int result = -1;
+            if (Session["username"] != null)
+            {
+                string[] namepara = { "@USERNAME", "@EMAIL" };
+                object[] valuepara = { Session["username"].ToString(), email };
+                DataTable dt = dataAsset.data.outputdataTable("check_email", namepara, valuepara);
+                if (dt.Rows.Count > 0)
+                {
+                    return 1;
+                }
+                else { return -1; }
+            }
+            else
+            {
+                Response.Redirect("/dangnhap/login");
+                return 1;
+            }
+        }
+
+        [HttpPost]
+        public int check_pass(string pass)
+        {
+            string mk = dataAsset.data.encryption(pass);
+            string[] namepara = { "@username", "@password" };
+            object[] valuepara = { Session["username"].ToString(), mk };
+            DataTable dt = dataAsset.data.outputdataTable("check_email", namepara, valuepara);
+            if (dt.Rows.Count > 0)
+            {
+                return 1;
+            }
+            else { return -1; }
+        }
+
     }
 }
