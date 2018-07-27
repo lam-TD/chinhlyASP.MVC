@@ -30,6 +30,7 @@
             data: {id: idcoquanlam}
         }).then(function success(respone) {
             $scope.coquanLam = respone.data;
+            //console.log(respone.data);
             $http({
                 method: 'GET',
                 url: '/hethong/DanhSachChucVu'
@@ -44,16 +45,9 @@
 
     //chon phong hien thi danh sach nguoi dung
     $scope.checkPhong = function (u) {
-        var t = document.getElementsByClassName('clickPhong');
-        for (var i = 0; i < t.length; i++) {
-            t[i].onclick = function () {
-                for (var i = 0; i < t.length; i++) {
-                    t[i].classList.remove('active_nhom');
-                }
-                this.classList.add('active_nhom');
-
-            }
-        }
+        $('.clickPhong').removeClass("activePhong")
+        $('#p' + u.MAPHONG).addClass("activePhong");
+        
         $http({
             method: 'POST',
             url: '/hethong/LoadNguoiDungTheoBoPhan',
@@ -223,16 +217,9 @@
     }
    
     $scope.clickDanhSach = function (u) {
-        var t = document.getElementsByClassName('clickdanhsachTK');
-        for (var i = 0; i < t.length; i++) {
-            t[i].onclick = function () {
-                for (var i = 0; i < t.length; i++) {
-                    t[i].classList.remove('active_nhom');
-                }
-                this.classList.add('active_nhom');
-
-            }
-        }
+        //var t = document.getElementsByClassName('clickdanhsachTK');
+        $('.clickdanhsachTK').removeClass("activePhong");
+        $('#' + u.USERNAME).addClass("activePhong");
         $scope.btnSua = false;
         var nd = {
             chucvu: u.CHUCVU,

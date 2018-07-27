@@ -254,7 +254,7 @@ namespace chinhlytailieu.Controllers
                 {
                     string pass_new = passnew.Trim();
                     string pass_confim = passconfim.Trim();
-                    if ((pass_new.Length > 6 && pass_new.Length < 20) && String.Compare(pass_new, pass_confim) == 1)
+                    if ((pass_new.Length >= 6 && pass_new.Length <= 20) && pass_new == pass_confim)
                     {
                         string mk = dataAsset.data.encryption(pass_new);
                         string[] namepara = { "@username", "@password" };

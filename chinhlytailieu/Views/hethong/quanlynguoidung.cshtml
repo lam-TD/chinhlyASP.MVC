@@ -47,7 +47,7 @@
                                         <div class="" style="margin-top: 5px; display:inline-block;width:100%;">
                                             <table class="table table-hover table-bordered table-condensed">
                                                 <tbody>
-                                                    <tr class="clickPhong" ng-repeat="c in coquanLam" style="cursor:pointer" ng-click="checkPhong(c)">
+                                                    <tr class="clickPhong" ng-repeat="c in coquanLam" style="cursor:pointer" id="p{{c.MAPHONG}}" ng-click="checkPhong(c)">
                                                         <td class="checkPhongP">{{c.TENPHONG}}</td>
                                                     </tr>
                                                 </tbody>
@@ -57,6 +57,9 @@
                                     </div>
                                     <div class="col-md-9 col-xs-12">
                                         <div class="" style="margin-bottom: 10px;">
+                                            <div class="col-md-4" style="padding-left:0;">
+                                                <input class="form-control" ng-model="txtsearchNguoidung" placeholder="Tìm kiếm người dùng" />
+                                            </div>
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="modal('add')" ng-disabled="btnThem">
                                                 <i class="glyphicon glyphicon-file"></i>Thêm
                                             </button>
@@ -163,9 +166,6 @@
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-disabled="btnSua" ng-click="modal('edit')">
                                                 <i class="fa fa-pencil-square-o"></i>Sửa
                                             </button>
-
-
-
                                             <button type="button" class="btn btn-info" ng-disabled="btnSua" ng-click="kichhoat()">
                                                 <i class="fa fa-lock"></i>Khóa
                                             </button>
@@ -173,6 +173,7 @@
                                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModaldoimatkhau" ng-disabled="btnSua">
                                                 <i class="fa fa-refresh"></i>Đổi mật khẩu
                                             </button>
+                                            
                                             <!-- Modal doi mat khau -->
                                             <div class="modal fade" id="myModaldoimatkhau" role="dialog">
                                                 <div class="modal-dialog">
@@ -241,7 +242,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="clickdanhsachTK" dir-paginate="u in userList |itemsPerPage:12" ng-click="clickDanhSach(u)" style="cursor: pointer;">
+                                                    <tr class="clickdanhsachTK" dir-paginate="u in userList | filter:txtsearchNguoidung |itemsPerPage:12" id="{{u.USERNAME}}" ng-click="clickDanhSach(u)" style="cursor: pointer;">
                                                         <td>{{u.hoten}}</td>
                                                         <td>{{u.USERNAME}}</td>
                                                         <td>{{u.TENCHUCVU}}</td>

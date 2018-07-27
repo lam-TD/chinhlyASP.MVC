@@ -59,7 +59,7 @@ function getuserInfo() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            console.log(data);
+            //console.log(data);
             var link = '/assets/img/avatars/' + data[0].Fileanh;
             $('#avartaChinhly').attr('src', link);
             $('#usernamechinhly').html(data[0].Username)
@@ -175,17 +175,56 @@ function capnhatmatkhau(){
             $('#btncapnhatmatkhau').attr("disabled", "disabled");
         }
     })
+
+    $('input[name=txtmoi]').keyup(function () {
+        var mkmoi = $('input[name=txtmoi]').val();
+        var regex = /^([a-zA-Z0-9]){6,20}$/;
+
+        if (regex.test(mkmoi)) {
+            $('#err_mkmoi').addClass("hidden-span");
+        }
+        else {
+            $('#err_mkmoi').removeClass("hidden-span");
+            $('#btncapnhatmatkhau').attr("disabled", "disabled");
+        }
+
+        if (mkmoi == $('#txtmkcu').val()) {
+            $('#err_mkmoicu').removeClass("hidden-span");
+        }
+        else {
+            $('#err_mkmoicu').addClass("hidden-span");
+        }
+
+    })
+
+    $('input[name=txtxacnhan]').keyup(function () {
+        var xacnhan = $('input[name=txtxacnhan]').val();
+        if (xacnhan == $('input[name=txtmoi]').val()) {
+            $('#err_xacnhan').addClass("hidden-span");
+            $('#btncapnhatmatkhau').removeAttr("disabled");
+        }
+        else {
+            $('#err_xacnhan').removeClass("hidden-span");
+            $('#btncapnhatmatkhau').attr("disabled", "disabled");
+        }
+    })
 }
 
 
 function change_pass()
 {
     pass = $('input[name=txtmkcu]').val();
+    pass_new = $('input[name=txtmoi]').val();
+    pass_conf = $('input[name=txtxacnhan]').val();
     $.ajax({
         url: '/home/nguoidung_doimatkhau',
         type: 'POST',
         dataType: 'json',
-        data: { pass: pass },
+        data: {
+            pass: pass,
+            passnew: pass_new,
+            passconfim: pass_conf
+        },
         success: function (data) {
             if (data == 1) {
                 alert("Cập nhật mật khẩu thành công thành công");

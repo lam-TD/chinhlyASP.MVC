@@ -351,7 +351,36 @@ namespace chinhlytailieu.Controllers.hethong
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public int quanlychucvuXoa(string machucvu)
+        {
+            if (ht_qlchucvu_checknguoidung(machucvu.Trim()) == 1)
+            {
+                // xoa
+                string[] namepara = { "@MACHUCVU" };
+                object[] valuepara = { machucvu.Trim() };
+                if (dataAsset.data.inputdata("ht_qlchucvu_Xoa", namepara, valuepara))
+                {
+                    return 1;
+                }
+                else { return -1; }
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
+        public int ht_qlchucvu_checknguoidung(string machucvu)
+        {
+            string[] namepara = { "@MACHUCVU" };
+            object[] valuepara = { machucvu };
+            DataTable dt = dataAsset.data.outputdataTable("ht_qlchucvu_checknguoidung",namepara, valuepara);
+            if (dt.Rows.Count > 0)
+            {
+                return -1;
+            }
+            else { return 1; }
+        }
 
 
 

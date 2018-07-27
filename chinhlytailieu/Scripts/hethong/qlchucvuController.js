@@ -22,7 +22,13 @@
         if (state == "edit") {
             $scope.checkSua = true;
         }
-        else { $scope.checkSua == false;}
+        else {
+            $scope.cv = {
+                Machucvu: "",
+                Tenchucvu: ""
+            }
+            $scope.checkSua == false;
+        }
     }
 
     $scope.save = function (state) {
@@ -65,21 +71,49 @@
 
     // click chon chuc vu
     $scope.clickChucVu = function (c) {
-        var t = document.getElementsByClassName('clicktaikhoan');
-        for (var i = 0; i < t.length; i++) {
-            t[i].onclick = function () {
-                for (var i = 0; i < t.length; i++) {
-                    t[i].classList.remove('active_nhom');
-                }
-                this.classList.add('active_nhom');
-
-            }
-        }
+        $('.clicktaikhoan').removeClass("activePhong");
+        $('#cv' + c.MACHUCVU).addClass("activePhong");
+        $scope.machucvuCha = c.MACHUCVU;
         $scope.showBtnSua = false;
-        console.log(c);
+        //console.log(c);
         $scope.cv = {
             Machucvu: c.MACHUCVU,
             Tenchucvu: c.TENCHUCVU
         }
+    }
+
+
+    $scope.xoa = function () {
+        if ($scope.machucvuCha.length > 0) {
+            if (confirm("Bạn có chắc chắn muốn xóa chức vụ vừa chọn")) {
+                $http({
+                    method: 'POST',
+                    url: '/hethong/quanlychucvuXoa',
+                    data: { machucvu: $scope.machucvuCha }
+                }).then(function (response) {
+                    if (response.data == 1) {
+                        alert("Đã xóa chức vụ vừa chọn");
+                        $http({
+                            method: 'GET',
+                            url: '/hethong/DanhSachChucVu'
+                        }).then(function (response) {
+                            $scope.chucvu = response.data;
+                        }, function (reponse) {
+                            console.log("Loi cmnr");
+                        })
+                    }
+                    else if(response.data == 0){
+                        alert("Vẫn còn tài khoản giữ chức vụ này, vui lòng xóa tài khoản khỏi chức vụ này");
+                    }
+                    else { alert("Lỗi không xóa được chức vụ vừa chọn"); }
+                }, function (reponse) {
+                    alert("Lỗi không thực hiện được chức năng này");
+                })
+            }
+        }
+        else {
+            alert("Bạn chưa chọn chức vụ");
+        }
+        
     }
 })

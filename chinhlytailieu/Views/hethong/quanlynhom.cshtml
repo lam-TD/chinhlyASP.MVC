@@ -105,15 +105,15 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="click_nhom" style="cursor: pointer;" dir-paginate="n in nhomnguoidungLoad |itemsPerPage:12" ng-click="clickNhom(n)">
+                                                        <tr class="click_nhom" style="cursor: pointer;" dir-paginate="n in nhomnguoidungLoad |itemsPerPage:12" id="n{{n.MANHOM}}" ng-click="clickNhom(n)">
                                                             <td>{{n.MANHOM}}</td>
                                                             <td>{{n.TENNHOM}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true">
-                                            </dir-pagination-controls>
+                                            @*<dir-pagination-controls max-size="12" direction-links="true" boundary-links="true">
+                                            </dir-pagination-controls>*@
                                         </div>
                                     </div>
 
@@ -143,7 +143,7 @@
                                                                             <div class="col-md-3" style="border-right: 1px solid #eee;">
                                                                                 <h5 style="margin-top: 0;">Cơ quan/phòng ban</h5>
                                                                                 <select class="col-md-12" ng-model="selectCoQuan" ng-options="item.TENCOQUAN for item in coquanList" ng-change="hasChanged()"></select>
-                                                                                <div style="overflow: auto; height: 150px;width:100%; display: inline-block;">
+                                                                                <div style="overflow-y: auto;overflow-x:hidden; max-height: 250px;width:100%; display: inline-block;">
                                                                                     <div class="" style="margin-top: 5px; display:inline-block;width:100%;">
                                                                                         <table class="table table-hover table-bordered table-condensed">
                                                                                             <tbody>
@@ -176,7 +176,7 @@
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
-                                                                                            <tr dir-paginate="u in userList |itemsPerPage:12" ng-click="clickDanhSach(u)" style="cursor: pointer;">
+                                                                                            <tr class="row_ds" dir-paginate="u in userList |itemsPerPage:12" id="ds{{u.USERNAME}}" ng-click="clickDanhSach(u)" style="cursor: pointer;">
                                                                                                 <td>
                                                                                                     <div class="checkbox" style="margin: 0;">
                                                                                                         <label>
@@ -230,7 +230,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="itemTK" dir-paginate="t in taikhoan |itemsPerPage:12" ng-click="clickDSTKtrongnhom(t)" style="cursor:pointer;">
+                                                    <tr class="itemTK" dir-paginate="t in taikhoan |itemsPerPage:12" id="nh{{t.ID}}" ng-click="clickDSTKtrongnhom(t)" style="cursor:pointer;">
                                                         <td>{{t.HOTEN}}</td>
                                                         <td>{{t.USERNAME}}</td>
                                                         <td>{{t.TENCHUCVU}}</td>
@@ -240,7 +240,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                        <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true"></dir-pagination-controls>
                                     </div>
                                 </div>
                             </div>

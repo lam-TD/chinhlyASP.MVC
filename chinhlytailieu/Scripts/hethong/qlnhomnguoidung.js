@@ -36,16 +36,9 @@
         $scope.nhom = nhom_info;
         $scope.btnSua = false;
         $scope.disablebtnthemtaikhoan = false; // kich hoat btn them tai khoan vao nhom
-        var t = document.getElementsByClassName('click_nhom');
-        for (var i = 0; i < t.length; i++) {
-            t[i].onclick = function () {
-                for (var i = 0; i < t.length; i++) {
-                    t[i].classList.remove('active_nhom');
-                }
-                this.classList.add('active_nhom');
-                
-            }
-        }
+        
+        $('.click_nhom').removeClass("activePhong");
+        $('#n' + u.MANHOM).addClass("activePhong");
     }
 
     $scope.loadNhomnguoidung = function (manhom) {
@@ -228,6 +221,9 @@
             console.log(response.data);
             alert('Đã thêm tài khoản vào nhóm');
             checknguoidngdathuocnhom();
+            $scope.loadNhomnguoidung($scope.manhomStatic);
+        }, function () {
+            alert("Lỗi không thực hiện được chức năng này");
         })
        
     }
@@ -261,16 +257,8 @@
 
     // click chon tai khoan trong danh sach tai khoan trong nhom
     $scope.clickDSTKtrongnhom = function (t) {
-        var tk = document.getElementsByClassName('itemTK');
-        
-        for (var i = 0; i < tk.length; i++) {
-            tk[i].onclick = function () {
-                for (var j = 0; j < tk.length; j++) {
-                    tk[j].classList.remove('active_nhom');
-                }
-                this.classList.add('active_nhom');
-            }
-        }
+        $('.itemTK').removeClass("activePhong");
+        $('#nh' + t.ID).addClass("activePhong");
         $scope.usernameKhichonTK = t.USERNAME;
         $scope.disablebtnloaibotaikhoan = false;
     }
@@ -288,6 +276,7 @@
             }).then(function (response) {
                 if (response.data == 1) {
                     alert('Đã loại bỏ tài khoản: ' + username);
+                    $scope.loadNhomnguoidung($scope.manhomStatic);
                 }
                 else {
                     alert('Lỗi không thực hiện được');

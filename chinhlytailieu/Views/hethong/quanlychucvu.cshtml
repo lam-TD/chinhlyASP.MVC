@@ -11,7 +11,7 @@
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">{{nhomchucnang}}</a>
+                {{nhomchucnang}}
             </li>
             <li>
                 {{chucnang}}
@@ -71,11 +71,7 @@
                                                                 <button type="button" class="btn btn-primary" ng-click="save(state)" ng-disabled="formChucVu.$invalid">
                                                                     <i class="fa fa-save"></i>Ghi nhận
                                                                 </button>
-
-                                                                <button type="button" class="btn btn-primary" ng-disabled="formChucVu.$invalid">
-                                                                    <i class="fa fa-save"></i>Ghi nhận và thêm mới
-                                                                </button>
-
+                                                                
                                                                 <button type="button" class="btn btn-warning" data-dismiss="modal">
                                                                     <i class="glyphicon glyphicon-log-in"></i>Thoát
                                                                 </button>
@@ -89,7 +85,7 @@
                                                 <i class="glyphicon glyphicon-file"></i>Sửa
                                             </button>
                                             
-                                            <button class="btn btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Xóa</button>
+                                            <button class="btn btn btn-danger" ng-disabled="showBtnSua" ng-click="xoa()"><span class="glyphicon glyphicon-remove"></span>Xóa</button>
                                         </div>
                                         <div class="" style="overflow: auto; height: 390px; margin-top: 5px;">
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
@@ -100,7 +96,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="clicktaikhoan" dir-paginate="c in chucvu |itemsPerPage:15" ng-click="clickChucVu(c)" style="cursor:pointer;">
+                                                    <tr class="clicktaikhoan" dir-paginate="c in chucvu |itemsPerPage:15" id="cv{{c.MACHUCVU}}" ng-click="clickChucVu(c)" style="cursor:pointer;">
                                                         <td>{{c.MACHUCVU}}</td>
                                                         <td>{{c.TENCHUCVU}}</td>
                                                     </tr>

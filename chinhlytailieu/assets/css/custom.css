@@ -7,6 +7,9 @@ button, a.btn{
     border-radius: 0px !important;
 }
 
+input{
+    border-radius: 0 !important;
+}
 .hidden-span{
     display: none;
 }
