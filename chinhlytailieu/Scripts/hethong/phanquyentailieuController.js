@@ -39,8 +39,8 @@
             }).then(function (response) {
                 //console.log(response.data);
                 $scope.DSTruyCapTaiLieu = response.data;
-                setTimeout($scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu), 3000);
                 
+                $scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu)
             }, function (response) {
                 //alert('Không tải được danh sách mục lục');
             })
@@ -54,6 +54,7 @@
         }).then(function (response) {
             console.log(response.data);
             $scope.dsquyentruycap = response.data;
+            $scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu);
         }, function (response) {
             alert("Lỗi không tải được danh sách truy cập tài liệu");
         })
@@ -77,9 +78,7 @@
         $('#n' + n.MANHOM).addClass("activePhong");
         $scope.manhom = n.MANHOM; // lay ma nhom
         $scope.disableCoQuan = false;
-        //
         $scope.truycapnhom($scope.manhom);
-        $scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu);
     }
 
     // click danh sach phong
@@ -148,43 +147,45 @@
     }
 
     $scope.hienthiquyen = function (arr1, arr2) {
-        if (arr1.length > 0 && arr2.length > 0) {
-            $('#x' + 5).prop('checked', true);
-            //document.getElementById("x5").checked = true;
-            var arrSeen = document.getElementsByClassName("truycapxem");
-            console.log(arrSeen);
-            for (var i = 0; i < arrSeen.length; i++) {
-                //console.log(arrSeen[i]);
-                arrSeen[0].checked = true;
+        console.log(arr1);
+        if (arr1.length > 0 && arr2.length > 0)
+        {
+            //$('#x' + 5).prop('checked', true);
+            if (arr1.length == arr2.length)
+            {
+                for (var i = 0; i < arr2.length; i++)
+                {
+                    $('#x' + arr1[i].MAMUCLUC).prop('checked', arr2[i].THEM);
+                    arrInsert[i].checked = arr2[i].THEM;
+                    arrEdit[i].checked = arr2[i].SUA;
+                }
             }
-            //var arrInsert = document.getElementsByClassName("truycapthem");
-            //console.log(arrInsert);
-            //var arrEdit = document.getElementsByClassName("truycapsua");
-            //if (arr1.length == arr2.length) {
-            //    for (var i = 0; i < arr2.length; i++) {
-            //        $('#x' + arr1[i].MAMUCLUC).prop('checked', arr2[i].THEM);
-            //        arrInsert[i].checked = arr2[i].THEM;
-            //        arrEdit[i].checked   = arr2[i].SUA;
-            //    }
-            //}
-            //else {
-            //    // tim kiem noi suy
-            //    for (var i = 0; i < arr1.length; i++) {
-            //        for (var j = 0; j < arr2.length; j++) {
-            //            if (arr1[i].MAMUCLUC == arr2[j].MAMUCLUC) {
-            //                //for (var k = 0; k < arrSeen.length; k++) {
-                            
-            //                //}
-            //                //$('#x' + arr2[j].MAMUCLUC).attr("checked", "checked");
-            //                console.log($('input#x1.truycapxem').val());
-            //                console.log(document.getElementById("x5" + arr2[j].MAMUCLUC));
-            //                console.log("dsadd");
-            //                console.log(arrSeen[j]);
-            //            }
-            //        }
-            //    }
-                
-            //}
+            else {
+                // tim kiem noi suy
+                for (var i = 0; i < arr1.length; i++)
+                {
+                    for (var j = 0; j < arr2.length; j++) {
+                        if (arr1[i].MAMUCLUC == arr2[j].MAMUCLUC) {
+                            //arrSeen[j].checked = arr1[i].XEM;
+                            m = arr1[i].MAMUCLUC;
+                            $('#x' + m).prop('checked', arr1[i].XEM);
+                            $('#t' + m).prop('checked', arr1[i].THEM);
+                            $('#s' + m).prop('checked', arr1[i].SUA);
+                        }
+                        else {
+                            m = arr2[j].MAMUCLUC
+                            $('#x' + m).prop('checked', false);
+                            $('#t' + m).prop('checked', false);
+                            $('#s' + m).prop('checked', false);
+                        }
+                    }
+                }
+
+            }
+        }
+        else if(arr1.length == 0 && arr2.length > 0)
+        {
+            $('input:checked').prop('checked', false);
         }
     }
 
