@@ -87,7 +87,7 @@
                                             
                                             <button class="btn btn btn-danger" ng-disabled="showBtnSua" ng-click="xoa()"><span class="glyphicon glyphicon-remove"></span>Xóa</button>
                                         </div>
-                                        <div class="" style="overflow: auto; height: 390px; margin-top: 5px;">
+                                        <div class="" style="overflow: auto; height: 430px; margin-top: 5px;">
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                 <thead class="flip-content bordered-palegreen">
                                                     <tr>
@@ -96,7 +96,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="clicktaikhoan" dir-paginate="c in chucvu |itemsPerPage:15" id="cv{{c.MACHUCVU}}" ng-click="clickChucVu(c)" style="cursor:pointer;">
+                                                    <tr class="clicktaikhoan" dir-paginate="c in chucvu |itemsPerPage:13" id="cv{{c.MACHUCVU}}" ng-click="clickChucVu(c)" style="cursor:pointer;">
                                                         <td>{{c.MACHUCVU}}</td>
                                                         <td>{{c.TENCHUCVU}}</td>
                                                     </tr>

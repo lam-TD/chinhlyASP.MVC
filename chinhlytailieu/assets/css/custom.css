@@ -10,6 +10,10 @@ button, a.btn{
 input{
     border-radius: 0 !important;
 }
+
+select{
+    border-radius: 0 !important;
+}
 .hidden-span{
     display: none;
 }

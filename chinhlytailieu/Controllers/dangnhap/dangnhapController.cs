@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using chinhlytailieu.Models.users;
 using System.Web;
+using System.Data;
 
 namespace chinhlytailieu.Controllers.dangnhap
 {
@@ -25,11 +26,17 @@ namespace chinhlytailieu.Controllers.dangnhap
             string[] name_para = { "@username", "@password" };
             string password = dataAsset.data.encryption(u.Password);
             object[] value_para = new object[]{ u.Username, password };
-            if (data.data.login("dn_login",name_para,value_para))
+            DataTable dt = dataAsset.data.outputdataTable("dn_login", name_para, value_para);
+            if (dt.Rows.Count > 0)
             {
-                //sessionhelper.SetSession(new userSession() { Username = u.Username });
-                Session["username"] = u.Username; 
-                result = "1";
+                bool flag = bool.Parse(dt.Rows[0]["KHOA"].ToString());
+                if (!bool.Parse(dt.Rows[0]["KHOA"].ToString()))
+                {
+                    Session["username"] = u.Username;
+                    result = "1";
+                }
+                else { Session["username"] = u.Username; result = "0"; }
+                
             }
             else { result = "-1"; }
             return Json(result,JsonRequestBehavior.AllowGet);

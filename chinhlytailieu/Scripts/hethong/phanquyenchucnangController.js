@@ -67,15 +67,9 @@
     
     $scope.click_nhom = function (n) {
         $scope.idnhom = n.MANHOM;
-        var t = document.getElementsByClassName('clicknhom');
-        for (var i = 0; i < t.length; i++) {
-            t[i].onclick = function () {
-                for (var i = 0; i < t.length; i++) {
-                    t[i].classList.remove('active_nhom');
-                }
-                this.classList.add('active_nhom')
-            }
-        }
+        
+        $('.clicknhom').removeClass("activePhong");
+        $('#n' + n.MANHOM).addClass("activePhong");
         $scope.disablePhanHe = false;
         $scope.danhsachChucNang = null;
         if ($scope.idPhanHe != null ) {

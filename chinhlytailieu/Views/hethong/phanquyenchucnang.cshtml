@@ -9,10 +9,10 @@
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">{{nhomchucnang}}</a>
+                {{nhomchucnang}}
             </li>
             <li>
-                <a href="#">{{chucnang}}</a>
+                {{chucnang}}
             </li>
         </ul>
     </div>
@@ -28,7 +28,7 @@
                                 <div class="row">
                                     <div class="col-md-3 col-xs-12" style="border-right: 1px solid #eee;">
                                         <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px;padding-left:0;">
-                                            <label>Nhóm người dùng</label>
+                                            <label style="font-size: 16px;">Nhóm người dùng</label>
                                         </div>
                                         <div class="">
                                             <div style="height: 450px; overflow: auto;display: inline-block;width: 100%;">
@@ -40,7 +40,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr style="cursor: pointer;" class="clicknhom" ng-repeat="n in nhomnguoidung" ng-click="click_nhom(n)">
+                                                        <tr style="cursor: pointer;" class="clicknhom" ng-repeat="n in nhomnguoidung" id="n{{n.MANHOM}}" ng-click="click_nhom(n)">
                                                             <td>{{n.MANHOM}}</td>
                                                             <td>{{n.TENNHOM}}</td>
                                                         </tr>
@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="col-md-9 col-xs-12">
                                         <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px; padding-left:0;">
-                                            <label>Mục lục tài liệu</label>
+                                            <label style="font-size: 16px;">Mục lục tài liệu</label>
                                         </div>
 
                                         <div class="row">
@@ -79,7 +79,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr dir-paginate="cn in danhsachChucNang |itemsPerPage:12">
+                                                    <tr dir-paginate="cn in danhsachChucNang |itemsPerPage:11">
                                                         <td>{{cn.Tenchucnang}}</td>
                                                         <td style="text-align: center;">
                                                             <div class="checkbox" style="margin: 0;">
@@ -93,7 +93,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                        <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true"></dir-pagination-controls>
                                     </div>
                                 </div>
                             </div>

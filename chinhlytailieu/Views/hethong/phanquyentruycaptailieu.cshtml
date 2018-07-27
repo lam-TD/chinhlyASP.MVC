@@ -9,10 +9,10 @@
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">{{nhomchucnang}}</a>
+                {{nhomchucnang}}
             </li>
             <li>
-                <a href="#">{{chucnang}}</a>
+                {{chucnang}}
             </li>
           
         </ul>
@@ -28,7 +28,7 @@
                             <div id="simpledatatable_wrapper">
                                 <div class="row">
                                     <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px;">
-                                        <label style="font-size: 18px;margin: 0;">
+                                        <label style="font-size: 16px;margin: 0;">
                                             Phân quyền truy cập tài liệu
                                         </label>
                                     </div>
@@ -47,14 +47,14 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="clicknhom" style="cursor: pointer;" dir-paginate="n in nhomnguoidung |itemsPerPage:12" ng-click="click_nhom(n)">
+                                                        <tr class="clicknhom" style="cursor: pointer;" dir-paginate="n in nhomnguoidung |itemsPerPage:12" id="n{{n.MANHOM}}" ng-click="click_nhom(n)">
                                                             <td>{{n.MANHOM}}</td>
                                                             <td>{{n.TENNHOM}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
-                                            <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                            @*<dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>*@
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
@@ -63,21 +63,23 @@
                                         </div>
 
                                         <div class="row">
-                                            <label class="col-sm-1">Cơ quan:</label>
+                                            @*<label class="col-sm-1">Cơ quan:</label>
                                             <select name="select_coquan" class="col-md-4 col-xs-12" ng-disabled="disableCoQuan">
                                                 <option value="" ng-click="click_phong(d)">--- Chọn cơ quan ---</option>
                                                 @Html.Raw(@Html.Action("ht_qlphongban_LoadCoQuan2", "hethong"))
-                                            </select>
-
-                                            <label class="col-sm-1" style="margin-right: 5px;padding: 8px;">Phông:</label>
-                                            <select name="select_phong" class="col-md-3 col-xs-12" style="width:216px;">
-                                                <option value="">--- Chọn phông ---</option>
-                                                <option value="{{d.ID}}" ng-repeat="d in danhsachPhong" ng-click="click_phong(d)">{{d.TENPHONG}}</option>
-                                            </select>
-
-                                            <button class="btn btn-primary col-md-2" style="margin-left: 5px;" ng-click="ghinhan()">
-                                                <i class="glyphicon glyphicon-copy"></i> Ghi nhận
-                                            </button>
+                                            </select>*@
+                                            <div class="col-md-8">
+                                                <label class="col-sm-2" style="margin-right: 5px;padding: 8px;padding-left:0;">Phông:</label>
+                                                <select name="select_phong" class="col-md-9" ng-change="clickPhong()" ng-model="d.phongid">
+                                                    <option value="">--- Chọn phông ---</option>
+                                                    <option value="{{d.ID}}" ng-repeat="d in danhsachphong">{{d.TENPHONG}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button style="width:100%;" class="btn btn-primary col-md-2" ng-click="ghinhan()">
+                                                    <i class="glyphicon glyphicon-copy"></i> Ghi nhận
+                                                </button>
+                                            </div>
                                         </div>
 
                                         <div style="height: 413px; overflow: auto; width: 100%;">
@@ -92,11 +94,11 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="ds in DSTruyCapTaiLieu">
+                                                    <tr dir-paginate="ds in DSTruyCapTaiLieu |filter:textTimHoSo |itemsPerPage:12">
                                                         <td style="width: 70px; text-align:center">
                                                             <div class="checkbox" style="margin: 0;">
                                                                 <label>
-                                                                    <input type="checkbox" ng-checked="{{ds.XEM}}" class="truycapxem">
+                                                                    <input type="checkbox" class="truycapxem">
                                                                     <span class="text"></span>
                                                                 </label>
                                                             </div>
@@ -104,7 +106,7 @@
                                                         <td style="width: 70px; text-align:center">
                                                             <div class="checkbox" style="margin: 0;">
                                                                 <label>
-                                                                    <input type="checkbox" class="truycapthem" ng-checked="{{ds.THEM}}">
+                                                                    <input type="checkbox" class="truycapthem" id="t{{ds.MAMUCLUC}}">
                                                                     <span class="text"></span>
                                                                 </label>
                                                             </div>
@@ -112,7 +114,7 @@
                                                         <td style="width: 70px; text-align:center">
                                                             <div class="checkbox" style="margin: 0;">
                                                                 <label>
-                                                                    <input type="checkbox" class="truycapsua" ng-checked="{{ds.SUA}}">
+                                                                    <input type="checkbox" class="truycapsua" id="s{{ds.MAMUCLUC}}" checked>
                                                                     <span class="text"></span>
                                                                 </label>
                                                             </div>
@@ -123,7 +125,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        
+                                        <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true"></dir-pagination-controls>
                                     </div>
                                 </div>
                             </div>

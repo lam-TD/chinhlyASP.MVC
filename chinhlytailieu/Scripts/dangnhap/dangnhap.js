@@ -20,6 +20,9 @@
                 })
                 //$window.open('/home/Home', "_self");
             }
+            else if(response.data == "0"){
+                alert("Tài khoản này đã bị khóa");
+            }
             else {
                 alert("Tài khoản hoặc mật khẩu không đúng");
             }

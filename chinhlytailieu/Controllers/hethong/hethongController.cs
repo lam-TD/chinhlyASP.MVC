@@ -548,9 +548,14 @@ namespace chinhlytailieu.Controllers.hethong
         // ====== PHAN QUYEN ======
 
         // PHAN QUYEN TRUY CAP TAI LIEU
+        public string ht_phanquyentruycap_loadquyentheonhom(string manhom)
+        {
+            string[] namepara = { "@MANHOM" };
+            object[] valuepara = { manhom };
+            return dataAsset.data.outputdata("ht_phanquyentruycap_loadquyentheonhom", namepara, valuepara);
+        }
 
 
-        
         // PHAN QUYEN CHUC NANG
         public string ht_phanquyen_loadPhanHe()
         {

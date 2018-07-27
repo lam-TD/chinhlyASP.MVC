@@ -6,7 +6,8 @@
     $scope.currentPage = 1;
     $scope.showBtnSua = true;
 
-    
+    $scope.dsquyentruycap = [];
+    $scope.DSTruyCapTaiLieu = [];
     // load nhom nguoi dung
     $http({
         method: 'GET',
@@ -18,6 +19,46 @@
         console.log("Lỗi không load được nhóm người dùng");
     })
 
+    // load phong tai lieu
+    $http({
+        method: 'GET',
+        url: '/chinhlytailieu/nhapmucluc_loadphong'
+    }).then(function (response) {
+        $scope.danhsachphong = response.data;
+    }, function (response) {
+        //alert('Không tải được danh sách phông');
+    })
+
+    // load danh sach truy cap muc muc theo phong
+    $scope.clickPhong = function () {
+        var maphong = $('select[name=select_phong]').val();
+        if (maphong != "") {
+            $http({
+                method: 'GET',
+                url: '/hethong/ht_phanquyen_loadphongnull?maphong=' + maphong
+            }).then(function (response) {
+                //console.log(response.data);
+                $scope.DSTruyCapTaiLieu = response.data;
+                setTimeout($scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu), 3000);
+                
+            }, function (response) {
+                //alert('Không tải được danh sách mục lục');
+            })
+        }
+    }
+    // load danh sach quyen truy cap theo nhom
+    $scope.truycapnhom = function (manhom) {
+        $http({
+            method: 'GET',
+            url: '/hethong/ht_phanquyentruycap_loadquyentheonhom?manhom=' + manhom
+        }).then(function (response) {
+            console.log(response.data);
+            $scope.dsquyentruycap = response.data;
+        }, function (response) {
+            alert("Lỗi không tải được danh sách truy cập tài liệu");
+        })
+    }
+
     //click modal xac dinh them hay sua
     $scope.modallam = function (state) {
         $scope.state = state;
@@ -27,60 +68,18 @@
         else { $scope.checkSua == false; }
     }
 
-    $scope.save = function (state) {
-        var path = null;
-        var type = null;
-        var status = null;
-        if (state == "add") { path = "../quanlychucvuThemSua/"; type = 1; status = "Thêm thành công!"; }
-        else if (state == "edit") {
-            varIsConf = confirm('Bạn có chắc chắn muốn cập nhật lại thông tin của chức vụ có mã là: ' + $scope.cv.Machucvu + '?');
-            if (varIsConf) {
-                path = "../quanlychucvuThemSua"; type = 2; status = "Cập nhật thành công";
-            }
-        }
-        //console.log(state);
-        if (path != null) {
-            $http({
-                method: 'POST',
-                url: path,
-                data: { type: type, cv: $scope.cv }
-            }).then(function success(response) {
-                if (response.data == "1") {
-                    alert(status);
-                    $http({
-                        method: 'GET',
-                        url: '/hethong/DanhSachChucVu'
-                    }).then(function (response) {
-                        $scope.chucvu = response.data;
-                    }, function (reponse) {
-                        console.log("Lỗi không tải được danh sách chức vụ");
-                    })
-                }
-                else {
-                    console.log("Lỗi không thực hiện được chức năng");
-                }
-            })
-        }
-    }
 
 
     // click chon nhom
     $scope.click_nhom = function (n) {
         var t = document.getElementsByClassName('clicknhom');
-        for (var i = 0; i < t.length; i++) {
-            t[i].onclick = function () {
-                for (var i = 0; i < t.length; i++) {
-                    t[i].classList.remove('active_nhom');
-                }
-                this.classList.add('active_nhom')
-            }
-        }
+        $('.clicknhom').removeClass("activePhong");
+        $('#n' + n.MANHOM).addClass("activePhong");
         $scope.manhom = n.MANHOM; // lay ma nhom
         $scope.disableCoQuan = false;
         //
-        if ($scope.maphong != null && $scope.manhom != null) {
-            $scope.click_phong();
-        }
+        $scope.truycapnhom($scope.manhom);
+        $scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu);
     }
 
     // click danh sach phong
@@ -88,67 +87,37 @@
 
     // load phong khi chon co quan
     $(document).ready(function () {
-        $('select[name=select_coquan]').change(function () {
-            if ($scope.manhom == null) {
-                alert("Vui lòng chọn nhóm người dùng");
-                $scope.disableCoQuan = true;
-            }
-            else {
-                var idcoquan = $('select[name=select_coquan]').val();
-                $http({
-                    method: 'POST',
-                    url: '/hethong/ht_phanquyen_loadPhongTheoCoquan',
-                    data: { macoquan: idcoquan }
-                }).then(function (response) {
-                    $scope.danhsachPhong = response.data;
-                }, function (response) {
-                    alert("Lỗi không tải được danh sách phông");
-                })
-            }
-        })
+        //$('select[name=select_coquan]').change(function () {
+        //    if ($scope.manhom == null) {
+        //        alert("Vui lòng chọn nhóm người dùng");
+        //        $scope.disableCoQuan = true;
+        //    }
+        //    else {
+        //        var idcoquan = $('select[name=select_coquan]').val();
+        //        $http({
+        //            method: 'POST',
+        //            url: '/hethong/ht_phanquyen_loadPhongTheoCoquan',
+        //            data: { macoquan: idcoquan }
+        //        }).then(function (response) {
+        //            $scope.danhsachPhong = response.data;
+        //        }, function (response) {
+        //            alert("Lỗi không tải được danh sách phông");
+        //        })
+        //    }
+        //})
 
-        $('select[name=select_phong]').change(function () {
-            $scope.maphong = $('select[name=select_phong]').val();
-            if ($scope.maphong == null) {
-                $scope.DSTruyCapTaiLieu = null;
-            }
-            else {
-                $scope.click_phong();
-            }
-        })
+        //$('select[name=select_phong]').change(function () {
+        //    $scope.maphong = $('select[name=select_phong]').val();
+        //    if ($scope.maphong == null) {
+        //        $scope.DSTruyCapTaiLieu = null;
+        //    }
+        //    else {
+        //        $scope.click_phong();
+        //    }
+        //})
     })
 
-    // load danh sach quyen truy cap khi chon phong
-    $scope.click_phong = function () {
-        $http({
-            method: 'POST',
-            url: '/hethong/ht_phanquyen_loadPhong',
-            data: { maphong: $scope.maphong, manhom: $scope.manhom }
-        }).then(function (response) {
-            var lam = response.data;
-            //console.log(lam.length);
-            if (lam.length == 0) {
-                $http({
-                    method: 'POST',
-                    url: '/hethong/ht_phanquyen_loadphongnull',
-                    data: { maphong: $scope.maphong }
-                }).then(function (response2) {
-                    $scope.DSTruyCapTaiLieu = response2.data;
-                    $scope.DSTruyCapTaiLieu.XEM = false;
-                    $scope.DSTruyCapTaiLieu.THEM = false;
-                    $scope.DSTruyCapTaiLieu.SUA = false;
-                }, function (response2) {
-                    alert("Lỗi không tải được danh sách truy cập tài liệu null");
-                })
-            }
-            else {
-
-                $scope.DSTruyCapTaiLieu = response.data;
-            }
-        }, function (response) {
-            alert("Lỗi không tải được danh sách truy cập tài liệu");
-        })
-    }
+    
 
 
     $scope.ghinhan = function () {
@@ -176,6 +145,47 @@
                 alert("Ghi nhận thành công");
             } else { alert("Ghi nhận thất bại"); }
         })
+    }
+
+    $scope.hienthiquyen = function (arr1, arr2) {
+        if (arr1.length > 0 && arr2.length > 0) {
+            $('#x' + 5).prop('checked', true);
+            //document.getElementById("x5").checked = true;
+            var arrSeen = document.getElementsByClassName("truycapxem");
+            console.log(arrSeen);
+            for (var i = 0; i < arrSeen.length; i++) {
+                //console.log(arrSeen[i]);
+                arrSeen[0].checked = true;
+            }
+            //var arrInsert = document.getElementsByClassName("truycapthem");
+            //console.log(arrInsert);
+            //var arrEdit = document.getElementsByClassName("truycapsua");
+            //if (arr1.length == arr2.length) {
+            //    for (var i = 0; i < arr2.length; i++) {
+            //        $('#x' + arr1[i].MAMUCLUC).prop('checked', arr2[i].THEM);
+            //        arrInsert[i].checked = arr2[i].THEM;
+            //        arrEdit[i].checked   = arr2[i].SUA;
+            //    }
+            //}
+            //else {
+            //    // tim kiem noi suy
+            //    for (var i = 0; i < arr1.length; i++) {
+            //        for (var j = 0; j < arr2.length; j++) {
+            //            if (arr1[i].MAMUCLUC == arr2[j].MAMUCLUC) {
+            //                //for (var k = 0; k < arrSeen.length; k++) {
+                            
+            //                //}
+            //                //$('#x' + arr2[j].MAMUCLUC).attr("checked", "checked");
+            //                console.log($('input#x1.truycapxem').val());
+            //                console.log(document.getElementById("x5" + arr2[j].MAMUCLUC));
+            //                console.log("dsadd");
+            //                console.log(arrSeen[j]);
+            //            }
+            //        }
+            //    }
+                
+            //}
+        }
     }
 
 })
