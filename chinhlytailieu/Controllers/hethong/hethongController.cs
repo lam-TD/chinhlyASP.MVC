@@ -718,21 +718,31 @@ namespace chinhlytailieu.Controllers.hethong
             else { return false; }
         }
 
-        public JsonResult ht_phanquyen_GhiNhan(truycaptailieu tc)
+        [HttpPost]
+        public JsonResult ht_phanquyen_GhiNhan(truycaptailieu tc, int[] xem, int[] sua, int[] them, string[] mamucluc)
         {
-            string result = null;
-            string[] namepara = { "@MANHOM", "@PHONGID", "@MAMUCLUC", "@XEM", "@SUA", "@THEM" };
-            object[] valuepara = { tc.Manhom, tc.Phongid, tc.Mamucluc, tc.Xem, tc.Them, tc.Sua };
-            if (ht_phanquyen_checkTontaiQuyenTruyCap(tc))
+            int result = -1;
+            if (xem.Length == sua.Length && sua.Length == mamucluc.Length)
             {
-                if (dataAsset.data.inputdata("ht_phanquyen_GhiNhanTruyCapTLUpDate", namepara, valuepara)) { result = "1"; }
-                else { result = "-1"; }
+                string[] namepara = { "@MANHOM", "@PHONGID", "@MAMUCLUC", "@XEM", "@SUA", "@THEM" };
+                for (int i = 0; i < xem.Length; i++)
+                {
+                    object[] valuepara = { tc.Manhom, tc.Phongid, mamucluc[i], xem[i], sua[i], them[i] };
+                    if (ht_phanquyen_checkTontaiQuyenTruyCap(tc))
+                    {
+                        if (dataAsset.data.inputdata("ht_phanquyen_GhiNhanTruyCapTLUpDate", namepara, valuepara)) { result = 1; }
+                        else { result = -1; }
+                    }
+                    else
+                    {
+                        if (dataAsset.data.inputdata("ht_phanquyen_GhiNhanTruyCapTL", namepara, valuepara)) { result = 1; }
+                        else { result = -1; }
+                    }
+
+                }
             }
-            else
-            {
-                if (dataAsset.data.inputdata("ht_phanquyen_GhiNhanTruyCapTL", namepara, valuepara)) { result = "1"; }
-                else { result = "-1"; }
-            }
+            else { result = -1; }
+            
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

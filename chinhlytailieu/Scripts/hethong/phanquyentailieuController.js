@@ -40,7 +40,7 @@
                 //console.log(response.data);
                 $scope.DSTruyCapTaiLieu = response.data;
                 
-                $scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu)
+                $scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu);
             }, function (response) {
                 //alert('Không tải được danh sách mục lục');
             })
@@ -120,44 +120,73 @@
 
 
     $scope.ghinhan = function () {
-        var Mamucluc = $scope.DSTruyCapTaiLieu[0].MAMUCLUC;
-        console.log(Mamucluc);
+        $scope.truycap = { MANHOM: $scope.manhom, PHONGID: $('select[name=select_phong]').val() };
+
         var xem = document.getElementsByClassName('truycapxem');
         var them = document.getElementsByClassName('truycapthem');
         var sua = document.getElementsByClassName('truycapsua');
 
-        $scope.truycap = {
-            MANHOM: $scope.manhom,
-            PHONGID: $scope.maphong,
-            MAMUCLUC: Mamucluc,
-            XEM: xem[0].checked,
-            THEM: them[0].checked,
-            SUA: sua[0].checked
+        var arrxem = [];
+        for (var i = 0; i < xem.length; i++) {
+            (xem[i].checked) ? flag = 1 : flag = 0;
+            arrxem.push(flag);
         }
 
+        var arrthem = [];
+        for (var i = 0; i < them.length; i++) {
+            (them[i].checked) ? flag = 1 : flag = 0;
+            arrthem.push(flag);
+        }
+
+        var arrsua = [];
+        for (var i = 0; i < sua.length; i++) {
+            (sua[i].checked) ? flag = 1 : flag = 0;
+            arrsua.push(flag);
+        }
+
+        var arrmucluc = [];
+        for (var i = 0; i < $scope.DSTruyCapTaiLieu.length; i++) {
+            arrmucluc[i] = $scope.DSTruyCapTaiLieu[i].MAMUCLUC
+        }
+
+        var arrtruycap = {
+            xem: arrxem,
+            them: arrthem,
+            sua: arrsua,
+            mucluc: arrmucluc
+        }
+        //console.log(arrtruycap);
+        
         $http({
             method: 'POST',
             url: '/hethong/ht_phanquyen_GhiNhan',
-            data: { tc: $scope.truycap }
+            data: {
+                tc  : $scope.truycap,
+                xem : arrxem,
+                them: arrthem,
+                sua : arrsua,
+                mamucluc: arrmucluc
+            }
         }).then(function(response){
             if (response.data == "1") {
                 alert("Ghi nhận thành công");
             } else { alert("Ghi nhận thất bại"); }
-        })
+            $scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu);
+        }, function () { alert("Lỗi không thực hiện được chức năng"); })
     }
 
     $scope.hienthiquyen = function (arr1, arr2) {
-        console.log(arr1);
+        //console.log(arr1);
         if (arr1.length > 0 && arr2.length > 0)
         {
-            //$('#x' + 5).prop('checked', true);
             if (arr1.length == arr2.length)
             {
                 for (var i = 0; i < arr2.length; i++)
                 {
-                    $('#x' + arr1[i].MAMUCLUC).prop('checked', arr2[i].THEM);
-                    arrInsert[i].checked = arr2[i].THEM;
-                    arrEdit[i].checked = arr2[i].SUA;
+                    m = arr1[i].MAMUCLUC;
+                    $('#x' + m).prop('checked', arr1[i].XEM);
+                    $('#t' + m).prop('checked', arr1[i].THEM);;
+                    $('#s' + m).prop('checked', arr1[i].SUA);
                 }
             }
             else {
@@ -169,18 +198,25 @@
                             //arrSeen[j].checked = arr1[i].XEM;
                             m = arr1[i].MAMUCLUC;
                             $('#x' + m).prop('checked', arr1[i].XEM);
+                            $('#x' + m).val(1);
+
                             $('#t' + m).prop('checked', arr1[i].THEM);
+                            $('#t' + m).val(1);
+
                             $('#s' + m).prop('checked', arr1[i].SUA);
+                            $('#t' + m).val(1);
                         }
                         else {
                             m = arr2[j].MAMUCLUC
                             $('#x' + m).prop('checked', false);
+                            $('#x' + m).val(0);
                             $('#t' + m).prop('checked', false);
+                            $('#t' + m).val(0);
                             $('#s' + m).prop('checked', false);
+                            $('#t' + m).val(0);
                         }
                     }
                 }
-
             }
         }
         else if(arr1.length == 0 && arr2.length > 0)
