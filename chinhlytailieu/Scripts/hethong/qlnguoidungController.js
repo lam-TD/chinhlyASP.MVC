@@ -47,6 +47,7 @@
     $scope.checkPhong = function (u) {
         $('.clickPhong').removeClass("activePhong")
         $('#p' + u.MAPHONG).addClass("activePhong");
+        $scope.maphong = u.MAPHONG;
         
         $http({
             method: 'POST',
@@ -84,6 +85,15 @@
             }).then(function (response) {
                 if (response.data == 1) {
                     alert(notication);
+                    id = 
+                    $http({
+                        method: 'POST',
+                        url: '/hethong/LoadNguoiDungTheoBoPhan',
+                        data: { id: $scope.maphong }
+                    }).then(function success(respone) {
+                        $scope.userList = respone.data; //load table nguoi dung
+                        $scope.btnThem = false; // hien thi btnThem
+                    });
                 } else { alert('Lỗi không thục hiện được'); }
 
             }, function () {
@@ -218,8 +228,18 @@
    
     $scope.clickDanhSach = function (u) {
         //var t = document.getElementsByClassName('clickdanhsachTK');
+        //console.log(u);
         $('.clickdanhsachTK').removeClass("activePhong");
-        $('#' + u.USERNAME).addClass("activePhong");
+        $('#' + u.ID).addClass("activePhong");
+        if (u.KHOA == true) {
+            $('#btnkhoa').removeClass("btn-danger");
+            $('#btnkhoa').addClass("btn-info");
+            $('#btnkhoa').html('<i class="fa fa-unlock" aria-hidden="true"></i> Mở khóa');
+        } else {
+            $('#btnkhoa').removeClass("btn-info");
+            $('#btnkhoa').addClass("btn-danger");
+            $('#btnkhoa').html('<i class="fa fa-lock" aria-hidden="true"></i>Khóa');
+        }
         $scope.btnSua = false;
         var nd = {
             chucvu: u.CHUCVU,
@@ -247,23 +267,63 @@
         var pass = $scope.dmk.password;
         var xacnhanpass = $scope.dmk.xacnhanmk;
         var username = $scope.dmk.username;
-        if (pass == xacnhanpass) {
-            var confi = confirm('Bạn có chắc chắn muốn đổi mật khẩu?');
-            if (confi) {
-                $http({
-                    method: 'POST',
-                    url: '/hethong/ht_quanlynguoidung_DoiMK',
-                    data: { username: username, pass}
-                }).then(function (response) {
-                    if (response.data == 1) {
-                        alert('Cập nhật mật khẩu thành công');
-                    }
-                    else { alert('Lỗi không cập nhật được mật khẩu'); }
-                })
+        if (pass.length >=6 && pass.length <=20) {
+            if (pass == xacnhanpass) {
+                var confi = confirm('Bạn có chắc chắn muốn đổi mật khẩu?');
+                if (confi) {
+                    $http({
+                        method: 'POST',
+                        url: '/hethong/ht_quanlynguoidung_DoiMK',
+                        data: { username: username, pass}
+                        }).then(function (response) {
+                        if (response.data == 1) {
+                            alert('Cập nhật mật khẩu thành công');
+                            $('#myModaldoimatkhau').modal("hide");
+                        }
+                        else { alert('Lỗi không cập nhật được mật khẩu'); }
+                        })
+                }
+            }
+            else {
+                alert("Mật khẩu không trùng khớp");
             }
         }
         else {
-            alert("Mật khẩu không trùng khớp");
+            alert("Mật khẩu phải có độ dài từ 6 - 20 ký tự");
+        }
+    }
+
+    $('input[name=txtmoi]').keyup(function () {
+        var mkmoi = $('input[name=txtmoi]').val();
+        var regex = /^([a-zA-Z0-9]){6,20}$/;
+
+        if (regex.test(mkmoi)) {
+            $('#err_mkmoi').addClass("hidden-span");
+        }
+        else {
+            $('#err_mkmoi').removeClass("hidden-span");
+            $('#btncapnhatmatkhau').attr("disabled", "disabled");
+        }
+
+        if (mkmoi == $('#txtmkcu').val()) {
+            $('#err_mkmoicu').removeClass("hidden-span");
+        }
+        else {
+            $('#err_mkmoicu').addClass("hidden-span");
+        }
+
+    })
+
+    $scope.checkmk = function () {
+        console.log($scope.dmk.password);
+        var mkmoi = $scope.dmk.password;
+        var regex = /^([a-zA-Z0-9]){6,20}$/;
+        if (regex.test(mkmoi)) {
+            $('#err_mkmoi').addClass("hidden-span");
+        }
+        else {
+            $('#err_mkmoi').removeClass("hidden-span");
+            $('#btncapnhatmatkhau').attr("disabled", "disabled");
         }
     }
 })

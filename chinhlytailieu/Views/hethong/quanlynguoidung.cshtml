@@ -166,7 +166,7 @@
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-disabled="btnSua" ng-click="modal('edit')">
                                                 <i class="fa fa-pencil-square-o"></i>Sửa
                                             </button>
-                                            <button type="button" class="btn btn-info" ng-disabled="btnSua" ng-click="kichhoat()">
+                                            <button id="btnkhoa" type="button" class="btn btn-info" ng-disabled="btnSua" ng-click="kichhoat()">
                                                 <i class="fa fa-lock"></i>Khóa
                                             </button>
 
@@ -204,8 +204,9 @@
                                                                     <div class="form-group col-md-12">
                                                                         <label for="" class="col-sm-3 control-label no-padding-right">Mật khẩu(*)</label>
                                                                         <div class="col-sm-9">
-                                                                            <input type="password" name="password" class="form-control" placeholder="Mật khẩu" ng-model="dmk.password" ng-required="true">
-                                                                            <span style="color:red;" ng-show="formDoimk.password.$touched && formDoimk.password.$invalid">Tên không được để trống</span>
+                                                                            <input type="password" name="password" class="form-control" placeholder="Mật khẩu" ng-model="dmk.password" ng-required="true" ng-change="checkmk()">
+                                                                            <span style="color:red;" ng-show="formDoimk.password.$touched && formDoimk.password.$invalid">Mật khẩu phải có độ dài 6-20 ký tự</span>
+                                                                            <span class="hidden-span" style="color:red;" id="err_mkmoi">Mật khẩu phải có độ dài từ 6 - 20 ký tự, không chức ký tự đặc biệt</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group col-md-12">
@@ -218,7 +219,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModaldoimatkhau" ng-disabled="formDoimk.$invalid" ng-click="doi_matkhau()">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" ng-disabled="formDoimk.$invalid" ng-click="doi_matkhau()">
                                                                     <i class="fa fa-save"></i>Ghi nhận
                                                                 </button>
 
@@ -229,7 +230,8 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                            </div><!-- end Modal doi mat khau -->
+                                            </div>
+                                            <!-- end Modal doi mat khau -->
                                         </div>
                                         <div class="" style="height: 400px; overflow: auto;">
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
@@ -242,7 +244,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="clickdanhsachTK" dir-paginate="u in userList | filter:txtsearchNguoidung |itemsPerPage:12" id="{{u.USERNAME}}" ng-click="clickDanhSach(u)" style="cursor: pointer;">
+                                                    <tr class="clickdanhsachTK" dir-paginate="u in userList | filter:txtsearchNguoidung |itemsPerPage:12" id="{{u.ID}}" ng-click="clickDanhSach(u)" style="cursor: pointer;">
                                                         <td>{{u.hoten}}</td>
                                                         <td>{{u.USERNAME}}</td>
                                                         <td>{{u.TENCHUCVU}}</td>

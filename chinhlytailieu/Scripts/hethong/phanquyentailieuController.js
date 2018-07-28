@@ -171,7 +171,7 @@
             if (response.data == "1") {
                 alert("Ghi nhận thành công");
             } else { alert("Ghi nhận thất bại"); }
-            $scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu);
+            //$scope.hienthiquyen($scope.dsquyentruycap, $scope.DSTruyCapTaiLieu);
         }, function () { alert("Lỗi không thực hiện được chức năng"); })
     }
 
@@ -198,22 +198,14 @@
                             //arrSeen[j].checked = arr1[i].XEM;
                             m = arr1[i].MAMUCLUC;
                             $('#x' + m).prop('checked', arr1[i].XEM);
-                            $('#x' + m).val(1);
-
                             $('#t' + m).prop('checked', arr1[i].THEM);
-                            $('#t' + m).val(1);
-
                             $('#s' + m).prop('checked', arr1[i].SUA);
-                            $('#t' + m).val(1);
                         }
                         else {
                             m = arr2[j].MAMUCLUC
                             $('#x' + m).prop('checked', false);
-                            $('#x' + m).val(0);
                             $('#t' + m).prop('checked', false);
-                            $('#t' + m).val(0);
                             $('#s' + m).prop('checked', false);
-                            $('#t' + m).val(0);
                         }
                     }
                 }
