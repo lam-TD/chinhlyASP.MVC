@@ -4,7 +4,9 @@ using chinhlytailieu.Models.pro;
 using chinhlytailieu.Models.users;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -832,7 +834,145 @@ namespace chinhlytailieu.Controllers.hethong
             return dataAsset.data.outputdata("thqt_LoadQuyTrinh", namepara, valuepara);
         }
 
+        public DataTable datatable(string query)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
 
-        
+            SqlCommand command;
+            SqlDataAdapter da;
+
+            command = new SqlCommand(query, con);
+            da = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            //System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            //List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+            //Dictionary<string, object> row;
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    row = new Dictionary<string, object>();
+            //    foreach (DataColumn col in dt.Columns)
+            //    {
+            //        row.Add(col.ColumnName, dr[col]);
+            //    }
+            //    rows.Add(row);
+            //}
+            //return serializer.Serialize(rows);
+            return dt;
+        }
+
+        public string chinhsua()
+        {
+            DataTable dt = datatable("SELECT * FROM arc.tbVanban");
+            //return dt;
+            string text = "";
+            string soto = "";
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                soto = dt.Rows[i]["TOSO"].ToString();
+                int idvanban = int.Parse(dt.Rows[i]["ID"].ToString());
+                string[] lam;
+                lam = soto.Split('-');
+                if (lam.Length > 1)
+                {
+                    string t1 = xulychuoi(lam[0]);
+                    string t2 = xulychuoi(lam[1]);
+                    string cuoi = t1 + "-" + t2;
+                    capnhat_vanban(cuoi, idvanban);
+                }
+                else
+                {
+                    int n;
+                    if (int.TryParse(soto.Trim(), out n) && n < 10)
+                    {
+                        text = "0" + n;
+                        capnhat_vanban(text, idvanban);
+                    }
+                    else
+                    {
+                        capnhat_vanban(soto.Trim(), idvanban);
+                    }
+                    
+                }
+                
+                //lam[1] = lam[1].Trim();
+            }
+            //return "1";
+            return "OK DEP TRAI DAY";
+        }
+
+        public string xulychuoi(string text)
+        {
+            text = text.Trim();
+            int n;
+            if (int.TryParse(text, out n) && n < 10)
+            {
+                text = "0" + n;
+            }
+            else
+            {
+                switch (text.ToLower())
+                {
+                    case "jan":
+                        text = "01";
+                        break;
+                    case "feb":
+                        text = "02";
+                        break;
+                    case "mar":
+                        text = "03";
+                        break;
+                    case "apr":
+                        text = "04";
+                        break;
+                    case "may":
+                        text = "05";
+                        break;
+                    case "jun":
+                        text = "06";
+                        break;
+                    case "jul":
+                        text = "07";
+                        break;
+                    case "aug":
+                        text = "08";
+                        break;
+                    case "sep":
+                        text = "09";
+                        break;
+                    case "oct":
+                        text = "10";
+                        break;
+                    case "nov":
+                        text = "11";
+                        break;
+                    case "dec":
+                        text = "12";
+                        break;
+
+                }
+            }
+            return text;
+        }
+
+
+        public bool capnhat_vanban(string toso, int id)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+            con.Open();
+            string query = "UPDATE arc.tbVanban SET TOSO = '"+ toso +"' WHERE ID =" + id;
+            SqlCommand command;
+            command = new SqlCommand(query, con);
+            if (command.ExecuteNonQuery() == 1) {
+                con.Close();
+                return true;
+            }
+            else
+            {
+                con.Close();
+                return false;
+            }
+
+        }
     }
 }

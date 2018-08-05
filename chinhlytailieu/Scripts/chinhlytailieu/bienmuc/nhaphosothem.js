@@ -94,8 +94,8 @@
             alert("Vui lòng chọn mục lục");
         }
         else {
-            
-            if ($rootScope.idhosoCha > 0) {
+            if (confirm("Bạn có chắc chắn muốn cập nhật lại hồ sơ")) {
+                if ($rootScope.idhosoCha > 0) {
                 phongid = $('select[name=selectphong]').val();
                 muclucid = $('select[name=selectmucluc]').val();
                 mahop = $('select[name=selecthop]').val();
@@ -116,7 +116,7 @@
                     hopid = $('#h' + $scope.h.mahop).attr("data-mahop");
                     mangmahop = [$scope.hopmaCha, $scope.hopidCha, $scope.muclucidCha, mahop, hopid ];
                     
-                    alert("Cập nhật thông tin và cập nhật slhop");
+                    //alert("Cập nhật thông tin và cập nhật slhop");
                 }
                 
                 var hopcapnhat = [phongid, muclucid];
@@ -172,7 +172,9 @@
                 }, function (response) {
                     alert('Lỗi không kiểm tra được mã hồ sơ');
                 })
-            }   
+            }  
+            }
+             
         }
     }
 
