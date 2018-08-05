@@ -6,8 +6,8 @@ app.config(function ($routeProvider) {
         templateUrl: '../phanheQLthuthapTL',
         controller: 'phanheQLthuthapTLController'
     })
-    .when('/lapkehoachchinhly', {
-        templateUrl: '../lapkehoachchinhly',
+    .when('/danhsachphong', {
+        templateUrl: '../danhsachphong',
         controller: ''
     })
     .when('/taomucluc', {
@@ -48,6 +48,22 @@ app.config(function ($routeProvider) {
     })
     .when('/giaotailieuvaokho', {
         templateUrl: '../giaotailieuvaokho',
+        controller: ''
+    })
+    .when('/timkiemhoso', {
+        templateUrl: '../timkiemhoso',
+        controller: ''
+    })
+    .when('/timkiemvanban', {
+        templateUrl: '../timkiemvanban',
+        controller: ''
+    })
+    .when('/timkiemhosonangcao', {
+        templateUrl: '../timkiemhosonangcao',
+        controller: ''
+    })
+    .when('/timkiemvanbannangcao', {
+        templateUrl: '../timkiemvanbannangcao',
         controller: ''
     })
 })

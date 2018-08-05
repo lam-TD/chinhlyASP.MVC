@@ -106,6 +106,31 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return View();
         }
 
+        public ActionResult danhsachphong()
+        {
+            return View();
+        }
+
+        public ActionResult timkiemhoso()
+        {
+            return View();
+        }
+
+        public ActionResult timkiemvanban()
+        {
+            return View();
+        }
+
+        public ActionResult timkiemhosonangcao()
+        {
+            return View();
+        }
+
+        public ActionResult timkiemvanbannangcao()
+        {
+            return View();
+        }
+
 
         //================ lap ke hoach chinh ly =================
         public string lapkehoachchinhly_load()

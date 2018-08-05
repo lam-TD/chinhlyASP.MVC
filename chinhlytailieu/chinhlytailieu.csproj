@@ -763,6 +763,11 @@
     <Content Include="Scripts\chinhlytailieu\bienmuc\nhaphoso.js" />
     <Content Include="Scripts\chinhlytailieu\bienmuc\nhapvanban.js" />
     <Content Include="Scripts\chinhlytailieu\bienmuc\taomuclucController.js" />
+    <Content Include="Scripts\chinhlytailieu\phongtailieu\phongtailieu.js" />
+    <Content Include="Scripts\chinhlytailieu\timkiem\timkiemhoso.js" />
+    <Content Include="Scripts\chinhlytailieu\timkiem\timkiemhosonangcao.js" />
+    <Content Include="Scripts\chinhlytailieu\timkiem\timkiemvanban.js" />
+    <Content Include="Scripts\chinhlytailieu\timkiem\timkiemvanbannangcao.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\cosodulieu\appcosodulieu.js" />
     <Content Include="Scripts\cosodulieu\phanheTLbienmuc\phanheTLbienmuc.js" />
@@ -963,6 +968,11 @@
     <Content Include="Views\error\ERRO_502.cshtml" />
     <Content Include="Views\hethong\phongcon.cshtml" />
     <None Include="Properties\PublishProfiles\chinhly.pubxml" />
+    <Content Include="Views\chinhlytailieu\danhsachphong.cshtml" />
+    <Content Include="Views\chinhlytailieu\timkiemhoso.cshtml" />
+    <Content Include="Views\chinhlytailieu\timkiemvanban.cshtml" />
+    <Content Include="Views\chinhlytailieu\timkiemhosonangcao.cshtml" />
+    <Content Include="Views\chinhlytailieu\timkiemvanbannangcao.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
