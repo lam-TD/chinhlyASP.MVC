@@ -749,5 +749,13 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        //========================= TIM KIEM =====================
+        public string chinhly_timkiemhoso(string keyword)
+        {
+            string k = keyword.Trim();
+            string[] namepara = { "@keyword" };
+            object[] valuepara = { k };
+            return dataAsset.data.outputdata("chinhly_timkiemhoso", namepara, valuepara);
+        }
     }
 }
