@@ -752,10 +752,40 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         //========================= TIM KIEM =====================
         public string chinhly_timkiemhoso(string keyword)
         {
-            string k = keyword.Trim();
+            Session["keyword"] = keyword.Trim();
             string[] namepara = { "@keyword" };
-            object[] valuepara = { k };
+            object[] valuepara = { keyword.Trim() };
             return dataAsset.data.outputdata("chinhly_timkiemhoso", namepara, valuepara);
+        }
+
+        public void session_keyword(string keyword) {
+            Session["keyword"] = keyword.Trim();
+        }
+        public string get_sesion_keyword()
+        {
+            if (Session["keyword"] == null)
+                return null;
+            else
+                return Session["keyword"].ToString();
+        }
+
+        public string chinhly_timkiemhosonangcao(int phongid, string loaitl, string mahoso, string tenhoso)
+        {
+            if (phongid > 0)
+            {
+                string[] namepara = { "@PHONGID", "@LOAITL", "@MAHOSO", "@TIEUDE" };
+                object[] valuepara = { phongid, loaitl, mahoso, tenhoso };
+                return dataAsset.data.outputdata("chinhly_timkiemhoso_nangcao", namepara, valuepara);
+            }
+            else { return "-1"; }
+        }
+
+        public string chinhly_timkiemvanban(string keyword)
+        {
+            Session["keyword"] = keyword.Trim();
+            string[] namepara = { "@keyword" };
+            object[] valuepara = { keyword.Trim() };
+            return dataAsset.data.outputdata("chinhly_timkiemvanban", namepara, valuepara);
         }
     }
 }

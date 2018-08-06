@@ -14,6 +14,13 @@
         height:18px;
         margin-bottom: 0;
     }
+    .chitiethoso{
+        font-weight: bold;
+        text-align: justify;
+    }
+    .row-chitiet{
+        border-bottom: 1px solid #ddd;
+    }
 </style>
 
 <div class="page-content" ng-controller="timkiemhosoController">
@@ -54,11 +61,11 @@
                                                             <i class="fa fa-caret-down"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-right">
-                                                            <li><a href="#">Tìm kiếm nâng cao</a></li>
-                                                            <li><a href="#">Tìm kiếm hồ sơ</a></li>
-                                                            <li><a href="#">Tìm kiếm toàn văn</a></li>
-                                                            <li role="separator" class="divider"></li>
-                                                            <li><a href="#">Lưu tìm kiếm</a></li>
+                                                            <li><a href="" ng-click="timkiem_click('1')">Tìm kiếm hồ sơ nâng cao</a></li>
+                                                            <li><a href="" ng-click="timkiem_click('2')">Tìm kiếm văn bản</a></li>
+                                                            <li><a href="" ng-click="timkiem_click('3')">Tìm kiếm văn bản nâng cao</a></li>
+                                                            @*<li role="separator" class="divider"></li>
+                                                            <li><a href="#">Lưu tìm kiếm</a></li>*@
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -69,6 +76,7 @@
                                             <div class="col-md-12" style="overflow: auto; min-height: 500px;">
                                                 <div class="col-md-10" style="border-right: 1px dotted #ddd;">
                                                     <ul style="list-style: none; padding: 0; min-height: 430px;">
+                                                        @*<li>Không tìm thấy</li>*@
                                                         <li style="border-bottom: 1px dotted #ddd;" dir-paginate="n in danhsachketqua |itemsPerPage:10">
                                                             <span class="pull-left" style="min-height:100px;margin-right: 10px;">
                                                                 <i class="fa fa-folder-open" style="font-size: 50px;"></i>
@@ -79,14 +87,14 @@
                                                             </div>
                                                             
                                                             <div class="text">
-                                                                <a href="" style="display:inline-block" data-toggle="modal" data-target="#myModal">
+                                                                <a href="" style="display:inline-block" data-toggle="modal" data-target="#myModal" ng-click="xemchitiet(n)">
                                                                     <h4 class="tenhoso" id="tenhs" style="font-weight:600 !important">{{n.TENHOSO}}</h4>
                                                                 </a>
                                                                 @*<span style="font-size:14px;display:inline-block">{{ (doimauchu(n.TENHOSO,keyword)) }}</span>*@
                                                                 <p>
                                                                     Mục lục: <span id="mucluc">{{ n.MAMUCLUC }}</span>
                                                                     | Hộp số: <span id="hopso">{{ n.MAHOP }}</span>
-                                                                    | Hồ sơ số: <span id="hososo">{{ n.MAHOP }}</span>
+                                                                    | Hồ sơ số: <span id="hososo">{{ n.MAHOSO }}</span>
                                                                     <br>
                                                                     Thời gian: <span>{{n.THOIGIANS}} đến {{n.THOIGIANE}}</span>
                                                                     <br>
@@ -99,7 +107,7 @@
                                                     <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true"></dir-pagination-controls>
                                                     <!-- Modal thong tin ho so -->
                                                     <div class="modal fade" id="myModal" role="dialog">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-dialog modal-lg">
                                                             <!-- Modal content-->
                                                             <div class="modal-content">
                                                                 <form action="" name="formMucLuc">
@@ -107,65 +115,86 @@
                                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                         <h4 class="modal-title">Thông tin hồ sơ</h4>
                                                                     </div>
-                                                                    <div class="modal-body" style="min-height: 290px;">
+                                                                    <div class="modal-body" style="min-height: 373px;display:inline-block;">
                                                                         <div class="collapse in">
-                                                                            <div class="form-group col-md-12">
-                                                                                <div class="col-sm-3 col-xs-12">
-                                                                                    <label for="" class="control-label pull-right">Phông</label>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Hồ sơ số: </label>
                                                                                 </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <select name="selectphong" id="selectBox" class="col-sm-12 col-xs-12" ng-disabled="disablePhong">
-                                                                                        <option class="tuychon" id="chon" value="">--Chọn phông--</option>
-                                                                                        <option class="opphong" ng-repeat="n in danhsachphong" value="{{n.ID}}" id="{{n.ID}}">{{n.TENPHONG}}</option>
-                                                                                    </select>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{mahoso}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Tiêu đề HS: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{tenhoso}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Loại tài liệu: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{loaitl}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Thời gian: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{thoigians}} đến {{thoigiane}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Phông: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{phong}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Mục lục: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{mamucluc}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Hộp số: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{mahop}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Năm lập: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{namlap}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Ghi chú: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{ghichu}}</label>
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="form-group col-md-12">
-                                                                                <div class="col-sm-3 col-xs-12">
-                                                                                    <label for="" class="control-label pull-right">Mã mục lục(*)</label>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <input type="number" name="txtmamucluc" class="form-control" placeholder="Mã mục lục" ng-model="ml.mamucluc" ng-required="true" ng-disabled="disable_inputMamucluc">
-                                                                                    <input type="hidden" value="{{ml.mamucluc}}" id="txtidmuclucCu" />
-                                                                                    <span style="color:red;" ng-show="formMucLuc.txtmamucluc.$touched && formMucLuc.txtmamucluc.$invalid">Mã mục lục không được để trống</span>
-                                                                                </div>
-                                                                            </div>
 
-                                                                            <div class="form-group col-md-12">
-                                                                                <div class="col-sm-3 col-xs-12">
-                                                                                    <label for="" class="control-label pull-right">Tên mục lục(*)</label>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <input type="text" class="form-control" placeholder="Tên mục lục" name="txttenmucluc" ng-required="true" ng-model="ml.tenmucluc">
-                                                                                    <span style="color:red;" ng-show="formMucLuc.txttenmucluc.$touched && formMucLuc.txttenmucluc.$invalid">Tên mục lục không được để trống</span>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="form-group col-md-12">
-                                                                                <div class="col-sm-3 col-xs-12">
-                                                                                    <label for="" class="control-label pull-right">Mô tả</label>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <textarea class="col-md-12 col-xs-12" placeholder="Mô tả" ng-model="ml.mota"></textarea>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="form-group col-md-12">
-                                                                                <div class="col-sm-3 col-xs-12">
-                                                                                    <label for="" class="control-label pull-right">Ghi chú</label>
-                                                                                </div>
-                                                                                <div class="col-sm-9">
-                                                                                    <textarea class="col-md-12 col-xs-12" placeholder="Ghi chú" ng-model="ml.ghichu"></textarea>
-                                                                                </div>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" ng-disabled="formMucLuc.$invalid" ng-click="save(state)">
-                                                                            <i class="fa fa-save"></i>Ghi nhận
-                                                                        </button>
                                                                         <button type="button" class="btn btn-warning" data-dismiss="modal">
                                                                             <i class="glyphicon glyphicon-log-in"></i>Thoát
                                                                         </button>
