@@ -761,12 +761,24 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         public void session_keyword(string keyword) {
             Session["keyword"] = keyword.Trim();
         }
+        public void session_keyword_vanban(string keyword)
+        {
+            Session["keyword_vanban"] = keyword.Trim();
+        }
         public string get_sesion_keyword()
         {
             if (Session["keyword"] == null)
                 return null;
             else
                 return Session["keyword"].ToString();
+        }
+
+        public string get_sesion_keyword_vanban()
+        {
+            if (Session["keyword_vanban"] == null)
+                return null;
+            else
+                return Session["keyword_vanban"].ToString();
         }
 
         public string chinhly_timkiemhosonangcao(int phongid, string loaitl, string mahoso, string tenhoso)
@@ -782,7 +794,15 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
 
         public string chinhly_timkiemvanban(string keyword)
         {
-            Session["keyword"] = keyword.Trim();
+            Session["keyword_vanban"] = keyword.Trim();
+            string[] namepara = { "@keyword" };
+            object[] valuepara = { keyword.Trim() };
+            return dataAsset.data.outputdata("chinhly_timkiemvanban", namepara, valuepara);
+        }
+
+        public string chinhly_timkiemvanbannangcao(string keyword)
+        {
+            Session["keyword_vanban"] = keyword.Trim();
             string[] namepara = { "@keyword" };
             object[] valuepara = { keyword.Trim() };
             return dataAsset.data.outputdata("chinhly_timkiemvanban", namepara, valuepara);

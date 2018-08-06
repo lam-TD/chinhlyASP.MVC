@@ -48,7 +48,7 @@
                             <div id="simpledatatable_wrapper">
                                 <div class="row">
                                     <div class="col-md-12 col-xs-12">
-                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0">
                                             <label style="font-size: 16px;">Tìm kiếm hồ sơ</label>
                                         </div>
                                         <div class="" style="">
@@ -98,13 +98,13 @@
                                                                     <br>
                                                                     Thời gian: <span>{{n.THOIGIANS}} đến {{n.THOIGIANE}}</span>
                                                                     <br>
-                                                                    Phông: <a style="text-decoration:none">{{n.TENPHONG}}</a>
+                                                                    <a style="text-decoration:none; width:592px;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden"><span style="color:black;">Phông:</span> {{n.TENPHONG}}</a>
                                                                 </p>
                                                             </div>
                                                         </li>
                                                     </ul>
 
-                                                    <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                                    <dir-pagination-controls max-size="15" direction-links="true" boundary-links="true"></dir-pagination-controls>
                                                     <!-- Modal thong tin ho so -->
                                                     <div class="modal fade" id="myModal" role="dialog">
                                                         <div class="modal-dialog modal-lg">

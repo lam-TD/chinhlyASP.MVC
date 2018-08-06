@@ -3,6 +3,27 @@
     Layout = null;
 }
 @*<script src="~/Scripts/chinhlytailieu/timkiem/timkiemvanban.js"></script>*@
+
+<style>
+    .tenhoso{
+        font-size: 15px; 
+        font-weight: normal;
+        width: 640px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height:18px;
+        margin-bottom: 0;
+    }
+    .chitiethoso{
+        font-weight: bold;
+        text-align: justify;
+    }
+    .row-chitiet{
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
 <div class="page-content" ng-controller="timkiemvanbanController">
     <!-- Page Breadcrumb -->
     <div class="page-breadcrumbs">
@@ -28,7 +49,7 @@
                             <div id="simpledatatable_wrapper">
                                 <div class="row">
                                     <div class="col-md-12 col-xs-12">
-                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0">
                                             <label style="font-size: 16px;">Tìm kiếm văn bản</label>
                                         </div>
                                         <div class="" style="">
@@ -73,18 +94,20 @@
                                                                 @*<span style="font-size:14px;display:inline-block">{{ (doimauchu(n.TENHOSO,keyword)) }}</span>*@
                                                                 <p>
                                                                     Số ký hiệu: <span id="mucluc">{{ n.SOKYHIEU }}</span>
-                                                                     | Ngày tháng: <span id="mucluc">{{ n.MAMUCLUC }}</span>
+                                                                     | Ngày tháng: <span id="mucluc">{{ n.THOIGIAN }}</span>
                                                                     <br>
                                                                     Tác giả: <span>{{n.TACGIA}}</span>
-                                                                    <br>
-                                                                    Hồ sơ số: <span id="hososo">{{ n.MAHOSO }}</span> | 
-                                                                    Phông: <a style="text-decoration:none">{{n.TENPHONG}}</a>
+                                                                    <br />
+                                                                    <span style="width:630px;display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden">
+                                                                        Hồ sơ số: <span id="hososo">{{ n.MAHOSO }}</span> |
+                                                                        <a style="text-decoration:none;"><span style="color:black">Phông: </span>{{n.TENPHONG}}</a>
+                                                                    </span>
                                                                 </p>
                                                             </div>
                                                         </li>
                                                     </ul>
 
-                                                    <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                                    <dir-pagination-controls max-size="15" direction-links="true" boundary-links="true"></dir-pagination-controls>
                                                     <!-- Modal thong tin ho so -->
                                                     <div class="modal fade" id="myModal" role="dialog">
                                                         <div class="modal-dialog modal-lg">

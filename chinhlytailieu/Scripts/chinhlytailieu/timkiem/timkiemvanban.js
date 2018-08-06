@@ -58,7 +58,7 @@
     $scope.check_keyword = function () {
         $http({
             method: 'GET',
-            url: '/chinhlytailieu/get_sesion_keyword'
+            url: '/chinhlytailieu/get_sesion_keyword_vanban'
         }).then(function (response) {
             if (response.data != null && response.data != "") {
                 if ($scope.textSearch != "" && $scope.textSearch != null) { return; }
