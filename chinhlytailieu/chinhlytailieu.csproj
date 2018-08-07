@@ -210,6 +210,7 @@
     <Compile Include="Models\chinhly\hoso.cs" />
     <Compile Include="Models\chinhly\lapkehoachchinhly.cs" />
     <Compile Include="Models\chinhly\mucluc.cs" />
+    <Compile Include="Models\chinhly\phongtailieu.cs" />
     <Compile Include="Models\chinhly\vanban.cs" />
     <Compile Include="Models\docgia\docgia.cs" />
     <Compile Include="Models\docgia\yeucaudocgia.cs" />

@@ -115,15 +115,7 @@
         }
         else {
             if ($scope.state == "add") {
-                $http({
-                    method: 'GET',
-                    url: '/chinhlytailieu/nhapmucluc_checkmamucluc/' + $scope.ml.mamucluc
-                }).then(function (response) {
-                    if (parseInt(response.data) == 1) {
-                        alert("Mã mục lục đã tồn tại");
-                    }
-                    else {
-                        $scope.ml =
+                $scope.ml =
                         {
                             phongid: $('select[name=selectphong]').val(),
                             tenmucluc: $scope.ml.tenmucluc,
@@ -131,26 +123,22 @@
                             mota: $scope.ml.mota,
                             ghichu: $scope.ml.ghichu,
                         };
-                        $http({
-                            method: 'POST',
-                            url: '/chinhlytailieu/mucluc_themsua',
-                            data: { type: 1, ml: $scope.ml }
-                        }).then(function (response) {
-                            console.log(response.data);
-                            if (response.data == 1) {
-                                alert('Thêm mục lục thành công');
-                                $('#myModal').modal('hide');
-                                $scope.click_phong($('select[name=selectphong]').val());
-                            }
-                            else {
-                                alert('Lỗi không thêm được mục lục');
-                            }
-                        }, function (response) {
-                            alert('Lỗi không thêm được mục lục');
-                        })
+                $http({
+                    method: 'POST',
+                    url: '/chinhlytailieu/mucluc_themsua',
+                    data: { type: 1, ml: $scope.ml }
+                }).then(function (response) {
+                    //console.log(response.data);
+                    if (response.data == 1) {
+                        alert('Thêm mục lục thành công');
+                        $('#myModal').modal('hide');
+                        $scope.click_phong($('select[name=selectphong]').val());
                     }
+                    else if (response.data == 0) alert("Mã mục lục đã tồn tại");
+                    else alert('Lỗi không thêm được mục lục');
+                }, function (response) {
+                    alert('Lỗi không thêm được mục lục');
                 })
-                
             }
             else {
                 $scope.ml2 =
@@ -161,7 +149,7 @@
                     mota: $scope.ml.mota,
                     ghichu: $scope.ml.ghichu,
                 };
-                console.log($scope.ml2);
+                //console.log($scope.ml2);
                 $http({
                     method: 'POST',
                     url: '/chinhlytailieu/mucluc_themsua',

@@ -251,9 +251,14 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                 case 1:
                     string[] namepara1 = { "@PHONGID", "@MAMUCLUC", "@TENMUCLUC", "@MOTA", "@GHICHU" };
                     object[] valuepara1 = { ml.Phongid, ml.Mamucluc, ml.Tenmucluc, mota, ghichu };
-                    if (dataAsset.data.inputdata("mucluc_them", namepara1, valuepara1))
-                    { result = "1"; }
-                    else { result = "-1"; }
+                    if (nhapmucluc_checkmamucluc(ml.Mamucluc, ml.Phongid) == 1) result = "0";
+                    else
+                    {
+                        if (dataAsset.data.inputdata("mucluc_them", namepara1, valuepara1))
+                        { result = "1"; }
+                        else { result = "-1"; }
+                    }
+                    
                     break;
                 case 2:
                     string[] namepara2 = { "@MAMUCLUC", "@PHONGID", "@TENMUCLUC", "@MOTA", "@GHICHU" };
@@ -262,7 +267,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                     else { result = "-1"; }
                     break;
             }
-            return Json(1, JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult muclucsua(mucluc ml)
@@ -275,16 +280,16 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return Json(1, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult nhapmucluc_checkmamucluc(int id)
+        public int nhapmucluc_checkmamucluc(string mamucluc, int phongid)
         {
             int result;
-            string[] namepara = { "@mamucluc" };
-            object[] valuepara = { id };
+            string[] namepara = { "@MAMUCLUC", "@PHONGID" };
+            object[] valuepara = { mamucluc, phongid };
             DataTable dt = dataAsset.data.outputdataTable("mucluc_checkma", namepara, valuepara);
             if (dt.Rows.Count > 0)
             { result = 1; }
             else { result = -1; }
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return result;
         }
 
         public JsonResult mucluc_xoa(int? idmucluc)
@@ -806,6 +811,85 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             string[] namepara = { "@PHONGID", "@LOAITL", "@SOKYHIEU", "@TRICHYEU", "@TACGIA", "@THOIGIAN" };
             object[] valuepara = { phongid, loaitl, sokyhieu.Trim(), trichyeu.Trim(), tacgia.Trim(), thoigian.Trim() };
             return dataAsset.data.outputdata("chinhly_timkiemvanban_nangcao", namepara, valuepara);
+        }
+
+        //============================= PHONG TAI LIEU ==================================
+        [HttpPost]
+        public int chinhly_phong_them(phongtailieu p)
+        {
+            if (p.Maphong.Length < 0) return -1;
+            if (chinhly_phong_checkmaphong(p.Maphong) == 1){ return 0; }
+            string lichsu = ""; if (p.Lichsu != null) lichsu = p.Lichsu;
+            string thoigian = ""; if (p.Thoigian != null) thoigian = p.Thoigian;
+            string ghichu = ""; if (p.Ghichu != null) ghichu = p.Ghichu;
+            string congcu = ""; if (p.Congcu != null) congcu = p.Congcu;
+            string nhomtl = ""; if (p.Nhomtl != null) nhomtl = p.Nhomtl;
+            string thoigiannhap = ""; if (p.Thoigiannhap != null) thoigiannhap = p.Thoigiannhap;
+            string ngonngu = ""; if (p.Ngonngu != null) ngonngu = p.Ngonngu;
+            //int bansao = 0; if (p.Bansao != null) bansao = p.Bansao;
+            string[] namepara = { "@MACOQUAN", "@MAPHONG", "@TENPHONG", "@VITRIID", "@LICHSU", "@THOIGIAN", "@SLTAILIEU", "@SLTLOK", "@SLTLNO", "@GHICHU", "@CONGCU", "@NHOMTL", "@THOIGIANNHAP", "@NGONNGU", "@BANSAO" };
+            object[] valuepara = { "Q2", p.Maphong, p.Tenphong, p.Vitriid, lichsu, thoigian, p.Sltailieu, p.Sltlok, p.Sltlok, ghichu, congcu, nhomtl, thoigiannhap, ngonngu, p.Bansao };
+            if (dataAsset.data.inputdata("phong_them", namepara, valuepara))
+            {
+                return 1;
+            }
+            else { return -1; }
+        }
+
+        public int chinhly_phong_sua(phongtailieu p)
+        {
+            if (p.Maphong.Length < 0) return -1;
+            
+            string lichsu = ""; if (p.Lichsu != null) lichsu = p.Lichsu;
+            string thoigian = ""; if (p.Thoigian != null) thoigian = p.Thoigian;
+            string ghichu = ""; if (p.Ghichu != null) ghichu = p.Ghichu;
+            string congcu = ""; if (p.Congcu != null) congcu = p.Congcu;
+            string nhomtl = ""; if (p.Nhomtl != null) nhomtl = p.Nhomtl;
+            string thoigiannhap = ""; if (p.Thoigiannhap != null) thoigiannhap = p.Thoigiannhap;
+            string ngonngu = ""; if (p.Ngonngu != null) ngonngu = p.Ngonngu;
+            
+            string[] namepara = { "@ID", "@TENPHONG", "@VITRIID", "@LICHSU", "@THOIGIAN", "@SLTAILIEU", "@SLTLOK", "@SLTLNO", "@GHICHU", "@CONGCU", "@NHOMTL", "@THOIGIANNHAP", "@NGONNGU", "@BANSAO" };
+            object[] valuepara = { p.Id, p.Tenphong, p.Vitriid, lichsu, thoigian, p.Sltailieu, p.Sltlok, p.Sltlok, ghichu, congcu, nhomtl, thoigiannhap, ngonngu, p.Bansao };
+            if (dataAsset.data.inputdata("phong_sua", namepara, valuepara))
+            {
+                return 1;
+            }
+            else { return -1; }
+        }
+
+        public int chinhly_phong_checkmaphong(string maphong)
+        {
+            int result;
+            string[] namepara = { "@MAPHONG" };
+            object[] valuepara = { maphong };
+            DataTable dt = dataAsset.data.outputdataTable("phong_checkmaphong", namepara, valuepara);
+            if (dt.Rows.Count > 0)
+            {
+                result = 1;
+            }
+            else { result = -1; }
+            return result;
+        }
+
+        [HttpPost]
+        public int chinhly_phong_xoa(int phongid)
+        {
+            if (chinhly_phong_checkmucluc(phongid) == 1) return 0;
+            
+            string[] namepara = { "@PHINGID" };
+            object[] valuepara = { phongid };
+            if (dataAsset.data.inputdata("phong_xoa", namepara, valuepara)) return 1;
+            else return -1;
+            
+        }
+
+        public int chinhly_phong_checkmucluc(int phongid)
+        {
+            string[] namepara = { "@PHONGID" };
+            object[] valuepara = { phongid };
+            DataTable dt = dataAsset.data.outputdataTable("phong_checkmucluc", namepara, valuepara);
+            if (dt.Rows.Count > 0) return 1;
+            else return -1;
         }
     }
 }

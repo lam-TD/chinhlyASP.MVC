@@ -9,7 +9,7 @@ namespace chinhlytailieu.Models.chinhly
     {
         private int id;
         private int phongid;
-        private int mamucluc;
+        private string mamucluc;
         private string tenmucluc;
         private string mota;
         private string ghichu;
@@ -40,7 +40,7 @@ namespace chinhlytailieu.Models.chinhly
             }
         }
 
-        public int Mamucluc
+        public string Mamucluc
         {
             get
             {
