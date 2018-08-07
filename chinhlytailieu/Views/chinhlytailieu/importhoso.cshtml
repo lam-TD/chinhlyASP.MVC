@@ -3,20 +3,20 @@
     Layout = null;
 }
 
-
+<script src="~/Scripts/chinhlytailieu/importdulieu/importhoso.js"></script>
  <!-- Page Content -->
-<div class="page-content">
+<div class="page-content" ng-controller="importhosoController">
     <!-- Page Breadcrumb -->
     <div class="page-breadcrumbs">
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">{{tieude}}</a>
+                Chỉnh lý tài liệu
             </li>
             <li>
-                <a href="#">Tables</a>
+                Import tài liệu
             </li>
-            <li class="active">Data Tables</li>
+            <li class="active">Import hồ sơ</li>
         </ul>
     </div>
     <!-- /Page Breadcrumb -->
@@ -36,44 +36,37 @@
                                         </a>
                                     </div>
 
-                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd;margin-bottom: 10px;">
-                                        <label>Chọn mục lục</label>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group col-md-12" style="margin-bottom: 5px;">
-                                            <div class="col-sm-2 col-xs-12">
-                                                <label class="pull-right">Phông</label>
-                                            </div>
-                                            <div class="col-sm-4" style="padding: 0;">
-                                                <select name="" id="" class="col-md-12 col-xs-12">
-                                                    <option value="">Trung tâm lưu trữ quốc gia</option>
-                                                    <option value=""></option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-sm-2 col-xs-12">
-                                                <label class="pull-right">Mục lục</label>
-                                            </div>
-                                            <div class="col-sm-4" style="padding: 0;">
-                                                <select name="" id="" class="col-md-12 col-xs-12">
-                                                    <option value="">Bộ công chánh</option>
-                                                    <option value=""></option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd;margin-bottom: 10px;">
-                                        <label>Import</label>
-                                    </div>
-
                                     <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee;">
-                                        <h5>Chọn file</h5>
-                                        <div class="well" style="border:dotted 3px lightgray;">
-                                            Kéo thả tệp vào đây
+                                        <div class="row">
+                                            <div class="form-group col-md-12" style="margin-bottom: 5px;padding-left:0">
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <label class="">Phông</label>
+                                                </div>
+                                                <div class="col-sm-9" style="padding: 0;">
+                                                    <select name="selectphong" class="col-md-12">
+                                                        <option value="">--Chọn phông tài liệu--</option>
+                                                        <option value="{{n.ID}}" ng-repeat="n in danhsachphong">{{n.TENPHONG}}</option>
+                                                    </select>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="form-group col-md-12" style="margin-bottom: 5px;padding-left:0">
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <label class="">Mục lục</label>
+                                                </div>
+                                                <div class="col-sm-9" style="padding: 0;">
+                                                    <select name="" id="" class="col-md-12 col-xs-12">
+                                                        <option value="">Bộ công chánh</option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <input type="file">
+                                        <h5>Chọn file</h5>
+                                        @*<div class="well" style="border:dotted 3px lightgray;">
+                                            Kéo thả tệp vào đây
+                                        </div>*@
+                                        <input type="file" class="form-control" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onchange="angular.element(this).scope().UploadFiles(this.files)" />
                                     </div>
 
                                     <div class="col-md-8 col-xs-12">

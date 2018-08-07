@@ -298,3 +298,7 @@ E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\Microsoft.Owin.Security.MicrosoftAcc
 E:\3.work\chinhlyASP.MVC\chinhlytailieu\obj\Debug\chinhlytailieu.csprojResolveAssemblyReference.cache
 E:\3.work\chinhlyASP.MVC\chinhlytailieu\obj\Debug\chinhlytailieu.dll
 E:\3.work\chinhlyASP.MVC\chinhlytailieu\obj\Debug\chinhlytailieu.pdb
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\ExcelDataReader.DataSet.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\ExcelDataReader.dll
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\ExcelDataReader.xml
+E:\3.work\chinhlyASP.MVC\chinhlytailieu\bin\ExcelDataReader.DataSet.xml

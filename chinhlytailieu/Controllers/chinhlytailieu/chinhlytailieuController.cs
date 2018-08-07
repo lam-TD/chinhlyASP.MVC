@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using chinhlytailieu.Models.chinhly;
+using System.IO;
+using ExcelDataReader;
 
 namespace chinhlytailieu.Controllers.chinhlytailieu
 {
@@ -890,6 +892,84 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             DataTable dt = dataAsset.data.outputdataTable("phong_checkmucluc", namepara, valuepara);
             if (dt.Rows.Count > 0) return 1;
             else return -1;
+        }
+
+        public JsonResult read_excel()
+        {
+            string datanew = "";
+            if (ModelState.IsValid)
+            {
+                string filePath = string.Empty;
+                if (Request != null)
+                {
+                    HttpPostedFileBase file = Request.Files["file"];
+                    if ((file != null) && (file.ContentLength > 0) && !string.IsNullOrEmpty(file.FileName))
+                    {
+
+                        string fileName = file.FileName;
+                        string fileContentType = file.ContentType;
+                        string path = Server.MapPath("~/assets/upload/");
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+                        filePath = path + Path.GetFileName(file.FileName);
+                        string extension = Path.GetExtension(file.FileName);
+                        file.SaveAs(filePath);
+                        Stream stream = file.InputStream;
+                        // We return the interface, so that  
+                        IExcelDataReader reader = null;
+                        if (file.FileName.EndsWith(".xls"))
+                        {
+                            reader = ExcelReaderFactory.CreateBinaryReader(stream);
+                        }
+                        else if (file.FileName.EndsWith(".xlsx"))
+                        {
+                            reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("File", "This file format is not supported");
+                            //return RedirectToAction("ExcelUpload");
+                        }
+
+                        var conf = new ExcelDataSetConfiguration
+                        {
+                            ConfigureDataTable = _ => new ExcelDataTableConfiguration
+                            {
+                                UseHeaderRow = true
+                            }
+                        };
+
+                        //reader.IsFirstRowAsColumnNames = true;
+                        DataSet result = reader.AsDataSet(conf);
+                        reader.Close();
+                        //delete the file from physical path after reading   
+                        string filedetails = path + fileName;
+                        FileInfo fileinfo = new FileInfo(filedetails);
+                        if (fileinfo.Exists)
+                        {
+                            fileinfo.Delete();
+                        }
+                        DataTable dt = result.Tables[0];
+                        System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                        serializer.MaxJsonLength = Int32.MaxValue;
+                        List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                        Dictionary<string, object> row;
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            row = new Dictionary<string, object>();
+                            foreach (DataColumn col in dt.Columns)
+                            {
+                                row.Add(col.ColumnName, dr[col]);
+                            }
+                            rows.Add(row);
+                        }
+                        datanew = serializer.Serialize(rows);
+                    }
+                }
+            }
+            return Json(datanew, JsonRequestBehavior.AllowGet);
         }
     }
 }
