@@ -2,9 +2,9 @@
 @{
     Layout = null;
 }
-
+@*<script src="~/Scripts/chinhlytailieu/importdulieu/importvanban.js"></script>*@
  <!-- Page Content -->
-<div class="page-content">
+<div class="page-content" ng-controller="importvanbanController">
     <!-- Page Breadcrumb -->
     <div class="page-breadcrumbs">
         <ul class="breadcrumb">
@@ -29,86 +29,71 @@
                             <div id="simpledatatable_wrapper">
                                 <div class="row">
                                     <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
-                                        <label style="font-size: 16px;">Import hồ sơ</label>
+                                        <label style="font-size: 16px;">Import văn bản</label>
                                         <a href="" class="pull-right">
                                             <i class="fa fa-question-circle"></i>Hướng dẫn
                                         </a>
                                     </div>
 
-                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd;margin-bottom: 10px;">
-                                        <label>Chọn mục lục</label>
-                                    </div>
+                                    <div class="col-md-3 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <div class="row">
+                                            <div class="form-group col-md-12" style="margin-bottom: 5px;padding-left:0">
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <label class="">Phông</label>
+                                                </div>
+                                                <div class="col-sm-9" style="padding: 0;">
+                                                    <select name="selectphong" class="col-md-12">
+                                                        <option value="">--Chọn phông tài liệu--</option>
+                                                        <option value="{{n.ID}}" ng-repeat="n in danhsachphong">{{n.TENPHONG}}</option>
+                                                    </select>
+                                                </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group col-md-12" style="margin-bottom: 5px;">
-                                            <div class="col-sm-2 col-xs-12">
-                                                <label class="pull-right">Phông</label>
                                             </div>
-                                            <div class="col-sm-4" style="padding: 0;">
-                                                <select name="" id="" class="col-md-12 col-xs-12">
-                                                    <option value="">Trung tâm lưu trữ quốc gia</option>
-                                                    <option value=""></option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-sm-2 col-xs-12">
-                                                <label class="pull-right">Mục lục</label>
-                                            </div>
-                                            <div class="col-sm-4" style="padding: 0;">
-                                                <select name="" id="" class="col-md-12 col-xs-12">
-                                                    <option value="">Bộ công chánh</option>
-                                                    <option value=""></option>
-                                                </select>
+                                            <div class="form-group col-md-12" style="margin-bottom: 5px;padding-left:0">
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <label class="">Mục lục</label>
+                                                </div>
+                                                <div class="col-sm-9" style="padding: 0;">
+                                                    <select name="" id="" class="col-md-12 col-xs-12">
+                                                        <option value="">Bộ công chánh</option>
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd;margin-bottom: 10px;">
-                                        <label>Import</label>
-                                    </div>
-
-                                    <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee;">
                                         <h5>Chọn file</h5>
-                                        <div class="well" style="border:dotted 3px lightgray;">
+                                        @*<div class="well" style="border:dotted 3px lightgray;">
                                             Kéo thả tệp vào đây
-                                        </div>
-                                        <input type="file">
+                                        </div>*@
+                                        <input type="file" class="form-control" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onchange="angular.element(this).scope().UploadFiles(this.files)" />
                                     </div>
 
-                                    <div class="col-md-8 col-xs-12">
+                                    <div class="col-md-9 col-xs-12">
                                         <div class="" style="margin-bottom: 10px;">
                                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                                                 <i class="fa fa-file"></i>Ghi nhận dữ liệu
                                             </button>
                                         </div>
-                                        <div class="" style="height: 300px;overflow: auto;">
+                                        <div class="" style="height: 450px;overflow: auto;">
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                 <thead class="flip-content bordered-palegreen">
                                                     <tr>
-                                                        <th style="width: 5%;">STT</th>
-                                                        <th style="width: 20%">Loại</th>
-                                                        <th style="width: 20%;">Hồ sơ số</th>
-                                                        <th style="">Tiêu đề hồ sơ</th>
+                                                        <th style="width:60px;">Hồ sơ số</th>
+                                                        <th style="">Ngày tháng</th>
+                                                        <th style="">Số, ký kiệu</th>
+                                                        <th style="">Tác giả</th>
+                                                        <th style="">Tờ số</th>
+                                                        <th style="">Trích yếu</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>BGD</td>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>BGD</td>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>BGD</td>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
+                                                    <tr ng-repeat="n in danhsachvanban">
+                                                        <td>{{n.Mahoso}}</td>
+                                                        <td>{{n.Thoigian}}</td>
+                                                        <td>{{n.Sokyhieu}}</td>
+                                                        <td>{{n.Tacgia}}</td>
+                                                        <td>{{n.Toso}}</td>
+                                                        <td>{{n.Trichyeu}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using chinhlytailieu.Models.chinhly;
 using System.IO;
 using ExcelDataReader;
+using System.Reflection;
 
 namespace chinhlytailieu.Controllers.chinhlytailieu
 {
@@ -897,6 +898,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         public JsonResult read_excel()
         {
             string datanew = "";
+            List<vanban> lisvanban = new List<vanban>();
             if (ModelState.IsValid)
             {
                 string filePath = string.Empty;
@@ -952,24 +954,68 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                             fileinfo.Delete();
                         }
                         DataTable dt = result.Tables[0];
-                        System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                        serializer.MaxJsonLength = Int32.MaxValue;
-                        List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
-                        Dictionary<string, object> row;
-                        foreach (DataRow dr in dt.Rows)
+                        for (int i = 0; i < dt.Rows.Count; i++)
                         {
-                            row = new Dictionary<string, object>();
-                            foreach (DataColumn col in dt.Columns)
-                            {
-                                row.Add(col.ColumnName, dr[col]);
-                            }
-                            rows.Add(row);
+                            vanban v = new vanban();
+                            v.Sokyhieu = dt.Rows[i]["Số ký hiệu văn bản"].ToString();
+                            v.Trichyeu = dt.Rows[i]["Trích yếu nội dung văn bản"].ToString();
+                            v.Thoigian = dt.Rows[i]["Ngày, tháng văn bản"].ToString();
+                            v.Mahoso = dt.Rows[i]["Số hồ sơ"].ToString();
+                            v.Toso = dt.Rows[i]["Tờ Số"].ToString();
+                            v.Tacgia = dt.Rows[i]["Tác giả văn bản"].ToString();
+                            //if (dt.Rows[i]["Số hồ sơ"].ToString() == null) v.Slto = 0;
+                            //else v.Slto = int.Parse(dt.Rows[i]["Số hồ sơ"].ToString());
+                            v.Ghichu = dt.Rows[i]["Ghi chú"].ToString();
+                            lisvanban.Add(v);
                         }
-                        datanew = serializer.Serialize(rows);
+                        //System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                        //serializer.MaxJsonLength = Int32.MaxValue;
+                        //List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                        //Dictionary<string, object> row;
+                        //foreach (DataRow dr in dt.Rows)
+                        //{
+                        //    row = new Dictionary<string, object>();
+                        //    foreach (DataColumn col in dt.Columns)
+                        //    {
+                        //        row.Add(col.ColumnName, dr[col]);
+                        //    }
+                        //    rows.Add(row);
+                        //}
+                        //datanew = serializer.Serialize(rows);
+
+                        //lisvanban = ConvertDataTable<vanban>(dt);
                     }
                 }
             }
-            return Json(datanew, JsonRequestBehavior.AllowGet);
+            return Json(lisvanban, JsonRequestBehavior.AllowGet);
+        }
+
+        private static List<T> ConvertDataTable<T>(DataTable dt)
+        {
+            List<T> data = new List<T>();
+            foreach (DataRow row in dt.Rows)
+            {
+                T item = GetItem<T>(row);
+                data.Add(item);
+            }
+            return data;
+        }
+        private static T GetItem<T>(DataRow dr)
+        {
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+
+            foreach (DataColumn column in dr.Table.Columns)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name == column.ColumnName)
+                        pro.SetValue(obj, dr[column.ColumnName], null);
+                    else
+                        continue;
+                }
+            }
+            return obj;
         }
     }
 }

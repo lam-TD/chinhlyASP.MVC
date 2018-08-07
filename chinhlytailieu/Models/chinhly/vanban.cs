@@ -21,6 +21,7 @@ namespace chinhlytailieu.Models.chinhly
         private string ngonngu;
         private string buttich;
         private string ghichu;
+        private string mahoso;
 
         public int Id
         {
@@ -201,6 +202,19 @@ namespace chinhlytailieu.Models.chinhly
             set
             {
                 ghichu = value;
+            }
+        }
+
+        public string Mahoso
+        {
+            get
+            {
+                return mahoso;
+            }
+
+            set
+            {
+                mahoso = value;
             }
         }
     }
