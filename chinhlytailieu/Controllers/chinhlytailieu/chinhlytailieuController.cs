@@ -800,12 +800,12 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return dataAsset.data.outputdata("chinhly_timkiemvanban", namepara, valuepara);
         }
 
-        public string chinhly_timkiemvanbannangcao(string keyword)
+        public string chinhly_timkiemvanbannangcao(int phongid, string loaitl, string sokyhieu, string trichyeu, string thoigian, string tacgia)
         {
-            Session["keyword_vanban"] = keyword.Trim();
-            string[] namepara = { "@keyword" };
-            object[] valuepara = { keyword.Trim() };
-            return dataAsset.data.outputdata("chinhly_timkiemvanban", namepara, valuepara);
+            
+            string[] namepara = { "@PHONGID", "@LOAITL", "@SOKYHIEU", "@TRICHYEU", "@TACGIA", "@THOIGIAN" };
+            object[] valuepara = { phongid, loaitl, sokyhieu.Trim(), trichyeu.Trim(), tacgia.Trim(), thoigian.Trim() };
+            return dataAsset.data.outputdata("chinhly_timkiemvanban_nangcao", namepara, valuepara);
         }
     }
 }

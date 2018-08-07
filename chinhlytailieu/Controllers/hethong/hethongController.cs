@@ -864,7 +864,7 @@ namespace chinhlytailieu.Controllers.hethong
         public string chinhsua()
         {
             DataTable dt = datatable("SELECT * FROM arc.tbVanban");
-            //return dt;
+            
             string text = "";
             string soto = "";
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -892,9 +892,9 @@ namespace chinhlytailieu.Controllers.hethong
                     {
                         capnhat_vanban(soto.Trim(), idvanban);
                     }
-                    
+
                 }
-                
+
                 //lam[1] = lam[1].Trim();
             }
             //return "1";
@@ -955,6 +955,54 @@ namespace chinhlytailieu.Controllers.hethong
             return text;
         }
 
+        public int chinhsua2()
+        {
+            DataTable dt = datatable("SELECT * FROM arc.tbVanban");
+
+            string text = "";
+            string soto = "";
+            int count = 0;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                soto = dt.Rows[i]["TOSO"].ToString();
+                int idvanban = int.Parse(dt.Rows[i]["ID"].ToString());
+                string[] lam;
+
+                lam = soto.Split('-');
+                if (lam.Length > 1)
+                {
+                    //string t1 = xulychuoi(lam[0]);
+                    int n1 = 0;
+                    int.TryParse(lam[0].Trim(), out n1);
+
+                    int n2 = 0;
+                    int.TryParse(lam[1].Trim(), out n2);
+                    if (n1 == n2)
+                    {
+                        
+                        if (n1 < 10)
+                        {
+                            string sl = "0" + n1;
+                            capnhat_vanban(sl, idvanban);
+                            count++;
+                        }
+                        else
+                        {
+                            capnhat_vanban(n1.ToString(), idvanban);
+                            count++;
+                        }
+                        
+                        //count++;
+                        
+                    }
+                    //string t2 = xulychuoi(lam[1]);
+                    //string cuoi = t1 + "-" + t2;
+                    //capnhat_vanban(cuoi, idvanban);
+                }
+            }
+            //return "1";
+            return count;
+        }
 
         public bool capnhat_vanban(string toso, int id)
         {

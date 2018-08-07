@@ -3,7 +3,7 @@
 @{
     Layout = null;
 }
-@*<script src="~/Scripts/chinhlytailieu/timkiem/timkiemvanbannangcao.js"></script>*@
+<script src="~/Scripts/chinhlytailieu/timkiem/timkiemvanbannangcao.js"></script>
 
 <style>
     .tenhoso {
@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="" style="">
                                             <form class="col-md-10" style="padding-left:0;">
-                                                <div class="form-group col-md-12" style="padding-left:0;">
+                                                <div class="form-group col-md-12 timhsnac" style="padding-left:0;">
                                                     <label class="col-sm-2">Phông</label>
                                                     <div class="col-sm-4">
                                                         <select name="selectphong" class="col-md-12">
@@ -75,7 +75,7 @@
                                                     <div class="col-sm-4">
                                                         <select name="selectloaitl" class="col-md-12">
                                                             <option value="">--Tất cả--</option>
-                                                            <option value="">Tài liệu hành chính</option>
+                                                            <option value="HC">Tài liệu hành chính</option>
                                                             <option value="10 năm">10 năm</option>
                                                             <option value="Lâu dài">Lâu dài</option>
                                                         </select>
@@ -83,19 +83,31 @@
                                                 </div>
 
                                                 <div class="form-group col-md-12 timhsnac">
-                                                    <label class="col-sm-2">Hồ sơ số</label>
+                                                    <label class="col-sm-2">Số ký hiệu</label>
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control" placeholder="Hồ sơ số" ng-model="mahoso">
+                                                        <input type="text" class="form-control" placeholder="Số kí hiệu" ng-model="sokyhieu">
                                                     </div>
 
-                                                    <label class="col-sm-2">Tiêu đề</label>
+                                                    <label class="col-sm-2">Trích yếu</label>
                                                     <div class="col-sm-4">
-                                                        <input type="text" class="form-control" placeholder="Tiêu đề" ng-model="tenhoso">
+                                                        <input type="text" class="form-control" placeholder="Trích yếu" ng-model="trichyeu">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group col-md-12 timhsnac">
-                                                    <button type="submit" class="btn btn-primary pull-right" style="margin-right: 15px;" ng-click="timkiemhosonangcao()">
+                                                    <label class="col-sm-2">Thời gian</label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" placeholder="Thời gian" ng-model="thoigian">
+                                                    </div>
+
+                                                    <label class="col-sm-2">Tác giả</label>
+                                                    <div class="col-sm-4">
+                                                        <input type="text" class="form-control" placeholder="Tác giả" ng-model="tacgia">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-12 timhsnac">
+                                                    <button type="submit" class="btn btn-primary pull-right" style="margin-right: 15px;" ng-click="timkiemvanbannangcao()">
                                                         <i class="fa fa-search-plus"></i>Tìm kiếm
                                                     </button>
                                                 </div>
@@ -106,24 +118,28 @@
                                                 <div class="">
                                                     <ul style="list-style: none; padding: 0;">
 
-                                                        <li style="margin-bottom: 10px; padding-left: 10px;">
+                                                        @*<li style="margin-bottom: 10px; padding-left: 10px;">
                                                             <a href="" style="font-size: 15px;">
                                                                 <i class="fa fa-save"> Lưu tìm kiếm</i>
                                                             </a>
-                                                        </li>
+                                                        </li>*@
 
                                                         <li style="margin-bottom: 10px; padding-left: 10px;">
-                                                            <a href="product/kttltimkiemhoso/searchvb.html" style="font-size: 15px;">
+                                                            <a href="#!/timkiemvanban" style="font-size: 15px;">
                                                                 <i class="fa fa-search"> Tìm kiếm văn bản</i>
                                                             </a>
                                                         </li>
 
                                                         <li style="margin-bottom: 10px; padding-left: 10px;">
-                                                            <a href="" style="font-size: 15px;">
-                                                                <i class="fa fa-search-plus">Tìm kiếm nâng cao</i>
+                                                            <a href="#!/timkiemhoso" style="font-size: 15px;">
+                                                                <i class="fa fa-search-plus">Tìm kiếm hồ sơ</i>
                                                             </a>
                                                         </li>
-
+                                                        <li style="margin-bottom: 10px; padding-left: 10px;">
+                                                            <a href="#!/timkiemhosonangcao" style="font-size: 15px;">
+                                                                <i class="fa fa-search-plus">Tìm kiếm hồ sơ nâng cao</i>
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -135,7 +151,7 @@
                                                 <div class="col-md-10" style="border-right: 1px dotted #ddd;">
                                                     <ul style="list-style: none; padding: 0; min-height: 430px;">
                                                         @*<li>Không tìm thấy</li>*@
-                                                        <li style="border-bottom: 1px dotted #ddd;" dir-paginate="n in danhsachketqua |itemsPerPage:10">
+                                                        <li style="border-bottom: 1px dotted #ddd;" dir-paginate="n in danhsachketquavb |itemsPerPage:10">
                                                             <span class="pull-left" style="min-height:100px;margin-right: 10px;">
                                                                 <i class="fa fa-folder-open" style="font-size: 50px;"></i>
                                                             </span>
@@ -146,17 +162,19 @@
 
                                                             <div class="text">
                                                                 <a href="" style="display:inline-block" data-toggle="modal" data-target="#myModal" ng-click="xemchitiet(n)">
-                                                                    <h4 class="tenhoso" id="tenhs" style="font-weight:600 !important">{{n.TENHOSO}}</h4>
+                                                                    <h4 class="tenhoso" id="tenhs" style="font-weight:600 !important">{{n.TRICHYEU}}</h4>
                                                                 </a>
                                                                 @*<span style="font-size:14px;display:inline-block">{{ (doimauchu(n.TENHOSO,keyword)) }}</span>*@
                                                                 <p>
-                                                                    Mục lục: <span id="mucluc">{{ n.MAMUCLUC }}</span>
-                                                                    | Hộp số: <span id="hopso">{{ n.MAHOP }}</span>
-                                                                    | Hồ sơ số: <span id="hososo">{{ n.MAHOSO }}</span>
+                                                                    Số ký hiệu: <span id="mucluc">{{ n.SOKYHIEU }}</span>
+                                                                    | Ngày tháng: <span id="mucluc">{{ n.THOIGIAN }}</span>
                                                                     <br>
-                                                                    Thời gian: <span>{{n.THOIGIANS}} đến {{n.THOIGIANE}}</span>
-                                                                    <br>
-                                                                    Phông: <a style="text-decoration:none">{{n.TENPHONG}}</a>
+                                                                    Tác giả: <span>{{n.TACGIA}}</span>
+                                                                    <br />
+                                                                    <span style="width:630px;display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden">
+                                                                        Hồ sơ số: <span id="hososo">{{ n.MAHOSO }}</span> |
+                                                                        <a style="text-decoration:none;"><span style="color:#444">Phông: </span>{{n.TENPHONG}}</a>
+                                                                    </span>
                                                                 </p>
                                                             </div>
                                                         </li>
@@ -177,26 +195,26 @@
                                                                         <div class="collapse in">
                                                                             <div class="form-group col-md-12 row-chitiet">
                                                                                 <div class="col-sm-2 col-xs-12">
-                                                                                    <label for="" class="control-label">Hồ sơ số: </label>
+                                                                                    <label for="" class="control-label">Số ký hiệu: </label>
                                                                                 </div>
                                                                                 <div class="col-sm-10">
-                                                                                    <label class="chitiethoso">{{mahoso}}</label>
+                                                                                    <label class="chitiethoso">{{SOKYHIEU}}</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group col-md-12 row-chitiet">
                                                                                 <div class="col-sm-2 col-xs-12">
-                                                                                    <label for="" class="control-label">Tiêu đề HS: </label>
+                                                                                    <label for="" class="control-label">Trích yếu: </label>
                                                                                 </div>
                                                                                 <div class="col-sm-10">
-                                                                                    <label class="chitiethoso">{{tenhoso}}</label>
+                                                                                    <label class="chitiethoso">{{TRICHYEU}}</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group col-md-12 row-chitiet">
                                                                                 <div class="col-sm-2 col-xs-12">
-                                                                                    <label for="" class="control-label">Loại tài liệu: </label>
+                                                                                    <label for="" class="control-label">Tác giả: </label>
                                                                                 </div>
                                                                                 <div class="col-sm-10">
-                                                                                    <label class="chitiethoso">{{loaitl}}</label>
+                                                                                    <label class="chitiethoso">{{TACGIA}}</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group col-md-12 row-chitiet">
@@ -204,7 +222,7 @@
                                                                                     <label for="" class="control-label">Thời gian: </label>
                                                                                 </div>
                                                                                 <div class="col-sm-10">
-                                                                                    <label class="chitiethoso">{{thoigians}} đến {{thoigiane}}</label>
+                                                                                    <label class="chitiethoso">{{THOIGIAN}}</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group col-md-12 row-chitiet">
@@ -217,26 +235,18 @@
                                                                             </div>
                                                                             <div class="form-group col-md-12 row-chitiet">
                                                                                 <div class="col-sm-2 col-xs-12">
-                                                                                    <label for="" class="control-label">Mục lục: </label>
-                                                                                </div>
-                                                                                <div class="col-sm-10">
-                                                                                    <label class="chitiethoso">{{mamucluc}}</label>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group col-md-12 row-chitiet">
-                                                                                <div class="col-sm-2 col-xs-12">
                                                                                     <label for="" class="control-label">Hộp số: </label>
                                                                                 </div>
                                                                                 <div class="col-sm-10">
-                                                                                    <label class="chitiethoso">{{mahop}}</label>
+                                                                                    <label class="chitiethoso">{{MAHOP}}</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group col-md-12 row-chitiet">
                                                                                 <div class="col-sm-2 col-xs-12">
-                                                                                    <label for="" class="control-label">Năm lập: </label>
+                                                                                    <label for="" class="control-label">Hồ sơ số: </label>
                                                                                 </div>
                                                                                 <div class="col-sm-10">
-                                                                                    <label class="chitiethoso">{{namlap}}</label>
+                                                                                    <label class="chitiethoso">{{MAHOSO}}</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group col-md-12">
@@ -244,11 +254,9 @@
                                                                                     <label for="" class="control-label">Ghi chú: </label>
                                                                                 </div>
                                                                                 <div class="col-sm-10">
-                                                                                    <label class="chitiethoso">{{ghichu}}</label>
+                                                                                    <label class="chitiethoso">{{GHICHU}}</label>
                                                                                 </div>
                                                                             </div>
-
-
                                                                         </div>
                                                                     </div>
 
@@ -264,7 +272,6 @@
                                                     </div>
                                                     <!-- end Modal thong tin ho so -->
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>

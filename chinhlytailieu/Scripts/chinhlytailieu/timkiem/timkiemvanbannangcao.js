@@ -2,7 +2,11 @@
     $scope.title = "Hello";
     $scope.totalresult = 0;
     $scope.keyword = "";
-
+    $scope.flag_add = false;
+    $scope.sokyhieu = "";
+    $scope.trichyeu = "";
+    $scope.thoigian = "";
+    $scope.tacgia = "";
     $http({
         method: 'GET',
         url: '/chinhlytailieu/nhapmucluc_loadphong'
@@ -13,21 +17,21 @@
         alert('Không tải được danh sách Phông');
     })
 
-    $scope.timkiemhosonangcao = function () {
+    $scope.timkiemvanbannangcao = function () {
         if ($('select[name=selectphong]').val() == "") { alert("Vui lòng chọn phông tài liệu"); return; }
-        if ($scope.tenhoso != "" && $scope.tenhoso != null) {
+        if ($scope.trichyeu != "" && $scope.trichyeu != null) {
             $scope.phongid = $('select[name=selectphong]').val();
             $scope.loaitl = $('select[name=selectloaitl]').val();
-            path = 'phongid=' + $scope.phongid + '&loaitl=' + $scope.loaitl + '&mahoso=' + $scope.mahoso + '&tenhoso=' + $scope.tenhoso;
+            path = 'phongid=' + $scope.phongid + '&loaitl=' + $scope.loaitl + '&sokyhieu=' + $scope.sokyhieu + '&trichyeu=' + $scope.trichyeu + '&thoigian=' + $scope.thoigian + '&tacgia=' + $scope.tacgia;
             $http({
                 method: 'GET',
-                url: '/chinhlytailieu/chinhly_timkiemhosonangcao?' + path
+                url: '/chinhlytailieu/chinhly_timkiemvanbannangcao?' + path
             }).then(function (response) {
                 console.log(response.data);
-                $scope.danhsachketqua = response.data;
+                $scope.danhsachketquavb = response.data;
 
-                if ($scope.danhsachketqua.length > 0) {
-                    $scope.totalresult = $scope.danhsachketqua.length;
+                if ($scope.danhsachketquavb.length > 0) {
+                    $scope.totalresult = $scope.danhsachketquavb.length;
                 }
                 else { $scope.totalresult = "Không tìm thấy"; }
             }, function (response) {
@@ -35,22 +39,20 @@
             })
         }
         else {
-            alert("Vui lòng nhập tiêu đề hồ sơ để tìm kiếm");
+            alert("Vui lòng nhập trích yếu văn bản để tìm kiếm");
         }
     }
 
     $scope.xemchitiet = function (n) {
-        $scope.mahoso = n.MAHOSO;
-        $scope.tenhoso = n.TENHOSO;
-        $scope.loaitl = n.LOAITL;
-        $scope.thoigians = n.THOIGIANS;
-        $scope.thoigiane = n.THOIGIANE;
+        $scope.TRICHYEU = n.TRICHYEU;
+        $scope.SOKYHIEU = n.SOKYHIEU;
+        $scope.TOSO = n.TOSO;
+        $scope.MAHOP = n.MAHOP;
+        $scope.MAHOSO = n.MAHOSO;
         $scope.phong = n.TENPHONG;
-        $scope.mamucluc = n.MAMUCLUC;
-        $scope.mahop = n.MAHOP;
-        $scope.namlap = n.NAMLAP;
-        $scope.ghichu = n.GHICHU;
-
+        $scope.THOIGIAN = n.THOIGIAN;
+        $scope.TACGIA = n.TACGIA;
+        $scope.GHICHU = n.GHICHU;
     }
 
     $scope.timkiem_click = function (state) {
@@ -88,12 +90,12 @@
 
 
     $(document).ready(function () {
-        $('#txtsearch').focus();
+        //$('#txtsearch').focus();
     })
 
     $('#frmhosonangcao').submit(function (e) {
         //e.preventdefault();
-        $scope.timkiemhosonangcao();
+        $scope.timkiemvanbannangcao();
     });
 
 })

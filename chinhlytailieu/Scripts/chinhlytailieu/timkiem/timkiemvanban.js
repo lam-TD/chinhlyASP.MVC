@@ -27,32 +27,32 @@
     }
 
     $scope.xemchitiet = function (n) {
-        $scope.mahoso = n.MAHOSO;
-        $scope.tenhoso = n.TENHOSO;
-        $scope.loaitl = n.LOAITL;
-        $scope.thoigians = n.THOIGIANS;
-        $scope.thoigiane = n.THOIGIANE;
+        $scope.TRICHYEU = n.TRICHYEU;
+        $scope.SOKYHIEU = n.SOKYHIEU;
+        $scope.TOSO = n.TOSO;
+        $scope.MAHOP = n.MAHOP;
+        $scope.MAHOSO = n.MAHOSO;
         $scope.phong = n.TENPHONG;
-        $scope.mamucluc = n.MAMUCLUC;
-        $scope.mahop = n.MAHOP;
-        $scope.namlap = n.NAMLAP;
-        $scope.ghichu = n.GHICHU;
+        $scope.THOIGIAN = n.THOIGIAN;
+        $scope.TACGIA = n.TACGIA;
+        $scope.GHICHU = n.GHICHU;
 
     }
 
     $scope.timkiem_click = function (state) {
         if (state == "1") { link = "#!/timkiemvanbannangcao"; }
-        else if (state == "2") { link = "#!/timkiemvanban"; }
-        else if (state == "3") { link = "#!/timkiemvanbannangcao"; }
-        $rootScope = $scope.keyword.trim();
-        $http({
-            method: 'GET',
-            url: '/chinhlytailieu/session_keyword?keyword=' + $scope.keyword
-        }).then(function (response) {
-            location.href = link;
-        }, function (response) {
-            //alert('Không tải được danh sách mục lục');
-        })
+        else if (state == "2") { link = "#!/timkiemhoso"; }
+        else if (state == "3") { link = "#!/timkiemhosonangcao"; }
+        location.href = link;
+        //$rootScope = $scope.keyword.trim();
+        //$http({
+        //    method: 'GET',
+        //    url: '/chinhlytailieu/session_keyword?keyword=' + $scope.keyword
+        //}).then(function (response) {
+        //    location.href = link;
+        //}, function (response) {
+        //    //alert('Không tải được danh sách mục lục');
+        //})
     }
 
     $scope.check_keyword = function () {

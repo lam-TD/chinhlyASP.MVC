@@ -67,6 +67,7 @@ namespace chinhlytailieu.dataAsset
                 da.Fill(dt);
                 con.Close();
                 System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                serializer.MaxJsonLength = Int32.MaxValue;
                 List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
                 Dictionary<string, object> row;
                 foreach (DataRow dr in dt.Rows)
