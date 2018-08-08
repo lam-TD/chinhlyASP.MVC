@@ -6,6 +6,8 @@
     $scope.total = 0;
     $rootScope.idhosoCha = 0;
     $scope.select_phong = false;
+    $scope.arrhienthi = [10, 20, 30];
+    $scope.page_Size = $scope.arrhienthi[0];
 
     $http({
         method: 'GET',
@@ -26,12 +28,11 @@
                 method: 'GET',
                 url: '/chinhlytailieu/hoso_load?phongid=' + phongid + '&pageIndex=' + $scope.pageIndex + '&pageSize=' + $scope.pageSize
             }).then(function (response) {
-                console.log(response.data);
+                //console.log(response.data);
                 //console.log(response.data[0]["totalCount"]);
                 $scope.total = response.data[0]["totalCount"];
                 $scope.danhsachhoso = response.data;
                 $scope.select_phong = true;
-                //$rootScope.phongidChitietHoSo = $('select[name=selectphong]').val();
             }, function (response) {
                 alert('Không tải được danh sách phông');
             })
@@ -42,9 +43,16 @@
         $scope.loadMucluc();
     }
 
-    $scope.change_hienthi = function () {
+    $scope.change_hienthi = function (n) {
         $scope.pageIndex = 1;
-        //$scope.pageSize = $scope.hienthi;
+        $scope.pageSize = n;
+        //$scope.pageSize = $('select[name=selecthienthi]').val();
+        $scope.loadMucluc();
+    }
+
+    function changehienthi() {
+        $scope.pageIndex = 1;
+        $scope.pageSize = $('select[name=selecthienthi]').val();
         $scope.loadMucluc();
     }
 
@@ -125,6 +133,7 @@
 
     $(document).ready(function () {
         $('#btnsuahoso').attr("disabled", "disabled");
+        //$('#idhienthi').on('change', $scope.change_hienthi());
         if ($rootScope.phongidChitietHoSo > 0) {
             $scope.loaddanhsachhoso($rootScope.phongidChitietHoSo);
         }
