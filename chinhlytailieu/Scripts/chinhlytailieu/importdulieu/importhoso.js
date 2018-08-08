@@ -62,6 +62,7 @@
         response.then(function (d) {
             //$scope.danhsachvanban = JSON.parse(d.data);
             $scope.danhsachhoso = (d.data);
+            $scope.totalresult = d.data.length;
             console.log(d.data);
             $scope.disablebtn = false;
         }, function (err) {
@@ -74,10 +75,10 @@
         $scope.mamucluc = $('select[name=selectmucluc]').val();
         $http({
             method: 'GET',
-            url: '/chinhlytailieu/insert_excel_data?phongid=' + $scope.phongid + '&mamucluc=' + $scope.mamucluc
+            url: '/chinhlytailieu/insert_excel_hoso?phongid=' + $scope.phongid + '&mamucluc=' + $scope.mamucluc
         }).then(function (response) {
             console.log(response.data);
-            alert('Import thành công ' + response.data[0] + ' trên tổng số ' + response.data[1] + ' văn bản');
+            alert('Import thành công ' + response.data[0] + ' trên tổng số ' + response.data[1] + ' hồ sơ');
         }, function (response) {
             alert('Lỗi không thực hiện được chức năng này');
         })

@@ -327,7 +327,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return dataAsset.data.outputdata("hoso_load", namepara, valuepara);
         }
 
-        public JsonResult hoso_them(hoso h, int hopid = 0)
+        public int hoso_them(hoso h, int hopid = 0)
         {
             int result = -1;
             string ghichu = "", chugiai = "", tinhtrang = "", ngonngu = "";
@@ -357,7 +357,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             }
             else { result = 0; }
             
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return result;
         }
 
         
@@ -977,6 +977,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                         else if(type == "2")
                         {
                             lishoso = get_list_hoso(dt);
+                            TempData["listhoso"] = lishoso;
                             return Json(lishoso, JsonRequestBehavior.AllowGet);
                         }
                     }
@@ -1008,6 +1009,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             int[] ketqua = new int[2];
             ketqua[0] = count;
             ketqua[1] = v.Count;
+            TempData["listvanban"] = null;
             return Json(ketqua, JsonRequestBehavior.AllowGet);
             //try
             //{
@@ -1017,6 +1019,23 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             //{
             //    return Json("-1", JsonRequestBehavior.AllowGet);
             //}
+        }
+
+        public JsonResult insert_excel_hoso(int phongid, string mamucluc)
+        {
+            int count = 0;
+            List<hoso> h = (List<hoso>)TempData["listhoso"];
+            foreach (hoso item in h)
+            {
+                item.Phongid = phongid;
+                item.Mucluc = int.Parse(mamucluc);
+                if (hoso_them(item) == 1) count++;
+            }
+            int[] ketqua = new int[2];
+            ketqua[0] = count;
+            ketqua[1] = h.Count;
+            TempData["listhoso"] = null;
+            return Json(ketqua, JsonRequestBehavior.AllowGet);
         }
 
         public int get_hosoid(int phongid, string mamucluc, string mahoso)
@@ -1070,34 +1089,6 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                 listhoso.Add(h);
             }
             return listhoso;
-        }
-
-        private static List<T> ConvertDataTable<T>(DataTable dt)
-        {
-            List<T> data = new List<T>();
-            foreach (DataRow row in dt.Rows)
-            {
-                T item = GetItem<T>(row);
-                data.Add(item);
-            }
-            return data;
-        }
-        private static T GetItem<T>(DataRow dr)
-        {
-            Type temp = typeof(T);
-            T obj = Activator.CreateInstance<T>();
-
-            foreach (DataColumn column in dr.Table.Columns)
-            {
-                foreach (PropertyInfo pro in temp.GetProperties())
-                {
-                    if (pro.Name == column.ColumnName)
-                        pro.SetValue(obj, dr[column.ColumnName], null);
-                    else
-                        continue;
-                }
-            }
-            return obj;
         }
     }
 }

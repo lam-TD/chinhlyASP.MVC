@@ -48,7 +48,7 @@
                                                 </div>
                                                 <div class="col-sm-9" style="padding: 0;">
                                                     <select name="selectphong" class="col-md-12" ng-change="loadmucluc()" ng-model="phong">
-                                                        <option value="">--Chọn phông tài liệu--</option>
+                                                        <option value="" disabled>--Chọn phông tài liệu--</option>
                                                         <option value="{{n.ID}}" ng-repeat="n in danhsachphong">{{n.TENPHONG}}</option>
                                                     </select>
                                                 </div>
@@ -60,7 +60,7 @@
                                                 </div>
                                                 <div class="col-sm-9" style="padding: 0;">
                                                     <select name="selectmucluc" class="col-md-12 col-xs-12" ng-model="v.mucluc">
-                                                        <option value="">--Chọn mục lục--</option>
+                                                        <option value="" disabled>--Chọn mục lục--</option>
                                                         <option class="rowmucluc" ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
                                                     </select>
                                                 </div>
@@ -75,11 +75,11 @@
 
                                     <div class="col-md-9 col-xs-12">
                                         <div class="" style="margin-bottom: 10px;">
-                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                                            <button type="button" class="btn btn-primary btn-sm" ng-disabled="disablebtn" ng-click="insertData()">
                                                 <i class="fa fa-file"></i>Ghi nhận dữ liệu
                                             </button>
                                             @*<div>Import thành công 5/5 hồ sơ</div>*@
-                                            <div class="pull-right">Tổng số hồ sơ: {{danhsachhoso.length}}</div>
+                                            <div class="pull-right">Tổng số hồ sơ: {{totalresult}}</div>
                                         </div>
                                         <div class="" style="height:450px;overflow-y:auto;overflow-x:hidden">
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content table-fixed">
