@@ -18,6 +18,12 @@
     button, a.btn{
         border-radius: 0px !important;
     }
+    ul.phantrang_tuychon{
+        list-style-type: none;
+    }
+    ul.phantrang_tuychon li{
+        float: right;
+    }
 </style>
  <!-- Page Content -->
 <div class="page-content" ng-controller="nhaphosoController">
@@ -54,11 +60,8 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="form-group col-md-12">
-                                                    @*<div class="col-sm-2 float-left">
-                                                        
-                                                    </div>*@
-                                                    <label for="" class="control-label pull-left" style="margin-top: 8px;margin-left:15px;">Phông tài liệu</label>
+                                                <div class="form-group col-md-12" style="margin-bottom:0;">
+                                                    @*<label for="" class="control-label pull-left" style="margin-top: 8px;margin-left:15px;">Phông tài liệu</label>*@
                                                     <div class="col-sm-4">
                                                         <select name="selectphong" id="" class="col-xs-12" ng-change="loadMucluc()" ng-model="selectphong">
                                                             <option value="">--Chọn phông--</option>
@@ -66,19 +69,34 @@
                                                         </select>
                                                     </div>
 
-                                                    @*<div class="col-sm-2" style="">
-                                                        <label for="" class="control-label pull-right" style="margin-top: 8px;">Tình trạng</label>
+                                                    <div class="col-md-8" style="margin-bottom: 10px;">
+                                                        <div class="col-md-5" style="padding-left:0;">
+                                                            <input style="width:100%;" class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="textTimHoSo" />
+                                                        </div>
+                                                        <div class="col-md-7" style="padding-right:0;">
+                                                            <a href="#!nhaphoso/them" class="btn btn-primary">
+                                                                <i class="fa fa-file"></i>Thêm mới
+                                                            </a>
+
+                                                            <a href="#!nhaphoso/them" class="btn btn-primary" id="btnsuahoso">
+                                                                <i class="fa fa-pencil-square-o"></i>Sửa
+                                                            </a>
+
+                                                            <button class="btn btn-danger" ng-disabled="disablebtn" ng-click="deleteHoso()">
+                                                                <i class="fa fa-times"></i>
+                                                                Xóa
+                                                            </button>
+
+                                                            <a href="#!/xephosovaohop" class="btn btn-info pull-right hidden-sm" ng-disabled="disablebtn">
+                                                                <i class="fa fa-inbox"></i>
+                                                                Xếp vào hộp
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <select name="selecttrangthai" id="" class="col-xs-12">
-                                                            <option value=""></option>
-                                                            <option value="">Phòng chỉnh lý</option>
-                                                        </select>
-                                                    </div>*@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
+                                            @*<div class="col-md-12">
                                                 <div class="" style="margin-bottom: 10px;">
                                                     <a href="#!nhaphoso/them" class="btn btn-primary">
                                                         <i class="fa fa-file"></i>Thêm mới
@@ -87,7 +105,6 @@
                                                     <a href="#!nhaphoso/them" class="btn btn-primary" id="btnsuahoso">
                                                         <i class="fa fa-pencil-square-o"></i>Sửa
                                                     </a>
-                                                    @*<asp:Button ID="btnSet" Text="SetSession" runat="server" />*@
 
                                                     <button class="btn btn-danger" ng-disabled="disablebtn" ng-click="deleteHoso()">
                                                         <i class="fa fa-times"></i>
@@ -99,80 +116,17 @@
                                                         Xếp vào hộp
                                                     </a>
 
-                                                    @*<button type="button" class="btn btn-info" data-toggle="modal" data-target="#timkiem">
-                                                        <i class="fa fa-search-plus"></i>Tìm kiếm
-                                                    </button>*@
+                                                    
                                                     <div class="col-md-3" style="padding-left:0;">
                                                         <input class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="textTimHoSo"/>
                                                     </div>
-                                                    
-                                                    <!-- Modal sua -->
-                                                    <div class="modal fade" id="timkiem" role="dialog">
-                                                        <div class="modal-dialog">
-                                                            <!-- Modal content-->
-                                                            <div class="modal-content">
-                                                                <form action="">
-                                                                    <div class="modal-header">
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        <h4 class="modal-title">Tìm kiếm nhanh</h4>
-                                                                    </div>
-                                                                    <div class="modal-body" style="min-height: 120px;">
-                                                                        <div class="collapse in">
-                                                                            <div class="form-group col-md-12">
-                                                                                <div class="col-sm-2">
-                                                                                    <label for="" class="control-label pull-right">Hồ sơ số</label>
-                                                                                </div>
-                                                                                <div class="col-sm-10">
-                                                                                    <input type="text" class="form-control" placeholder="Hồ sơ số">
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="form-group col-md-12">
-                                                                                <div class="col-sm-2">
-                                                                                    <label for="" class="control-label pull-right">Tiêu đề</label>
-                                                                                </div>
-                                                                                <div class="col-sm-10">
-                                                                                    <textarea class="col-md-12 col-xs-12" placeholder="Tiêu đề"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                                                            <i class="fa fa-search"></i>Tìm kiếm
-                                                                        </button>
-
-                                                                        <button type="button" class="btn btn-danger">
-                                                                            <i class="fa fa-times"></i>Hủy tìm kiếm
-                                                                        </button>
-
-                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
-                                                                        </button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end Modal sua -->
-
-                                                    @*<button class="btn btn-info">
-                                                        <i class="fa fa-list"></i>
-                                                        Thêm văn bản
-                                                    </button>*@
-
-                                                    @*<button class="btn btn-info pull-right">
-                                                        <i class="fa fa-send"></i>
-                                                        Gửi kiểm tra
-                                                    </button>*@
 
                                                 </div>
-                                            </div>
+                                            </div>*@
 
                                             <div class="col-md-12 col-xs-12">
 
-                                                <div style="height: 400px; overflow: auto;">
+                                                <div style="height: 400px; overflow: auto;margin-bottom:5px;">
                                                     <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                         <thead class="flip-content bordered-palegreen">
                                                             <tr>
@@ -185,7 +139,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="cursor:pointer" class="rowhoso" dir-paginate="u in danhsachhoso  |filter:textTimHoSo |itemsPerPage:12" ng-click="clickchonhoso(u)" id="{{u.ID}}">
+                                                            <tr style="cursor:pointer" class="rowhoso" ng-repeat="u in danhsachhoso |filter:textTimHoSo" ng-click="clickchonhoso(u)" id="{{u.ID}}">
                                                                 <td style="text-align:center">{{u.MAHOP}}</td>
                                                                 <td style="text-align:center">{{u.MAHOSO}}</td>
                                                                 <td>{{u.TENHOSO}}</td>
@@ -197,7 +151,34 @@
                                                     </table>
                                                     
                                                 </div>
-                                                <dir-pagination-controls max-size="6" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                                <div class="row" ng-if="select_phong">
+                                                    <div class="col-md-8">
+                                                        <ul uib-pagination total-items="total" ng-change="pageChanged()" ng-model="pageIndex" max-size="15" items-per-page="pageSize" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-4">
+                                                        <ul class="phantrang_tuychon">
+                                                            <li>
+                                                                <label class="">Hiển thị</label>
+                                                                <select name="selecthienthi" ng-model="pageSize" ng-change="change_hienthi()">
+                                                                    <option ng-selected="true" value="10">10</option>
+                                                                    <option value="20">20</option>
+                                                                </select>
+                                                            </li>
+                                                            <li style="padding-top: 7px;margin-right:20px;">Tổng số hồ sơ: <b>{{total}}</b></li>
+                                                        </ul>
+                                                        @*<div class="col-md-5"><label style="padding-top: 5px;">Tổng số hồ sơ: {{total}}</label></div>
+                                                        <div class="col-md-7">
+                                                            <label>Hiển thị</label>
+                                                            <select>
+                                                                <option value="10">10</option>
+                                                                <option value="20">20</option>
+                                                            </select>
+                                                        </div>*@
+                                                    </div>
+                                                </div>
+                                                @*<dir-pagination-controls max-size="6" direction-links="true" boundary-links="true"></dir-pagination-controls>*@
+                                                
                                             </div>
                                         </div>
                                     </div>

@@ -1,8 +1,11 @@
 ﻿app.controller("nhaphosoController", function ($scope, $http, $rootScope) {
     $scope.tieude = "Chỉnh lý tài liệu";
     $scope.disablebtn = true;
-  
+    $scope.pageIndex = 1;
+    $scope.pageSize = 10;
+    $scope.total = 0;
     $rootScope.idhosoCha = 0;
+    $scope.select_phong = false;
 
     $http({
         method: 'GET',
@@ -16,19 +19,33 @@
 
     $scope.loadMucluc = function () {
         ////alert($('select[name=selectphong]').val());
-        
+        phongid = $('select[name=selectphong]').val();
+
         if ($('select[name=selectphong]').val() != "") {
             $http({
                 method: 'GET',
-                url: '/chinhlytailieu/hoso_load?phongid=' + $('select[name=selectphong]').val()
+                url: '/chinhlytailieu/hoso_load?phongid=' + phongid + '&pageIndex=' + $scope.pageIndex + '&pageSize=' + $scope.pageSize
             }).then(function (response) {
-                //console.log(response.data);
+                console.log(response.data);
+                //console.log(response.data[0]["totalCount"]);
+                $scope.total = response.data[0]["totalCount"];
                 $scope.danhsachhoso = response.data;
-                $rootScope.phongidChitietHoSo = $('select[name=selectphong]').val();
+                $scope.select_phong = true;
+                //$rootScope.phongidChitietHoSo = $('select[name=selectphong]').val();
             }, function (response) {
                 alert('Không tải được danh sách phông');
             })
         }
+    }
+
+    $scope.pageChanged = function () {
+        $scope.loadMucluc();
+    }
+
+    $scope.change_hienthi = function () {
+        $scope.pageIndex = 1;
+        //$scope.pageSize = $scope.hienthi;
+        $scope.loadMucluc();
     }
 
     $scope.loaddanhsachhoso = function (phongid) {

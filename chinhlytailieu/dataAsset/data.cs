@@ -83,6 +83,49 @@ namespace chinhlytailieu.dataAsset
             }
         }
 
+        public static string outputdata_pagination(string namestored, string[] name_para = null, object[] value_para = null)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString))
+            {
+                con.Open();
+                string query = "";
+                if (value_para != null)
+                {
+                    string mangbien = String.Join(", ", name_para);
+                    query = "EXEC" + " " + namestored + " " + mangbien;
+                    command = new SqlCommand(query, con);
+                    for (int i = 0; i < value_para.Length; i++)
+                    {
+                        command.Parameters.AddWithValue(name_para[i], value_para[i]);
+                    }
+                }
+                else
+                {
+                    query = "EXEC" + " " + namestored;
+                    command = new SqlCommand(query, con);
+                }
+                //SqlDataReader dr = command.ExecuteReader();
+                da = new SqlDataAdapter(command);
+                da.Fill(dt);
+                con.Close();
+                System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                serializer.MaxJsonLength = Int32.MaxValue;
+                List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                Dictionary<string, object> row;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    row = new Dictionary<string, object>();
+                    foreach (DataColumn col in dt.Columns)
+                    {
+                        row.Add(col.ColumnName, dr[col]);
+                    }
+                    rows.Add(row);
+                }
+                return serializer.Serialize(rows);
+            }
+        }
+
         public static DataTable outputdataTable(string namestored, string[] name_para = null, object[] value_para = null)
         {
             DataTable dt = new DataTable();

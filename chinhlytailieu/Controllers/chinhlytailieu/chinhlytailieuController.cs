@@ -264,8 +264,8 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                     
                     break;
                 case 2:
-                    string[] namepara2 = { "@MAMUCLUC", "@PHONGID", "@TENMUCLUC", "@MOTA", "@GHICHU" };
-                    object[] valuepara2 = { ml.Mamucluc, ml.Phongid, ml.Tenmucluc, mota, ghichu };
+                    string[] namepara2 = { "@ID", "@PHONGID", "@TENMUCLUC", "@MOTA", "@GHICHU" };
+                    object[] valuepara2 = { ml.Id, ml.Phongid, ml.Tenmucluc, mota, ghichu };
                     if (dataAsset.data.inputdata("mucluc_sua", namepara2, valuepara2)) { result = "1"; }
                     else { result = "-1"; }
                     break;
@@ -320,11 +320,14 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         }
 
         //==================== NHAP HO SO CHINH LY ====================
-        public string hoso_load(int phongid)
+        public string hoso_load(int phongid, int pageIndex, int pageSize)
         {
-            string[] namepara = { "@phongid" };
-            object[] valuepara = { phongid };
-            return dataAsset.data.outputdata("hoso_load", namepara, valuepara);
+            //string[] namepara = { "@phongid" };
+            //object[] valuepara = { phongid };
+            //return dataAsset.data.outputdata("hoso_load", namepara, valuepara);
+            string[] namepara = { "@phongid", "@pageIndex", "@pageSize" };
+            object[] valuepara = { phongid, pageIndex, pageSize };
+            return dataAsset.data.outputdata("hoso_load_phongid", namepara, valuepara);
         }
 
         public int hoso_them(hoso h, int hopid = 0)

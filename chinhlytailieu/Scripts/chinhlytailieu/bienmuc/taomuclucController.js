@@ -33,9 +33,10 @@
         //console.log(id);
         $('.row').removeClass("activePhong");
         $('#r' + id).addClass("activePhong");
-        //console.log($('#' + id));
-        $('#' + id).attr("selected", "selected");
-        
+        console.log(('id: ' + id));
+        //$('.opphong').removeAttr("selected");
+        //$('#' + id).attr("selected", "selected");
+        $('select[name=selectphong]').val(id).trigger('change');
         $scope.disable_btnsua = true;
         $scope.idphong = id;
         $http({
@@ -60,7 +61,8 @@
             tenmucluc: u.TENMUCLUC,
             mamucluc: u.MAMUCLUC,
             mota: u.MOTA,
-            ghichu: u.GHICHU
+            ghichu: u.GHICHU,
+            phongid: u.PHONGID
         }
         $scope.ml = ml;
     }
@@ -72,6 +74,7 @@
         if (state == "add") {
             $scope.disablePhong = false;
             $scope.titleModal = "Thêm mới mục lục";
+            $scope.phongid = $scope.idphong;
             var ml =
             {
                 tenmucluc: "",
@@ -153,7 +156,7 @@
                 $http({
                     method: 'POST',
                     url: '/chinhlytailieu/mucluc_themsua',
-                    data: { type: 2, ml: $scope.ml2 }
+                    data: { type: 2, ml: $scope.ml }
                 }).then(function (response) {
                     console.log(response.data);
                     if (response.data == 1) {

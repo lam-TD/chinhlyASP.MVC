@@ -86,9 +86,9 @@
                                                                                     <label for="" class="control-label pull-right">Phông</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9">
-                                                                                    <select name="selectphong" id="selectBox" class="col-sm-12 col-xs-12" ng-disabled="disablePhong">
-                                                                                        <option class="tuychon" id="chon" value="">--Chọn phông--</option>
-                                                                                        <option class="opphong" ng-repeat="n in danhsachphong" value="{{n.ID}}" id="{{n.ID}}">{{n.TENPHONG}}</option>
+                                                                                    <select name="selectphong" id="selectBox" class="col-sm-12 col-xs-12" ng-disabled="disablePhong" ng-model="lam">
+                                                                                        <option class="tuychon" id="chon" value="" disabled>--Chọn phông--</option>
+                                                                                        <option class="opphong" ng-repeat="n in danhsachphong" ng-selected="{{idphong == n.ID}}" value="{{n.ID}}" id="{{n.ID}}">{{n.TENPHONG}}</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
