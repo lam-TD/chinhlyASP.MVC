@@ -3,6 +3,10 @@
     Layout = null;
 }
 
+<style>
+    
+</style>
+
 <script src="~/Scripts/chinhlytailieu/importdulieu/importhoso.js"></script>
  <!-- Page Content -->
 <div class="page-content" ng-controller="importhosoController">
@@ -36,14 +40,14 @@
                                         </a>
                                     </div>
 
-                                    <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee;">
+                                    <div class="col-md-3 col-xs-12" style="border-right: 1px solid #eee;">
                                         <div class="row">
                                             <div class="form-group col-md-12" style="margin-bottom: 5px;padding-left:0">
                                                 <div class="col-sm-3 col-xs-12">
                                                     <label class="">Phông</label>
                                                 </div>
                                                 <div class="col-sm-9" style="padding: 0;">
-                                                    <select name="selectphong" class="col-md-12">
+                                                    <select name="selectphong" class="col-md-12" ng-change="loadmucluc()" ng-model="phong">
                                                         <option value="">--Chọn phông tài liệu--</option>
                                                         <option value="{{n.ID}}" ng-repeat="n in danhsachphong">{{n.TENPHONG}}</option>
                                                     </select>
@@ -55,9 +59,9 @@
                                                     <label class="">Mục lục</label>
                                                 </div>
                                                 <div class="col-sm-9" style="padding: 0;">
-                                                    <select name="" id="" class="col-md-12 col-xs-12">
-                                                        <option value="">Bộ công chánh</option>
-                                                        <option value=""></option>
+                                                    <select name="selectmucluc" class="col-md-12 col-xs-12" ng-model="v.mucluc">
+                                                        <option value="">--Chọn mục lục--</option>
+                                                        <option class="rowmucluc" ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -69,40 +73,33 @@
                                         <input type="file" class="form-control" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onchange="angular.element(this).scope().UploadFiles(this.files)" />
                                     </div>
 
-                                    <div class="col-md-8 col-xs-12">
+                                    <div class="col-md-9 col-xs-12">
                                         <div class="" style="margin-bottom: 10px;">
                                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
                                                 <i class="fa fa-file"></i>Ghi nhận dữ liệu
                                             </button>
+                                            @*<div>Import thành công 5/5 hồ sơ</div>*@
+                                            <div class="pull-right">Tổng số hồ sơ: {{danhsachhoso.length}}</div>
                                         </div>
-                                        <div class="" style="height: 300px;overflow: auto;">
-                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                        <div class="" style="height:450px;overflow-y:auto;overflow-x:hidden">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content table-fixed">
                                                 <thead class="flip-content bordered-palegreen">
                                                     <tr>
-                                                        <th style="width: 5%;">STT</th>
-                                                        <th style="width: 20%">Loại</th>
-                                                        <th style="width: 20%;">Hồ sơ số</th>
+                                                        <th style="width: 70px;">Hồ sơ số</th>
                                                         <th style="">Tiêu đề hồ sơ</th>
+                                                        <th style="">Loại</th>
+                                                        <th style="">Ghi chú</th>
+                                                        
+                                                        
+                                                        
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>BGD</td>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>BGD</td>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>BGD</td>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
+                                                <tbody style="">
+                                                    <tr ng-repeat="n in danhsachhoso">
+                                                        <td>{{n.Mahoso}}</td>
+                                                        <td>{{n.Tenhoso}}</td>
+                                                        <td>{{n.Loaitl}}</td>
+                                                        <td>{{n.Ghichu}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

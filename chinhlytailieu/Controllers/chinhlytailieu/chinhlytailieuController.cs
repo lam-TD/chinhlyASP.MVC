@@ -653,23 +653,34 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return dataAsset.data.outputdata("vanban_loadtheohoso", namepara, valuepara);
         }
 
-        public JsonResult vanban_them(vanban v, int hosoid)
+        public int vanban_them(vanban v, int hosoid)
         {
-            int result = -1;
-            DateTime date = DateTime.Parse(v.Thoigian);
-            string tg = date.ToString("dd-MM-yyy");
-            string ghichu = "", ngonngu = "", tacgia = "";
+            //int result = -1;
+            string tg;
+            try
+            {
+                DateTime date = DateTime.Parse(v.Thoigian);
+                tg = date.ToString("dd-MM-yyy");
+            }
+            catch (Exception)
+            {
+                tg = v.Thoigian;
+            }
+            string ghichu = "", ngonngu = "", tacgia = "", tenloai = "", kyhieu = "", buttich = "";
             if (v.Ghichu != null) { ghichu = v.Ghichu; }
             if (v.Ngonngu != null) { ngonngu = v.Ngonngu; }
             if (v.Tacgia != null) { tacgia = v.Tacgia; }
+            if (v.Tenloai != null) { tenloai = v.Tenloai; }
+            if (v.Kyhieu != null) { kyhieu = v.Kyhieu; }
+            if (v.Buttich != null) { buttich = v.Buttich; }
             string[] namepara = { "@HOSOID", "@TOSO", "@SLTO", "@SUDUNG", "@SOKYHIEU", "@THOIGIAN", "@TACGIA", "@TENLOAI", "@TRICHYEU", "@KYHIEU", "@NGOCNGU", "@BUTTICH", "@GHICHU" };
-            object[] valuepara = { hosoid, v.Toso, v.Slto, v.Sudung, v.Sokyhieu, tg, tacgia, v.Tenloai, v.Trichyeu, "", ngonngu, v.Buttich, ghichu };
+            object[] valuepara = { hosoid, v.Toso, v.Slto, v.Sudung, v.Sokyhieu, tg, tacgia, tenloai, v.Trichyeu, kyhieu, ngonngu, buttich, ghichu };
             if (dataAsset.data.inputdata("vanban_them", namepara, valuepara))
             {
-                result = 1;
+                return 1;
             }
-            else { result = -1; }
-            return Json(result, JsonRequestBehavior.AllowGet);
+            else { return -1; }
+            //return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult vanban_sua(vanban v)
@@ -895,16 +906,18 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             else return -1;
         }
 
-        public JsonResult read_excel()
+        public JsonResult read_excel(string type)
         {
             string datanew = "";
             List<vanban> lisvanban = new List<vanban>();
+            List<hoso> lishoso = new List<hoso>();
             if (ModelState.IsValid)
             {
                 string filePath = string.Empty;
                 if (Request != null)
                 {
                     HttpPostedFileBase file = Request.Files["file"];
+                    //string type = this.Request.["type"].ToString();
                     if ((file != null) && (file.ContentLength > 0) && !string.IsNullOrEmpty(file.FileName))
                     {
 
@@ -932,6 +945,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                         else
                         {
                             ModelState.AddModelError("File", "This file format is not supported");
+                            return Json("-2", JsonRequestBehavior.AllowGet);
                             //return RedirectToAction("ExcelUpload");
                         }
 
@@ -954,40 +968,108 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                             fileinfo.Delete();
                         }
                         DataTable dt = result.Tables[0];
-                        for (int i = 0; i < dt.Rows.Count; i++)
+                        if (type == "1")
                         {
-                            vanban v = new vanban();
-                            v.Sokyhieu = dt.Rows[i]["Số ký hiệu văn bản"].ToString();
-                            v.Trichyeu = dt.Rows[i]["Trích yếu nội dung văn bản"].ToString();
-                            v.Thoigian = dt.Rows[i]["Ngày, tháng văn bản"].ToString();
-                            v.Mahoso = dt.Rows[i]["Số hồ sơ"].ToString();
-                            v.Toso = dt.Rows[i]["Tờ Số"].ToString();
-                            v.Tacgia = dt.Rows[i]["Tác giả văn bản"].ToString();
-                            //if (dt.Rows[i]["Số hồ sơ"].ToString() == null) v.Slto = 0;
-                            //else v.Slto = int.Parse(dt.Rows[i]["Số hồ sơ"].ToString());
-                            v.Ghichu = dt.Rows[i]["Ghi chú"].ToString();
-                            lisvanban.Add(v);
+                            lisvanban = get_list_vanban(dt);
+                            TempData["listvanban"] = lisvanban;
+                            return Json(lisvanban, JsonRequestBehavior.AllowGet);
                         }
-                        //System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                        //serializer.MaxJsonLength = Int32.MaxValue;
-                        //List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
-                        //Dictionary<string, object> row;
-                        //foreach (DataRow dr in dt.Rows)
-                        //{
-                        //    row = new Dictionary<string, object>();
-                        //    foreach (DataColumn col in dt.Columns)
-                        //    {
-                        //        row.Add(col.ColumnName, dr[col]);
-                        //    }
-                        //    rows.Add(row);
-                        //}
-                        //datanew = serializer.Serialize(rows);
-
-                        //lisvanban = ConvertDataTable<vanban>(dt);
+                        else if(type == "2")
+                        {
+                            lishoso = get_list_hoso(dt);
+                            return Json(lishoso, JsonRequestBehavior.AllowGet);
+                        }
                     }
                 }
             }
-            return Json(lisvanban, JsonRequestBehavior.AllowGet);
+            return Json("-1", JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult insert_excel_data(int phongid, string mamucluc)
+        {
+            int count = 0;
+            List<vanban> v = (List<vanban>)TempData["listvanban"];
+            foreach (vanban item in v)
+            {
+                string mahoso = v[0].Mahoso;
+                string mahoso_new = "";
+                if (item.Mahoso != "" && item.Mahoso != null)
+                {
+                    mahoso_new = item.Mahoso;
+                    int hosoid = get_hosoid(phongid, mamucluc, mahoso_new);
+                    if (vanban_them(item, hosoid) == 1) count++;
+                }
+                else
+                {
+                    int hosoid = get_hosoid(phongid, mamucluc, mahoso);
+                    if (vanban_them(item, hosoid) == 1) count++;
+                }
+            }
+            int[] ketqua = new int[2];
+            ketqua[0] = count;
+            ketqua[1] = v.Count;
+            return Json(ketqua, JsonRequestBehavior.AllowGet);
+            //try
+            //{
+
+            //}
+            //catch (Exception)
+            //{
+            //    return Json("-1", JsonRequestBehavior.AllowGet);
+            //}
+        }
+
+        public int get_hosoid(int phongid, string mamucluc, string mahoso)
+        {
+            string[] namepara = { "@PHONGID", "@MAMUCLUC", "@MAHOSO" };
+            object[] valuepara = { phongid, mamucluc, mahoso };
+            DataTable dt = dataAsset.data.outputdataTable("hoso_getid", namepara, valuepara);
+            if (dt.Rows.Count > 0) return int.Parse(dt.Rows[0]["ID"].ToString());
+            else return -1;
+        }
+
+        public List<vanban> get_list_vanban(DataTable dt)
+        {
+            List<vanban> lisvanban = new List<vanban>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                vanban v = new vanban();
+                v.Sokyhieu = dt.Rows[i]["SOKYHIEU"].ToString();
+                v.Trichyeu = dt.Rows[i]["TRICHYEU"].ToString();
+                v.Thoigian = dt.Rows[i]["THOIGIAN"].ToString();
+                v.Mahoso = dt.Rows[i]["MAHOSO"].ToString();
+                v.Toso = dt.Rows[i]["TOSO"].ToString();
+                v.Tacgia = dt.Rows[i]["TACGIA"].ToString();
+                //if (dt.Rows[i]["Số hồ sơ"].ToString() == null) v.Slto = 0;
+                //else v.Slto = int.Parse(dt.Rows[i]["Số hồ sơ"].ToString());
+                v.Ghichu = dt.Rows[i]["GHICHU"].ToString();
+                lisvanban.Add(v);
+            }
+            return lisvanban;
+        }
+
+        public List<hoso> get_list_hoso(DataTable dt)
+        {
+            List<hoso> listhoso = new List<hoso>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                hoso h = new hoso();
+                int slto = 0, bienmuc = 1;
+                h.Mahoso = dt.Rows[i]["MAHOSO"].ToString();
+                h.Loaitl = dt.Rows[i]["LOAITL"].ToString();
+                int.TryParse(dt.Rows[i]["BIENMUC"].ToString(), out bienmuc);
+                h.Bienmuc = bienmuc;
+                h.Tenhoso = dt.Rows[i]["TENHOSO"].ToString();
+                h.Mahoso = dt.Rows[i]["MAHOSO"].ToString();
+                
+                int.TryParse(dt.Rows[i]["SLTO"].ToString(), out slto);
+                h.Slto = slto;
+                h.Ghichu = dt.Rows[i]["GHICHU"].ToString();
+                h.Thoigians = dt.Rows[i]["THOIGIANS"].ToString();
+                h.Thoigiane = dt.Rows[i]["THOIGIANE"].ToString();
+                listhoso.Add(h);
+            }
+            return listhoso;
         }
 
         private static List<T> ConvertDataTable<T>(DataTable dt)

@@ -12,9 +12,8 @@
     .rowho:hover{
         background-color: #ddd;
     }
-    .rowVanban:hover{
-        background-color: #ddd;
-        font-weight:400;
+    .thongtinhs{
+        padding-left: 0;
     }
 </style>
 
@@ -49,47 +48,55 @@
                                                 <label style="font-size: 16px;">Quản lý biên mục văn bản</label>
                                             </div>
                                             <div class="col-md-5 col-xs-12" style="border-right: 1px solid #eee;">
-                                                <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0">
                                                     <label>Thông tin hồ sơ</label>
                                                 </div>
                                                 <form action="">
-                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                    <div class="form-group col-md-12 thongtinhs" style="margin-bottom: 5px;">
                                                         <div class="col-sm-3">
-                                                            <label class="pull-right">Phông</label>
+                                                            <label class="pull-left">Phông</label>
                                                         </div>
                                                         <div class="col-sm-9" style="padding: 0;">
                                                             <select name="selectphong" class="col-md-12 col-xs-12" ng-model="v.phongid" ng-change="loadmucluc()">
-                                                                <option value="">--Chọn phông--</option>
+                                                                <option value="" disabled>--Chọn phông--</option>
                                                                 <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
                                                             </select>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                    <div class="form-group col-md-12 thongtinhs" style="margin-bottom: 5px;">
                                                         <div class="col-sm-3">
-                                                            <label class="pull-right">Mục lục</label>
+                                                            <label class="pull-left">Mục lục</label>
                                                         </div>
                                                         <div class="col-sm-9" style="padding: 0;">
                                                             <select name="selectmucluc" class="col-md-12 col-xs-12" ng-model="v.mucluc" ng-change="loadhoso()">
-                                                                <option value="">--Chọn mục lục--</option>
+                                                                <option value="" disabled>--Chọn mục lục--</option>
                                                                 <option class="rowmucluc" ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
                                                             </select>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                    <div class="form-group col-md-12 thongtinhs" style="margin-bottom: 5px;">
                                                         <div class="col-sm-3">
-                                                            <label class="pull-right">Hồ sơ số</label>
+                                                            <label class="pull-left">Hồ sơ số</label>
                                                         </div>
                                                         <div class="col-sm-9" style="padding: 0;">
-                                                            <div class="input-group">
+                                                            <div class="input-group input-group-sm">
+                                                                <input type="text" class="form-control" ng-model="textSearch">
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn btn-default" type="button">
+                                                                        <i class="fa fa-search"></i>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                            @*<div class="input-group">
                                                                 <input type="text" class="form-control" placeholder="" ng-model="textSearch">
                                                                 <span class="input-group-btn">
                                                                     <button class="btn btn-primary" type="button">
                                                                         <i class="fa fa-search"></i>
                                                                     </button>
                                                                 </span>
-                                                            </div><!-- /input-group -->
+                                                            </div>*@
                                                         </div>
                                                     </div>
 
@@ -189,7 +196,7 @@
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <div class="input-group col-xs-12">
-                                                                                        <input class="form-control date-picker" name="txtngaythang" id="id-date-picker-1" type="date" data-date-format="dd-mm-yyyy" ng-model="v.thoigian" ng-required="true">
+                                                                                        <input class="form-control date-picker" name="txtngaythang" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" ng-model="v.thoigian" ng-required="true">
                                                                                         <span class="input-group-addon">
                                                                                             <i class="fa fa-calendar"></i>
                                                                                         </span>
@@ -244,8 +251,8 @@
                                                                                     <label class="pull-right">Loại văn bản</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
-                                                                                    <input type="text" name="txtloaivb" class="form-control" ng-model="v.tenloai" ng-required="true">
-                                                                                    <span style="color:red;" ng-show="formVanBan.txtloaivb.$touched && formVanBan.txtloaivb.$invalid">Loại văn bản không được để trống không được để trống</span>
+                                                                                    <input type="text" name="txtloaivb" class="form-control" ng-model="v.tenloai">
+                                                                                    @*<span style="color:red;" ng-show="formVanBan.txtloaivb.$touched && formVanBan.txtloaivb.$invalid">Loại văn bản không được để trống không được để trống</span>*@
                                                                                 </div>
                                                                             </div>
 
@@ -263,8 +270,8 @@
                                                                                     <label class="pull-right">Người ký</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
-                                                                                    <input type="text" name="txtnguoily" class="form-control" ng-model="v.buttich" ng-required="true">
-                                                                                    <span style="color:red;" ng-show="formVanBan.txtnguoily.$touched && formVanBan.txtnguoily.$invalid">Người ký không được để trống không được để trống</span>
+                                                                                    <input type="text" name="txtnguoily" class="form-control" ng-model="v.buttich">
+                                                                                    @*<span style="color:red;" ng-show="formVanBan.txtnguoily.$touched && formVanBan.txtnguoily.$invalid">Người ký không được để trống không được để trống</span>*@
                                                                                 </div>
                                                                             </div>
 
