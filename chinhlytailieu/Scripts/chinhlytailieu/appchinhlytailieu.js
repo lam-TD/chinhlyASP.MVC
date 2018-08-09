@@ -22,6 +22,10 @@ app.config(function ($routeProvider) {
         templateUrl: '../nhaphosothem',
         controller: ''
     })
+    .when('/nhaphoso/sua', {
+        templateUrl: '../nhaphosothem',
+        controller: ''
+    })
     .when('/nhapvanban', {
         templateUrl: '../nhapvanban',
         controller: ''

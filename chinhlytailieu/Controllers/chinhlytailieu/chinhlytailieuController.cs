@@ -69,7 +69,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return View();
         }
 
-        public ActionResult nhaphosothem()
+        public ActionResult nhaphosothem(int? hosoid)
         {
             return View();
         }
@@ -350,6 +350,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
                 else { result = -1; }
             }
             else if(h.Mahop == null){
+                if (hoso_check_idhoso(h.Mahoso, h.Phongid, h.Mucluc) == 1) return -2;
                 string[] namepara = { "@PHONGID", "@MUCLUC", "@MAHOP", "@LOAITL", "@MAHOSO", "@TENHOSO", "@NAMLAP", "@CHUGIAI", "@THOIGIANS", "@THOIGIANE", "@NGONNGU", "@SLTO", "@HCSD", "@TINHTRANG", "@GHICHU", "@BIENMUC" };
                 object[] valuepara = { h.Phongid, h.Mucluc, "", h.Loaitl, h.Mahoso, h.Tenhoso, h.Namlap, chugiai, h.Thoigians, h.Thoigiane, ngonngu, h.Slto, h.Hcsd, tinhtrang, ghichu, h.Bienmuc };
                 if (dataAsset.data.inputdata("hoso_them", namepara, valuepara))
@@ -435,10 +436,10 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
 
 
 
-        public int hoso_check_idhoso(int mahoso, int phongid)
+        public int hoso_check_idhoso(string mahoso, int phongid, int muclucid)
         {
-            string[] namepara = { "@mahoso", "@phongid" };
-            object[] valuepara = { mahoso, phongid };
+            string[] namepara = { "@MAHOSO", "@PHONGID", "@MUCLUCID" };
+            object[] valuepara = { mahoso, phongid, muclucid };
             int result;
             DataTable dt = dataAsset.data.outputdataTable("hoso_check_idhoso", namepara, valuepara);
             if (dt.Rows.Count > 0)
@@ -775,6 +776,13 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         public string chinhly_timkiemhoso(string keyword)
         {
             Session["keyword"] = keyword.Trim();
+            string[] namepara = { "@keyword" };
+            object[] valuepara = { keyword.Trim() };
+            return dataAsset.data.outputdata("chinhly_timkiemhoso", namepara, valuepara);
+        }
+
+        public string chinhly_timkiemhoso_pagination(string keyword)
+        {
             string[] namepara = { "@keyword" };
             object[] valuepara = { keyword.Trim() };
             return dataAsset.data.outputdata("chinhly_timkiemhoso", namepara, valuepara);

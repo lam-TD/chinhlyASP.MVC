@@ -24,6 +24,17 @@
     ul.phantrang_tuychon li{
         float: right;
     }
+    .tim:hover{
+        color: blue;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .icon-xoa:hover{
+        color: red;
+        cursor:pointer;
+        font-weight: 500;
+        border-radius:50%;
+    }
 </style>
  <!-- Page Content -->
 <div class="page-content" ng-controller="nhaphosoController">
@@ -70,15 +81,24 @@
                                                     </div>
 
                                                     <div class="col-md-8" style="margin-bottom: 10px;">
-                                                        <div class="col-md-5" style="padding-left:0;">
-                                                            <input style="width:100%;" class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="textTimHoSo" />
+                                                        @*<div class="col-md-5" style="padding-left:0;">
+                                                            <input style="width:100%;" class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="textSearch" ng-change="search_hoso()" />
+                                                        </div>*@
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <span class="input-icon icon-right">
+                                                                    <input id="txtsearch" type="text" class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="textSearch" ng-change="search_hoso()">
+                                                                    <i ng-if="flag_icon" class="fa fa-times icon-xoa" style="margin-right:20px;" title="Hủy tìm kiếm" ng-click="delete_text()"></i>
+                                                                    <i class="fa fa-search tim" title="Tìm kiếm" ng-click="timkiemhoso()"></i>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-7" style="padding-right:0;">
                                                             <a href="#!nhaphoso/them" class="btn btn-primary">
                                                                 <i class="fa fa-file"></i>Thêm mới
                                                             </a>
 
-                                                            <a href="#!nhaphoso/them" class="btn btn-primary" id="btnsuahoso">
+                                                            <a href="" class="btn btn-primary" id="btnsuahoso" ng-click="suahoso()">
                                                                 <i class="fa fa-pencil-square-o"></i>Sửa
                                                             </a>
 
@@ -139,7 +159,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr style="cursor:pointer" class="rowhoso" ng-repeat="u in danhsachhoso |filter:textTimHoSo" ng-click="clickchonhoso(u)" id="{{u.ID}}">
+                                                            <tr style="cursor:pointer" class="rowhoso" ng-repeat="u in danhsachhoso" ng-click="clickchonhoso(u)" id="{{u.ID}}">
                                                                 <td style="text-align:center">{{u.MAHOP}}</td>
                                                                 <td style="text-align:center">{{u.MAHOSO}}</td>
                                                                 <td>{{u.TENHOSO}}</td>
@@ -153,7 +173,7 @@
                                                 </div>
                                                 <div class="row" ng-if="select_phong">
                                                     <div class="col-md-8">
-                                                        <ul uib-pagination total-items="total" ng-change="pageChanged()" ng-model="pageIndex" max-size="15" items-per-page="pageSize" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
+                                                        <ul uib-pagination total-items="total" ng-change="page_Changed()" ng-model="pagination.pageIndex" max-size="12" items-per-page="pagination.pageSize" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
                                                     </div>
                                                     
                                                     <div class="col-md-4">
