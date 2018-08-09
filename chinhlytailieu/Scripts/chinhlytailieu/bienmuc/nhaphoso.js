@@ -1,6 +1,6 @@
-﻿app.controller("nhaphosoController", function ($scope, $http, $rootScope) {
-    $scope.tieude = "Chỉnh lý tài liệu";
+﻿app.controller("nhaphosoController", function ($scope, $http, $rootScope, $location) {
     $scope.disablebtn = true;
+    $scope.sessionphongid = 0;
     $scope.pagination =
     {
         pageIndex: 1,
@@ -30,10 +30,12 @@
         location.href = '#!nhaphoso/sua?id=' + $scope.idhoso;
     }
 
-    $scope.loadMucluc = function () {
+    $scope.loadMucluc = function (phong_id) {
         ////alert($('select[name=selectphong]').val());
-        phongid = $('select[name=selectphong]').val();
-
+        if ($('select[name=selectphong]').val() > 0) {
+            phongid = $('select[name=selectphong]').val();
+        }
+        if (phongid < 0) return -1;
         if ($('select[name=selectphong]').val() != "") {
             $http({
                 method: 'GET',
@@ -41,11 +43,12 @@
             }).then(function (response) {
                 //console.log(response.data);
                 //console.log(response.data[0]["totalCount"]);
-                $scope.total = response.data[0]["totalCount"];
+                if (response.data.length > 0) $scope.total = response.data[0]["totalCount"];
+                else $scope.total = 0;
                 $scope.danhsachhoso = response.data;
                 $scope.select_phong = true;
             }, function (response) {
-                alert('Không tải được danh sách phông');
+                //alert('Không tải được danh sách phông');
             })
         }
     }
@@ -195,11 +198,44 @@
         }
     }
 
+    $scope.Session_phongid = function () {
+        url = '/chinhlytailieu/hoso_set_session?phongid=' + $('select[name=selectphong]').val();
+        $http.get(url).then(function (response) { return 1; }, function () {  });
+    }
+    $scope.Get_Session_phongid = function () {
+        url = '/chinhlytailieu/hoso_get_session';
+        $http.get(url).
+        then(function (response) {
+            $scope.sessionphongid = response.data;
+            if ($scope.sessionphongid > 0) {
+                console.log("Toi day");
+                $('select[name=selectphong]').val($scope.sessionphongid).trigger('change');
+                $scope.loadMucluc();
+            }
+        });
+        
+    }
+
+    $scope.check_phongid_load = function () {
+        var url = $location.url();
+        if (url.indexOf("=") > 0) {
+            id = url.slice(url.indexOf("=") + 1, url.length);
+            console.log(id);
+            if (id > 0) {
+                $('#sl_phong option[value='+ id +']').attr('selected', 'selected');
+                //setTimeout($('#sl_phong').val(id).trigger('change'), 2000);
+                $scope.loadMucluc(id);
+            }
+        }
+    }
+
+    $scope.hoso_btn_add = function () {
+        $scope.Session_phongid();
+        location.href = "#!nhaphoso/them?id=" + $('select[name=selectphong]').val();
+    }
+
     $(document).ready(function () {
         $('#btnsuahoso').attr("disabled", "disabled");
-        //$('#idhienthi').on('change', $scope.change_hienthi());
-        if ($rootScope.phongidChitietHoSo > 0) {
-            $scope.loaddanhsachhoso($rootScope.phongidChitietHoSo);
-        }
+        $scope.check_phongid_load();
     })
 })

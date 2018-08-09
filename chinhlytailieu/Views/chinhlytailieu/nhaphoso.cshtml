@@ -74,7 +74,7 @@
                                                 <div class="form-group col-md-12" style="margin-bottom:0;">
                                                     @*<label for="" class="control-label pull-left" style="margin-top: 8px;margin-left:15px;">Phông tài liệu</label>*@
                                                     <div class="col-sm-4">
-                                                        <select name="selectphong" id="" class="col-xs-12" ng-change="loadMucluc()" ng-model="selectphong">
+                                                        <select name="selectphong" id="sl_phong" class="col-xs-12" ng-change="loadMucluc()" ng-model="selectphong">
                                                             <option value="" disabled>--Chọn phông--</option>
                                                             <option ng-repeat="n in danhsachphong" value="{{n.ID}}">{{n.TENPHONG}}</option>
                                                         </select>
@@ -94,7 +94,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-7" style="padding-right:0;">
-                                                            <a href="#!nhaphoso/them" class="btn btn-primary">
+                                                            <a href="" class="btn btn-primary" ng-click="hoso_btn_add()">
                                                                 <i class="fa fa-file"></i>Thêm mới
                                                             </a>
 

@@ -3,7 +3,7 @@
     $scope.phongCha = "";
     $scope.muclucCha = "";
     $scope.disableMahoso = false;
-
+    $scope.regexdate = '/^(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/](19|20)\d\d$/';
     $http({
         method: 'GET',
         url: '/chinhlytailieu/nhapmucluc_loadphong'
@@ -47,11 +47,12 @@
             url: '/chinhlytailieu/hoso_loadchitiet',
             data: { id: id }
         }).then(function (response) {
-            //console.log(response.data);
+            console.log(response.data);
+            $('select[name=selectphong]').val(response.data[0].PHONGID).trigger('change');
+            //$('#p' + response.data[0].PHONGID).attr("selected", "selected");
             $scope.h =
             {
                 id: response.data[0].ID,
-                phongid: response.data[0].PHONGID,
                 mucluc: "",
                 mahop: "",
                 mahoso: response.data[0].MAHOSO,
@@ -96,37 +97,34 @@
         else
         {
             var path = $location.path();
-            if ($scope.path == "/nhaphoso/them") {
+            if ($scope.path == "/nhaphoso/them")
+            {
                 $scope.themhoso();
             }
-
-            return 1;
-
-            if (confirm("Bạn có chắc chắn muốn cập nhật lại hồ sơ")) {
-                if ($rootScope.idhosoCha > 0) {
+            else
+            {
                 phongid = $('select[name=selectphong]').val();
                 muclucid = $('select[name=selectmucluc]').val();
                 mahop = $('select[name=selecthop]').val();
                 console.log('phongid: ' + phongid);
                 var mangmahop = [];
-                
-                if (($scope.hopmaCha == "" && mahop == "") || ($scope.hopmaCha != "" && $scope.hopmaCha == mahop) || ($scope.hopmaCha == "" && mahop != ""))
-                {
+
+                if (($scope.hopCha == "" && mahop == "") || ($scope.hopCha != "" && $scope.hopCha == mahop) || ($scope.hopCha == "" && mahop != "")) {
                     // cập nhật thông tin
                     //var mangmahop = [];
                     alert("Cập nhật thông tin");
                     hopid = $('#h' + mahop).attr("data-mahop")
-                    mangmahop = [$scope.hopmaCha, "", $scope.muclucidCha, mahop, hopid];
+                    mangmahop = [$scope.hopCha, "", $scope.muclucCha, mahop, hopid];
                 }
-                else if($scope.hopmaCha != "" && $scope.hopmaCha != mahop){
+                else if ($scope.hopCha != "" && $scope.hopCha != mahop) {
                     // cập nhật thông tin
                     // cập nhật số lượng hộp mới và cũ
                     hopid = $('#h' + $scope.h.mahop).attr("data-mahop");
-                    mangmahop = [$scope.hopmaCha, $scope.hopidCha, $scope.muclucidCha, mahop, hopid ];
-                    
+                    mangmahop = [$scope.hopCha, $scope.hopidCha, $scope.muclucCha, mahop, hopid];
+
                     //alert("Cập nhật thông tin và cập nhật slhop");
                 }
-                
+
                 var hopcapnhat = [phongid, muclucid];
                 $http({
                     method: 'POST',
@@ -146,13 +144,7 @@
                 }, function (response) {
                     alert('Lỗi không thực hiện được chức năng này');
                 })
-                
             }
-            else {
-                
-            }  
-        }
-             
         }
     }
 
@@ -184,40 +176,50 @@
         alert($('select[name=selecthop]').attr("data-mahop")); 
     }
 
-    function validate_date() {
-        var lam = '^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$';
+    $scope.back_nhap = function () {
+        var url = $location.url();
+        id = url.slice(url.indexOf("=") + 1, url.length);
+        console.log(id);
+        location.href = "#!nhaphoso?id=" + id;
     }
-    
+
+    $scope.load_select = function () {
+        $scope.loadmucluc();
+        setTimeout(function () {
+            $('select[name=selectmucluc]').val($scope.muclucCha).trigger('change');
+            if ($('select[name=selectmucluc]').val() > 0)
+            {
+                $scope.loadhop();
+                if ($scope.hopCha != null && $scope.hopCha != "")
+                {
+                    setTimeout(function () {
+                        $('select[name=selecthop]').val($scope.hopCha).trigger('change');
+                        $scope.muclucCha = $('select[name=selectmucluc]').val();
+                        //$scope.hopCha = $scope.hopCha;
+                        $scope.hopidCha = $('#h' + $scope.h.mahop).attr("data-mahop");
+                    }, 1000);
+                }
+            }
+
+        }, 500);
+    }
+
+    $scope.get_phong = function () {
+        var url = $location.url();
+        id = url.slice(url.indexOf("=") + 1, url.length);
+        if (id > 0) {
+            setTimeout(function () {
+                $scope.loadchitiethoso(id);
+                setTimeout(function () {
+                    $scope.load_select();
+                }, 500);
+            }, 1000);
+        }
+    }
 
     $(document).ready(function () {
         $scope.path = $location.path();
-        console.log($location.path());
-        //if ($rootScope.idhosoCha > 0) {
-        //    $scope.loadchitiethoso($rootScope.idhosoCha);
-        //    $scope.disableMahoso = true;
-        //    setTimeout(function () {
-        //        //alert($scope.phongCha);
-        //        $('#p' + $scope.phongCha).attr("selected", "selected");
-        //        $scope.loadmucluc();
-
-        //        setTimeout(function () {
-        //            $('.rowmucluc').removeAttr('selected');
-        //            $('#ml' + $scope.muclucCha).attr("selected", "selected");
-        //            if ($('select[name=selectmucluc]').val() > 0) {
-        //                $scope.loadhop();
-        //                setTimeout(function () {
-        //                    $('.rowhop').removeAttr('selected');
-        //                    $('#h' + $scope.hopCha).attr("selected", "selected");
-        //                    $scope.muclucidCha = $('select[name=selectmucluc]').val();
-        //                    $scope.hopmaCha = $('select[name=selecthop]').val();
-        //                    $scope.hopidCha = $('#h' + $scope.h.mahop).attr("data-mahop");
-        //                }, 500);
-        //            }
-                        
-        //        }, 500);
-        //    }, 1000);
-        //}
-        
-        //$('.js-example-basic-single').select2();
+        //console.log($location.path());
+        $scope.get_phong();
     })
 })

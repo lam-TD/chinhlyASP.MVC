@@ -41,7 +41,7 @@
                                             <label class="col-sm-2 control-label">Phông</label>
                                             <div class="col-sm-4">
                                                 <select name="selectphong" class="col-md-12 col-xs-12" ng-model="h.phongid" ng-change="loadmucluc()" ng-disabled="disableMahoso">
-                                                    <option value="">--Chọn phông--</option>
+                                                    <option value="" disabled>--Chọn phông--</option>
                                                     <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
                                                 </select>
                                                 <input ng-model="h.id" type="hidden"/>
@@ -50,7 +50,7 @@
                                             <label class="col-sm-2 control-label">Mục lục số(*)</label>
                                             <div class="col-sm-4">
                                                 <select name="selectmucluc" class="col-md-12 col-xs-12" ng-model="h.mucluc" ng-change="loadhop()">
-                                                    <option value="">--Chọn mục lục--</option>
+                                                    <option value="" disabled>--Chọn mục lục--</option>
                                                     <option class="rowmucluc" ng-repeat="u in danhsachmucluc" data-mucluc="{{u.MAMUCLUC}}" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
                                                 </select>
                                             </div>
@@ -85,14 +85,15 @@
                                         <div class="form-group col-md-12">
                                             <label class="col-sm-2 control-label no-padding-right">Thời gian BĐ</label>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="txtthoigians" placeholder="Thời gian bắt đầu" ng-model="h.thoigians" ng-required="true">
-                                                <span style="color:red;" ng-show="formhoso.txtthoigians.$touched && formhoso.txtthoigians.$invalid">Thời gian bắt đầu không được để trống</span>
+                                                <input type="text" class="form-control" name="txtthoigians" placeholder="dd/mm/yyy" ng-model="h.thoigians" ng-required="true" ng-pattern="/^(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/](19|20)\d\d$/">
+                                                @*<span><code>{{formhoso.txtthoigians.$valid}}</code></span>*@
+                                                <span style="color:red;" ng-show="formhoso.txtthoigians.$touched && formhoso.txtthoigians.$invalid">Ngày không đúng định dạng! Mẫu đúng 01/01/1990</span>
                                             </div>
 
                                             <label class="col-sm-2 control-label no-padding-right">Thời gian KT</label>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" name="txtthoigiane" placeholder="Thời gian kết thúc" ng-model="h.thoigiane" ng-required="true">
-                                                <span style="color:red;" ng-show="formhoso.txtthoigiane.$touched && formhoso.txtthoigiane.$invalid">Thời gian kết thúc không được để trống</span>
+                                                <input type="text" class="form-control" name="txtthoigiane" placeholder="dd/mm/yyy" ng-model="h.thoigiane" ng-required="true" ng-pattern="/^(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/](19|20)\d\d$/">
+                                                <span style="color:red;" ng-show="formhoso.txtthoigiane.$touched && formhoso.txtthoigiane.$invalid">Ngày không đúng định dạng! Mẫu đúng 01/01/1990</span>
                                             </div>
                                         </div>
 
@@ -190,7 +191,9 @@
                                             <button type="button" class="btn btn-primary" ng-disabled="formhoso.$invalid" style="width:200px;" ng-click="save()">
                                                 <i class="fa fa-save"></i>Lưu
                                             </button>
-                                            <a title="Quay về" class="btn btn-warning" href="#!nhaphoso" ><i class="fa fa-backward"></i>Quay về</a>
+                                            <button title="Quay về" class="btn btn-warning" ng-click="back_nhap()">
+                                                <i class="fa fa-backward"></i>Quay về
+                                            </button>
                                         </div>
                                     </form>
                                 </div>

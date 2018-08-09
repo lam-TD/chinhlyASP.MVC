@@ -322,12 +322,20 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         //==================== NHAP HO SO CHINH LY ====================
         public string hoso_load(int phongid, int pageIndex, int pageSize)
         {
-            //string[] namepara = { "@phongid" };
-            //object[] valuepara = { phongid };
-            //return dataAsset.data.outputdata("hoso_load", namepara, valuepara);
             string[] namepara = { "@phongid", "@pageIndex", "@pageSize" };
             object[] valuepara = { phongid, pageIndex, pageSize };
             return dataAsset.data.outputdata("hoso_load_phongid", namepara, valuepara);
+        }
+
+        public void hoso_set_session(int phongid)
+        {
+            Session["phongid"] = phongid;
+        }
+
+        public string hoso_get_session()
+        {
+            if (Session["phongid"] == null) return "0";
+            return Session["phongid"].ToString();
         }
 
         public int hoso_them(hoso h, int hopid = 0)
@@ -377,14 +385,16 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             // hop moi
             string mahop = mangmahop[3].ToString();
             int hopid = 0;
-            if (mangmahop[4] != ""){hopid = int.Parse(mangmahop[4]);}
+            if (mangmahop[4] != "" && mangmahop[4] != null){hopid = int.Parse(mangmahop[4]);}
 
             // hop cu
-            string mahopcu = mangmahop[0].ToString();
+            string mahopcu = "";
+            if (mangmahop[0] != "" && mangmahop[0] != null) mahopcu = mangmahop[0].ToString();
             int muclucidcu = int.Parse(mangmahop[2]);
 
-
-            if ((mahopcu != mahop && mahopcu != "") || (mahopcu == "" && mahop != "" && mahopcu != mahop))
+            // mahopcu == "" && mahop != "" && mahopcu != mahop - thay doi hop
+            // mahopcu != mahop && mahopcu != "" - 
+            if (mahopcu != mahop && mahopcu != "")
             {
                 if (hop_checksoluong(hopid, 1) >= 1)
                 {
