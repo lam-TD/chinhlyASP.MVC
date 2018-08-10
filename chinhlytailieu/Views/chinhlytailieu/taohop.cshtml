@@ -5,7 +5,7 @@
 <style>
     .activePhong {
         background-color: #ddd !important;
-        font-weight: bold;
+        font-weight: 600;
     }
     .trhop:hover{
         background-color: #ddd !important;
@@ -22,7 +22,7 @@
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">Chỉnh lý tài liệu</a>
+                Chỉnh lý tài liệu
             </li>
             <li>
                 Quản lý hộp
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="col-md-4 col-xs-12" style="border-right: 1px solid #eee;">
                                         <label class="">Phông tài liệu</label>
-                                        <div class="col-md-12" style="min-height:442px;overflow-y:auto;overflow-x:hidden">
+                                        <div class="col-md-12" style="min-height:442px;overflow-y:auto;overflow-x:hidden;padding:0">
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                 <tbody>
                                                     <tr class="row" id="{{n.ID}}" ng-repeat="n in danhsachphong.slice(((currentPagePhong-1)*itemsPerPagePhong), ((currentPagePhong)*itemsPerPagePhong))" style="cursor:pointer" ng-click="click_phong(n.ID)">
@@ -55,7 +55,7 @@
                                             </table>
                                         </div><br />
                                         @*<ul uib-pagination total-items="danhsachphong.length" ng-model="currentPagePhong" max-size="5" items-per-page="itemsPerPagePhong" next-text="›" previous-text="‹" boundary-links="true" force-ellipses="true"></ul>*@
-                                        <ul uib-pagination total-items="danhsachphong.length" ng-model="currentPagePhong" max-size="5" items-per-page="itemsPerPagePhong" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
+                                        <ul uib-pagination total-items="danhsachphong.length" ng-model="currentPagePhong" max-size="5" items-per-page="itemsPerPagePhong" next-text="›" previous-text="‹" boundary-link-numbers="true" ng-if="{{Math.floor(danhsachphong.length/itemsPerPagePhong) > 0}}"></ul>
                                     </div>
                                     <div class="col-md-8 col-xs-12">
                                         <div class="" style="margin-bottom: 10px;">
@@ -275,11 +275,11 @@
                                             </table>
                                             
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-8" style="padding-left:0" ng-if="hienthi_hop">
                                             <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label class="pull-right">Tổng số hộp: {{danhsachhop.length}}</label>
+                                        <div class="col-md-4" ng-if="hienthi_hop">
+                                            <label class="pull-right">Tổng số hộp: {{(danhsachhop.length > 0) ? danhsachhop.length : 0}}</label>
                                         </div>
                                         
                                     </div>

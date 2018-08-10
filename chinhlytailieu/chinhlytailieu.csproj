@@ -766,7 +766,7 @@
     <Content Include="Scripts\chinhlytailieu\bienmuc\nhaphosothem.js" />
     <Content Include="Scripts\chinhlytailieu\bienmuc\taohop.js" />
     <Content Include="Scripts\chinhlytailieu\bienmuc\xephopsovaohop.js" />
-    <Content Include="Scripts\chinhlytailieu\chinhlytailieu.js" />
+    <Content Include="Scripts\chinhlytailieu\phanhethuthaptailieu.js" />
     <Content Include="Scripts\chinhlytailieu\importdulieu\importhoso.js" />
     <Content Include="Scripts\chinhlytailieu\importdulieu\importvanban.js" />
     <Content Include="Scripts\chinhlytailieu\lapkehoachchinhly\lapkehoachchinhly.js" />

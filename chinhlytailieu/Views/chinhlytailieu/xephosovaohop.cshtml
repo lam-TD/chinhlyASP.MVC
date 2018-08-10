@@ -42,9 +42,11 @@
                         <div class="flip-scroll">
                             <div id="simpledatatable_wrapper">
                                 <div class="row">
-                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
-                                        <label style="font-size: 16px;">Xếp hồ sơ vào hộp</label>
-                                        <a href="" class="pull-right"><i class="fa fa-question-circle"></i>Hướng dẫn</a>
+                                    <div class="col-md-12">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0;">
+                                            <label style="font-size: 16px;">Xếp hồ sơ vào hộp</label>
+                                            <a href="" class="pull-right"><i class="fa fa-question-circle"></i>Hướng dẫn</a>
+                                        </div>
                                     </div>
                                     <div class="col-md-7 col-xs-12" style="border-right: 1px solid #eee;">
                                         <div class="com-md-12" style="margin-bottom: 10px;">
@@ -52,16 +54,16 @@
                                                 <label class="col-sm-1" style="font-size: 14px;padding-left:0">
                                                     Phông
                                                 </label>
-                                                <div class="col-sm-11">
+                                                <div class="col-sm-11" style="padding-right:0">
                                                     <select name="selectphong" class="col-md-12 col-xs-12" ng-model="v.phongid" ng-change="loadhosochuavaohop()">
-                                                        <option value="">--Chọn phông--</option>
+                                                        <option value="" disabled>--Chọn phông--</option>
                                                         <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-12" style="padding: 0;margin-bottom: 10px">
-                                                <span class="col-md-3" style="padding-left: 0;">Hồ sơ chưa vào hộp</span>
+                                                <h5><span class="col-md-3" style="padding-left: 0;">Hồ sơ chưa vào hộp</span></h5>
                                                 <div class="col-md-8" style="padding: 0;">
                                                     <div class="col-md-7">
                                                         <input class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="timhoso"/>
@@ -105,7 +107,7 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">{{n.MAHOSO}}</td>
-                                                        <td>{{n.TENHOSO}}</td>
+                                                        <td style="text-align:justify">{{n.TENHOSO}}</td>
                                                         <td>{{n.THOIGIANS}} - {{n.THOIGIANE}}</td>
                                                     </tr>
                                                 </tbody>
@@ -117,11 +119,11 @@
 
                                     <div class="col-md-5 col-xs-12">
                                         <div class="com-md-12" style="margin-bottom: 10px;">
-                                            <div class="form-group col-md-12">
-                                                <label class="col-sm-3" style="font-size: 14px;">Mục lục</label>
-                                                <div class="col-sm-9">
+                                            <div class="form-group col-md-12" style="padding:0">
+                                                <label class="col-sm-2" style="font-size: 14px;text-align:left;padding:0;">Mục lục</label>
+                                                <div class="col-sm-10" style="padding:0">
                                                     <select name="selectmucluc" id="" class="col-xs-12" ng-model="h.muclucid" ng-change="loadhop()">
-                                                        <option value="">--Chọn mục lục--</option>
+                                                        <option value="" disabled>--Chọn mục lục--</option>
                                                         <option ng-repeat="n in danhsachmucluc" value="{{n.ID}}">{{n.TENMUCLUC}}</option>
                                                     </select>
                                                 </div>

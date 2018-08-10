@@ -6,13 +6,13 @@
 
 
  <!-- Page Content -->
-<div class="page-content">
+<div class="page-content" ng-controller="phanheQLthuthapTLController">
     <!-- Page Breadcrumb -->
     <div class="page-breadcrumbs">
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">{{tieude}}</a>
+                {{tieude}}
             </li>
             @*<li>
                 <a href="#">Tables</a>
@@ -30,18 +30,18 @@
                         <div class="flip-scroll">
                             <div id="simpledatatable_wrapper">
                                 <div class="row">
-                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
-                                        <label>PHÂN HỆ QUẢN LÝ THU THẬP TÀI LIỆU</label>
-                                    </div>
-
                                     <div class="col-md-12" style="margin-bottom: 10px; border-bottom: 1px solid #eee;">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0;">
+                                            <label style="font-size: 16px;">Phân hệ quản lý thu thập tài liệu</label>
+                                        </div>
+
                                         <div class="col-md-2 text-center" style="border-right: 3px solid #ddd;">
                                             <span>
                                                 <i class="fa fa-folder"></i>
                                                 Tổng hồ sơ đang thu thập
                                             </span>
                                             <div class="text-center">
-                                                <h3 class="font-200" style="color: blue; font-weight: 700; font-size: 50px;">1</h3>
+                                                <h3 class="font-200" style="color: blue; font-weight: 700; font-size: 30px;">{{thongke[0]}}</h3>
                                             </div>
                                         </div>
 
@@ -51,7 +51,7 @@
                                                 Tổng số văn bản thu thập
                                             </span>
                                             <div class="text-center">
-                                                <h3 class="font-200" style="color: blue; font-weight: 700; font-size: 50px;">1</h3>
+                                                <h3 class="font-200" style="color: blue; font-weight: 700; font-size: 30px;">{{thongke[1]}}</h3>
                                             </div>
                                         </div>
 
@@ -61,7 +61,7 @@
                                                 Tổng số hồ sơ đã kiểm tra
                                             </span>
                                             <div class="text-center">
-                                                <h3 class="font-200" style="color: blue; font-weight: 700; font-size: 50px;">1</h3>
+                                                <h3 class="font-200" style="color: blue; font-weight: 700; font-size: 30px;">1</h3>
                                             </div>
                                         </div>
 
@@ -71,7 +71,7 @@
                                                 Tổng số văn bản đã kiểm tra
                                             </span>
                                             <div class="text-center">
-                                                <h3 class="font-200" style="color: green; font-weight: 700; font-size: 50px;">1</h3>
+                                                <h3 class="font-200" style="color: green; font-weight: 700; font-size: 30px;">1</h3>
                                             </div>
                                         </div>
 
@@ -81,7 +81,7 @@
                                                 Tổng số hồ sơ sai
                                             </span>
                                             <div class="text-center">
-                                                <h3 class="font-200" style="color: red; font-weight: 700; font-size: 50px;">1</h3>
+                                                <h3 class="font-200" style="color: red; font-weight: 700; font-size: 30px;">1</h3>
                                             </div>
                                         </div>
 

@@ -230,7 +230,7 @@
     }
 
     $scope.hoso_btn_add = function () {
-        $scope.Session_phongid();
+        //$scope.Session_phongid();
         location.href = "#!nhaphoso/them?id=" + $('select[name=selectphong]').val();
     }
 

@@ -134,6 +134,21 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return View();
         }
 
+        //================ phan he thu thap ======================
+        public JsonResult phanhe_load_thongke()
+        {
+            // thong ke ho so
+            //string arrhoso = dataAsset.data.outputdata("phanhe_thuthaptl_thongke_hoso");
+            DataTable dthoso = dataAsset.data.outputdataTable("phanhe_thuthaptl_thongke_hoso");
+            string thongkehoso = dthoso.Rows[0]["TONGHOSO"].ToString();
+            // thong ke vanban
+            //string arrvanban = dataAsset.data.outputdata("phanhe_thuthaptl_thongke_vanban");
+            DataTable dtvanban = dataAsset.data.outputdataTable("phanhe_thuthaptl_thongke_vanban");
+            string thongkevanban = dtvanban.Rows[0]["TONGVANBAN"].ToString();
+
+            string[] thongke = { thongkehoso, thongkevanban };
+            return Json(thongke, JsonRequestBehavior.AllowGet);
+        }
 
         //================ lap ke hoach chinh ly =================
         public string lapkehoachchinhly_load()
@@ -325,6 +340,13 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             string[] namepara = { "@phongid", "@pageIndex", "@pageSize" };
             object[] valuepara = { phongid, pageIndex, pageSize };
             return dataAsset.data.outputdata("hoso_load_phongid", namepara, valuepara);
+        }
+
+        public string hoso_load_phong_mucluc(int phongid,int muclucid, int pageIndex, int pageSize)
+        {
+            string[] namepara = { "@phongid", "@muclucid", "@pageIndex", "@pageSize" };
+            object[] valuepara = { phongid, muclucid,pageIndex, pageSize };
+            return dataAsset.data.outputdata("hoso_load_phongid_muclucid", namepara, valuepara);
         }
 
         public void hoso_set_session(int phongid)
@@ -674,7 +696,7 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             try
             {
                 DateTime date = DateTime.Parse(v.Thoigian);
-                tg = date.ToString("dd-MM-yyy");
+                tg = date.ToString("dd/MM/yyy");
             }
             catch (Exception)
             {
@@ -700,12 +722,14 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
         public JsonResult vanban_sua(vanban v)
         {
             int result = -1;
-            string ghichu = "", ngonngu = "", tacgia = "";
+            string ghichu = "", ngonngu = "", tacgia = "", tenloai = "", buttich = "";
             if (v.Ghichu != null) { ghichu = v.Ghichu; }
             if (v.Ngonngu != null) { ngonngu = v.Ngonngu; }
             if (v.Tacgia != null) { tacgia = v.Tacgia; }
+            if (v.Tenloai != null) { tenloai = v.Tenloai; }
+            if (v.Buttich != null) { buttich = v.Buttich; }
             string[] namepara = { "@ID","@HOSOID", "@TOSO", "@SLTO", "@SUDUNG", "@SOKYHIEU", "@THOIGIAN", "@TACGIA", "@TENLOAI", "@TRICHYEU", "@KYHIEU", "@NGOCNGU", "@BUTTICH", "@GHICHU" };
-            object[] valuepara = { v.Id, v.Hosoid, v.Toso, v.Slto, v.Sudung, v.Sokyhieu, v.Thoigian, tacgia, v.Tenloai, v.Trichyeu, "", ngonngu, v.Buttich, ghichu };
+            object[] valuepara = { v.Id, v.Hosoid, v.Toso, v.Slto, v.Sudung, v.Sokyhieu, v.Thoigian, tacgia, tenloai, v.Trichyeu, "", ngonngu, buttich, ghichu };
             if (dataAsset.data.inputdata("vanban_sua", namepara, valuepara))
             {
                 result = 1;
@@ -789,6 +813,14 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             string[] namepara = { "@keyword" };
             object[] valuepara = { keyword.Trim() };
             return dataAsset.data.outputdata("chinhly_timkiemhoso", namepara, valuepara);
+        }
+
+        public string chinhly_timkiemhoso_phong_mucluc(int phongid, int muclucid, string keyword)
+        {
+            Session["keyword"] = keyword.Trim();
+            string[] namepara = { "@phongid", "@muclucid", "@keyword" };
+            object[] valuepara = { phongid, muclucid, keyword.Trim() };
+            return dataAsset.data.outputdata("hoso_timkiem_phong_mucluc", namepara, valuepara);
         }
 
         public string chinhly_timkiemhoso_pagination(string keyword)

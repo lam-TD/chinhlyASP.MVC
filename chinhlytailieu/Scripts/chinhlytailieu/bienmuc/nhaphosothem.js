@@ -112,7 +112,6 @@
                 if (($scope.hopCha == "" && mahop == "") || ($scope.hopCha != "" && $scope.hopCha == mahop) || ($scope.hopCha == "" && mahop != "")) {
                     // cập nhật thông tin
                     //var mangmahop = [];
-                    alert("Cập nhật thông tin");
                     hopid = $('#h' + mahop).attr("data-mahop")
                     mangmahop = [$scope.hopCha, "", $scope.muclucCha, mahop, hopid];
                 }

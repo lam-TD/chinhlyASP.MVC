@@ -4,7 +4,7 @@ app.config(function ($routeProvider) {
     $routeProvider
     .when('/', {
         templateUrl: '../phanheQLthuthapTL',
-        controller: 'phanheQLthuthapTLController'
+        controller: ''
     })
     .when('/danhsachphong', {
         templateUrl: '../danhsachphong',

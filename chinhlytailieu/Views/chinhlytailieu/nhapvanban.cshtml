@@ -7,13 +7,32 @@
 <style>
     .activePhong {
         background-color: #ddd !important;
-        font-weight: bold;
+        font-weight: 600;
     }
     .rowho:hover{
         background-color: #ddd;
     }
+    .thongtin{
+        padding-left:0;
+    }
     .thongtinhs{
         padding-left: 0;
+        padding-right: 0;
+    }
+    .tim:hover{
+        color: blue;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .icon-xoa:hover{
+        color: red;
+        cursor:pointer;
+        font-weight: 500;
+        border-radius:50%;
+    }
+    .pagination>li.active>a, .pagination>li.active>a:hover {
+        background-color: #2dc3e8 !important;
+        border-color: #2dc3e8 !important;
     }
 </style>
 
@@ -44,20 +63,22 @@
                                 <div class="flip-scroll">
                                     <div id="simpledatatable_wrapper">
                                         <div class="row">
-                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
-                                                <label style="font-size: 16px;">Quản lý biên mục văn bản</label>
+                                            <div class="col-md-12">
+                                                <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0">
+                                                    <label style="font-size: 16px;">Quản lý biên mục văn bản</label>
+                                                </div>
                                             </div>
                                             <div class="col-md-5 col-xs-12" style="border-right: 1px solid #eee;">
                                                 <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0">
                                                     <label>Thông tin hồ sơ</label>
                                                 </div>
-                                                <form action="">
+                                                <form>
                                                     <div class="form-group col-md-12 thongtinhs" style="margin-bottom: 5px;">
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-3 thongtin">
                                                             <label class="pull-left">Phông</label>
                                                         </div>
                                                         <div class="col-sm-9" style="padding: 0;">
-                                                            <select name="selectphong" class="col-md-12 col-xs-12" ng-model="v.phongid" ng-change="loadmucluc()">
+                                                            <select name="selectphong" class="col-md-12 col-xs-12" ng-model="phong_id" ng-change="loadmucluc()">
                                                                 <option value="" disabled>--Chọn phông--</option>
                                                                 <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
                                                             </select>
@@ -65,28 +86,27 @@
                                                     </div>
 
                                                     <div class="form-group col-md-12 thongtinhs" style="margin-bottom: 5px;">
-                                                        <div class="col-sm-3">
+                                                        <div class="col-sm-3 thongtin">
                                                             <label class="pull-left">Mục lục</label>
                                                         </div>
                                                         <div class="col-sm-9" style="padding: 0;">
-                                                            <select name="selectmucluc" class="col-md-12 col-xs-12" ng-model="v.mucluc" ng-change="loadhoso()">
+                                                            <select name="selectmucluc" class="col-md-12 col-xs-12" ng-model="mucluc_id" ng-change="loadhoso()">
                                                                 <option value="" disabled>--Chọn mục lục--</option>
                                                                 <option class="rowmucluc" ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
                                                             </select>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group col-md-12 thongtinhs" style="margin-bottom: 5px;">
-                                                        <div class="col-sm-3">
+                                                    <div class="form-group col-md-12 thongtinhs" style="margin-bottom: 0px;">
+                                                        <div class="col-sm-3 thongtin">
                                                             <label class="pull-left">Hồ sơ số</label>
                                                         </div>
                                                         <div class="col-sm-9" style="padding: 0;">
-                                                            <div class="input-group input-group-sm">
-                                                                <input type="text" class="form-control" ng-model="textSearch">
-                                                                <span class="input-group-btn">
-                                                                    <button class="btn btn-default" type="button">
-                                                                        <i class="fa fa-search"></i>
-                                                                    </button>
+                                                            <div class="form-group">
+                                                                <span class="input-icon icon-right">
+                                                                    <input id="txtsearch" type="text" class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="textSearch" ng-change="search_hoso()" ng-disabled="disableTextSeach">
+                                                                    <i ng-if="flag_icon" class="fa fa-times icon-xoa" style="margin-right:20px;" title="Hủy tìm kiếm" ng-click="delete_text()"></i>
+                                                                    <i class="fa fa-search tim" title="Tìm kiếm" ng-click="tim_kiemhoso()" ng-disabled="disableTextSeach"></i>
                                                                 </span>
                                                             </div>
                                                             @*<div class="input-group">
@@ -102,7 +122,7 @@
 
                                                 </form>
 
-                                                <div class="col-md-12" style="margin-top: 10px; height: 310px; overflow:auto; display: inline-block;">
+                                                <div class="col-md-12" style="height: 310px; overflow:auto; display: inline-block;margin-bottom:5px;padding:0">
                                                     <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                         <thead class="flip-content bordered-palegreen">
                                                             <tr>
@@ -111,13 +131,14 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr class="rowho" id="hs{{h.ID}}" ng-repeat="h in danhsachhoso | filter:textSearch" style="cursor:pointer" ng-click="clickhoso(h.ID)">
+                                                            <tr class="rowho" id="hs{{h.ID}}" ng-repeat="h in danhsachhoso" style="cursor:pointer" ng-click="clickhoso(h.ID)">
                                                                 <td>{{h.MAHOSO}}</td>
-                                                                <td>{{h.TENHOSO}}</td>
+                                                                <td style="text-align:justify">{{h.TENHOSO}}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
+                                                <ul uib-pagination total-items="total" ng-change="page_Changed()" ng-model="pagination.pageIndex" max-size="6" items-per-page="pagination.pageSize" next-text="›" previous-text="‹" boundary-link-numbers="true" ng-if="hienthi_pagina"></ul>
                                             </div>
 
                                             <div class="col-md-7 col-xs-12">
@@ -134,9 +155,9 @@
                                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                                     <h4 class="modal-title">{{titlemodal}}</h4>
                                                                 </div>
-                                                                <div class="modal-body" style="min-height: 385px;">
+                                                                <div class="modal-body" style="min-height: 345px;">
                                                                     <div class="collapse in">
-                                                                        <form role="form" name="formVanBan">
+                                                                        <form role="form" name="formVanBan" id="formVanBan">
                                                                             @*<div class="form-group col-md-12">
                                                                                 <label for="" class="col-sm-3 control-label no-padding-right">Tên cơ quan</label>
                                                                                 <div class="col-sm-9">
@@ -181,7 +202,7 @@
                                                                             
                                                                             <div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
-                                                                                    <label class="pull-right">Số, ký hiệu</label>
+                                                                                    <label class="">Số, ký hiệu</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <input type="hidden" class="form-control" ng-model="v.hosoid">
@@ -192,25 +213,24 @@
 
                                                                             <div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
-                                                                                    <label class="pull-right">Thời gian</label>
+                                                                                    <label class="">Thời gian</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <div class="input-group col-xs-12">
-                                                                                        <input class="form-control date-picker" name="txtngaythang" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" ng-model="v.thoigian" ng-required="true">
+                                                                                        <input class="form-control date-picker" name="txtngaythang" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" ng-model="v.thoigian" ng-required="true" ng-pattern="/^(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/](19|20)\d\d$/">
                                                                                         <span class="input-group-addon">
                                                                                             <i class="fa fa-calendar"></i>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <span style="color:red;" ng-show="formVanBan.txtngaythang.$touched && formVanBan.txtngaythang.$invalid">Ngày tháng không được để trống không được để trống</span>
-                                                                                    @*<div class="col-md-12">
-                                                                                        <input uib-datepicker ng-model="vm.day" class="date-of-birth" datepicker-options="vm.options" ng-click="vm.today()" />
-                                                                                    </div>*@
+                                                                                    @*<span style="color:red;" ng-show="formVanBan.txtngaythang.$touched && formVanBan.txtngaythang.$invalid">Ngày tháng không được để trống không được để trống</span>*@
+                                                                                    <span style="color:red;" ng-show="formVanBan.txtngaythang.$touched && formVanBan.txtngaythang.$invalid">Ngày không đúng định dạng! Mẫu đúng 01/01/1990</span>
+                                                                                    
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
-                                                                                    <label class="pull-right">Tác giả</label>
+                                                                                    <label class="">Tác giả</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <input type="text" class="form-control" ng-model="v.tacgia">
@@ -219,7 +239,7 @@
 
                                                                             <div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
-                                                                                    <label class="pull-right">Trích yếu</label>
+                                                                                    <label class="">Trích yếu</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <textarea name="txttrichyeu" class="col-xs-12" ng-model="v.trichyeu" ng-required="true"></textarea>
@@ -229,7 +249,7 @@
 
                                                                             <div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
-                                                                                    <label class="pull-right">Tờ số</label>
+                                                                                    <label class="">Tờ số</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <input type="text" name="txttoso" class="form-control" ng-model="v.toso" ng-required="true">
@@ -239,7 +259,7 @@
 
                                                                             <div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
-                                                                                    <label class="pull-right">Ngôn ngữ</label>
+                                                                                    <label class="">Ngôn ngữ</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <input type="text" class="form-control" ng-model="v.ngonngu">
@@ -248,7 +268,7 @@
 
                                                                             <div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
-                                                                                    <label class="pull-right">Loại văn bản</label>
+                                                                                    <label class="">Loại văn bản</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <input type="text" name="txtloaivb" class="form-control" ng-model="v.tenloai">
@@ -258,22 +278,22 @@
 
                                                                             <div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
-                                                                                    <label class="pull-right">Ghi chú</label>
+                                                                                    <label class="">Ghi chú</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <input type="text" class="form-control" ng-model="v.ghichu">
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="form-group col-md-12" style="margin-bottom: 5px;">
+                                                                            @*<div class="form-group col-md-12" style="margin-bottom: 5px;">
                                                                                 <div class="col-sm-3">
                                                                                     <label class="pull-right">Người ký</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9" style="padding: 0;">
                                                                                     <input type="text" name="txtnguoily" class="form-control" ng-model="v.buttich">
-                                                                                    @*<span style="color:red;" ng-show="formVanBan.txtnguoily.$touched && formVanBan.txtnguoily.$invalid">Người ký không được để trống không được để trống</span>*@
+                                                                                    
                                                                                 </div>
-                                                                            </div>
+                                                                            </div>*@
 
                                                                         </form>
                                                                     </div>
@@ -308,12 +328,12 @@
                                                                 @*<th>Ngày tháng</th>*@
                                                                 <th>Tác giả</th>
                                                                 <th>Trích yếu</th>
-                                                                <th>Ghi chú</th>
+                                                                <th style="width:70px;">Ghi chú</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr class="rowVanban" dir-paginate="n in danhsachvanban |itemsPerPage:12" id="v{{n.ID}}" style="cursor:pointer;" ng-click="clickvanban(n)">
-                                                                <td>{{n.SOKYHIEU}}</td>
+                                                                <td style="text-align:justify">{{n.SOKYHIEU}}</td>
                                                                 @*<td>{{n.THOIGIAN}}</td>*@
                                                                 <td>{{n.TACGIA}}</td>
                                                                 <td>{{n.TRICHYEU}}</td>

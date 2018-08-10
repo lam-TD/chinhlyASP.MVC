@@ -3,7 +3,7 @@
     $scope.disablebtn = true;
     $scope.currentPagePhong = 1;
     $scope.itemsPerPagePhong = 12;
-
+    $scope.hienthi_hop = false;
     $http({
         method: 'GET',
         url: '/chinhlytailieu/nhapmucluc_loadphong'
@@ -48,8 +48,9 @@
             url: '/chinhlytailieu/hop_loadhoptheoPhong/' + id,
             data: { phongid: id }
         }).then(function (response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.danhsachhop = response.data;
+            ($scope.danhsachhop.length > 0) ? $scope.hienthi_hop = true : $scope.hienthi_hop = false;
         }, function (response) {
             alert('Không tải được danh sách hộp');
         })
