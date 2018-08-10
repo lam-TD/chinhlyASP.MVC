@@ -1,6 +1,6 @@
 ﻿var app = angular.module("appchinhlytailieu", ['ngRoute', 'angularUtils.directives.dirPagination', 'ui.bootstrap']);
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
         templateUrl: '../phanheQLthuthapTL',
@@ -47,7 +47,7 @@ app.config(function ($routeProvider) {
         controller: ''
     })
     .when('/kiemtrahosochinhly', {
-        templateUrl: '../kiemtrahosochinhly',
+        templateUrl: 'chinhlytailieu/kiemtrahosochinhly',
         controller: ''
     })
     .when('/giaotailieuvaokho', {
@@ -71,7 +71,11 @@ app.config(function ($routeProvider) {
         controller: ''
     })
     .when('/taoyeucaukhaithac', {
-        templateUrl: '../timkiemvanbannangcao',
+        templateUrl: '../taoyeucaukhaithac',
         controller: ''
     })
+    //.otherwise({
+    //    templateUrl: '../phanheQLthuthapTL'
+    //});
+    //$locationProvider.html5Mode(true);
 })
