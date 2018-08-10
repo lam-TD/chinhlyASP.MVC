@@ -134,6 +134,11 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return View();
         }
 
+        public ActionResult taoyeucaukhaithac()
+        {
+            return View();
+        }
+
         //================ phan he thu thap ======================
         public JsonResult phanhe_load_thongke()
         {
@@ -1074,6 +1079,18 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             //}
         }
 
+        public int check_file_exist(string filename)
+        {
+            string path = Server.MapPath("~/Images/") + filename;
+            if(System.IO.File.Exists(path) == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
         public JsonResult insert_excel_hoso(int phongid, string mamucluc)
         {
             int count = 0;

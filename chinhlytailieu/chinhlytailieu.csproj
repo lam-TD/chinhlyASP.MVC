@@ -984,6 +984,7 @@
     <Content Include="Views\chinhlytailieu\timkiemvanban.cshtml" />
     <Content Include="Views\chinhlytailieu\timkiemhosonangcao.cshtml" />
     <Content Include="Views\chinhlytailieu\timkiemvanbannangcao.cshtml" />
+    <Content Include="Views\chinhlytailieu\taoyeucaukhaithac.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

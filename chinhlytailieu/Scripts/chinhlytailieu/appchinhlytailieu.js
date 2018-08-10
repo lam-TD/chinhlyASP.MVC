@@ -70,4 +70,8 @@ app.config(function ($routeProvider) {
         templateUrl: '../timkiemvanbannangcao',
         controller: ''
     })
+    .when('/taoyeucaukhaithac', {
+        templateUrl: '../timkiemvanbannangcao',
+        controller: ''
+    })
 })
