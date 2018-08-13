@@ -563,13 +563,13 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
 
         public string hop_idcuoi()
         {
-            string result;
+            string result="";
             DataTable dt = dataAsset.data.outputdataTable("hoso_idlast");
             if (dt.Rows.Count > 0)
             {
                 result = dt.Rows[0]["MAHOP"].ToString();
             }
-            else { result = "HOP-1"; }
+            //else { result = "HOP-1"; }
             return result;
         }
 
@@ -756,11 +756,17 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return result;
         }
 
-        public string hoso_hschuavaohop(int phongid)
+        public string hoso_hschuavaohop(int phongid, int pageIndex, int pageSize)
+        {
+            string[] namepara = { "@PHONGID", "@pageSize", "@pageIndex" };
+            object[] valuepara = { phongid, pageSize, pageIndex };
+            return dataAsset.data.outputdata("hoso_hschuavaohop", namepara, valuepara);
+        }
+        public string hoso_demhosochuavaohop(int phongid)
         {
             string[] namepara = { "@PHONGID" };
             object[] valuepara = { phongid };
-            return dataAsset.data.outputdata("hoso_hschuavaohop", namepara, valuepara);
+            return dataAsset.data.outputdata("hoso_demhosochuavaohop", namepara, valuepara);
         }
 
         public string hoso_loadtheohop(string mahop, int muclucid, int phongid)

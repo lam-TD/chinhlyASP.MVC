@@ -10,7 +10,7 @@ Purchase: http://wrapbootstrap.com
 <head>
     <meta charset="utf-8" />
     <title>Dashboard</title>
-
+    @*<base href="/">*@
     <meta name="description" content="Dashboard" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -35,16 +35,18 @@ Purchase: http://wrapbootstrap.com
     <link href="~/assets/css/animate.min.css" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/assets/css/custom.css" rel="stylesheet" />
+    <script src="~/assets/js/jquery.min.js"></script>
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="~/assets/js/skins.min.js"></script>
-
+    <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/angular-route.js"></script>
     <script src="~/Scripts/angular-resource.js"></script>
     <script src="~/Scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script src="~/Scripts/dirPagination.js"></script>
     <script src="~/Scripts/appchinhly.js"></script>
-    @*<script src="~/Scripts/chinhlytop.js"></script>*@
+    
    
 
 </head>
@@ -58,8 +60,9 @@ Purchase: http://wrapbootstrap.com
                 <!-- Navbar Barnd -->
                 <div class="navbar-header pull-left">
                     <a href="#" class="navbar-brand">
-                        <small>
-                            <img src="~/assets/img/logo.png" alt="" />
+                        <small style="display:block;margin-top:10px;">
+                            @*<img src="~/assets/img/logo.png" alt="" />*@
+                            CHỈNH LÝ TÀI LIỆU
                         </small>
                     </a>
                 </div>
@@ -74,6 +77,23 @@ Purchase: http://wrapbootstrap.com
                         <ul class="account-area">
                             <li>
                                 <a class="dropdown-toggle" data-toggle="dropdown" title="Tasks" href="#">
+                                    <i class="icon fa fa-shopping-cart"></i>
+                                     <span class="badge">4</span> 
+                                </a>
+                                <ul class="pull-right dropdown-menu dropdown-tasks dropdown-arrow" id="">
+                                    <li>
+                                        <a class="module_chinhly" href="/thuthaptailieu/index/1">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="fa fa-archive"></i>
+                                                </span><span class="" style="font-size: 14px; margin-left: 10px;">Thu thập tài liệu</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-toggle" data-toggle="dropdown" title="Tasks" href="#">
                                     <i class="icon fa fa-tasks"></i>
                                     <!-- <span class="badge">4</span> -->
                                 </a>
@@ -81,11 +101,11 @@ Purchase: http://wrapbootstrap.com
                                 <ul class="pull-right dropdown-menu dropdown-tasks dropdown-arrow" id="menu-topchinhly"></ul>
                                 <!--/Tasks Dropdown-->
                             </li>
-
                             <li>
                                 <a class="login-area dropdown-toggle" data-toggle="dropdown">
                                     <div class="avatar" title="View your public profile">
-                                        <img src="" id="avartaChinhly">
+                                        @*<img src="" id="avartaChinhly">*@
+                                        <img src="~/assets/img/avatars/adam-jansen.jpg" />
                                     </div>
                                     <section>
                                         <h2><span class="profile"><span id="usernamechinhly"></span></span></h2>
@@ -94,14 +114,15 @@ Purchase: http://wrapbootstrap.com
                                 <!--Login Area Dropdown-->
                                 <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
                                     <li>
-                                        <a href="">
+                                        <a href="" data-toggle="modal" data-target="#thongtincanhan" id="idthongtincanhan">
                                             <i class="icon fa fa- fa-user"></i>
                                             <span class="menutext" style="margin-right: 5px;">Thông tin cá nhân</span>
                                         </a>
+
                                     </li>
 
                                     <li>
-                                        <a href="">
+                                        <a href="" data-toggle="modal" data-target="#doimatkhau">
                                             <i class="icon fa fa-credit-card"></i>
                                             <span class="menutext" style="margin-right: 5px;">Đổi mật khẩu</span>
                                         </a>
@@ -115,7 +136,7 @@ Purchase: http://wrapbootstrap.com
                                     </li>
 
                                     <li>
-                                        <a href="" onclick="logout()">
+                                        <a onclick="logout()" style="cursor:pointer;">
                                             <i class="icon fa fa-sign-out"></i>
                                             <span class="menutext" style="margin-right: 5px;">Đăng xuất</span>
                                         </a>
@@ -132,75 +153,157 @@ Purchase: http://wrapbootstrap.com
 
                         <!-- Settings -->
                     </div>
+
+                    
+
                 </div>
                 <!-- /Account Area and Settings -->
             </div>
         </div>
     </div>
 
+    <!-- Modal thong tin ca nhan -->
+    <div class="modal fade" id="thongtincanhan" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form action="" name="formNguoidung">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Thông tin người dùng</h4>
+                    </div>
+
+                    <div class="modal-body" style="min-height: 200px;">
+                        <div class="collapse in">
+                            @*<div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Phòng/đơn vị(*)</label>
+                                <div class="col-sm-9">
+                                    <select class="col-xs-12" ng-model="nd.bophan">
+                                        <option ng-repeat="c in coquanLam" value="{{c.MAPHONG}}">{{c.TENPHONG}}</option>
+                                    </select>
+                                </div>
+                            </div>*@
+
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Tên đăng nhập: </label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="txttaikhoan" class="form-control" placeholder="Tài khoản" readonly>
+                                    <span class="hidden-span" style="color:red;">Tên đăng nhập không được để trống</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Họ tên: </label>
+                                <div class="col-sm-5">
+                                    <input type="text" name="txtholot" class="form-control" placeholder="Họ tên lót">
+                                    <span class="hidden-span" style="color:red;" >Họ tên không được để trống</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" name="txtten" class="form-control" placeholder="Tên">
+                                    <span class="hidden-span" style="color:red;" >Tên không được để trống</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Email: </label>
+                                <div class="col-sm-9" id="div-email">
+                                    <input type="email" name="txtemail2" class="form-control" placeholder="Email" required id="email">
+                                    <span class="hidden-span" style="color:red;" id="errEmail">Email không hợp lệ</span>
+                                    <span class="hidden-span" style="color:red;" id="errEmailTontai">Email đã tồn tại</span>
+                                    @*<span style="color:red;" ng-show="formNguoidung.txtemail.$touched && formNguoidung.txtemail.$error.email">Email không hợp lệ</span>*@
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Chức vụ: </label>
+                                <div class="col-sm-9">
+                                    <label id="labelchucvu">Giam doc</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="width:150px;" type="button" id="btncapnhatthongtin" class="btn btn-primary" data-toggle="modal"><i class="fa fa-save"></i>Lưu</button>
+                        
+                        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="glyphicon glyphicon-log-in"></i>Thoát</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end Modal thong tin ca nhanh -->
+
+    <!-- Modal doi mat khau -->
+    <div class="modal fade" id="doimatkhau" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form action="" name="">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Đổi mật khẩu</h4>
+                    </div>
+
+                    <div class="modal-body" style="min-height: 163px;">
+                        <div class="collapse in">
+                            <div class="form-group col-md-12" >
+                                <label for="" class="col-sm-3 control-label no-padding-right">Mật khẩu cũ:</label>
+                                <div class="col-sm-9" id="divmkcu">
+                                    <input type="password" id="txtmkcu" name="txtmkcu" class="form-control" placeholder="Mật khẩu cũ">
+                                    <span class="hidden-span" style="color:red;" id="err_mkcuNull">Mật khẩu cũ không được để trống</span>
+                                    <span class="hidden-span" style="color:red;" id="err_mkcuK">Mật khẩu cũ không trùng khớp</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Mật khẩu mới: </label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="txtmoi" class="form-control" placeholder="Mật khẩu mới" pattern="[a-z]{1,15}">
+                                    <span class="hidden-span" style="color:red;" id="err_mkmoicu">Mật khẩu mới và mật khẩu cũ không được trùng khớp</span>
+                                    <span class="hidden-span" style="color:red;" id="err_mkmoi">Mật khẩu phải có độ dài từ 6 - 20 ký tự, không chức ký tự đặc biệt</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="" class="col-sm-3 control-label no-padding-right">Xác nhận mật khẩu:</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="txtxacnhan" class="form-control" placeholder="Xác nhận mật khẩu">
+                                    <span class="hidden-span" style="color:red;" id="err_xacnhan">Xác nhận mật khẩu không trùng khớp</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button style="width:150px;" type="button" id="btncapnhatmatkhau" class="btn btn-primary" data-toggle="modal"><i class="fa fa-save"></i>Lưu</button>
+
+                        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="glyphicon glyphicon-log-in"></i>Thoát</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end Modal doi mat khau -->
 
     <script src="~/assets/js/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
-            getModule();
-            getuserInfo();
-            //loadmodule();
-        })
+        //$(document).ready(function () {
+        //    getModule();
+        //    getuserInfo();
+        //    //loadmodule();
+        //    $('#idthongtincanhan').click(getInforUser());
+        //    $('#btncapnhatthongtin').click(capnhatthongtin);
+        //    checkemail();
+        //    capnhatmatkhau();
+        //})
 
-        function getModule() {
-            $.ajax({
-                url: '/home/user_module_list',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    var row = '';
-                    $.each(data, function (i, item) {
-                        row += '<li>';
-                        row += '<a class="module_chinhly" href="' + item.Links + '/' + item.Id + '">';
-                        //row += '<a style="cursor: pointer;" class="module_chinhly" onclick="loadmodule()" data-link="' + item.Links + '"' + 'data-idModule="' + item.Id + '">';
-                        row += '<div class="clearfix">';
-                        row += '<span class="pull-left"><i class="fa fa-archive"></i></span>';
-                        row += '<span class="" style="font-size: 14px; margin-left: 10px;">' + item.Modulename + '</span>';
-                        row += '</div>';
-                        row += '</a>';
-                        row += '</li>';
-                    })
-                    $('#menu-topchinhly').html(row);
-                }, error: function (err) {
-                    alert("loi cmnr");
-                }
-            })
-        }
+        
+    </script>
 
-        function getuserInfo() {
-            $.ajax({
-                url: '/home/getUserInfo',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    //console.log(data);
-                    var link = '/assets/img/avatars/' + data[0].Fileanh;
-                    $('#avartaChinhly').attr('src', link);
-                    $('#usernamechinhly').html(data[0].Username)
-                }, error: function (err) {
-
-                }
-            })
-        }
-
-        function logout(){
-            $.ajax({
-                url: '',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-
-                }, error: function (err) {
-
-                }
-            })
-        }
-
+    <script>
+        (function($){
+            $(window).on("load",function(){
+                $(".content_table").mCustomScrollbar();
+            });
+        })(jQuery);
     </script>
 
     @RenderBody()

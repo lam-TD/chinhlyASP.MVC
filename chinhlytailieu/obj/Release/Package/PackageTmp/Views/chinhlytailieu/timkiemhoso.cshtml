@@ -1,0 +1,251 @@
+﻿
+@{
+    Layout = null;
+}
+
+<style>
+    .tenhoso{
+        font-size: 15px; 
+        font-weight: normal;
+        width: 640px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height:18px;
+        margin-bottom: 0;
+    }
+    .chitiethoso{
+        font-weight: bold;
+        text-align: justify;
+    }
+    .row-chitiet{
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
+<div class="page-content" ng-controller="timkiemhosoController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                Chỉnh lý tài liệu
+            </li>
+            <li>
+                Tìm kiếm
+            </li>
+            <li class="active">Tìm kiếm hố sơ</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0">
+                                            <label style="font-size: 16px;">Tìm kiếm hồ sơ</label>
+                                        </div>
+                                        <div class="" style="">
+                                            <div class="form-group col-md-10">
+                                                <div class="input-group text-center">
+                                                    <input type="text" id="txtsearch" class="form-control" aria-label="..." ng-model="textSearch">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-primary" id="" type="button" ng-click="timkiemhoso()">Tìm kiếm</button>
+                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fa fa-caret-down"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li><a href="" ng-click="timkiem_click('1')">Tìm kiếm hồ sơ nâng cao</a></li>
+                                                            <li><a href="" ng-click="timkiem_click('2')">Tìm kiếm văn bản</a></li>
+                                                            <li><a href="" ng-click="timkiem_click('3')">Tìm kiếm văn bản nâng cao</a></li>
+                                                            @*<li role="separator" class="divider"></li>
+                                                            <li><a href="#">Lưu tìm kiếm</a></li>*@
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="">Có khoảng: <span><b>{{totalresult}}</b></span> kết quả</label>
+                                            </div>
+                                            <div class="col-md-12" style="overflow: auto; min-height: 500px;">
+                                                <div class="col-md-10" style="border-right: 1px dotted #ddd;">
+                                                    <ul style="list-style: none; padding: 0; min-height: 430px;">
+                                                        @*<li>Không tìm thấy</li>*@
+                                                        <li style="border-bottom: 1px dotted #ddd;" dir-paginate="n in danhsachketqua |itemsPerPage:10">
+                                                            <span class="pull-left" style="min-height:100px;margin-right: 10px;">
+                                                                <i class="fa fa-folder-open" style="font-size: 50px;"></i>
+                                                            </span>
+
+                                                            <div class="pull-right">
+                                                                <a href="#" title="Thêm vào giỏ hàng"><h4><i class="fa fa-shopping-cart"></i></h4></a>
+                                                                @*<a href="#"><h4><i class="fa  fa-star-o"></i></h4></a>*@
+                                                            </div>
+                                                            
+                                                            <div class="text">
+                                                                <a href="" style="display:inline-block" data-toggle="modal" data-target="#myModal" ng-click="xemchitiet(n)">
+                                                                    <h4 class="tenhoso" id="tenhs" style="font-weight:600 !important">{{n.TENHOSO}}</h4>
+                                                                </a>
+                                                                @*<span style="font-size:14px;display:inline-block">{{ (doimauchu(n.TENHOSO,keyword)) }}</span>*@
+                                                                <p>
+                                                                    Mục lục: <span id="mucluc">{{ n.MAMUCLUC }}</span>
+                                                                    | Hộp số: <span id="hopso">{{ n.MAHOP }}</span>
+                                                                    | Hồ sơ số: <span id="hososo">{{ n.MAHOSO }}</span>
+                                                                    <br>
+                                                                    Thời gian: <span>{{n.THOIGIANS}} đến {{n.THOIGIANE}}</span>
+                                                                    <br>
+                                                                    <a style="text-decoration:none; width:592px;display:inline-block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden"><span style="color:black;">Phông:</span> {{n.TENPHONG}}</a>
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+
+                                                    <dir-pagination-controls max-size="15" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                                    <!-- Modal thong tin ho so -->
+                                                    <div class="modal fade" id="myModal" role="dialog">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <form action="" name="formMucLuc">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title">Thông tin hồ sơ</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" style="min-height: 373px;display:inline-block;">
+                                                                        <div class="collapse in">
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Hồ sơ số: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{mahoso}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Tiêu đề HS: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{tenhoso}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Loại tài liệu: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{loaitl}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Thời gian: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{thoigians}} đến {{thoigiane}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Phông: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{phong}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Mục lục: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{mamucluc}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Hộp số: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{mahop}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 row-chitiet">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Năm lập: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{namlap}}</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group col-md-12">
+                                                                                <div class="col-sm-2 col-xs-12">
+                                                                                    <label for="" class="control-label">Ghi chú: </label>
+                                                                                </div>
+                                                                                <div class="col-sm-10">
+                                                                                    <label class="chitiethoso">{{ghichu}}</label>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end Modal thong tin ho so -->
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <h4 class="text-center"><i class="fa fa-wrench"></i> Công cụ</h4>
+                                                    <div class="">
+                                                        <ul style="list-style: none; padding: 0;">
+
+                                                            <li style="margin-bottom: 10px; padding-left: 10px;">
+                                                                <a href="" style="font-size: 15px;">
+                                                                    <i class="fa fa-save"> Lưu tìm kiếm</i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="margin-bottom: 10px; padding-left: 10px;">
+                                                                <a href="product/kttltimkiemhoso/searchvb.html" style="font-size: 15px;">
+                                                                    <i class="fa fa-search"> Tìm kiếm văn bản</i>
+                                                                </a>
+                                                            </li>
+
+                                                            <li style="margin-bottom: 10px; padding-left: 10px;">
+                                                                <a href="" style="font-size: 15px;">
+                                                                    <i class="fa fa-search-plus">Tìm kiếm nâng cao</i>
+                                                                </a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+
+

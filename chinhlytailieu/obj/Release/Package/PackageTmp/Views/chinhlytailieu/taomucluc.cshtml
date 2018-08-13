@@ -6,6 +6,10 @@
 <style>
     .activePhong {
         background-color: #ddd !important;
+        font-weight: 600;
+    }
+    .row_mucluc:hover{
+        background-color: #ddd !important;
     }
 </style>
 
@@ -50,7 +54,7 @@
                                                         </tr>
                                                     </thead>*@
                                                     <tbody>
-                                                        <tr class="row" id="{{n.ID}}" dir-paginate="n in danhsachphong |itemsPerPage:12" style="cursor:pointer" ng-click="click_phong(n.ID)">
+                                                        <tr class="row" id="r{{n.ID}}" dir-paginate="n in danhsachphong |itemsPerPage:12" style="cursor:pointer" ng-click="click_phong(n.ID)">
                                                             @*<td>{{asadd}}</td>*@
                                                             @*<td style="text-align:center">{{n.MAPHONG}}</td>*@
                                                             <td class="item_phong">{{n.TENPHONG}}</td>
@@ -82,9 +86,9 @@
                                                                                     <label for="" class="control-label pull-right">Phông</label>
                                                                                 </div>
                                                                                 <div class="col-sm-9">
-                                                                                    <select name="selectphong" id="selectBox" class="col-sm-12 col-xs-12" ng-model="ml.phongid">
-                                                                                        <option class="tuychon" id="chon" value="">--Chọn phông--</option>
-                                                                                        <option ng-repeat="n in danhsachphong" value="{{n.ID}}" ng-selected="{{idphong == n.ID}}" id="phong{{n.ID}}">{{n.TENPHONG}}</option>
+                                                                                    <select name="selectphong" id="selectBox" class="col-sm-12 col-xs-12" ng-disabled="disablePhong" ng-model="lam">
+                                                                                        <option class="tuychon" id="chon" value="" disabled>--Chọn phông--</option>
+                                                                                        <option class="opphong" ng-repeat="n in danhsachphong" ng-selected="{{idphong == n.ID}}" value="{{n.ID}}" id="{{n.ID}}">{{n.TENPHONG}}</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -142,7 +146,8 @@
 
                                                             </div>
                                                         </div>
-                                                    </div><!-- end Modal them -->
+                                                    </div>
+                                                    <!-- end Modal them -->
 
                                                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-disabled="disable_btnsua" ng-click="modal('eidt')">
                                                         <i class="fa fa-pencil-square-o"></i>Sửa
@@ -178,7 +183,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr class="row_mucluc" id="{{n.ID}}" class="item_mucluc" dir-paginate="n in mucluc |itemsPerPage:12" style="cursor:pointer" ng-click="click_mucluc(n)">
+                                                            <tr class="row_mucluc item_mucluc" id="p{{n.ID}}" dir-paginate="n in mucluc |itemsPerPage:12" style="cursor:pointer" ng-click="click_mucluc(n)">
                                                                 @*<td>{{asadd}}</td>*@
                                                                 <td>{{n.TENMUCLUC}}</td>
                                                                 <td>{{n.MOTA}}</td>

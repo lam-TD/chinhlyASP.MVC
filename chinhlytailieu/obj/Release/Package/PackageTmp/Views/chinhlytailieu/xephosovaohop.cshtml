@@ -3,21 +3,33 @@
     Layout = null;
 }
 
-
+<style>
+    .rowHoso:hover{
+        background-color: #ddd !important;
+        cursor: pointer;
+    }
+    .rowHop:hover{
+        background-color: #ddd !important;
+        cursor: pointer;
+    }
+    input{
+        border-radius: 0px !important;
+    }
+</style>
 
  <!-- Page Content -->
-<div class="page-content">
+<div class="page-content" ng-controller="xephosovaohopController">
     <!-- Page Breadcrumb -->
     <div class="page-breadcrumbs">
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">{{tieude}}</a>
+                <a href="#">Chỉnh lý tài liệu</a>
             </li>
             <li>
-                <a href="#">Tables</a>
+                Quản lý hộp
             </li>
-            <li class="active">Data Tables</li>
+            <li class="active">Xếp hồ sơ vào hộp</li>
         </ul>
     </div>
     <!-- /Page Breadcrumb -->
@@ -30,9 +42,11 @@
                         <div class="flip-scroll">
                             <div id="simpledatatable_wrapper">
                                 <div class="row">
-                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
-                                        <label style="font-size: 16px;">Xếp hồ sơ vào hộp</label>
-                                        <a href="" class="pull-right"><i class="fa fa-question-circle"></i>Hướng dẫn</a>
+                                    <div class="col-md-12">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;padding-left:0;">
+                                            <label style="font-size: 16px;">Xếp hồ sơ vào hộp</label>
+                                            <a href="" class="pull-right"><i class="fa fa-question-circle"></i>Hướng dẫn</a>
+                                        </div>
                                     </div>
                                     <div class="col-md-7 col-xs-12" style="border-right: 1px solid #eee;">
                                         <div class="com-md-12" style="margin-bottom: 10px;">
@@ -40,35 +54,42 @@
                                                 <label class="col-sm-1" style="font-size: 14px;padding-left:0">
                                                     Phông
                                                 </label>
-                                                <div class="col-sm-11">
-                                                    <select name="" class="col-md-12">
-                                                        <option value="">Bộ công chánh</option>
-                                                        <option value="">Mục lục 02</option>
+                                                <div class="col-sm-11" style="padding-right:0">
+                                                    <select name="selectphong" class="col-md-12 col-xs-12" ng-model="v.phongid" ng-change="loadhosochuavaohop()">
+                                                        <option value="" disabled>--Chọn phông--</option>
+                                                        <option id="p{{n.ID}}" ng-repeat="n in danhsachphong" ng-selected="{{phongCha == n.ID}}" value="{{n.ID}}">{{n.TENPHONG}}</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-12" style="padding: 0;margin-bottom: 10px">
-                                                <span class="col-md-5" style="padding-left: 0;">Danh sách hồ sơ chưa vào hộp</span>
-                                                <div class="col-md-7" style="padding: 0;">
-                                                    <button class="btn btn-primary btn-sm pull-right">
-                                                        <i class="fa fa-save"></i> Chuyển vào hộp
-                                                    </button>
+                                                <h5><span class="col-md-3" style="padding-left: 0;">Hồ sơ chưa vào hộp</span></h5>
+                                                <div class="col-md-8" style="padding: 0;">
+                                                    <div class="col-md-7">
+                                                        <input class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="timhoso"/>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button class="btn btn-primary" ng-disabled="disablebtnChuyenvaohop" ng-click="chuyenhoso()">
+                                                            <i class="fa fa-save"></i> Chuyển vào hộp
+                                                        </button>
+                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="" style="height: 366px; overflow: auto;width: 100%;">
+                                        <div class="content_table" style="height: 383px; overflow: auto;width: 100%;">
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                 <thead class="flip-content bordered-palegreen">
                                                     <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
+                                                        <th class="text-center">
+                                                            @*<div class="checkbox" style="margin: 0;">
                                                                 <label>
                                                                     <input type="checkbox">
                                                                     <span class="text"></span>
                                                                 </label>
-                                                            </div>
+                                                            </div>*@
+                                                            #
                                                         </th>
                                                         <th>Hồ sơ số</th>
                                                         <th style="width: 50%;">Tiêu đề hồ sơ</th>
@@ -76,143 +97,34 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th>
+                                                    <tr class="rowHoso" ng-repeat="n in danhsachhoso | filter:timhoso" id="hs{{n.ID}}" ng-click="clickHoSo(n)">
+                                                        <td class="text-center">
                                                             <div class="checkbox" style="margin: 0;">
                                                                 <label>
-                                                                    <input type="checkbox">
+                                                                    <input class="checkHoSo" type="checkbox" id="ck{{n.ID}}" value="{{n.ID}}" onchange="checkChonHoSo(this)">
                                                                     <span class="text"></span>
                                                                 </label>
                                                             </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
+                                                        </td>
+                                                        <td class="text-center">{{n.MAHOSO}}</td>
+                                                        <td style="text-align:justify">{{n.TENHOSO}}</td>
+                                                        <td>{{n.THOIGIANS}} - {{n.THOIGIANE}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-
-                                        <nav aria-label="Page navigation">
-                                            <ul class="pagination">
-                                                <li>
-                                                    <a href="#" aria-label="Previous">
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li>
-                                                    <a href="#" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
+                                        @*<ul uib-pagination total-items="danhsachhosochuavaohop.length" ng-model="currentPage" items-per-page="itemsPerPage" max-size="5" boundary-links="true" num-pages="numPages"></ul>*@
+                                        <ul uib-pagination total-items="danhsachhosochuavaohop.length" ng-model="currentPage" max-size="5" items-per-page="itemsPerPage" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
                                     </div>
 
                                     <div class="col-md-5 col-xs-12">
                                         <div class="com-md-12" style="margin-bottom: 10px;">
-                                            <div class="form-group col-md-12">
-                                                <label class="col-sm-3" style="font-size: 14px;">Mục lục</label>
-                                                <div class="col-sm-9">
-                                                    <select name="" class="col-md-12">
-                                                        <option value="">Mục lục 01</option>
-                                                        <option value="">Mục lục 02</option>
+                                            <div class="form-group col-md-12" style="padding:0">
+                                                <label class="col-sm-2" style="font-size: 14px;text-align:left;padding:0;">Mục lục</label>
+                                                <div class="col-sm-10" style="padding:0">
+                                                    <select name="selectmucluc" id="" class="col-xs-12" ng-model="h.muclucid" ng-change="loadhop()">
+                                                        <option value="" disabled>--Chọn mục lục--</option>
+                                                        <option ng-repeat="n in danhsachmucluc" value="{{n.ID}}">{{n.TENMUCLUC}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -221,321 +133,102 @@
                                         <h5>Danh sách hộp</h5>
 
                                         <div class="" style="height: 400px;overflow: auto;">
-                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
-                                                <thead class="flip-content bordered-palegreen">
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <th>Mã hộp</th>
-                                                        <th>SL hồ sơ</th>
-                                                        <th>Vị trí kệ</th>
-                                                        <th>Xem hồ sơ</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#xemhoso">
-                                                                <i class="fa fa-list-ul"></i>Xem hồ sơ
-                                                            </button>
+                                            <form >
+                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                    <thead class="flip-content bordered-palegreen">
+                                                        <tr>
+                                                            @*<th class="text-center">
+                                                                <div class="checkbox" style="margin: 0;">
+                                                                    <label>
+                                                                        <input type="checkbox">
+                                                                        <span class="text"></span>
+                                                                    </label>
+                                                                </div>
+                                                                Chọn
+                                                            </th>*@
+                                                            <th>Mã hộp</th>
+                                                            <th class="text-center">SL hồ sơ</th>
+                                                            <th class="text-center">SL Tối đa</th>
+                                                            <th class="text-center">Xem hồ sơ</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="rowHop" ng-repeat="n in danhsachhop.slice(((currentPageHop-1)*itemsPerPageHop), ((currentPageHop)*itemsPerPageHop))" id="hop{{n.ID}}" ng-click="clickHop(n)">
+                                                            @*<td class="text-center ">
+                                                                <div class="checkbox" style="margin: 0;">
+                                                                    <label>
+                                                                        <input type="radio" class="radio-hoso" value="{{n.ID}}" id="ch{{n.ID}}">
+                                                                        <span class="text"></span>
+                                                                    </label>
+                                                                </div>
+                                                            </td>*@
+                                                            <td>{{n.MAHOP}}</td>
+                                                            <td class="text-center">{{n.SLHOSO}}</td>
+                                                            <td class="text-center">{{n.SLMAX}}</td>
+                                                            <td class="text-center">
+                                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#xemhoso" ng-click="xemhoso(n)">
+                                                                    <i class="fa fa-list-ul"></i>Xem hồ sơ
+                                                                </button>
 
-                                                            <!-- Modal xem ho so -->
-                                                            <div class="modal fade" id="xemhoso" role="dialog">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <!-- Modal content-->
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                            <h4 class="modal-title">Danh sách hồ sơ trong hộp: 1</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" style="min-height: 330px;">
-                                                                            <div class="collapse in">
-                                                                                <div class="modal-body" style="min-height: 330px;">
-                                                                                    <div class="collapse in">
-                                                                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
-                                                                                            <thead class="flip-content bordered-palegreen">
-                                                                                                <tr>
-                                                                                                    <th style="width: 10%">Hồ sơ số</th>
-                                                                                                    <th style="width: 60%;">Tiêu đề hồ sơ</th>
-                                                                                                    <th>Thời gian BĐ-KT</th>
-                                                                                                    <th style="width: 10%">#</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td>1</td>
-                                                                                                    <td>Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh</td>
-                                                                                                    <td>-</td>
-                                                                                                    <td>
-                                                                                                        <button class="btn btn-danger btn-xs">
-                                                                                                            <i class="fa fa-times"></i>
-                                                                                                            Loại bỏ
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                                                                <i class="glyphicon glyphicon-log-in"></i>Thoát
-                                                                            </button>
+                                                                
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                                <!-- Modal xem ho so -->
+                                                <div class="modal fade" id="xemhoso" role="dialog">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Danh sách hồ sơ trong hộp: <b>{{MAHOPxemhoso}}</b></h4>
+                                                            </div>
+                                                            <div class="modal-body" style="min-height: 330px;">
+                                                                <div class="collapse in">
+                                                                    <div class="modal-body" style="min-height: 330px;">
+                                                                        <div class="collapse in">
+                                                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                                <thead class="flip-content bordered-palegreen">
+                                                                                    <tr>
+                                                                                        <th style="width: 10%">Hồ sơ số</th>
+                                                                                        <th style="width: 60%;">Tiêu đề hồ sơ</th>
+                                                                                        <th>Thời gian BĐ-KT</th>
+                                                                                        <th class="text-center" style="width: 10%">#</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr ng-repeat="hs in danhsachhosotronghop">
+                                                                                        <td>{{hs.MAHOSO}}</td>
+                                                                                        <td class="text-align-left">{{hs.TENHOSO}}</td>
+                                                                                        <td class="text-align-left">{{hs.THOIGIANS}} - {{hs.THOIGIANE}}</td>
+                                                                                        <td>
+                                                                                            <button class="btn btn-danger btn-xs" ng-click="xoa_hoso(hs)">
+                                                                                                <i class="fa fa-times"></i>
+                                                                                                Loại bỏ
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div><!-- end Modal xem ho so -->
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
                                                             </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#xemhoso">
-                                                                <i class="fa fa-list-ul"></i>Xem hồ sơ
-                                                            </button>
-
-                                                            <!-- Modal xem ho so -->
-                                                            <div class="modal fade" id="xemhoso" role="dialog">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <!-- Modal content-->
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                            <h4 class="modal-title">Danh sách hồ sơ trong hộp: 1</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" style="min-height: 330px;">
-                                                                            <div class="collapse in">
-                                                                                <div class="modal-body" style="min-height: 330px;">
-                                                                                    <div class="collapse in">
-                                                                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
-                                                                                            <thead class="flip-content bordered-palegreen">
-                                                                                                <tr>
-                                                                                                    <th style="width: 10%">Hồ sơ số</th>
-                                                                                                    <th style="width: 60%;">Tiêu đề hồ sơ</th>
-                                                                                                    <th>Thời gian BĐ-KT</th>
-                                                                                                    <th style="width: 10%">#</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td>1</td>
-                                                                                                    <td>Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh</td>
-                                                                                                    <td>-</td>
-                                                                                                    <td>
-                                                                                                        <button class="btn btn-danger btn-xs">
-                                                                                                            <i class="fa fa-times"></i>
-                                                                                                            Loại bỏ
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                                                                <i class="glyphicon glyphicon-log-in"></i>Thoát
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div><!-- end Modal xem ho so -->
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal" ng-click="thoatmodalxemhoso()">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
                                                             </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#xemhoso">
-                                                                <i class="fa fa-list-ul"></i>Xem hồ sơ
-                                                            </button>
-
-                                                            <!-- Modal xem ho so -->
-                                                            <div class="modal fade" id="xemhoso" role="dialog">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <!-- Modal content-->
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                            <h4 class="modal-title">Danh sách hồ sơ trong hộp: 1</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" style="min-height: 330px;">
-                                                                            <div class="collapse in">
-                                                                                <div class="modal-body" style="min-height: 330px;">
-                                                                                    <div class="collapse in">
-                                                                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
-                                                                                            <thead class="flip-content bordered-palegreen">
-                                                                                                <tr>
-                                                                                                    <th style="width: 10%">Hồ sơ số</th>
-                                                                                                    <th style="width: 60%;">Tiêu đề hồ sơ</th>
-                                                                                                    <th>Thời gian BĐ-KT</th>
-                                                                                                    <th style="width: 10%">#</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td>1</td>
-                                                                                                    <td>Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh</td>
-                                                                                                    <td>-</td>
-                                                                                                    <td>
-                                                                                                        <button class="btn btn-danger btn-xs">
-                                                                                                            <i class="fa fa-times"></i>
-                                                                                                            Loại bỏ
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                                                                <i class="glyphicon glyphicon-log-in"></i>Thoát
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div><!-- end Modal xem ho so -->
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th>
-                                                            <div class="checkbox" style="margin: 0;">
-                                                                <label>
-                                                                    <input type="checkbox">
-                                                                    <span class="text"></span>
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <td>BGD</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>Giám đốc</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#xemhoso">
-                                                                <i class="fa fa-list-ul"></i>Xem hồ sơ
-                                                            </button>
-
-                                                            <!-- Modal xem ho so -->
-                                                            <div class="modal fade" id="xemhoso" role="dialog">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <!-- Modal content-->
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                            <h4 class="modal-title">Danh sách hồ sơ trong hộp: 1</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" style="min-height: 330px;">
-                                                                            <div class="collapse in">
-                                                                                <div class="modal-body" style="min-height: 330px;">
-                                                                                    <div class="collapse in">
-                                                                                        <table class="table table-hover table-bordered table-striped table-condensed flip-content">
-                                                                                            <thead class="flip-content bordered-palegreen">
-                                                                                                <tr>
-                                                                                                    <th style="width: 10%">Hồ sơ số</th>
-                                                                                                    <th style="width: 60%;">Tiêu đề hồ sơ</th>
-                                                                                                    <th>Thời gian BĐ-KT</th>
-                                                                                                    <th style="width: 10%">#</th>
-                                                                                                </tr>
-                                                                                            </thead>
-                                                                                            <tbody>
-                                                                                                <tr>
-                                                                                                    <td>1</td>
-                                                                                                    <td>Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh</td>
-                                                                                                    <td>-</td>
-                                                                                                    <td>
-                                                                                                        <button class="btn btn-danger btn-xs">
-                                                                                                            <i class="fa fa-times"></i>
-                                                                                                            Loại bỏ
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                            </tbody>
-                                                                                        </table>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
-                                                                                <i class="glyphicon glyphicon-log-in"></i>Thoát
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div><!-- end Modal xem ho so -->
-                                                        </td>
-                                                    </tr>
-
-
-
-                                                </tbody>
-                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- end Modal xem ho so -->
+                                            </form>
+                                            
                                         </div>
-
-                                        <nav aria-label="Page navigation">
-                                            <ul class="pagination">
-                                                <li>
-                                                    <a href="#" aria-label="Previous">
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                    </a>
-                                                </li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li>
-                                                    <a href="#" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
+                                        @*<ul uib-pagination total-items="danhsachhop.length" ng-model="currentPageHop" items-per-page="itemsPerPageHop" max-size="5" boundary-links="true" num-pages="numPages"></ul>*@
+                                        <ul uib-pagination total-items="danhsachhop.length" ng-model="currentPageHop" max-size="5" items-per-page="itemsPerPageHop" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
                                     </div>
                                 </div>
                             </div>
@@ -550,4 +243,6 @@
 </div>
 <!-- /Page Content -->
 
-
+<script>
+        
+</script>

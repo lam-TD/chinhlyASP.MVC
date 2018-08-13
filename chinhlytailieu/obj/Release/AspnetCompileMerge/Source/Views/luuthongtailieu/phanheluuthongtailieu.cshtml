@@ -1,0 +1,203 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content" ng-controller="">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 18px;">PHÂN HỆ LƯU THÔNG TÀI LIỆU</label>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <h5 style="border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 5px;">Thông tin chung</h5>
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-bar-chart-o"></i>
+                                                Tổng số tài khoản độc giả
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: red; font-weight: 700; font-size: 50px;">18</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-bar-chart-o"></i>
+                                                Tổng số yêu cầu khai thác
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: red; font-weight: 700; font-size: 50px;">1</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-bar-chart-o"></i>
+                                                Tổng lượt tài liệu khai thác
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: blue; font-weight: 700; font-size: 50px;">18</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-bar-chart-o"></i>
+                                                Tổng lượt mượn
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: blue; font-weight: 700; font-size: 50px;">18</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <h5 style="border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 5px;">Tài khoản độc giả</h5>
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-bar-chart-o"></i>
+                                                Số yêu cầu xét duyệt
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: green; font-weight: 700; font-size: 50px;">18</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-bar-chart-o"></i>
+                                                Số yêu cầu trễ hạn xử lý
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: red; font-weight: 700; font-size: 50px;">18</h3>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <h5 style="border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 5px;">Yêu cầu khai thác</h5>
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-pie-chart"></i>
+                                                Số yêu cầu cần xét duyệt
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: green; font-weight: 700; font-size: 50px;">18</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-pie-chart"></i>
+                                                Số yêu cầu trễ hạn xử lý
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: red; font-weight: 700; font-size: 50px;">0</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-pie-chart"></i>
+                                                Số yêu cầu cần giao tài liệu
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: red; font-weight: 700; font-size: 50px;">0</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 text-center" style="border-right: 3px solid #ddd;">
+                                            <span>
+                                                <i class="fa fa-pie-chart"></i>
+                                                Số yêu cầu chưa trả tài liệu
+                                            </span>
+                                            <div class="text-center">
+                                                <h3 class="font-200" style="color: red; font-weight: 700; font-size: 50px;">0</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <h5 style="border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 5px;">Chức năng thường dùng</h5>
+                                        <ul style="list-style: none;">
+                                            <li>
+                                                <a href="orders/qldgduyetycdangky/view.html" style="font-weight: bold;">
+                                                    <i class="fa fa-cogs pull-left"></i>
+                                                    Xét duyệt yêu cầu tạo tài khoản
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="orders/xdycduyetyeucau/view.html" style="font-weight: bold;">
+                                                    <i class="fa fa-cogs pull-left"></i>
+                                                    Xét duyệt yêu cầu khai thác
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="orders/cungcapbansao/view.html" style="font-weight: bold;">
+                                                    <i class="fa fa-cogs pull-left"></i>
+                                                    Cung cấp bản sao
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="orders/qlgngiaobansaochodocgia/view.html" style="font-weight: bold;">
+                                                    <i class="fa fa-cogs pull-left"></i>
+                                                    Giao tài liệu cho độc giả
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="orders/qlgnghimuontailieu/view.html" style="font-weight: bold;">
+                                                    <i class="fa fa-cogs pull-left"></i>
+                                                    Ghi mượn tài liệu
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="orders/qlgnghitratailieu/view.html" style="font-weight: bold;">
+                                                    <i class="fa fa-cogs pull-left"></i>
+                                                    Ghi trả tài liệu
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+
+

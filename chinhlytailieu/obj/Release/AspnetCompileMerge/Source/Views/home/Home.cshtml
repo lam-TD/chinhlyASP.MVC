@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "home";
+    Layout = "~/Views/Shared/_Layouttop.cshtml";
+}
+<script src="~/Scripts/home/home.js"></script>
+
+<div class="main-container container-fluid" ng-app="apphome" ng-controller="homeController">
+    <!-- Page Container -->
+    <div class="page-container" style="margin-top:10px;">
+        <div class="col-md-4">
+            <h2 class="text-center">Chào mừng đến với thư viện VIP</h2>
+        </div>
+        <div class="col-md-8">
+            <div class="col-lg-6 col-sm-6 col-xs-12" ng-repeat="m in module">
+                <div class="widget radius-bordered">
+                    <div class="widget-header">
+                        <span class="widget-caption"><b>{{m.Modulename}}</b></span>
+                    </div>
+                    <div class="widget-body">
+                        <ul>
+                            <li>Chỉnh lý</li>
+                            <li>Chỉnh lý</li>
+                            <li>Chỉnh lý</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /Page Container -->
+    <!-- Main Container -->
+
+</div>
+
+
+
+<!--Basic Scripts-->
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/assets/js/bootstrap.min.js"></script>
+<script src="~/assets/js/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!--Beyond Scripts-->
+<script src="~/assets/js/beyond.min.js"></script>
+
+<!--Page Related Scripts-->
+<script src="~/assets/js/datatable/jquery.dataTables.min.js"></script>
+<script src="~/assets/js/datatable/ZeroClipboard.js"></script>
+<script src="~/assets/js/datatable/dataTables.tableTools.min.js"></script>
+<script src="~/assets/js/datatable/dataTables.bootstrap.min.js"></script>
+<script src="~/assets/js/datatable/datatables-init.js"></script>
+<script>
+        InitiateSimpleDataTable.init();
+        InitiateEditableDataTable.init();
+        InitiateExpandableDataTable.init();
+        InitiateSearchableDataTable.init();
+</script>
+
+
+<script>
+        var activeMenu = {
+            init: function () {
+                var path = location.href.split('?')[0];
+                $('#sidebar ul.sidebar-menu>li>ul>li>a').each(function (key, elem) {
+                    var href = $(elem).attr('href').split('?')[0];
+                    if (path.indexOf(href)>=0) {
+                        $(elem).parents('li:first').addClass('active')
+                                .parents('li:first').addClass('open active');
+                        // $(elem).parents('li:eq(1)',).addClass('open active');
+                    }
+                });
+            }
+        };
+        activeMenu.init();
+</script>
+
+<script src="~/assets/js/datetime/bootstrap-datepicker.js"></script>
+
+<script>
+	$('.date-picker').datepicker();
+</script>
+
+</body>
+<!--  /Body -->
+</html>
+
+

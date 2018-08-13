@@ -1,0 +1,511 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-5 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                            <label>Chọn hộp</label>
+                                        </div>
+                                        <div>
+                                            <div class="form-group col-md-12">
+                                                <label class="col-sm-3 control-label no-padding-right">
+                                                    Cơ quan
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <select name="" class="col-md-12">
+                                                        <option value="">Trung tâm lưu trữ quốc gia II</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-md-12">
+                                                <label class="col-sm-3 control-label no-padding-right">
+                                                    Phông
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <select name="" class="col-md-12">
+                                                        <option value="">Bộ công chánh và Giao thông</option>
+                                                        <option value="">Trung tâm lưu trữ quốc gia II</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="">
+                                                <i class="fa fa-file"></i>Xếp vào vị trí đã chọn
+                                            </button>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+                                                <i class="fa fa-file"></i>Xếp vào vị trí trống
+                                            </button>
+                                        </div>
+
+                                        <div class="" style="margin-top: 20px; height: 311px; overflow: auto; margin-bottom: 2px;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Hộp số</th>
+                                                        <th>Mục lục</th>
+                                                        <th>SL hồ sơ</th>
+                                                        <th>Xem hồ sơ</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Mục lục 01</td>
+                                                        <td>3</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">
+                                                                <i class="fa fa-book"></i>Xem hồ sơ
+                                                            </button>
+                                                            <!-- Modal them -->
+                                                            <div class="modal fade" id="myModal" role="dialog">
+                                                                <div class="modal-dialog modal-lg">
+
+                                                                    <!-- Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                            <h4 class="modal-title">Danh sách hồ sơ trong hộp: 1</h4>
+                                                                        </div>
+                                                                        <div class="modal-body" style="min-height: 170px;">
+                                                                            <div class="collapse in">
+                                                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                                    <thead class="flip-content bordered-palegreen">
+                                                                                        <tr>
+                                                                                            <th>Hồ sơ số</th>
+                                                                                            <th>Tiêu đề hồ sơ</th>
+                                                                                            <th>Thời gian BĐKT</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr style="cursor: pointer;">
+                                                                                            <td>1</td>
+                                                                                            <td>Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh</td>
+                                                                                            <td>
+                                                                                                <i class="glyphicon glyphicon-minus"></i>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr style="cursor: pointer;">
+                                                                                            <td>1</td>
+                                                                                            <td>Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh</td>
+                                                                                            <td>
+                                                                                                <i class="glyphicon glyphicon-minus"></i>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr style="cursor: pointer;">
+                                                                                            <td>1</td>
+                                                                                            <td>Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh</td>
+                                                                                            <td>
+                                                                                                <i class="glyphicon glyphicon-minus"></i>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                                <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- end Modal them -->
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Mục lục 01</td>
+                                                        <td>3</td>
+                                                        <td>
+                                                            <button class="btn btn-info btn-sm"><i class="fa fa-book"></i>Xem hồ sơ</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Mục lục 01</td>
+                                                        <td>3</td>
+                                                        <td>
+                                                            <button class="btn btn-info btn-sm"><i class="fa fa-book"></i>Xem hồ sơ</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="cursor: pointer;">
+                                                        <td>
+                                                            <div class="checkbox" style="margin: 0;">
+                                                                <label>
+                                                                    <input type="checkbox">
+                                                                    <span class="text"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td>1</td>
+                                                        <td>Mục lục 01</td>
+                                                        <td>3</td>
+                                                        <td>
+                                                            <button class="btn btn-info btn-sm"><i class="fa fa-book"></i>Xem hồ sơ</button>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="">
+                                            <nav aria-label="Page navigation">
+                                                <ul class="pagination">
+                                                    <li>
+                                                        <a href="#" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li>
+                                                        <a href="#" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-xs-12">
+                                        <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                            <label>Chọn ngăn kệ</label>
+                                        </div>
+                                        <div class="">
+                                            <div class="form-group col-md-12" style="margin-bottom: 3px;">
+                                                <label class="col-sm-3 control-label no-padding-right">
+                                                    Kho
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <select name="" class="col-md-12">
+                                                        <option value="">Kho số 1</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-md-12" style="margin-bottom: 3px;">
+                                                <label class="col-sm-3 control-label no-padding-right">
+                                                    Phòng kho
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <select name="" class="col-md-12">
+                                                        <option value="">Phòng số 1</option>
+                                                        <option value="">Trung tâm lưu trữ quốc gia II</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-md-12" style="margin-bottom: 3px;">
+                                                <label class="col-sm-3 control-label no-padding-right">
+                                                    Kệ
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <select name="" class="col-md-12">
+                                                        <option value="">1</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group col-md-12" style="margin-bottom: 3px;">
+                                                <label class="col-sm-3 control-label no-padding-right">
+                                                    Mặt
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <select name="" class="col-md-12">
+                                                        <option value="">1</option>
+                                                        <option value="">2</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="" style="border-top: 1px solid #ddd; height: 311px; overflow-y: auto; overflow-x: hidden; padding: 10px;">
+
+                                            <div class="row">
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12" style="border: 1px solid #ddd; margin-left: 15px; margin-bottom: 10px;">
+                                                    <div class="text-center">
+                                                        <p style="margin-bottom: 0px; color: #046eb5;">10 Hồ sơ</p>
+                                                    </div>
+                                                    <h3 class="text-center" style="margin-top: 5px;">8 Hộp</h3>
+                                                    <p class="text-center" style="color: red;">Đầy 70%</p>
+                                                    <div class="footer text-center" style="border-top: 1px solid #ddd">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox">
+                                                                <span class="text"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div> <!-- end row -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

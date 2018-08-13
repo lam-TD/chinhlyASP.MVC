@@ -1,0 +1,345 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content" >
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 5px;">
+                                        <label style="font-size: 18px;margin: 0;">
+                                            Phân quyền xử lý
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-5 col-xs-12" style="border-right: 1px solid #eee;">
+                                        <div class="col-md-12" style="padding:0;margin-top: 10px;">
+                                            <label class="col-md-3" style="padding:0;margin-top: 5px;">
+                                                Loại quy trình
+                                            </label>
+
+                                            <select name="" class="col-md-9 col-xs-12">
+                                                <option value="">Quy trình xét duyệt tài khoản độc giả</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <div class="" style="height: 440px; overflow: auto;width: 100%;display: inline-block; margin-top: 10px;">
+                                                <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                    <thead class="flip-content bordered-palegreen">
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Tên bước xử lý</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr style="cursor: pointer;">
+                                                            <td>1</td>
+                                                            <td>Bước 1</td>
+                                                        </tr>
+                                                        <tr style="cursor: pointer;">
+                                                            <td>2</td>
+                                                            <td>Bước 2</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <nav aria-label="Page navigation">
+                                                <ul class="pagination">
+                                                    <li>
+                                                        <a href="#" aria-label="Previous">
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li>
+                                                        <a href="#" aria-label="Next">
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-xs-12">
+                                        <div class="col-md-12" style="border-bottom:1px dotted #ddd;margin-bottom:10px; padding: 0">
+                                            <label class="col-md-7 col-xs-12" style="padding: 0; margin-top: 10px;">
+                                                Danh sách tài khoản xử lý
+                                            </label>
+
+                                            <div class="col-md-5" style="padding: 5px 0px;">
+                                                <button class="btn btn-danger pull-right">
+                                                    <i class="fa fa-times"></i>Xóa
+                                                </button>
+
+                                                <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal" style="margin-right: 5px;">
+                                                    <i class="fa fa-file"></i>Thêm
+                                                </button>
+                                                <!-- Modal them -->
+                                                <div class="modal fade" id="myModal" role="dialog">
+                                                    <div class="modal-dialog modal-lg">
+
+                                                        <!-- Modal content-->
+                                                        <div class="modal-content">
+                                                            <form action="">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <h4 class="modal-title">Thêm tài khoản vào nhóm</h4>
+                                                                </div>
+
+                                                                <div class="modal-body">
+                                                                    <div class="collapse in">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4" style="border-right: 1px solid #eee;">
+                                                                                <h4 style="margin-top: 0;">Cơ quan/phòng ban</h4>
+                                                                                <select name="" class="col-xs-12">
+                                                                                    <option value="">Trung tâm lưu trữ</option>
+                                                                                    <option value="">Trung tâm lưu trữ</option>
+                                                                                </select>
+                                                                                <div style="margin-top: 10px; overflow: auto; height: 150px; width: 100%;">
+                                                                                    <div class="checkbox">
+                                                                                        <label>
+                                                                                            <input type="checkbox">
+                                                                                            <span class="text">Ban giám đốc</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="checkbox">
+                                                                                        <label>
+                                                                                            <input type="checkbox">
+                                                                                            <span class="text">Phòng bản quản</span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-8">
+                                                                                <div class="" style="overflow: auto; height: 220px;">
+                                                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                                                        <thead class="flip-content bordered-palegreen">
+                                                                                            <tr>
+                                                                                                <th>
+                                                                                                    <div class="checkbox" style="margin: 0;">
+                                                                                                        <label>
+                                                                                                            <input type="checkbox">
+                                                                                                            <span class="text"></span>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </th>
+                                                                                                <th>Họ tên</th>
+                                                                                                <th>Tên đăng nhập</th>
+                                                                                                <th>Chức danh</th>
+                                                                                                <th>Kích hoạt</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="checkbox" style="margin: 0;">
+                                                                                                        <label>
+                                                                                                            <input type="checkbox">
+                                                                                                            <span class="text"></span>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td>Trưởng phòng Đọc</td>
+                                                                                                <td>tpdoc</td>
+                                                                                                <td>tpdoc</td>
+                                                                                                <td>
+                                                                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="checkbox" style="margin: 0;">
+                                                                                                        <label>
+                                                                                                            <input type="checkbox">
+                                                                                                            <span class="text"></span>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td>Trưởng phòng Đọc</td>
+                                                                                                <td>tpdoc</td>
+                                                                                                <td>tpdoc</td>
+                                                                                                <td>
+                                                                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div class="checkbox" style="margin: 0;">
+                                                                                                        <label>
+                                                                                                            <input type="checkbox">
+                                                                                                            <span class="text"></span>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                                <td>Trưởng phòng Đọc</td>
+                                                                                                <td>tpdoc</td>
+                                                                                                <td>tpdoc</td>
+                                                                                                <td>
+                                                                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                                                        <i class="fa fa-plus"></i>Thêm vào nhóm
+                                                                    </button>
+
+                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                        <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- end Modal them -->
+                                            </div>
+                                        </div>
+
+                                        <div class="" style="height: 446px; overflow: auto;width: 100%;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>Họ tên</th>
+                                                        <th>Tên đăng nhập</th>
+                                                        <th>Chức danh</th>
+                                                        <th>Kích hoạt</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Trưởng phòng Đọc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>tpdoc</td>
+                                                        <td>
+                                                            <i class="glyphicon glyphicon-remove"></i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li>
+                                                    <a href="#" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li>
+                                                    <a href="#" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

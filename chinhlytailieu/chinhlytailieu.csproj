@@ -240,7 +240,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\chinhly.mdf" />
     <Content Include="assets\css\4095-rtl.css" />
     <Content Include="assets\css\4095-rtl.min.css" />
     <Content Include="assets\css\4095.css" />
@@ -337,6 +336,7 @@
     <Content Include="assets\css\demo.min.css" />
     <Content Include="assets\css\font-awesome.css" />
     <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\jquery.mCustomScrollbar.css" />
     <Content Include="assets\css\other-less\LessHat.css" />
     <Content Include="assets\css\other-less\lesshat.min.css" />
     <Content Include="assets\css\skins\azure.css" />
@@ -821,6 +821,7 @@
     <Content Include="Views\thuthaptailieu\phanheQLthuthaptailieu.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="assets\upload\" />
     <Folder Include="Scripts\baoquan\baocaothongke\" />
     <Folder Include="Scripts\baoquan\quanlykho\" />
@@ -985,6 +986,7 @@
     <Content Include="Views\chinhlytailieu\timkiemhosonangcao.cshtml" />
     <Content Include="Views\chinhlytailieu\timkiemvanbannangcao.cshtml" />
     <Content Include="Views\chinhlytailieu\taoyeucaukhaithac.cshtml" />
+    <None Include="Properties\PublishProfiles\chinhlytailieu.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

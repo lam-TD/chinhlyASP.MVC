@@ -1,0 +1,252 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                        <label style="font-size: 18px;">Sổ đăng ký yêu cầu đọc của độc giả</label>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12">
+
+                                        <div class="" style="padding-bottom: 10px; border-bottom: 1px solid #ddd;">
+                                            <div class="col-md-1 col-xs-12">
+                                                <label style="padding-top: 5px; float: right;">Ngày</label>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <input class="form-control date-picker" id="id-date-pickeradkycd1" type="text" data-date-format="dd-mm-yyyy">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-forward"></i>Báo cáo
+                                            </button>
+
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-file-text"></i>Xuất Excel
+                                            </button>
+
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-file"></i>Xuất Words
+                                            </button>
+
+                                            <button type="button" class="btn btn-info">
+                                                <i class="fa fa-print"></i>In sổ
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-12" style="height: 450px; overflow: auto;">
+                                            <div class="com-md-12">
+                                                <h3 class="text-center">
+                                                    <b>SỔ ĐĂNG KÝ YÊU CẦU ĐỌC</b>
+                                                    <br>
+                                                    <b>(TẠI PHÒNG ĐỌC VÀ ĐỌC TRỰC TUYẾN)</b>
+                                                </h3>
+                                                <h3 class="text-center"><b>NĂM: 2018</b></h3>
+                                            </div>
+                                            <table class="table">
+                                                <thead class="">
+                                                    <tr>
+                                                        <th style="text-align: center; border: 1px solid;">STT</th>
+                                                        <th style="text-align: center; border: 1px solid;">
+                                                            Số Phiếu yêu cầu
+                                                        </th>
+                                                        <th style="text-align: center; border: 1px solid;">Ngày</th>
+                                                        <th style="text-align: center; border: 1px solid;">
+                                                            Họ và tên độc giả
+                                                        </th>
+                                                        <th style="text-align: center; border: 1px solid;">
+                                                            Tên phông/ khối tài liệu
+                                                        </th>
+                                                        <th style="text-align: center; border: 1px solid;">
+                                                            Ký hiệu hồ sơ, tài liệu
+                                                        </th>
+                                                        <th style="text-align: center; border: 1px solid;">
+                                                            Tổng số hồ sơ/ văn bản
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="text-align: center; border: 1px solid;">1</td>
+                                                        <td style="text-align: center; border: 1px solid;">54</td>
+                                                        <td style="text-align: center; border: 1px solid;">22/4/1966 - 16/6/1968</td>
+                                                        <td style="text-align: center; border: 1px solid;">
+                                                            Tờ trình hoạt động tháng 3 - 12/1966 của Bộ Công chánh
+                                                        </td>
+                                                        <td style="text-align: center; border: 1px solid;">26</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                        <td style="text-align: center; border: 1px solid;">-</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>

@@ -1,0 +1,15 @@
+﻿
+@if (ViewBag.Count > 0)
+{
+    <ul class="submenu">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="@item.Links">
+                    <span class="menu-text">@item.Tenchucnang</span>
+                </a>
+            </li>
+        }
+    </ul>
+}
+

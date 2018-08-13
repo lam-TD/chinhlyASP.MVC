@@ -1,0 +1,10 @@
+﻿@if (ViewBag.Count > 0)
+{
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a class="clickcoquancon" data-madonvi="@item.Macoquan" style="cursor:pointer; color:black;" ng-click="clickcoquancon()">@item.Tencoquan</a></li>
+        }
+    </ul>
+}
+

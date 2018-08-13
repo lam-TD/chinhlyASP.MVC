@@ -1,0 +1,155 @@
+﻿
+@{
+    
+    Layout = null;
+}
+
+<style>
+    .active-coquan{
+        color: black;
+        font-weight: bold !important;
+        text-decoration: underline;
+    }
+</style>
+
+<div class="page-content" ng-controller="qlphongController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{nhomchucnang}}</a>
+            </li>
+            <li>
+                <a href="#">{{chucnang}}</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="row">
+                                    <div class="col-md-12" style="border-bottom: 1px dotted #ddd; margin-bottom: 10px;">
+                                        <div class="col-md-9 col-xs-12" style="padding-left:0;">
+                                            <label style="font-size: 18px;margin: 0;">
+                                                Quản lý phòng ban
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 col-xs-12">
+                                        <div id="demo" data-collapse="accordion persist">
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <div>
+                                                    <a style="cursor:pointer" data-hienthi="@item.Macoquan" ng-click="hienthicon()" class="hienthicoquan"><h5>@item.Tencoquan</h5></a>
+                                                    <div data-hienthi="@item.Macoquan" class="coquancon" style="display: none;">
+                                                        @Html.Action("phongcon", "hethong", new { id = item.Macoquan })
+                                                    </div>
+                                                </div>
+                                            }
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 col-xs-12">
+                                        <div class="">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="modal('add')">
+                                                <i class="glyphicon glyphicon-file"></i>Thêm
+                                            </button>
+
+                                            <!-- Modal them -->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <form action="" name="formPhong">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Thông tin phòng/đơn vị</h4>
+                                                            </div>
+
+                                                            <div class="modal-body">
+                                                                <div class="collapse in">
+                                                                    <div class="form-group">
+                                                                        <label for="definpu">Cơ quan quản lý</label>
+                                                                        <select name="selectmadonvi" id="selectmadonvi" class="form-control" ng-model="phong.madonvi" >
+                                                                            @*<option value="0">-- Chọn cơ quan quản lý --</option>*@
+                                                                            <option ng-repeat="p in danhsachCoQuan" value="{{p.Macoquan}}">{{p.Tencoquan}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="definpu">Mã phòng/đơn vị</label>
+                                                                        <input type="text" class="form-control" name="txtmaphong" placeholder="Mã phòng/đơn vị" ng-model="phong.maphong" ng-required="true" ng-disabled="txtdisable">
+                                                                        <span style="color:red;" ng-show="formPhong.txtmaphong.$touched && formPhong.txtmaphong.$invalid">Mã phòng không được để trống</span>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="definpu">Tên phòng/đơn vị</label>
+                                                                        <input type="text" class="form-control" name="txttenphong" placeholder="Tên phòng/đơn vị" ng-model="phong.tenphong" ng-required="true">
+                                                                        <span style="color:red;" ng-show="formPhong.txttenphong.$touched && formPhong.txttenphong.$invalid">Tên phòng không được để trống</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="save(state)" ng-disabled="formPhong.$invalid">
+                                                                    <i class="fa fa-save"></i>Ghi nhận
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-primary">
+                                                                    <i class="fa fa-save"></i>Ghi nhận và thêm mới
+                                                                </button>
+
+                                                                <button type="button" class="btn btn-warning" data-dismiss="modal">
+                                                                    <i class="glyphicon glyphicon-log-in"></i>Thoát
+                                                                </button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div><!-- end Modal them -->
+
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-disabled="btn_disable" ng-click="modal('edit')">
+                                                <i class="fa fa-pencil-square-o"></i>Sửa
+                                            </button>
+
+                                            <button class="btn btn btn-danger" ng-disabled="btn_disable"><i class="glyphicon glyphicon-remove"></i>Xóa</button>
+                                        </div>
+                                        <div class="" style="height: 410px; overflow: auto; margin-top: 5px;">
+                                            <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                <thead class="flip-content bordered-palegreen">
+                                                    <tr>
+                                                        <th>Mã phòng/đơn vị</th>
+                                                        <th>Tên phòng/đơn vị</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="click_phong" dir-paginate="b in listBoPhan |itemsPerPage:12" ng-click="click_phong(b)" style="cursor:pointer;">
+                                                        <td>{{b.MAPHONG}}</td>
+                                                        <td>{{b.TENPHONG}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <dir-pagination-controls max-size="12" direction-links="true" boundary-links="true"></dir-pagination-controls>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+

@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "test";
+    Layout = "~/Views/Shared/_Layouttest.cshtml";
+}
+
+
+@*<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angular-route.js"></script>
+<script src="~/Scripts/cosodulieu/appcosodulieu.js"></script>
+<script src="~/Scripts/cosodulieu/phanheTLbienmuc/phanheTLbienmuc.js"></script>*@
+
+
+<div class="main-container container-fluid">
+    <!-- Page Container -->
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        <div class="page-sidebar" id="sidebar">
+            <!-- Page Sidebar Header-->
+            <div class="sidebar-header-wrapper">
+                <input type="text" class="searchinput" />
+                <i class="searchicon fa fa-search"></i>
+                <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
+            </div>
+            <!-- /Page Sidebar Header -->
+            <!-- Sidebar Menu -->
+
+
+
+            <ul class="nav sidebar-menu">
+
+                <li>
+                    <a href="thuthaptailieu/phanheqlthuthaptailieu/view.html">
+                        <i class="menu-icon fa fa-folder-open"></i>
+                        <span class="menu-text">Phân hệ QL thu thập TL</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-archive"></i>
+                        <span class="menu-text">Nộp lưu</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="#!danhsachmucluc">
+                                <span class="menu-text">Lập mục lục nộp lưu</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/nlquanlylannopluu/view.html">
+                                <span class="menu-text">QL lần nộp lưu</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/nlxuatmuclucnopluu/view.html">
+                                <span class="menu-text">Xuất mục lục nộp lưu</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/nlnopluutructuyen/view.html">
+                                <span class="menu-text">Nộp lưu trực tuyến</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-edit"></i>
+                        <span class="menu-text">Tiếp nhận</span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="thuthaptailieu/tnnguonnopluu/view.html">
+                                <span class="menu-text">Nguồn nộp lưu</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/nlhoidongthamdinh/view.html">
+                                <span class="menu-text">Hội đồng thẩm định</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/tnhosonopluu/view.html">
+                                <span class="menu-text">Hồ sơ nộp lưu</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/tnthamdinhhoso/view.html">
+                                <span class="menu-text">Thẩm định hồ sơ</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/tnkiemtrahosothucte/view.html">
+                                <span class="menu-text">Kiểm tra hồ sơ thực tế</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/tnhieuchinhsuamucluchoso/view.html">
+                                <span class="menu-text">Hiểu chỉnh sửa mục lục hồ sơ</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/tngiaotailieuvaokho/view.html">
+                                <span class="menu-text">Giao tài liệu vào kho</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="thuthaptailieu/tnbienbannhantailieu/view.html">
+                                <span class="menu-text">Biên bản nhận TL từ nguồn nộp lưu</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- /Sidebar Menu -->
+        </div>
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        @RenderBody()
+        <!-- /Page Content -->
+
+    </div>
+    <!-- /Page Container -->
+    <!-- Main Container -->
+</div>
+

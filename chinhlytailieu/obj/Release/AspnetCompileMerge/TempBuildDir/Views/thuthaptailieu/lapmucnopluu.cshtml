@@ -1,0 +1,170 @@
+﻿@{ 
+    ViewBag.Title = "Home";
+    Layout = null;
+}
+
+ <!-- Page Content -->
+<div class="page-content" ng-controller="lapmucnopluuController">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="#">{{tieude}}</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+            <li class="active">Data Tables</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Body -->
+    <div class="page-body" style="margin-top: 0;">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-body">
+                        <div class="flip-scroll">
+                            <div id="simpledatatable_wrapper">
+                                <div class="flip-scroll">
+                                    <div id="simpledatatable_wrapper">
+                                        <div class="row">
+                                            <div class="col-md-12" style="border-bottom: 1px solid #ddd; margin-bottom: 10px;">
+                                                <label style="font-size: 16px;">Lập mục lục nộp lưu</label>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <form action="">
+                                                    <div class="form-group col-md-12">
+                                                        <div class="col-sm-2 col-xs-12">
+                                                            <label>Lần nộp lưu(*)</label>
+                                                        </div>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" placeholder="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-12">
+                                                        <div class="col-sm-2 col-xs-12">
+                                                            <label>Cơ quan</label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control" placeholder="">
+                                                        </div>
+
+                                                        <div class="col-sm-1 col-xs-12" style="padding: 0">
+                                                            <label>Ngày lập</label>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                            <div class="input-group">
+                                                                <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy">
+                                                                <span class="input-group-addon">
+                                                                    <i class="fa fa-calendar"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-12">
+                                                        <div class="col-sm-2 col-xs-12">
+                                                            <label>Người lập</label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control" placeholder="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-12">
+                                                        <div class="col-sm-2 col-xs-12">
+                                                            <label>Lần nộp lưu(*)</label>
+                                                        </div>
+                                                        <div class="col-sm-10">
+                                                            <textarea class="col-sm-12 col-xs-12"></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="pull-right">
+                                                        <button class="btn btn-primary" style="margin-left: 5px;">
+                                                            <i class="fa fa-save"></i>Ghi nhận
+                                                        </button>
+
+                                                        <button class="btn btn-danger" style="margin-right: 30px;">
+                                                            <i class="fa fa-backward"></i>Quay về
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="col-md-12 col-xs-12" style="margin-top: 10px;">
+                                                <div class="col-md-12">
+                                                    <label>Danh sách hồ sơ</label>
+                                                </div>
+                                                <div class="col-md-12" style="height: 199px; overflow: auto; display: inline-block;">
+                                                    <table class="table table-hover table-bordered table-striped table-condensed flip-content">
+                                                        <thead class="flip-content bordered-palegreen">
+                                                            <tr>
+                                                                <th>STT</th>
+                                                                <th style="width: 100px;">Hộp số</th>
+                                                                <th style="width: 100px;">Hồ sơ số</th>
+                                                                <th style="width: 20%;">Tiêu đề hồ sơ</th>
+                                                                <th>Ngày tháng BĐ-KT</th>
+                                                                <th>SL tờ</th>
+                                                                <th>Ghi chú</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>2017</td>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                                <td>1</td>
+                                                                <td>Đã duyệt</td>
+                                                                <td>Đã duyệt</td>
+                                                                <td>Đã duyệt</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <nav aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <li>
+                                                            <a href="#" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="active"><a href="#">1</a></li>
+                                                        <li><a href="#">2</a></li>
+                                                        <li><a href="#">3</a></li>
+                                                        <li><a href="#">4</a></li>
+                                                        <li><a href="#">5</a></li>
+                                                        <li>
+                                                            <a href="#" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+
+<script src="~/assets/js/datetime/bootstrap-datepicker.js"></script>
+
+<script>
+	$('.date-picker').datepicker();
+</script>
