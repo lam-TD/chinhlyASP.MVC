@@ -396,6 +396,7 @@
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\icons\addicon.png" />
     <Content Include="assets\img\icons\delicon.png" />
+    <Content Include="assets\img\user.png" />
     <Content Include="assets\img\jquery.minicolors.png" />
     <Content Include="assets\img\logo-inverted.png" />
     <Content Include="assets\img\logo-rtl.png" />

@@ -26,8 +26,18 @@
         font-weight: 500;
         border-radius:50%;
     }
-</style>
+    .scrollbar::-webkit-scrollbar{
+        width: 5px;
+    }
 
+    .scrollbar::-webkit-scrollbar-thumb{
+        background: #808080;
+        outline: 0;
+        border-radius: 50px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+</style>
+<link href="~/assets/css/custom.css" rel="stylesheet" />
  <!-- Page Content -->
 <div class="page-content" ng-controller="xephosovaohopController">
     <!-- Page Breadcrumb -->
@@ -96,7 +106,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="content_table" style="height: 383px; overflow: auto;width: 100%;">
+                                        <div class="content_table scrollbar" style="height: 383px; overflow: auto;width: 100%;">
                                             <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                 <thead class="flip-content bordered-palegreen">
                                                     <tr>
@@ -150,7 +160,7 @@
 
                                         <h5>Danh sách hộp</h5>
 
-                                        <div class="" style="height: 400px;overflow: auto;">
+                                        <div class="scrollbar" style="height: 400px;overflow: auto;">
                                             <form >
                                                 <table class="table table-hover table-bordered table-striped table-condensed flip-content">
                                                     <thead class="flip-content bordered-palegreen">

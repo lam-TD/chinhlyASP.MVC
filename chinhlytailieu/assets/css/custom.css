@@ -17,3 +17,22 @@ select{
 .hidden-span{
     display: none;
 }
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #808080;
+    outline: 0;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+input{
+    border-radius:0;
+}

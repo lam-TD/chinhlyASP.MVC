@@ -1,4 +1,4 @@
-﻿app.controller("timkiemhosoController", function ($scope, $http, $rootScope, $route) {
+﻿app.controller("timkiemhosoController", function ($scope, $http, $rootScope, $route, $window) {
     $scope.title = "Hello";
     $scope.totalresult = 0;
     $scope.keyword = "";
@@ -88,7 +88,8 @@
     }
 
     $scope.addcard = function () {
-        $route.reload();
+        //$route.reload();
+        $window.location.reload();
         //$state.reload();
     }
 

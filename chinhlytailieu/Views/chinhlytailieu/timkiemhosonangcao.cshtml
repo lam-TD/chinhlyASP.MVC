@@ -57,19 +57,19 @@
                                         <div class="" style="">
                                             <form class="col-md-10 timhsnac" id="frmhosonangcao">
                                                 <div class="form-group col-md-12 timhsnac">
-                                                    <label class="col-sm-2">Phông</label>
-                                                    <div class="col-sm-4">
+                                                    <label class="col-sm-1">Phông</label>
+                                                    <div class="col-sm-5">
                                                         <select name="selectphong" class="col-md-12">
-                                                            <option value="">--Tất cả--</option>
+                                                            <option value="" disabled>--Tất cả--</option>
                                                             <option value="{{n.ID}}" ng-repeat="n in danhsachphong">{{n.TENPHONG}}</option>
                                                         </select>
                                                     </div>
 
-                                                    <label class="col-sm-2">Loại tài liệu</label>
-                                                    <div class="col-sm-4">
+                                                    <label class="col-sm-1">Loại TL</label>
+                                                    <div class="col-sm-5">
                                                         <select name="selectloaitl" class="col-md-12">
-                                                            <option value="">--Tất cả--</option>
-                                                            <option value="">Tài liệu hành chính</option>
+                                                            <option value="" disabled>--Tất cả--</option>
+                                                            <option value="HC">Tài liệu hành chính</option>
                                                             <option value="10 năm">10 năm</option>
                                                             <option value="Lâu dài">Lâu dài</option>
                                                         </select>
@@ -77,13 +77,13 @@
                                                 </div>
 
                                                 <div class="form-group col-md-12 timhsnac">
-                                                    <label class="col-sm-2">Hồ sơ số</label>
-                                                    <div class="col-sm-4">
+                                                    <label class="col-sm-1">Hồ sơ số</label>
+                                                    <div class="col-sm-5">
                                                         <input type="text" class="form-control" placeholder="Hồ sơ số" ng-model="mahoso">
                                                     </div>
 
-                                                    <label class="col-sm-2">Tiêu đề</label>
-                                                    <div class="col-sm-4">
+                                                    <label class="col-sm-1">Tiêu đề</label>
+                                                    <div class="col-sm-5">
                                                         <input type="text" class="form-control" placeholder="Tiêu đề" ng-model="tenhoso">
                                                     </div>
                                                 </div>
@@ -101,14 +101,14 @@
                                                     <ul style="list-style: none; padding: 0;">
 
                                                         <li style="margin-bottom: 10px; padding-left: 10px;">
-                                                            <a href="#!/timkiemvanban" style="font-size: 15px;">
-                                                                <i class="fa fa-search"> Tìm kiếm văn bản</i>
+                                                            <a href="#!/timkiemvanban" style="font-size: 12px;">
+                                                                <i class="fa fa-search"></i> Tìm kiếm văn bản
                                                             </a>
                                                         </li>
 
                                                         <li style="margin-bottom: 10px; padding-left: 10px;">
-                                                            <a href="#!/timkiemvanbannangcao" style="font-size: 15px;">
-                                                                <i class="fa fa-search-plus">Tìm kiếm văn bản nâng cao</i>
+                                                            <a href="#!/timkiemvanbannangcao" style="font-size: 12px;">
+                                                                <i class="fa fa-search-plus"></i> Tìm kiếm văn bản nâng cao
                                                             </a>
                                                         </li>
 
@@ -124,8 +124,8 @@
                                                     <ul style="list-style: none; padding: 0; min-height: 430px;">
                                                         @*<li>Không tìm thấy</li>*@
                                                         <li style="border-bottom: 1px dotted #ddd;" dir-paginate="n in danhsachketqua |itemsPerPage:10">
-                                                            <span class="pull-left" style="min-height:100px;margin-right: 10px;">
-                                                                <i class="fa fa-folder-open" style="font-size: 50px;"></i>
+                                                            <span class="pull-left" style="min-height:100px;margin-right: 10px;padding-top:12px">
+                                                                <i class="fa fa-folder-o" style="font-size: 80px;"></i>
                                                             </span>
 
                                                             <div class="pull-right" style="display: inline-block;">
