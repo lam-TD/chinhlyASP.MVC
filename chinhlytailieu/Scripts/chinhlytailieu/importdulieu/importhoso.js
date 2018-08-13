@@ -71,8 +71,11 @@
     }
 
     $scope.insertData = function () {
+        if ($('select[name=selectphong]').val() < 0) { alert("Vui lòng chọn phông tài liệu"); return -1; }
+        if ($('select[name=selectmucluc]').val() < 0) { alert("Vui lòng chọn mục lục"); return -1; }
         $scope.phongid = $('select[name=selectphong]').val();
         $scope.mamucluc = $('select[name=selectmucluc]').val();
+        
         $http({
             method: 'GET',
             url: '/chinhlytailieu/insert_excel_hoso?phongid=' + $scope.phongid + '&mamucluc=' + $scope.mamucluc

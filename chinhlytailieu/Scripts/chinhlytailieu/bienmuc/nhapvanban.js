@@ -73,6 +73,7 @@
         else {
             $scope.flag_icon = false;
             $scope.pageIndex = 1;
+            $scope.flag_pagination = false;
             $scope.pagination.pageSize = 10;
             $scope.loadhoso();
         }
@@ -83,13 +84,13 @@
         $scope.flag_icon = false;
         $scope.pagination.pageIndex = 1;
         $scope.pagination.pageSize = 10;
-        $scope.flag_pagination = true;
+        $scope.flag_pagination = false;
         $scope.loadhoso();
     }
 
     $scope.tim_kiemhoso = function () {
         if ($('select[name=selectmucluc]').val() > 0) {
-            if ($scope.textSearch != "" && $scope.textSearch != null) $scope.timkiemhoso();
+            if ($scope.textSearch != "" && $scope.textSearch != null) {$scope.timkiemhoso();$scope.flag_pagination = false;}
             else alert("Nhập từ khóa để tìm kiếm");
         } else { alert("Vui lòng chọn PHÔNG và MỤC LỤC"); }
     }

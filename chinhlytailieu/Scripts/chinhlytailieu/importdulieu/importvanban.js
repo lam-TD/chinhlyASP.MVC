@@ -70,6 +70,8 @@
     }
 
     $scope.insertData = function () {
+        if ($('select[name=selectphong]').val() == null || $('select[name=selectmucluc]').val() == "") { alert("Vui lòng chọn phông tài liệu"); return -1; }
+        if ($('select[name=selectmucluc]').val() == null || $('select[name=selectmucluc]').val() == "") { alert("Vui lòng chọn mục lục"); return -1; }
         $scope.phongid = $('select[name=selectphong]').val();
         $scope.mamucluc = $('select[name=selectmucluc]').val();
         $http({

@@ -1,4 +1,4 @@
-﻿app.controller("timkiemhosoController", function ($scope, $http, $rootScope) {
+﻿app.controller("timkiemhosoController", function ($scope, $http, $rootScope, $route) {
     $scope.title = "Hello";
     $scope.totalresult = 0;
     $scope.keyword = "";
@@ -85,6 +85,11 @@
         year = d.getFullYear();
         //console.log(d);
         //console.log(day + '-' + month + '-' + year);
+    }
+
+    $scope.addcard = function () {
+        $route.reload();
+        //$state.reload();
     }
 
 

@@ -7,6 +7,7 @@
     $scope.currentPageHop = 1;
     $scope.itemsPerPageHop = 10;
     $scope.total = 0;
+    $scope.flag_icon = false;
     $scope.pagination =
     {
         pageIndex: 1,
@@ -34,6 +35,23 @@
                 //alert('Không tải được danh sách phông');
             })
         }
+        $scope.loadmucluc();
+    }
+
+    $scope.timkiemhschuavaohop = function () {
+        $http({
+            method: 'GET',
+            url: '/chinhlytailieu/chinhly_timkiemhoso_pagination?phongid=' + $('select[name=selectphong]').val() + '&keyword=' + $scope.textSearch
+        }).then(function (response) {
+            $scope.danhsachtimkiem = response.data;
+            $scope.pagination.pageIndex = 1;
+            $scope.pagination.pageSize = 10;
+            $scope.danhsachhoso = $scope.danhsachtimkiem.slice((($scope.pagination.pageIndex - 1) * $scope.pagination.pageSize), ($scope.pagination.pageIndex * $scope.pagination.pageSize));
+            $scope.total = response.data.length;
+            $scope.flag_pagination = true;
+        }, function (response) {
+            //alert('Không tải được danh sách phông');
+        })
     }
 
     $scope.countHoso = function () {
@@ -52,21 +70,50 @@
             $scope.danhsachhoso = $scope.danhsachtimkiem.slice((($scope.pagination.pageIndex - 1) * $scope.pagination.pageSize), ($scope.pagination.pageIndex * $scope.pagination.pageSize));
         }
         else {
-            $scope.loadMucluc();
+            $scope.loadhosochuavaohop();
         }
     }
 
     $scope.change_hienthi = function (n) {
         $scope.pageIndex = 1;
         $scope.pagination.pageSize = n;
-        $scope.loadMucluc();
+        $scope.timkiemhschuavaohop();
     }
 
     function changehienthi() {
         $scope.pageIndex = 1;
         $scope.pageSize = $('select[name=selecthienthi]').val();
-        $scope.loadMucluc();
+        $scope.timkiemhschuavaohop();
     }
+
+    $scope.search_hoso = function () {
+        if ($scope.textSearch.length > 0) {
+            $scope.flag_icon = true;
+        }
+        else {
+            $scope.flag_icon = false;
+            $scope.pageIndex = 1;
+            $scope.pagination.pageSize = 10;
+            $scope.loadhosochuavaohop();
+        }
+    }
+
+    $scope.delete_text = function () {
+        $scope.textSearch = "";
+        $scope.flag_icon = false;
+        $scope.pageIndex = 1;
+        $scope.pagination.pageSize = 10;
+        $scope.flag_pagination = true;
+        $scope.loadhosochuavaohop();
+    }
+
+    $('#txtsearch').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            $scope.timkiemhschuavaohop();
+        }
+        event.stopPropagation();
+    });
 
 
     $http({
@@ -91,17 +138,17 @@
         })
     }
 
-    //$scope.loadhop = function () {
-    //    $http({
-    //        method: 'POST',
-    //        url: '/chinhlytailieu/hoso_loadHop?muclucid=' + $('select[name=selectmucluc]').val()
-    //    }).then(function (response) {
-    //        //console.log(response.data);
-    //        $scope.danhsachhop = response.data;
-    //    }, function (response) {
-    //        alert('Không tải được danh sách hộp');
-    //    })
-    //}
+    $scope.loadhop = function () {
+        $http({
+            method: 'POST',
+            url: '/chinhlytailieu/hoso_loadHop?muclucid=' + $('select[name=selectmucluc]').val()
+        }).then(function (response) {
+            //console.log(response.data);
+            $scope.danhsachhop = response.data;
+        }, function (response) {
+            alert('Không tải được danh sách hộp');
+        })
+    }
 
     //$scope.loadhosochuavaohop = function () {
     //    if ($('select[name=selectphong]').val() != "") {
@@ -204,7 +251,7 @@
                         if (response.data == 1) {
                             alert("Thêm hồ sơ vào hộp thành công");
                             $scope.slhosotronghop = 0;
-                            $scope.loadhosochuavaohop2();
+                            $scope.loadhosochuavaohop();
                             $scope.loadhop();
                         }
                         else {
@@ -245,28 +292,21 @@
     }
     
     $scope.xoa_hoso = function (hs) {
-        conf = confirm("Bạn có chắc chắn muốn xóa hồ sơ vừa chọn");
+        conf = confirm("Bạn có chắc chắn muốn loại bỏ hồ sơ vừa chọn ra khoi hộp: " + hs.MAHOP + "?");
         if (conf) {
             $http({
                 method: 'POST',
-                url: '/chinhlytailieu/hoso_xoa',
-                data: {
-                    hosoid: hs.ID,
-                    mahop: hs.MAHOP,
-                    muclucid: hs.MUCLUC,
-                    phongid: hs.PHONGID
-                }
+                url: '/chinhlytailieu/hop_loaibohoso',
+                data: {h: hs}
             }).then(function (response) {
                 if (response.data == 1) {
-                    alert('Đã xóa hồ sơ vừa chọn');
+                    alert('Đã loại bỏ hồ sơ vừa chọn');
                     hh = { MAHOP: hs.MAHOP, MUCLUCID: hs.MUCLUC } 
                     $scope.xemhoso(hh);
-                }
-                else if (response.data == 0) {
-                    alert('Hồ sơ này có chứa văn bản, vui lòng xóa văn bản trong hồ sơ này');
+                    $scope.loadhosochuavaohop();
                 }
                 else {
-                    alert('Lỗi không xóa được hồ sơ vừa chọn');
+                    alert('Lỗi không loại bỏ được hồ sơ vừa chọn');
                 }
             }, function (response) {
                 alert('Lỗi không thực hiện được chức năng này');

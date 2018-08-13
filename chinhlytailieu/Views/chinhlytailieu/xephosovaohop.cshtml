@@ -15,6 +15,17 @@
     input{
         border-radius: 0px !important;
     }
+    .tim:hover{
+        color: blue;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .icon-xoa:hover{
+        color: red;
+        cursor:pointer;
+        font-weight: 500;
+        border-radius:50%;
+    }
 </style>
 
  <!-- Page Content -->
@@ -24,7 +35,7 @@
         <ul class="breadcrumb">
             <li>
                 <i class="fa fa-home"></i>
-                <a href="#">Chỉnh lý tài liệu</a>
+                Chỉnh lý tài liệu
             </li>
             <li>
                 Quản lý hộp
@@ -62,15 +73,22 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12" style="padding: 0;margin-bottom: 10px">
-                                                <h5><span class="col-md-3" style="padding-left: 0;">Hồ sơ chưa vào hộp</span></h5>
-                                                <div class="col-md-8" style="padding: 0;">
+                                            <div class="col-md-12" style="padding: 0;">
+                                                <h5 class="col-md-3" style="padding:0">Hồ sơ chưa vào hộp</h5>
+                                                <div class="col-md-9" style="padding: 0;display:inline-block">
                                                     <div class="col-md-7">
-                                                        <input class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="timhoso"/>
+                                                        @*<input class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="timhoso"/>*@
+                                                        <div class="form-group">
+                                                            <span class="input-icon icon-right">
+                                                                <input id="txtsearch" type="text" class="form-control" placeholder="Tìm kiếm hồ sơ" ng-model="textSearch" ng-change="search_hoso()">
+                                                                <i ng-if="flag_icon" class="fa fa-times icon-xoa" style="margin-right:20px;" title="Hủy tìm kiếm" ng-click="delete_text()"></i>
+                                                                <i class="fa fa-search tim" title="Tìm kiếm" ng-click="timkiemhoso()"></i>
+                                                            </span>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-4">
-                                                        <button class="btn btn-primary" ng-disabled="disablebtnChuyenvaohop" ng-click="chuyenhoso()">
-                                                            <i class="fa fa-save"></i> Chuyển vào hộp
+                                                    <div class="col-md-5" style="padding-right:0">
+                                                        <button style="width:100%;padding-right:0;" class="btn btn-primary" ng-disabled="disablebtnChuyenvaohop" ng-click="chuyenhoso()">
+                                                            <i class="fa fa-arrow-circle-o-right"></i> Chuyển vào hộp
                                                         </button>
                                                     </div>
                                                     
@@ -114,7 +132,7 @@
                                             </table>
                                         </div>
                                         @*<ul uib-pagination total-items="danhsachhosochuavaohop.length" ng-model="currentPage" items-per-page="itemsPerPage" max-size="5" boundary-links="true" num-pages="numPages"></ul>*@
-                                        <ul uib-pagination total-items="danhsachhosochuavaohop.length" ng-model="currentPage" max-size="5" items-per-page="itemsPerPage" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
+                                        <ul uib-pagination total-items="total" ng-change="page_Changed()" ng-model="pagination.pageIndex" max-size="5" items-per-page="pagination.pageSize" next-text="›" previous-text="‹" boundary-link-numbers="true"></ul>
                                     </div>
 
                                     <div class="col-md-5 col-xs-12">
@@ -167,7 +185,7 @@
                                                             <td class="text-center">{{n.SLMAX}}</td>
                                                             <td class="text-center">
                                                                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#xemhoso" ng-click="xemhoso(n)">
-                                                                    <i class="fa fa-list-ul"></i>Xem hồ sơ
+                                                                    <i class="fa fa-file-text-o"></i>Xem hồ sơ
                                                                 </button>
 
                                                                 

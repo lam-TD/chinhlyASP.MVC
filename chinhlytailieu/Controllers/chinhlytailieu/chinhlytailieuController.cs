@@ -487,6 +487,21 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return result;
         }
 
+        [HttpPost]
+        public int hop_loaibohoso(hoso h)
+        {
+            string[] namepara = { "@HOSOID", "@PHONGID", "@MUCLUCID" };
+            object[] valuepara = { h.Id, h.Phongid, h.Mucluc };
+            if (dataAsset.data.inputdata("hop_loaibohoso", namepara, valuepara)) {
+                if (h.Mahop != "" && h.Mahop != null)
+                {
+                    hoso_capnhatsoluonghoso(h.Id, h.Mahop, h.Mucluc, h.Phongid);
+                }
+                return 1;
+            }
+            return -1;
+        }
+
         public int loadchitiethoso(int id)
         {
             Session["capnhathoso"] = id;
@@ -828,17 +843,23 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
 
         public string chinhly_timkiemhoso_phong_mucluc(int phongid, int muclucid, string keyword)
         {
-            Session["keyword"] = keyword.Trim();
             string[] namepara = { "@phongid", "@muclucid", "@keyword" };
             object[] valuepara = { phongid, muclucid, keyword.Trim() };
             return dataAsset.data.outputdata("hoso_timkiem_phong_mucluc", namepara, valuepara);
         }
 
-        public string chinhly_timkiemhoso_pagination(string keyword)
+        //public string chinhly_timkiemhoso_pagination(string keyword)
+        //{
+        //    string[] namepara = { "@keyword" };
+        //    object[] valuepara = { keyword.Trim() };
+        //    return dataAsset.data.outputdata("chinhly_timkiemhoso", namepara, valuepara);
+        //}
+
+        public string chinhly_timkiemhoso_pagination(int phongid, string keyword)
         {
-            string[] namepara = { "@keyword" };
-            object[] valuepara = { keyword.Trim() };
-            return dataAsset.data.outputdata("chinhly_timkiemhoso", namepara, valuepara);
+            string[] namepara = { "@PHONGID", "@keyword" };
+            object[] valuepara = { phongid, keyword.Trim() };
+            return dataAsset.data.outputdata("hoso_timkiem_hosochuavaohop", namepara, valuepara);
         }
 
         public void session_keyword(string keyword) {
