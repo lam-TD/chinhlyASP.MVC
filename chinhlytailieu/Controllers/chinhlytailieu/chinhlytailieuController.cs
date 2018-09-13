@@ -139,6 +139,11 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             return View();
         }
 
+        public ActionResult thongke()
+        {
+            return View();
+        }
+
         //================ phan he thu thap ======================
         public JsonResult phanhe_load_thongke()
         {
@@ -1187,5 +1192,6 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             }
             return listhoso;
         }
+        
     }
 }

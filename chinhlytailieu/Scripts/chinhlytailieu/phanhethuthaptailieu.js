@@ -9,6 +9,10 @@
     }, function (response) {
         alert('Không tải được danh sách Phông');
     })
+
+    $(document).ready(function () {
+        $('.carousel').carousel()
+    });
 })
 
 

@@ -36,3 +36,13 @@ select{
 input{
     border-radius:0;
 }
+
+#sidebar{
+    position: fixed;
+    top: 45px;
+}
+
+.navbar .navbar-inner{
+    position: fixed;
+    width: 100%;
+}

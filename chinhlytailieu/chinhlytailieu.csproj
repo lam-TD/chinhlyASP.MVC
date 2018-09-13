@@ -188,6 +188,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\baoquan\baoquanController.cs" />
     <Compile Include="Controllers\chinhlytailieu\chinhlytailieuController.cs" />
+    <Compile Include="Controllers\chinhlytailieu\thongkeController.cs" />
     <Compile Include="Controllers\chucnangController.cs" />
     <Compile Include="Controllers\cosodulieu\cosodulieuController.cs" />
     <Compile Include="Controllers\dangnhap\dangnhapController.cs" />
@@ -330,6 +331,7 @@
     <Content Include="assets\css\bootstrap-rtl.min.css" />
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\custom-thongke.css" />
     <Content Include="assets\css\custom.css" />
     <Content Include="assets\css\dataTables.bootstrap.css" />
     <Content Include="assets\css\demo.css" />
@@ -396,6 +398,9 @@
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\icons\addicon.png" />
     <Content Include="assets\img\icons\delicon.png" />
+    <Content Include="assets\img\slider\book1.jpg" />
+    <Content Include="assets\img\slider\book2.jpg" />
+    <Content Include="assets\img\slider\book3.jpg" />
     <Content Include="assets\img\user.png" />
     <Content Include="assets\img\jquery.minicolors.png" />
     <Content Include="assets\img\logo-inverted.png" />
@@ -775,6 +780,7 @@
     <Content Include="Scripts\chinhlytailieu\bienmuc\nhapvanban.js" />
     <Content Include="Scripts\chinhlytailieu\bienmuc\taomuclucController.js" />
     <Content Include="Scripts\chinhlytailieu\phongtailieu\phongtailieu.js" />
+    <Content Include="Scripts\chinhlytailieu\thongke\thongke.js" />
     <Content Include="Scripts\chinhlytailieu\timkiem\timkiemhoso.js" />
     <Content Include="Scripts\chinhlytailieu\timkiem\timkiemhosonangcao.js" />
     <Content Include="Scripts\chinhlytailieu\timkiem\timkiemvanban.js" />
@@ -799,6 +805,7 @@
     <Content Include="Scripts\hethong\qlquytrinhController.js" />
     <Content Include="Scripts\home\home.js" />
     <Content Include="Scripts\home\layouttop\layouttop.js" />
+    <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\khaithactailieu\appkhaithactailieu.js" />
     <Content Include="Scripts\khaithactailieu\khaithactailieu\timkiemhoso.js" />
     <Content Include="Scripts\luuthongtailieu\appluuthongtailieu.js" />
@@ -844,6 +851,7 @@
     <Folder Include="Views\chucnang\" />
     <Folder Include="Views\lapkehoachchinhly\" />
     <Folder Include="Views\quanlychucvu\" />
+    <Folder Include="Views\thongke\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -988,6 +996,7 @@
     <Content Include="Views\chinhlytailieu\timkiemvanbannangcao.cshtml" />
     <Content Include="Views\chinhlytailieu\taoyeucaukhaithac.cshtml" />
     <None Include="Properties\PublishProfiles\chinhlytailieu.pubxml" />
+    <Content Include="Views\chinhlytailieu\thongke.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

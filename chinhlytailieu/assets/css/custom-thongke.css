@@ -1,0 +1,45 @@
+﻿.select-lam {
+    cursor: pointer;
+}
+
+.text-select {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+}
+
+.body-select {
+    position: absolute;
+    width: 100%;
+    top: 35px;
+    left: 0;
+    background-color: #fff;
+    z-index: 101;
+    display: none;
+}
+
+.body-select select option {
+    padding: 5px;
+}
+
+.body-select select option:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+select[multiple], select[size] {
+    max-height: 200px;
+}
+
+.an { 
+    display: none;
+}
+
+.hien { 
+    display: block;
+}
+
+.hien-hop {
+    height: 50px;
+    display: block;
+}

@@ -74,6 +74,10 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: '../taoyeucaukhaithac',
         controller: ''
     })
+    .when('/thongke', {
+        templateUrl: '../thongke',
+        controller: ''
+    })
     //.otherwise({
     //    templateUrl: '../phanheQLthuthapTL'
     //});
