@@ -156,7 +156,10 @@ namespace chinhlytailieu.Controllers.chinhlytailieu
             DataTable dtvanban = dataAsset.data.outputdataTable("phanhe_thuthaptl_thongke_vanban");
             string thongkevanban = dtvanban.Rows[0]["TONGVANBAN"].ToString();
 
-            string[] thongke = { thongkehoso, thongkevanban };
+            DataTable dtmucluc = dataAsset.data.outputdataTable("thong_ke_all_luc_luc");
+            string thongkemucluc = dtmucluc.Rows[0]["sum"].ToString();
+
+            string[] thongke = { thongkehoso, thongkevanban, thongkemucluc };
             return Json(thongke, JsonRequestBehavior.AllowGet);
         }
 

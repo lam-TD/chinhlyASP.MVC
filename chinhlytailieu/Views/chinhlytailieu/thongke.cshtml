@@ -25,6 +25,11 @@
     .row-chitiet {
         border-bottom: 1px solid #ddd;
     }
+    .databox.radius-bordered .databox-right {
+        width: 100%;
+        border-radius: 0px !important;
+        border: 1px solid #ddd;
+    }
 </style>
 
 <div class="page-content" ng-controller="thongkeController">
@@ -45,26 +50,26 @@
     <!-- Page Body -->
     <div class="page-body" style="margin-top: 0;">
         <div class="row">
-            <div class="col-lg-4 col-sm-12 col-xs-12">
+            @*<div class="col-lg-4 col-sm-12 col-xs-12">
                 <div class="widget">
                     <div class="widget-header bordered-bottom bordered-themeprimary">
                         <i class="widget-icon fa fa-tasks themeprimary"></i>
                         <span class="widget-caption themeprimary">Tiêu chí thống kê</span>
-                    </div><!--Widget Header-->
+                    </div>
                     <div class="widget-body no-padding">
                         <div class="task-container">
                             <ul class="tasks-list">
                                 <li class="task-item" style="padding:10px;height:auto">
                                     <label>Phông tài liệu</label>
-                                    <select name="selectphong" class="form-control" ng-change="loadmucluc()" ng-model="phong">
-                                        <option value="" disabled>--Chọn phông tài liệu--</option>
+                                    <select id="selectphong" name="selectphong" class="form-control" ng-change="loadmucluc()" ng-model="phong">
+                                        <option value="">Tất cả phông</option>
                                         <option ng-repeat="n in danhsachphong" value="{{n.ID}}">{{n.TENPHONG}}</option>
                                     </select>
                                 </li>
                                 <li class="task-item" style="padding:10px;height:auto">
                                     <label>Mục lục</label>
                                     <select ng-click="" name="selectmucluc" class="form-control" ng-model="v.mucluc" ng-change="loadhop()">
-                                        <option value="" disabled>--Chọn mục lục--</option>
+                                        <option value="">Tất cả mục lục</option>
                                         <option ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
                                     </select>
                                 </li>
@@ -75,7 +80,8 @@
                                         <div class="body-select" id="body-select-hop">
                                             <input ng-model="searchText" class="form-control text-select" placeholder="Nhập mã hộp để tìm kiếm"/>
                                             <select class="form-control" name="select_hop" multiple>
-                                                <option ng-class="danhsachhop.length == 0 ? 'hien' : 'an'" style="height:50px">Chưa có hộp</option>
+                                                <option ng-class="danhsachhop.length == 0 ? 'hien' : 'an'">Chưa có hộp</option>
+                                                <option ng-class="danhsachhop.length > 0 ? 'hien' : 'an'">Tất cả hộp</option>
                                                 <option ng-click="select_hop(h)" ng-class="danhsachhop.length > 0 ? 'hien' : 'an'" ng-repeat="h in danhsachhop | filter:searchText" value="{{h.MAHOP}}">{{h.MAHOP}}</option>
                                             </select>
                                         </div>
@@ -92,66 +98,130 @@
                                 </li>
                             </ul>
                         </div>
-                    </div><!--Widget Body-->
+                    </div>
                 </div>
+            </div>*@
 
-            </div>
-
-            <div class="col-lg-8 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
                 <div class="widget">
                     <div class="widget-header bordered-bottom bordered-themeprimary">
                         <i class="widget-icon fa fa-tasks themeprimary"></i>
-                        <span class="widget-caption themeprimary">Kết quả</span>
+                        <span class="widget-caption themeprimary">Thống ke</span>
                     </div><!--Widget Header-->
                     <div class="widget-body no-padding">
                         <div class="task-container">
-                            <div class="row" style="padding:10px;">
-                                <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
-                                    <div class="databox radius-bordered databox-shadowed databox-graded">
-                                        @*<div class="databox-left bg-yellow">
-                                            <div class="databox-piechart">
-                                                <div data-toggle="easypiechart" class="easyPieChart" data-barcolor="#fff" data-linecap="butt" data-percent="15" data-animate="500" data-linewidth="3" data-size="47" data-trackcolor="#fee29f" style="width: 47px; height: 47px; line-height: 47px;"><span class="white font-90">15%</span><canvas width="47" height="47"></canvas></div>
-                                            </div>
-                                        </div>*@
-                                        <div class="databox-right">
-                                            <span class="databox-number yellow">100</span>
-                                            <div class="databox-text darkgray">Mục lục văn bản</div>
-                                            <div class="databox-stat yellow radius-bordered">
-                                                <i class="stat-icon  icon-lg fa fa-envelope-o"></i>
+                            <div class="row" style="padding-left:10px;padding-right:10px;">
+                                <br />
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Phông</label>
+                                        <div class="col-sm-10">
+                                            <select id="selectphong" name="selectphong" class="form-control" ng-change="loadmucluc()" ng-model="phong">
+                                                <option value="">Tất cả phông</option>
+                                                <option ng-repeat="n in danhsachphong" value="{{n.ID}}">{{n.TENPHONG}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Mục lục</label>
+                                        <div class="col-sm-10">
+                                            <select ng-click="" name="selectmucluc" class="form-control" ng-model="v.mucluc" ng-change="loadhop()">
+                                                <option value="">Tất cả mục lục</option>
+                                                <option ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-bottom:5px"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Hộp</label>
+                                        <div class="col-sm-10">
+                                            <div style="width:100%;z-index:99;position:relative">
+                                                <input ng-model="result_text" data-lam="1" ng-click="click_text_select()" class="form-control text-select" readonly style="cursor: context-menu"/>
+                                                <div class="body-select" id="body-select-hop">
+                                                    <input ng-model="searchText" name="search-tex" class="form-control text-select search-text" placeholder="Nhập mã hộp để tìm kiếm" />
+                                                    <select class="form-control" name="select_hop" multiple>
+                                                        <option ng-class="danhsachhop.length == 0 ? 'hien' : 'an'">Chưa có hộp</option>
+                                                        <option ng-class="danhsachhop.length > 0 ? 'hien' : 'an'">Tất cả hộp</option>
+                                                        <option ng-click="select_hop(h)" ng-class="danhsachhop.length > 0 ? 'hien' : 'an'" ng-repeat="h in danhsachhop | filter:searchText" value="{{h.MAHOP}}">{{h.MAHOP}}</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-sm-6 col-xs-12">
-                                    <div class="databox databox-xlg databox-halved radius-bordered databox-shadowed databox-vertical">
-                                        <div class="databox-top bg-white padding-10">
-                                            <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                @*<img src="~/assets/img/avatars/cr7.jpg" />*@
-                                                <img src="~/assets/img/avatars/cr7.jpg" style="width:75px; height:75px;" class="image-circular bordered-3 bordered-palegreen">
-                                            </div>
-                                            <div class="col-lg-8 col-sm-8 col-xs-8 text-align-left padding-10">
-                                                <span class="databox-header carbon no-margin">Martin James</span>
-                                                <span class="databox-text lightcarbon no-margin"> Software Manager at Microsoft </span>
-                                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label no-padding-right">Hồ sơ</label>
+                                        <div class="col-sm-10">
+                                            <select ng-click="" name="selectmucluc" class="form-control" ng-model="v.mucluc" ng-change="loadhop()">
+                                                <option value="">Tất cả mục lục</option>
+                                                <option ng-repeat="u in danhsachmucluc" id="ml{{u.ID}}" value="{{u.ID}}">{{u.TENMUCLUC}}</option>
+                                            </select>
                                         </div>
-                                        <div class="databox-bottom bg-white no-padding">
-                                            <div class="databox-row row-12">
-                                                <div class="databox-row row-6 no-padding">
-                                                    <div class="databox-cell cell-4 no-padding text-align-center bordered-right bordered-platinum">
-                                                        <span class="databox-text sonic-silver  no-margin">Posts</span>
-                                                        <span class="databox-number lightcarbon no-margin">510</span>
-                                                    </div>
-                                                    <div class="databox-cell cell-4 no-padding text-align-center bordered-right bordered-platinum">
-                                                        <span class="databox-text sonic-silver no-margin">Followers</span>
-                                                        <span class="databox-number lightcarbon no-margin">908</span>
-                                                    </div>
-                                                    <div class="databox-cell cell-4 no-padding text-align-center">
-                                                        <span class="databox-text sonic-silver no-margin">Following</span>
-                                                        <span class="databox-number lightcarbon no-margin">286</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12"><hr /></div>
+
+                                <div class="col-md-12">
+                                    <h6 class=""><b>{{tieuchi}}</b></h6>
+                                    <div class="row">
+                                        <div ng-class="loading_tk_phong ? 'hien' : 'an'" class="col-md-12">
+                                            <h6 class="text-center"><i>Đang xử lý...</i></h6>
+                                        </div>
+                                        <div ng-class="loading_tk_phong ? 'an' : 'hien'" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="databox radius-bordered databox-shadowed databox-graded">
+                                                <div class="databox-right">
+                                                    <span class="databox-number">{{tk_ml_phong}}</span>
+                                                    <div class="databox-text darkgray">Mục lục văn bản</div>
+                                                    <div class="databox-stat yellow radius-bordered">
+                                                        <i class="stat-icon  icon-lg fa fa-bookmark"></i>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="databox radius-bordered databox-shadowed databox-graded">
+                                                <div class="databox-right">
+                                                    <span class="databox-number">{{tk_hop_phong}}</span>
+                                                    <div class="databox-text darkgray">Hộp</div>
+                                                    <div class="databox-stat azure radius-bordered">
+                                                        <i class="stat-icon  icon-lg fa fa-archive"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="databox radius-bordered databox-shadowed databox-graded">
+                                                <div class="databox-right">
+                                                    <span class="databox-number">{{tk_hs_phong}}</span>
+                                                    <div class="databox-text darkgray">Hồ sơ</div>
+                                                    <div class="databox-stat green radius-bordered">
+                                                        <i class="stat-icon  icon-lg fa  fa-folder-o"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="databox radius-bordered databox-shadowed databox-graded">
+                                                <div class="databox-right">
+                                                    <span class="databox-number">{{tk_vb_phong}}</span>
+                                                    <div class="databox-text darkgray">Văn bản</div>
+                                                    <div class="databox-stat lightred radius-bordered">
+                                                        <i class="stat-icon  icon-lg fa fa-file-text-o"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
